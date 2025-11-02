@@ -6,7 +6,7 @@ import { rocketLessons } from '../data/rocketLessonsData';
 export default function RocketLesson1() {
   const navigate = useNavigate();
   const lesson = rocketLessons[1];
-  const [currentSection, setCurrentSection] = useState('hook'); // hook, concepts, simulation, summary, quiz
+  const [currentSection, setCurrentSection] = useState('learn'); // learn, practice, quiz
   const [thrustValue, setThrustValue] = useState(500);
   const [quizAnswers, setQuizAnswers] = useState({});
   const [showQuizResults, setShowQuizResults] = useState(false);
@@ -19,7 +19,7 @@ export default function RocketLesson1() {
     'hovering';
 
   const handleNextSection = () => {
-    const sections = ['hook', 'concepts', 'simulation', 'summary', 'quiz'];
+    const sections = ['learn', 'practice', 'quiz'];
     const currentIndex = sections.indexOf(currentSection);
     if (currentIndex < sections.length - 1) {
       setCurrentSection(sections[currentIndex + 1]);
@@ -54,10 +54,8 @@ export default function RocketLesson1() {
               </div>
             </div>
             <div className="flex items-center gap-2 text-sm">
-              <div className={`px-3 py-1 rounded-full ${currentSection === 'hook' ? 'bg-purple-500' : 'bg-gray-700'}`}>Hook</div>
-              <div className={`px-3 py-1 rounded-full ${currentSection === 'concepts' ? 'bg-purple-500' : 'bg-gray-700'}`}>Learn</div>
-              <div className={`px-3 py-1 rounded-full ${currentSection === 'simulation' ? 'bg-purple-500' : 'bg-gray-700'}`}>Try</div>
-              <div className={`px-3 py-1 rounded-full ${currentSection === 'summary' ? 'bg-purple-500' : 'bg-gray-700'}`}>Review</div>
+              <div className={`px-3 py-1 rounded-full ${currentSection === 'learn' ? 'bg-purple-500' : 'bg-gray-700'}`}>Learn</div>
+              <div className={`px-3 py-1 rounded-full ${currentSection === 'practice' ? 'bg-purple-500' : 'bg-gray-700'}`}>Practice</div>
               <div className={`px-3 py-1 rounded-full ${currentSection === 'quiz' ? 'bg-purple-500' : 'bg-gray-700'}`}>Quiz</div>
             </div>
           </div>
@@ -71,34 +69,26 @@ export default function RocketLesson1() {
           {/* Left Column - Content */}
           <div className="space-y-6">
             
-            {/* 1️⃣ Hook Section */}
-            {currentSection === 'hook' && (
-              <div className="bg-gradient-to-br from-purple-900/50 to-blue-900/50 backdrop-blur border border-purple-500 rounded-2xl p-8">
-                <div className="text-4xl mb-4">🚀</div>
-                <h2 className="text-3xl font-bold mb-4">{lesson.hook.question}</h2>
-                <p className="text-lg text-gray-300 mb-6">In this lesson, you'll discover:</p>
-                <ul className="space-y-3 mb-8">
-                  {lesson.hook.points.map((point, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                      <span className="text-gray-200">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={handleNextSection}
-                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all"
-                >
-                  <Play className="w-5 h-5" />
-                  Start Learning
-                </button>
-              </div>
-            )}
-
-            {/* 2️⃣ Concepts Section */}
-            {currentSection === 'concepts' && (
+            {/* Page 1: Learn - Hook + Concepts Combined */}
+            {currentSection === 'learn' && (
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold mb-6">Understanding the Forces</h2>
+                {/* Hook */}
+                <div className="bg-gradient-to-br from-purple-900/50 to-blue-900/50 backdrop-blur border border-purple-500 rounded-2xl p-8">
+                  <div className="text-4xl mb-4">🚀</div>
+                  <h2 className="text-3xl font-bold mb-4">{lesson.hook.question}</h2>
+                  <p className="text-lg text-gray-300 mb-6">In this lesson, you'll discover:</p>
+                  <ul className="space-y-3">
+                    {lesson.hook.points.map((point, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                        <span className="text-gray-200">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Concepts */}
+                <h2 className="text-3xl font-bold">Understanding the Forces</h2>
                 {lesson.concepts.map((concept, idx) => (
                   <div key={idx} className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-xl p-6">
                     <div className="flex items-center gap-3 mb-3">
@@ -109,24 +99,21 @@ export default function RocketLesson1() {
                     {concept.details && (
                       <p className="text-sm text-gray-400 italic">{concept.details}</p>
                     )}
-                    {concept.interactive && (
-                      <div className="mt-4 p-4 bg-purple-900/30 rounded-lg border border-purple-500/30">
-                        <p className="text-sm text-purple-300">💡 {concept.interactive}</p>
-                      </div>
-                    )}
                   </div>
                 ))}
+                
                 <button
                   onClick={handleNextSection}
-                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 px-6 py-3 rounded-xl font-semibold transition-all"
+                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all"
                 >
-                  Try the Simulation →
+                  <Play className="w-5 h-5" />
+                  Try It Yourself →
                 </button>
               </div>
             )}
 
-            {/* 3️⃣ Simulation Section */}
-            {currentSection === 'simulation' && (
+            {/* Page 2: Practice - Simulation + Summary Combined */}
+            {currentSection === 'practice' && (
               <div className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-xl p-8">
                 <h2 className="text-3xl font-bold mb-4">{lesson.simulation.title}</h2>
                 <p className="text-gray-300 mb-6">{lesson.simulation.instruction}</p>
@@ -193,51 +180,51 @@ export default function RocketLesson1() {
               </div>
             )}
 
-            {/* 4️⃣ Summary Section */}
-            {currentSection === 'summary' && (
-              <div className="bg-gradient-to-br from-green-900/50 to-blue-900/50 backdrop-blur border border-green-500 rounded-2xl p-8">
-                <div className="text-4xl mb-4">✅</div>
-                <h2 className="text-3xl font-bold mb-6">Key Takeaway</h2>
-                <p className="text-xl text-gray-200 mb-8 leading-relaxed">{lesson.summary.text}</p>
-                
-                <div className="grid grid-cols-3 gap-4 mb-8">
-                  <div className="text-center p-4 bg-gray-900/50 rounded-lg">
-                    <div className="text-4xl mb-2">{lesson.summary.icons.thrust}</div>
-                    <div className="text-sm font-semibold">Thrust</div>
+                {/* Summary at bottom of practice page */}
+                <div className="bg-gradient-to-br from-green-900/50 to-blue-900/50 backdrop-blur border border-green-500 rounded-2xl p-8 mt-6">
+                  <div className="text-4xl mb-4">✅</div>
+                  <h2 className="text-3xl font-bold mb-6">Key Takeaway</h2>
+                  <p className="text-xl text-gray-200 mb-8 leading-relaxed">{lesson.summary.text}</p>
+                  
+                  <div className="grid grid-cols-3 gap-4 mb-8">
+                    <div className="text-center p-4 bg-gray-900/50 rounded-lg">
+                      <div className="text-4xl mb-2">{lesson.summary.icons.thrust}</div>
+                      <div className="text-sm font-semibold">Thrust</div>
+                    </div>
+                    <div className="text-center p-4 bg-gray-900/50 rounded-lg">
+                      <div className="text-4xl mb-2">{lesson.summary.icons.gravity}</div>
+                      <div className="text-sm font-semibold">Gravity</div>
+                    </div>
+                    <div className="text-center p-4 bg-gray-900/50 rounded-lg">
+                      <div className="text-4xl mb-2">{lesson.summary.icons.drag}</div>
+                      <div className="text-sm font-semibold">Drag</div>
+                    </div>
                   </div>
-                  <div className="text-center p-4 bg-gray-900/50 rounded-lg">
-                    <div className="text-4xl mb-2">{lesson.summary.icons.gravity}</div>
-                    <div className="text-sm font-semibold">Gravity</div>
-                  </div>
-                  <div className="text-center p-4 bg-gray-900/50 rounded-lg">
-                    <div className="text-4xl mb-2">{lesson.summary.icons.drag}</div>
-                    <div className="text-sm font-semibold">Drag</div>
-                  </div>
-                </div>
 
-                <div className="bg-purple-900/30 border border-purple-500/30 rounded-lg p-4 mb-6">
-                  <p className="text-purple-200 font-semibold">💡 {lesson.summary.keyTakeaway}</p>
-                </div>
+                  <div className="bg-purple-900/30 border border-purple-500/30 rounded-lg p-4 mb-6">
+                    <p className="text-purple-200 font-semibold">💡 {lesson.summary.keyTakeaway}</p>
+                  </div>
 
-                <button
-                  onClick={handleNextSection}
-                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 px-6 py-3 rounded-xl font-semibold transition-all"
-                >
-                  Take the Quiz →
-                </button>
+                  <button
+                    onClick={handleNextSection}
+                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 px-6 py-3 rounded-xl font-semibold transition-all"
+                  >
+                    Take the Quiz →
+                  </button>
+                </div>
               </div>
             )}
 
-            {/* 5️⃣ Quiz Section */}
+            {/* Page 3: Quiz - Only 2 Questions */}
             {currentSection === 'quiz' && (
               <div className="bg-gray-800/50 backdrop-blur border border-gray-700 rounded-xl p-8">
                 <h2 className="text-3xl font-bold mb-6">🧠 Knowledge Check</h2>
-                <p className="text-gray-300 mb-8">Answer these 3 quick questions to complete the lesson!</p>
+                <p className="text-gray-300 mb-8">Answer these 2 quick questions to complete the lesson!</p>
                 
                 <div className="space-y-6">
-                  {lesson.quiz.map((question, idx) => (
+                  {lesson.quiz.slice(0, 2).map((question, idx) => (
                     <div key={idx} className="bg-gray-900/50 p-6 rounded-lg">
-                      <div className="text-sm text-purple-400 mb-2">Question {idx + 1}/3</div>
+                      <div className="text-sm text-purple-400 mb-2">Question {idx + 1}/2</div>
                       <h3 className="text-lg font-semibold mb-4">{question.question}</h3>
                       
                       {question.type === 'multiple-choice' && (
@@ -269,9 +256,9 @@ export default function RocketLesson1() {
                 {!showQuizResults ? (
                   <button
                     onClick={checkQuizResults}
-                    disabled={Object.keys(quizAnswers).length < lesson.quiz.length}
+                    disabled={Object.keys(quizAnswers).length < 2}
                     className={`w-full mt-6 px-6 py-3 rounded-xl font-semibold transition-all ${
-                      Object.keys(quizAnswers).length === lesson.quiz.length
+                      Object.keys(quizAnswers).length === 2
                         ? 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500'
                         : 'bg-gray-700 cursor-not-allowed opacity-50'
                     }`}
@@ -303,7 +290,7 @@ export default function RocketLesson1() {
           {/* Right Column - 3D Model / Visual */}
           <div className="lg:sticky lg:top-24 h-fit">
             <div className="bg-gray-800/30 backdrop-blur border border-gray-700 rounded-2xl p-8 aspect-square flex items-center justify-center">
-              {currentSection === 'simulation' ? (
+              {currentSection === 'practice' ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   {/* Rocket Visualization */}
                   <div className={`transition-all duration-500 ${
