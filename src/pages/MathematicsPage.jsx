@@ -77,7 +77,7 @@ export default function MathematicsPage() {
                         return (
                             <button
                                 key={option.id}
-                                onClick={() => navigate(option.path)}
+                                onClick={() => alert('Coming Soon! This curriculum is under development.')}
                                 className={`group relative bg-gradient-to-br ${option.gradient} hover:${option.hoverGradient} rounded-3xl p-10 border-2 ${option.borderColor} ${option.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${option.shadowColor}`}
                             >
                                 {option.recommended && (
