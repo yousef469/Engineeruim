@@ -17,7 +17,7 @@ export default function LearnSectionsPage() {
             borderColor: 'border-green-400/50',
             hoverBorderColor: 'hover:border-green-300',
             shadowColor: 'shadow-green-500/30',
-            path: '/mathematics'
+            path: '/learn/mathematics'
         },
         {
             id: 'physics',
@@ -29,7 +29,7 @@ export default function LearnSectionsPage() {
             borderColor: 'border-blue-400/50',
             hoverBorderColor: 'hover:border-blue-300',
             shadowColor: 'shadow-blue-500/30',
-            path: '/physics'
+            path: '/learn/physics'
         }
     ];
 
