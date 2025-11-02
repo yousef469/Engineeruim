@@ -1,24 +1,37 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calculator, Lock, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Calculator, Lock, AlertCircle, Atom } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function LearnSectionsPage() {
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const prerequisiteSection = {
-        id: 'mathematics',
-        icon: Calculator,
-        title: 'Mathematics',
-        description: 'Start with essential math concepts needed for engineering',
-        gradient: 'from-green-500 to-emerald-600',
-        hoverGradient: 'from-green-600 to-emerald-700',
-        borderColor: 'border-green-400/50',
-        hoverBorderColor: 'hover:border-green-300',
-        shadowColor: 'shadow-green-500/30',
-        path: '/mathematics',
-        available: true
-    };
+    const prerequisiteSections = [
+        {
+            id: 'mathematics',
+            icon: Calculator,
+            title: 'Mathematics',
+            description: 'Essential math concepts: algebra, geometry, trigonometry, and calculus',
+            gradient: 'from-green-500 to-emerald-600',
+            hoverGradient: 'from-green-600 to-emerald-700',
+            borderColor: 'border-green-400/50',
+            hoverBorderColor: 'hover:border-green-300',
+            shadowColor: 'shadow-green-500/30',
+            path: '/mathematics'
+        },
+        {
+            id: 'physics',
+            icon: Atom,
+            title: 'Physics',
+            description: 'Fundamental physics: forces, motion, energy, and laws of nature',
+            gradient: 'from-blue-500 to-cyan-600',
+            hoverGradient: 'from-blue-600 to-cyan-700',
+            borderColor: 'border-blue-400/50',
+            hoverBorderColor: 'hover:border-blue-300',
+            shadowColor: 'shadow-blue-500/30',
+            path: '/physics'
+        }
+    ];
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
@@ -65,44 +78,51 @@ export default function LearnSectionsPage() {
                 </div>
             </div>
 
-            {/* Available Section */}
+            {/* Available Sections */}
             <div className="max-w-6xl mx-auto px-4 pb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Start Here</h2>
-                <div className="max-w-md mx-auto">
-                    <button
-                        onClick={() => navigate(prerequisiteSection.path)}
-                        className={`group relative w-full bg-gradient-to-br ${prerequisiteSection.gradient} hover:${prerequisiteSection.hoverGradient} rounded-3xl p-10 border-2 ${prerequisiteSection.borderColor} ${prerequisiteSection.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${prerequisiteSection.shadowColor}`}
-                    >
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity" />
-                        
-                        <div className="relative z-10">
-                            <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
-                                <Calculator className="w-12 h-12 text-white" />
-                            </div>
+                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    {prerequisiteSections.map((section) => {
+                        const Icon = section.icon;
+                        return (
+                            <button
+                                key={section.id}
+                                onClick={() => navigate(section.path)}
+                                className={`group relative bg-gradient-to-br ${section.gradient} hover:${section.hoverGradient} rounded-3xl p-10 border-2 ${section.borderColor} ${section.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${section.shadowColor}`}
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity" />
+                                
+                                <div className="relative z-10">
+                                    <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
+                                        <Icon className="w-12 h-12 text-white" />
+                                    </div>
 
-                            <h3 className="text-3xl font-bold mb-4 text-white text-center">{prerequisiteSection.title}</h3>
+                                    <h3 className="text-3xl font-bold mb-4 text-white text-center">{section.title}</h3>
 
-                            <p className="text-white/90 text-center mb-6">
-                                {prerequisiteSection.description}
-                            </p>
+                                    <p className="text-white/90 text-center mb-6">
+                                        {section.description}
+                                    </p>
 
-                            <div className="flex items-center justify-center gap-2 text-white font-semibold">
-                                <span>Start Learning</span>
-                                <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
-                            </div>
-                        </div>
-                    </button>
+                                    <div className="flex items-center justify-center gap-2 text-white font-semibold">
+                                        <span>Start Learning</span>
+                                        <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+                                    </div>
+                                </div>
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
 
             {/* Locked Sections */}
             <div className="max-w-6xl mx-auto px-4 pb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center text-gray-400">Coming Soon (Complete Prerequisites First)</h2>
-                <div className="grid md:grid-cols-3 gap-8 opacity-50">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 opacity-50">
                     {[
                         { title: 'Rockets', icon: '🚀', color: 'from-orange-500 to-red-600' },
                         { title: 'Planes', icon: '✈️', color: 'from-blue-500 to-indigo-600' },
-                        { title: 'Cars', icon: '🚗', color: 'from-purple-500 to-pink-600' }
+                        { title: 'Cars', icon: '🚗', color: 'from-purple-500 to-pink-600' },
+                        { title: 'Robotics', icon: '🤖', color: 'from-teal-500 to-cyan-600' }
                     ].map((item) => (
                         <div
                             key={item.title}
