@@ -22,7 +22,6 @@ export default function MathematicsPage() {
             borderColor: 'border-green-400/50',
             hoverBorderColor: 'hover:border-green-300',
             shadowColor: 'shadow-green-500/30',
-            path: '/learn/mathematics/engineering',
             recommended: true
         },
         {
@@ -42,7 +41,6 @@ export default function MathematicsPage() {
             borderColor: 'border-purple-400/50',
             hoverBorderColor: 'hover:border-purple-300',
             shadowColor: 'shadow-purple-500/30',
-            path: '/learn/mathematics/advanced',
             recommended: false
         }
     ];
