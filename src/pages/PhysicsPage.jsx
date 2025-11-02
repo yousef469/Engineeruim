@@ -22,6 +22,7 @@ export default function PhysicsPage() {
             borderColor: 'border-blue-400/50',
             hoverBorderColor: 'hover:border-blue-300',
             shadowColor: 'shadow-blue-500/30',
+            path: '/learn/physics/engineering',
             recommended: true
         },
         {
@@ -41,6 +42,7 @@ export default function PhysicsPage() {
             borderColor: 'border-indigo-400/50',
             hoverBorderColor: 'hover:border-indigo-300',
             shadowColor: 'shadow-indigo-500/30',
+            path: '/learn/physics/advanced',
             recommended: false
         }
     ];
@@ -75,7 +77,7 @@ export default function PhysicsPage() {
                         return (
                             <button
                                 key={option.id}
-                                onClick={() => alert('Coming Soon! This curriculum is under development.')}
+                                onClick={() => navigate(option.path)}
                                 className={`group relative bg-gradient-to-br ${option.gradient} hover:${option.hoverGradient} rounded-3xl p-10 border-2 ${option.borderColor} ${option.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${option.shadowColor}`}
                             >
                                 {option.recommended && (

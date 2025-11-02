@@ -1103,6 +1103,10 @@ import LearnInformationPage from './pages/LearnInformationPage';
 import CollaboratePage from './pages/CollaboratePage';
 import PhysicsPage from './pages/PhysicsPage';
 import MathematicsPage from './pages/MathematicsPage';
+import MathematicsEngineeringPage from './pages/MathematicsEngineeringPage';
+import MathematicsAdvancedPage from './pages/MathematicsAdvancedPage';
+import PhysicsEngineeringPage from './pages/PhysicsEngineeringPage';
+import PhysicsAdvancedPage from './pages/PhysicsAdvancedPage';
 import ElectronicsPage from './pages/ElectronicsPage';
 import BooksPage from './pages/BooksPage';
 import Leaderboard from './components/Leaderboard';
@@ -1146,7 +1150,11 @@ export default function App() {
           <Route path="/mechanics/cars" element={<ProtectedRoute><CarMechanicsPage /></ProtectedRoute>} />
           <Route path="/mechanics/planes" element={<ProtectedRoute><PlaneMechanicsPage /></ProtectedRoute>} />
           <Route path="/learn/physics" element={<ProtectedRoute><PhysicsPage /></ProtectedRoute>} />
+          <Route path="/learn/physics/engineering" element={<ProtectedRoute><PhysicsEngineeringPage /></ProtectedRoute>} />
+          <Route path="/learn/physics/advanced" element={<ProtectedRoute><PhysicsAdvancedPage /></ProtectedRoute>} />
           <Route path="/learn/mathematics" element={<ProtectedRoute><MathematicsPage /></ProtectedRoute>} />
+          <Route path="/learn/mathematics/engineering" element={<ProtectedRoute><MathematicsEngineeringPage /></ProtectedRoute>} />
+          <Route path="/learn/mathematics/advanced" element={<ProtectedRoute><MathematicsAdvancedPage /></ProtectedRoute>} />
           <Route path="/learn/electronics" element={<ProtectedRoute><ElectronicsPage /></ProtectedRoute>} />
           <Route path="/learn/books" element={<ProtectedRoute><BooksPage /></ProtectedRoute>} />
           <Route path="/compare" element={<ComparePage />} />

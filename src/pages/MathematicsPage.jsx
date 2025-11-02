@@ -22,6 +22,7 @@ export default function MathematicsPage() {
             borderColor: 'border-green-400/50',
             hoverBorderColor: 'hover:border-green-300',
             shadowColor: 'shadow-green-500/30',
+            path: '/learn/mathematics/engineering',
             recommended: true
         },
         {
@@ -41,6 +42,7 @@ export default function MathematicsPage() {
             borderColor: 'border-purple-400/50',
             hoverBorderColor: 'hover:border-purple-300',
             shadowColor: 'shadow-purple-500/30',
+            path: '/learn/mathematics/advanced',
             recommended: false
         }
     ];
@@ -75,7 +77,7 @@ export default function MathematicsPage() {
                         return (
                             <button
                                 key={option.id}
-                                onClick={() => alert('Coming Soon! This curriculum is under development.')}
+                                onClick={() => navigate(option.path)}
                                 className={`group relative bg-gradient-to-br ${option.gradient} hover:${option.hoverGradient} rounded-3xl p-10 border-2 ${option.borderColor} ${option.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${option.shadowColor}`}
                             >
                                 {option.recommended && (
