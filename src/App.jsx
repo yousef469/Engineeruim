@@ -1151,14 +1151,12 @@ export default function App() {
           <Route path="/mechanics/rockets" element={<ProtectedRoute><RocketMechanicsPage /></ProtectedRoute>} />
           <Route path="/mechanics/cars" element={<ProtectedRoute><CarMechanicsPage /></ProtectedRoute>} />
           <Route path="/mechanics/planes" element={<ProtectedRoute><PlaneMechanicsPage /></ProtectedRoute>} />
-          <Route path="/learn/physics" element={<ProtectedRoute><PhysicsPage /></ProtectedRoute>} />
-          <Route path="/learn/physics/engineering" element={<ProtectedRoute><PhysicsEngineeringPage /></ProtectedRoute>} />
-          <Route path="/learn/physics/advanced" element={<ProtectedRoute><PhysicsAdvancedPage /></ProtectedRoute>} />
-          <Route path="/learn/mathematics" element={<ProtectedRoute><MathematicsPage /></ProtectedRoute>} />
-          <Route path="/learn/mathematics/engineering" element={<ProtectedRoute><MathematicsEngineeringPage /></ProtectedRoute>} />
-          <Route path="/learn/mathematics/advanced" element={<ProtectedRoute><MathematicsAdvancedPage /></ProtectedRoute>} />
           <Route path="/learn/mathphysics/engineering" element={<ProtectedRoute><MathPhysicsEngineeringPage /></ProtectedRoute>} />
           <Route path="/learn/mathphysics/advanced" element={<ProtectedRoute><MathPhysicsAdvancedPage /></ProtectedRoute>} />
+          <Route path="/learn/mathematics/engineering" element={<ProtectedRoute><MathematicsEngineeringPage /></ProtectedRoute>} />
+          <Route path="/learn/mathematics/advanced" element={<ProtectedRoute><MathematicsAdvancedPage /></ProtectedRoute>} />
+          <Route path="/learn/physics/engineering" element={<ProtectedRoute><PhysicsEngineeringPage /></ProtectedRoute>} />
+          <Route path="/learn/physics/advanced" element={<ProtectedRoute><PhysicsAdvancedPage /></ProtectedRoute>} />
           <Route path="/learn/electronics" element={<ProtectedRoute><ElectronicsPage /></ProtectedRoute>} />
           <Route path="/learn/books" element={<ProtectedRoute><BooksPage /></ProtectedRoute>} />
           <Route path="/compare" element={<ComparePage />} />
