@@ -226,82 +226,131 @@ Real Examples:
 • Minecraft block: (x, y, z) position`
         },
         {
-          title: '🔧 Distance and Midpoint Formulas',
+          title: '🔧 Distance Formula - How Far Apart?',
           type: 'concept',
-          content: `Distance Between Two Points:
+          content: `How do we find the distance between two points?
 
-2D Distance: d = √[(x₂-x₁)² + (y₂-y₁)²]
+🎯 2D DISTANCE (Pythagorean Theorem):
+Formula: d = √[(x₂-x₁)² + (y₂-y₁)²]
 
-Example: Distance from (1, 2) to (4, 6)
-d = √[(4-1)² + (6-2)²]
-d = √[9 + 16]
+Let's break it down with an example:
+Find distance from (1, 2) to (4, 6)
+
+Step 1: Find the differences
+Δx = 4 - 1 = 3 (horizontal distance)
+Δy = 6 - 2 = 4 (vertical distance)
+
+Step 2: Draw it out (imagine a right triangle):
+     (4,6) ●
+          /|
+         / |
+        /  | 4 units up
+       /   |
+      /    |
+(1,2)●─────┘
+     3 units right
+
+Step 3: Use Pythagorean theorem
+d² = 3² + 4²
+d² = 9 + 16 = 25
 d = √25 = 5 units
 
-3D Distance: d = √[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²]
+Visual: It's like finding the hypotenuse of a triangle!
+
+🎯 3D DISTANCE (Same idea, add z):
+Formula: d = √[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²]
 
 Example: Distance from (1, 2, 3) to (4, 6, 8)
-d = √[(4-1)² + (6-2)² + (8-3)²]
+
+Step 1: Find differences
+Δx = 4 - 1 = 3
+Δy = 6 - 2 = 4
+Δz = 8 - 3 = 5
+
+Step 2: Calculate
+d = √[3² + 4² + 5²]
 d = √[9 + 16 + 25]
 d = √50 ≈ 7.07 units
 
-Midpoint Formula:
-Midpoint = ((x₁+x₂)/2, (y₁+y₂)/2, (z₁+z₂)/2)
+💡 MIDPOINT (Halfway Point):
+Formula: M = ((x₁+x₂)/2, (y₁+y₂)/2, (z₁+z₂)/2)
 
 Example: Midpoint of (2, 4, 6) and (8, 10, 12)
-M = ((2+8)/2, (4+10)/2, (6+12)/2) = (5, 7, 9)`
+M = ((2+8)/2, (4+10)/2, (6+12)/2) = (5, 7, 9)
+
+Think: Average the coordinates!`
         },
         {
-          title: '🧮 Practice Zone: Flight Path Analysis',
+          title: '🧮 Practice: Plane Flight Path',
           type: 'practice',
-          content: `Problem 1: Plane Takeoff Path
-A plane starts at ground level (0, 0, 0) and reaches (1000, 500, 200) meters.
-Distance traveled:
+          content: `Let's track a plane's journey!
+
+SCENARIO: Plane takes off and climbs
+Start: (0, 0, 0) - runway
+End: (1000, 500, 200) meters
+
+Question 1: How far did the plane travel?
+Step 1: Identify the coordinates
+Point A = (0, 0, 0)
+Point B = (1000, 500, 200)
+
+Step 2: Find differences
+Δx = 1000 - 0 = 1000 m (horizontal distance)
+Δy = 500 - 0 = 500 m (forward distance)
+Δz = 200 - 0 = 200 m (altitude gained)
+
+Step 3: Calculate distance
 d = √[1000² + 500² + 200²]
 d = √[1,000,000 + 250,000 + 40,000]
-d = √1,290,000 ≈ 1,136 meters
+d = √1,290,000
+d ≈ 1,136 meters
 
-Problem 2: Slope of Takeoff
-From (0, 0) to (1000, 200) in 2D (horizontal, vertical)
-Slope = rise/run = 200/1000 = 0.2 or 20%
-Angle ≈ 11.3°
+Question 2: What's the climb angle?
+We look at horizontal vs vertical:
+Horizontal = √[1000² + 500²] ≈ 1,118 m
+Vertical = 200 m
+Angle = arctan(200/1118) ≈ 10.1°
 
-Problem 3: Robot Navigation
-Robot at (5, 3, 2), needs to reach (11, 7, 6)
-Distance = √[(11-5)² + (7-3)² + (6-2)²]
-         = √[36 + 16 + 16]
-         = √68 ≈ 8.25 meters
+Question 3: Where's the halfway checkpoint?
+Midpoint = ((0+1000)/2, (0+500)/2, (0+200)/2)
+Midpoint = (500, 250, 100)
 
-Problem 4: Midpoint Checkpoint
-Drone flies from (0, 0, 100) to (200, 150, 300)
-Midpoint = ((0+200)/2, (0+150)/2, (100+300)/2)
-         = (100, 75, 200)`
+The plane should be at 500m forward, 250m sideways, 100m high!`
         },
         {
-          title: '🧩 Interactive Challenge: 3D Navigation',
+          title: '🧩 Challenge: Drone Delivery System',
           type: 'simulation',
-          content: `Scenario: Autonomous Drone Delivery
+          content: `Design a drone delivery route!
 
-Starting point: (0, 0, 50) - 50m altitude
-Destination: (300, 400, 100) - 100m altitude
+MISSION SETUP:
+• Warehouse: (0, 0, 50) - 50m altitude
+• Customer: (300, 400, 100) - 100m altitude
+• Drone speed: 10 m/s
 
-Question 1: What is the straight-line distance?
+CHALLENGE 1: Calculate flight distance
 d = √[(300-0)² + (400-0)² + (100-50)²]
 d = √[90,000 + 160,000 + 2,500]
 d = √252,500 ≈ 502.5 meters
 
-Question 2: Where is the halfway point?
-M = ((0+300)/2, (0+400)/2, (50+100)/2)
-M = (150, 200, 75)
+CHALLENGE 2: How long will delivery take?
+Time = Distance / Speed
+Time = 502.5 / 10 ≈ 50.3 seconds
 
-Question 3: If drone travels at 10 m/s, how long?
-Time = distance / speed = 502.5 / 10 ≈ 50.3 seconds
+CHALLENGE 3: Place a charging station halfway
+Midpoint = ((0+300)/2, (0+400)/2, (50+100)/2)
+Station = (150, 200, 75)
 
-Question 4: Design Challenge
-Place a charging station exactly 1/3 of the way from start to destination.
-Point = (0 + 300/3, 0 + 400/3, 50 + 50/3)
-      = (100, 133.3, 66.7)
+CHALLENGE 4: Add a second customer at (600, 800, 150)
+From warehouse to customer 2:
+d = √[600² + 800² + 100²]
+d = √[360,000 + 640,000 + 10,000]
+d = √1,010,000 ≈ 1,005 meters
 
-Your Turn: Calculate a path with 3 waypoints!`
+Which customer is closer? Customer 1 (502.5m) is closer!
+
+YOUR TURN:
+Design a route that visits both customers.
+Calculate total distance traveled!`
         }
       ],
 
@@ -366,101 +415,260 @@ Your Turn: Calculate a path with 3 waypoints!`
 
       sections: [
         {
-          title: '🧠 Right Triangle Basics',
+          title: '🧠 Right Triangles - The Foundation',
           type: 'concept',
-          content: `A right triangle has one 90° angle.
+          content: `Let's understand triangles step by step!
 
-Three sides:
-• Hypotenuse: longest side (opposite the right angle)
-• Opposite: side across from the angle we're measuring
-• Adjacent: side next to the angle we're measuring
+🔺 WHAT IS A RIGHT TRIANGLE?
+A triangle with one 90° angle (a square corner)
 
-Pythagorean Theorem:
+Visual:
+        /|
+       / |
+      /  | ← This side is OPPOSITE to angle θ
+     /   |
+    / θ  |
+   /______|
+   ↑     ↑
+   This is ADJACENT to angle θ
+   
+   The slanted side (/) is the HYPOTENUSE (longest side)
+
+📏 THE THREE SIDES (from angle θ's perspective):
+
+1. HYPOTENUSE (H):
+   • Always the longest side
+   • Always opposite the 90° angle
+   • Never changes no matter which angle you look at
+
+2. OPPOSITE (O):
+   • The side ACROSS from your angle
+   • Changes depending on which angle you're measuring
+
+3. ADJACENT (A):
+   • The side NEXT TO your angle
+   • Also changes with the angle
+
+Example with labels:
+        C
+       /|
+    5 / | 4 ← Opposite (from angle A)
+     /  |
+    / A |
+   /______|
+  B  3  C
+     ↑
+  Adjacent (from angle A)
+
+From angle A: Opposite = 4, Adjacent = 3, Hypotenuse = 5
+
+🎯 PYTHAGOREAN THEOREM:
 a² + b² = c²
-(where c is the hypotenuse)
+3² + 4² = 5²
+9 + 16 = 25 ✓
 
-Example: If a = 3 and b = 4
-c² = 3² + 4² = 9 + 16 = 25
-c = 5
-
-The Three Ratios (SOH-CAH-TOA):
-• sin(θ) = Opposite / Hypotenuse
-• cos(θ) = Adjacent / Hypotenuse
-• tan(θ) = Opposite / Adjacent
-
-These ratios are the same for any triangle with the same angle!`
+This ALWAYS works for right triangles!`
         },
         {
-          title: '🔧 Using Sin, Cos, and Tan',
+          title: '🔧 SOH-CAH-TOA - The Magic Formula',
           type: 'concept',
-          content: `Example 1: Finding a Side
-Triangle with angle 30°, hypotenuse = 10 m
-Find opposite side:
-sin(30°) = opposite / 10
-opposite = 10 × sin(30°) = 10 × 0.5 = 5 m
+          content: `The three ratios that unlock ALL triangle problems!
 
-Example 2: Finding an Angle
-Triangle with opposite = 4, adjacent = 3
-tan(θ) = 4/3 = 1.333
-θ = arctan(1.333) ≈ 53.1°
+📐 SOH-CAH-TOA Memory Trick:
+"Some Old Hippie Caught Another Hippie Tripping On Acid"
+(Or make up your own!)
 
-Example 3: Rocket Height
-You're 100 m from a rocket launch pad.
-You measure angle to rocket top = 60°
-Height = 100 × tan(60°) = 100 × 1.732 ≈ 173.2 m
+Let's break it down:
 
-Common Angles to Remember:
-• sin(30°) = 0.5,  cos(30°) = 0.866,  tan(30°) = 0.577
-• sin(45°) = 0.707, cos(45°) = 0.707, tan(45°) = 1
-• sin(60°) = 0.866, cos(60°) = 0.5,   tan(60°) = 1.732`
+🟢 SOH = Sine = Opposite / Hypotenuse
+sin(θ) = O/H
+
+Example: If Opposite = 3, Hypotenuse = 5
+sin(θ) = 3/5 = 0.6
+
+🔵 CAH = Cosine = Adjacent / Hypotenuse  
+cos(θ) = A/H
+
+Example: If Adjacent = 4, Hypotenuse = 5
+cos(θ) = 4/5 = 0.8
+
+🟣 TOA = Tangent = Opposite / Adjacent
+tan(θ) = O/A
+
+Example: If Opposite = 3, Adjacent = 4
+tan(θ) = 3/4 = 0.75
+
+📊 VISUAL EXAMPLE:
+        
+       /|
+    5 / | 3 ← Opposite
+     /  |
+    /θ  |
+   /______|
+      4
+   Adjacent
+
+From angle θ:
+• sin(θ) = 3/5 = 0.6
+• cos(θ) = 4/5 = 0.8
+• tan(θ) = 3/4 = 0.75
+
+🎯 FINDING THE ANGLE:
+If you know the ratio, use inverse functions:
+• θ = arcsin(0.6) ≈ 36.9°
+• θ = arccos(0.8) ≈ 36.9°
+• θ = arctan(0.75) ≈ 36.9°
+
+All give the same angle!
+
+💡 COMMON ANGLES TO REMEMBER:
+30°: sin=0.5, cos=0.866, tan=0.577
+45°: sin=0.707, cos=0.707, tan=1
+60°: sin=0.866, cos=0.5, tan=1.732`
         },
         {
-          title: '🧮 Practice Zone: Engineering Applications',
+          title: '🧮 Practice: Step-by-Step Solutions',
           type: 'practice',
-          content: `Problem 1: Ramp Design
-A ramp rises 2 m over horizontal distance 10 m.
-Angle = arctan(2/10) = arctan(0.2) ≈ 11.3°
-Ramp length = √(2² + 10²) = √104 ≈ 10.2 m
+          content: `Let's solve real problems together!
 
-Problem 2: Plane Climb Angle
-Plane climbs 1000 m while traveling 5000 m horizontally.
-Climb angle = arctan(1000/5000) = arctan(0.2) ≈ 11.3°
+PROBLEM 1: Find the height of a building
+You're 50 meters from a building.
+You measure the angle to the top: 60°
 
-Problem 3: Tower Height
-Standing 50 m from tower, angle to top = 45°
-Height = 50 × tan(45°) = 50 × 1 = 50 m
+Step 1: Draw it
+        Top
+        /|
+       / | h ← Height (OPPOSITE)
+      /  |
+     /60°|
+    /______|
+   You  50m
+      ↑
+   Adjacent
 
-Problem 4: Cable Length
-A support cable goes from ground to top of 30 m pole.
-Ground distance from pole = 40 m
-Cable length = √(30² + 40²) = √(900 + 1600) = √2500 = 50 m
-Angle = arctan(30/40) ≈ 36.9°`
+Step 2: Identify what you know
+• Adjacent = 50 m (distance from building)
+• Angle = 60°
+• Want: Opposite (height)
+
+Step 3: Choose the right formula
+We have Adjacent, want Opposite → Use TAN!
+tan(θ) = Opposite / Adjacent
+
+Step 4: Solve
+tan(60°) = h / 50
+1.732 = h / 50
+h = 50 × 1.732
+h = 86.6 meters
+
+The building is 86.6 meters tall!
+
+PROBLEM 2: Find the angle of a ramp
+Ramp rises 2 meters over 10 meters horizontal distance
+
+Step 1: Draw it
+      /
+   2m/ | ← Rise (OPPOSITE)
+    /θ |
+   /___|
+    10m
+   ↑ Run (ADJACENT)
+
+Step 2: What do we know?
+• Opposite = 2 m
+• Adjacent = 10 m
+• Want: angle θ
+
+Step 3: Choose formula
+Have O and A → Use TAN!
+tan(θ) = O / A
+
+Step 4: Solve
+tan(θ) = 2 / 10 = 0.2
+θ = arctan(0.2)
+θ ≈ 11.3°
+
+The ramp angle is 11.3°!
+
+PROBLEM 3: Cable length for a tower
+Tower is 30m tall, anchored 40m from base
+
+Step 1: Draw it
+    Top
+     |\
+  c  | \ ← Cable (HYPOTENUSE)
+     |  \
+  30m|   \
+     |    \
+     |_____|
+       40m
+
+Step 2: Use Pythagorean theorem
+c² = 30² + 40²
+c² = 900 + 1600
+c² = 2500
+c = 50 meters
+
+Cable needs to be 50 meters long!`
         },
         {
-          title: '🧩 Interactive Challenge: Rocket Tracking',
+          title: '🧩 Challenge: Rocket Tracking Station',
           type: 'simulation',
-          content: `Scenario: Tracking a Rocket Launch
+          content: `You're operating a rocket tracking station!
 
-You're at a tracking station 2000 m from the launch pad.
+SETUP:
+• Your station is 2000 meters from the launch pad
+• You have an angle-measuring device
+• Track the rocket as it climbs
 
-Question 1: Rocket at 30° elevation
-Height = 2000 × tan(30°) = 2000 × 0.577 ≈ 1,154 m
+CHALLENGE 1: Rocket at 30° elevation
+Question: How high is the rocket?
 
-Question 2: Rocket at 60° elevation
-Height = 2000 × tan(60°) = 2000 × 1.732 ≈ 3,464 m
+Draw it:
+    Rocket
+      /|
+     / | h ← Height
+    /  |
+   /30°|
+  /______|
+ Station 2000m Pad
 
-Question 3: Rocket reaches 5000 m height
-Angle = arctan(5000/2000) = arctan(2.5) ≈ 68.2°
+Solution:
+tan(30°) = h / 2000
+0.577 = h / 2000
+h = 2000 × 0.577
+h = 1,154 meters
 
-Question 4: Distance to Rocket
-At 60° elevation, height = 3,464 m
-Direct distance = 2000 / cos(60°) = 2000 / 0.5 = 4,000 m
+CHALLENGE 2: Rocket at 60° elevation
+tan(60°) = h / 2000
+1.732 = h / 2000
+h = 3,464 meters
 
-Challenge: Design a tracking system
-If you want to track rockets up to 10 km high from 2 km away:
-Maximum angle = arctan(10,000/2,000) = arctan(5) ≈ 78.7°
+CHALLENGE 3: Rocket reaches 5000m
+Question: What angle do you measure?
 
-Your Turn: Calculate angles for different heights!`
+tan(θ) = 5000 / 2000
+tan(θ) = 2.5
+θ = arctan(2.5)
+θ ≈ 68.2°
+
+CHALLENGE 4: Direct distance to rocket
+At 60° elevation (height = 3,464m):
+
+Using Pythagorean theorem:
+d² = 2000² + 3464²
+d² = 4,000,000 + 12,000,000
+d = √16,000,000
+d = 4,000 meters
+
+Or using cosine:
+cos(60°) = 2000 / d
+0.5 = 2000 / d
+d = 4,000 meters
+
+YOUR MISSION:
+Track a rocket that climbs from 0° to 80° in 60 seconds.
+Calculate heights at 15-second intervals!`
         }
       ],
 
