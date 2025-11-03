@@ -1,6 +1,7 @@
 // Mathematics Engineering Lessons Data
 import { unit2Lessons } from './mathematics/unit2-geometry.js';
 import { unit3Lessons } from './mathematics/unit3-calculus.js';
+import { unit4Lessons } from './mathematics/unit4-linear-algebra.js';
 
 // Unit 1: Algebra lessons (0-5)
 const unit1Lessons = [
@@ -941,8 +942,8 @@ Challenge: Design your own logarithmic sensor!`
   }
 ];
 
-// Combine Unit 1 (Algebra), Unit 2 (Geometry), and Unit 3 (Calculus) - all enhanced!
-const mathematicsLessons = [...unit1Lessons, ...unit2Lessons, ...unit3Lessons];
+// Combine all units - ALL FULLY ENHANCED!
+const mathematicsLessons = [...unit1Lessons, ...unit2Lessons, ...unit3Lessons, ...unit4Lessons];
 
 export default mathematicsLessons;
 
