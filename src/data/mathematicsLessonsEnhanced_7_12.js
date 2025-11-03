@@ -860,3 +860,699 @@ Hint: Use 120° angles between them!`
     }
   }
 ];
+,
+
+  // LESSON 10: Dot & Cross Product - ENHANCED
+  {
+    id: 10,
+    title: 'Dot & Cross Product',
+    unit: 'Geometry & Trigonometry',
+    unitNumber: 2,
+    lessonNumber: 5,
+    emoji: '🟣',
+    level: 'Beginner',
+    duration: '25 min',
+    content: {
+      introduction: 'Master two powerful vector operations: dot product (for work and angles) and cross product (for torque and perpendicular vectors)!',
+      
+      sections: [
+        {
+          title: '🧠 Dot Product - Multiplying Vectors to Get a Number',
+          type: 'concept',
+          content: `The dot product takes two vectors and gives you ONE NUMBER!
+
+📐 WHAT IS DOT PRODUCT?
+Symbol: v · w (read as "v dot w")
+Result: A single number (scalar)
+
+Formula: v · w = vₓwₓ + vᵧwᵧ + vᵤwᵤ
+
+Think: Multiply matching components, then add them all up!
+
+🎯 STEP-BY-STEP EXAMPLE:
+v = (2, 3, 1)
+w = (4, 1, 2)
+
+Step 1: Multiply x-components
+2 × 4 = 8
+
+Step 2: Multiply y-components
+3 × 1 = 3
+
+Step 3: Multiply z-components
+1 × 2 = 2
+
+Step 4: Add them all
+v · w = 8 + 3 + 2 = 13
+
+That's it! The answer is just 13 (a number, not a vector)
+
+📊 VISUAL UNDERSTANDING:
+Imagine two arrows:
+v: ──→
+w: ──→ (pointing same direction)
+
+If they point the SAME way: dot product is POSITIVE
+If they point OPPOSITE ways: dot product is NEGATIVE
+If they're PERPENDICULAR (90°): dot product is ZERO!
+
+🔍 WHY IS THIS USEFUL?
+
+1. CHECK IF PERPENDICULAR:
+   If v · w = 0, vectors are at 90° angle!
+   
+   Example: v = (3, 4), w = (-4, 3)
+   v · w = 3(-4) + 4(3) = -12 + 12 = 0
+   They're perpendicular! ✓
+
+2. CALCULATE WORK (Physics):
+   Work = Force · Displacement
+   
+   Example: Push box with F = (10, 0) N
+   Box moves d = (5, 3) m
+   Work = F · d = 10(5) + 0(3) = 50 Joules
+
+3. FIND ANGLE BETWEEN VECTORS:
+   Formula: cos(θ) = (v · w) / (|v| × |w|)
+   
+   Example: v = (1, 0), w = (1, 1)
+   v · w = 1(1) + 0(1) = 1
+   |v| = 1, |w| = √2
+   cos(θ) = 1 / √2 = 0.707
+   θ = 45°
+
+💡 PROPERTIES:
+• v · w = w · v (order doesn't matter)
+• v · v = |v|² (dot product with itself = magnitude squared)
+• If v · w > 0: angle < 90° (pointing similar direction)
+• If v · w < 0: angle > 90° (pointing opposite direction)
+• If v · w = 0: angle = 90° (perpendicular)`
+        },
+        {
+          title: '🔧 Cross Product - Creating Perpendicular Vectors',
+          type: 'concept',
+          content: `The cross product takes two vectors and creates a NEW VECTOR perpendicular to both!
+
+📐 WHAT IS CROSS PRODUCT?
+Symbol: v × w (read as "v cross w")
+Result: A new vector (perpendicular to both v and w)
+
+Formula (3D): v × w = (vᵧwᵤ - vᵤwᵧ, vᵤwₓ - vₓwᵤ, vₓwᵧ - vᵧwₓ)
+
+Don't panic! Let's break it down:
+
+🎯 STEP-BY-STEP EXAMPLE:
+v = (2, 3, 1)
+w = (1, 0, 2)
+
+Step 1: x-component (use y and z)
+x = vᵧwᵤ - vᵤwᵧ
+x = 3(2) - 1(0) = 6 - 0 = 6
+
+Step 2: y-component (use z and x)
+y = vᵤwₓ - vₓwᵤ
+y = 1(1) - 2(2) = 1 - 4 = -3
+
+Step 3: z-component (use x and y)
+z = vₓwᵧ - vᵧwₓ
+z = 2(0) - 3(1) = 0 - 3 = -3
+
+Result: v × w = (6, -3, -3)
+
+This new vector is perpendicular to BOTH v and w!
+
+📊 VISUAL UNDERSTANDING:
+     v
+     ↑
+     |
+     |
+     └────→ w
+    /
+   /
+  ↙ v × w (perpendicular to both!)
+
+🎨 2D SIMPLIFIED (for torque):
+In 2D, we only care about the MAGNITUDE:
+|v × w| = vₓwᵧ - vᵧwₓ
+
+Example: v = (3, 0), w = (0, 4)
+|v × w| = 3(4) - 0(0) = 12
+
+🔍 WHY IS THIS USEFUL?
+
+1. CALCULATE TORQUE:
+   Torque = r × F (position × force)
+   
+   Example: Wrench problem
+   r = (0.3, 0, 0) m (wrench length)
+   F = (0, 50, 0) N (force perpendicular)
+   
+   τ = r × F
+   Magnitude = 0.3 × 50 = 15 N·m
+
+2. FIND PERPENDICULAR VECTOR:
+   Need a vector perpendicular to v = (1, 2, 3)?
+   Cross it with any other vector!
+   
+   v × (1, 0, 0) = (0, 3, -2)
+   Check: v · result = 1(0) + 2(3) + 3(-2) = 0 ✓
+
+3. CALCULATE AREA:
+   Area of parallelogram = |v × w|
+   
+   Example: v = (3, 0), w = (0, 4)
+   Area = |v × w| = 12 square units
+
+🖐️ RIGHT-HAND RULE:
+Point fingers along v, curl them toward w
+Your thumb points in direction of v × w!
+
+💡 PROPERTIES:
+• v × w = -(w × v) (order MATTERS!)
+• v × v = 0 (cross product with itself = zero)
+• v × w is perpendicular to both v and w
+• |v × w| = |v| × |w| × sin(θ)`
+        },
+        {
+          title: '🧮 Practice: Real Engineering Problems',
+          type: 'practice',
+          content: `Let's solve problems with both dot and cross products!
+
+PROBLEM 1: Work Calculation (Dot Product)
+A robot pushes a box with force F = (20, 10) N
+Box moves displacement d = (5, 0) m
+How much work is done?
+
+Step 1: Use dot product
+Work = F · d
+
+Step 2: Calculate
+Work = 20(5) + 10(0)
+Work = 100 + 0
+Work = 100 Joules
+
+Answer: 100 J of work done!
+
+PROBLEM 2: Check if Perpendicular (Dot Product)
+Are these vectors perpendicular?
+v = (3, 4)
+w = (4, -3)
+
+Step 1: Calculate dot product
+v · w = 3(4) + 4(-3)
+v · w = 12 - 12
+v · w = 0
+
+Step 2: Interpret
+Since v · w = 0, they ARE perpendicular! ✓
+
+PROBLEM 3: Torque on a Bolt (Cross Product)
+Wrench: r = (0.4, 0) m from bolt center
+Force: F = (0, 25) N applied perpendicular
+Find torque magnitude.
+
+Step 1: Use 2D cross product
+|τ| = |r × F|
+|τ| = rₓFᵧ - rᵧFₓ
+
+Step 2: Calculate
+|τ| = 0.4(25) - 0(0)
+|τ| = 10 N·m
+
+Answer: 10 N·m of torque!
+
+PROBLEM 4: Robot Arm Torque (Cross Product)
+Arm position: r = (0.5, 0.3, 0) m
+Force applied: F = (0, 0, 100) N (downward)
+Find torque vector.
+
+Step 1: Calculate cross product
+τ = r × F
+τₓ = rᵧFᵤ - rᵤFᵧ = 0.3(100) - 0(0) = 30
+τᵧ = rᵤFₓ - rₓFᵤ = 0(0) - 0.5(100) = -50
+τᵤ = rₓFᵧ - rᵧFₓ = 0.5(0) - 0.3(0) = 0
+
+Step 2: Result
+τ = (30, -50, 0) N·m
+
+Step 3: Magnitude
+|τ| = √(30² + 50²) = √(900 + 2500) = √3400 ≈ 58.3 N·m
+
+PROBLEM 5: Angle Between Forces (Dot Product)
+F₁ = (10, 0) N
+F₂ = (7, 7) N
+Find angle between them.
+
+Step 1: Calculate dot product
+F₁ · F₂ = 10(7) + 0(7) = 70
+
+Step 2: Calculate magnitudes
+|F₁| = 10
+|F₂| = √(49 + 49) = √98 ≈ 9.9
+
+Step 3: Use formula
+cos(θ) = (F₁ · F₂) / (|F₁| × |F₂|)
+cos(θ) = 70 / (10 × 9.9) = 70 / 99 ≈ 0.707
+θ = arccos(0.707) ≈ 45°`
+        },
+        {
+          title: '🧩 Challenge: Design a Balanced System',
+          type: 'simulation',
+          content: `CHALLENGE: Robot Gripper Design
+
+You're designing a robot gripper that needs to apply precise torque.
+
+SETUP:
+• Gripper fingers are 0.2 m long
+• Each finger can apply up to 50 N force
+• Need to grip objects with different torques
+
+CHALLENGE 1: Maximum Torque
+If force is perpendicular to finger, what's max torque?
+
+Solution:
+r = (0.2, 0) m
+F = (0, 50) N
+τ = r × F = 0.2 × 50 = 10 N·m
+
+Maximum torque = 10 N·m per finger
+
+CHALLENGE 2: Angle Effect
+If force is at 30° angle instead of 90°:
+F = (50cos(30°), 50sin(30°)) = (43.3, 25) N
+
+τ = 0.2 × 25 = 5 N·m
+
+Torque is reduced by half!
+
+CHALLENGE 3: Check Perpendicularity
+Finger 1 force: F₁ = (10, 20) N
+Finger 2 force: F₂ = (20, -10) N
+Are they perpendicular?
+
+F₁ · F₂ = 10(20) + 20(-10) = 200 - 200 = 0
+Yes! They're perpendicular ✓
+
+CHALLENGE 4: Work Done
+Gripper closes, fingers move d = (0.05, 0) m
+Force applied: F = (100, 50) N
+How much work?
+
+Work = F · d = 100(0.05) + 50(0) = 5 Joules
+
+CHALLENGE 5: Design Task
+You need 15 N·m torque with 0.3 m finger.
+What force is needed?
+
+τ = r × F
+15 = 0.3 × F
+F = 15 / 0.3 = 50 N
+
+Need 50 N perpendicular force!
+
+YOUR TURN:
+Design a gripper with:
+• 0.25 m fingers
+• 20 N·m required torque
+• Calculate required force
+• Check if two 45° forces are perpendicular`
+        }
+      ],
+      
+      keyTakeaways: [
+        'Dot product: v · w = vₓwₓ + vᵧwᵧ + vᵤwᵤ (gives a number)',
+        'Cross product: v × w (gives a perpendicular vector)',
+        'Dot product = 0 means vectors are perpendicular',
+        'Torque = r × F (cross product)',
+        'Work = F · d (dot product)',
+        'Cross product order matters: v × w ≠ w × v'
+      ],
+      
+      vocabulary: [
+        { term: 'Dot Product', definition: 'Multiplying vectors to get a scalar (number)' },
+        { term: 'Cross Product', definition: 'Multiplying vectors to get a perpendicular vector' },
+        { term: 'Torque', definition: 'Rotational force, calculated as τ = r × F' },
+        { term: 'Work', definition: 'Energy transferred, calculated as W = F · d' },
+        { term: 'Perpendicular', definition: 'At 90° angle, dot product = 0' }
+      ],
+      
+      quiz: [
+        {
+          question: 'Calculate (2, 3) · (4, 1)',
+          options: ['5', '8', '11', '14'],
+          correct: 2
+        },
+        {
+          question: 'What is the torque formula?',
+          options: ['r + F', 'r · F', 'r × F', 'r / F'],
+          correct: 2
+        },
+        {
+          question: 'If v · w = 0, the vectors are:',
+          options: ['Parallel', 'Perpendicular', 'Equal', 'Opposite'],
+          correct: 1
+        },
+        {
+          question: 'Cross product result is a:',
+          options: ['Scalar', 'Vector', 'Number', 'Angle'],
+          correct: 1
+        },
+        {
+          question: 'Torque with r=0.4m, F=25N perpendicular:',
+          options: ['5 N·m', '10 N·m', '15 N·m', '20 N·m'],
+          correct: 1
+        }
+      ]
+    }
+  },
+
+  // LESSON 11: Rotations - ENHANCED
+  {
+    id: 11,
+    title: 'Transformations & Rotations',
+    unit: 'Geometry & Trigonometry',
+    unitNumber: 2,
+    lessonNumber: 6,
+    emoji: '🟣',
+    level: 'Beginner',
+    duration: '25 min',
+    content: {
+      introduction: 'Learn how to rotate objects in 2D and 3D space - essential for robotics, game development, and CAD design!',
+      
+      sections: [
+        {
+          title: '🧠 Understanding Rotation - Like a Clock',
+          type: 'concept',
+          content: `Rotation means spinning around a point or axis!
+
+🕐 2D ROTATION (Like Clock Hands):
+Imagine a point on a clock face rotating around the center.
+
+Starting point: (1, 0) - at 3 o'clock
+Rotate 90° counterclockwise → (0, 1) - at 12 o'clock
+Rotate 180° → (-1, 0) - at 9 o'clock
+Rotate 270° → (0, -1) - at 6 o'clock
+
+Visual:
+     (0,1) 12 o'clock
+       ↑
+       |
+(-1,0)←●→(1,0)
+  9    |    3
+       ↓
+     (0,-1) 6
+
+📐 ROTATION FORMULAS (2D):
+To rotate point (x, y) by angle θ around origin:
+
+x' = x cos(θ) - y sin(θ)
+y' = x sin(θ) + y cos(θ)
+
+Don't memorize yet! Let's see examples first.
+
+🎯 EXAMPLE 1: Rotate (1, 0) by 90°
+
+Step 1: Identify values
+x = 1, y = 0, θ = 90°
+cos(90°) = 0, sin(90°) = 1
+
+Step 2: Apply formulas
+x' = 1(0) - 0(1) = 0
+y' = 1(1) + 0(0) = 1
+
+Result: (0, 1) ✓
+
+Visual:
+Before: ●──→ (1, 0)
+After:  ↑
+        ●    (0, 1)
+
+🎯 EXAMPLE 2: Rotate (2, 0) by 45°
+
+Step 1: Values
+x = 2, y = 0, θ = 45°
+cos(45°) = 0.707, sin(45°) = 0.707
+
+Step 2: Calculate
+x' = 2(0.707) - 0(0.707) = 1.414
+y' = 2(0.707) + 0(0.707) = 1.414
+
+Result: (1.414, 1.414)
+
+Visual:
+Before: ●────→ (2, 0)
+After:    ↗
+        ●    (1.414, 1.414)
+
+💡 KEY INSIGHTS:
+• Positive angle = counterclockwise
+• Negative angle = clockwise
+• Distance from origin stays the same!
+• Only direction changes
+
+Check: √(2²) = 2, √(1.414² + 1.414²) = 2 ✓`
+        },
+        {
+          title: '🔧 Rotation Matrices - The Power Tool',
+          type: 'concept',
+          content: `Matrices make rotation easy! Think of them as rotation machines.
+
+📊 2D ROTATION MATRIX:
+R(θ) = [cos(θ)  -sin(θ)]
+       [sin(θ)   cos(θ)]
+
+To rotate a point, multiply matrix by point vector!
+
+🎯 EXAMPLE: Rotate (3, 4) by 90°
+
+Step 1: Set up matrix
+R(90°) = [cos(90°)  -sin(90°)]   [0  -1]
+         [sin(90°)   cos(90°)] = [1   0]
+
+Step 2: Multiply by point
+[0  -1] [3]   [0(3) + (-1)(4)]   [-4]
+[1   0] [4] = [1(3) +  0(4) ] = [ 3]
+
+Result: (-4, 3)
+
+Visual:
+Before:     ●
+          (3,4)
+           /
+          /
+         ●────→
+
+After:  ←──●
+        (-4,3)
+
+🎯 COMMON ROTATION MATRICES:
+
+90° rotation:
+[0  -1]
+[1   0]
+
+180° rotation:
+[-1   0]
+[ 0  -1]
+
+270° rotation (or -90°):
+[ 0   1]
+[-1   0]
+
+🔄 3D ROTATIONS:
+In 3D, we rotate around axes (X, Y, or Z)
+
+Rotate around Z-axis (like 2D):
+[cos(θ)  -sin(θ)   0]
+[sin(θ)   cos(θ)   0]
+[  0        0      1]
+
+Rotate around X-axis:
+[1     0        0   ]
+[0  cos(θ)  -sin(θ)]
+[0  sin(θ)   cos(θ)]
+
+Rotate around Y-axis:
+[ cos(θ)   0   sin(θ)]
+[   0      1     0   ]
+[-sin(θ)   0   cos(θ)]
+
+💡 PRACTICAL TIP:
+Most 3D software (Unity, Blender, CAD) does this automatically!
+You just say "rotate 45° around Y-axis" and it works!`
+        },
+        {
+          title: '🧮 Practice: Rotating Objects',
+          type: 'practice',
+          content: `Let's rotate some real objects!
+
+PROBLEM 1: Rotate a Point
+Rotate (4, 0) by 60° counterclockwise
+
+Step 1: Get trig values
+cos(60°) = 0.5
+sin(60°) = 0.866
+
+Step 2: Apply formulas
+x' = 4(0.5) - 0(0.866) = 2
+y' = 4(0.866) + 0(0.5) = 3.464
+
+Result: (2, 3.464)
+
+Check distance: √(4²) = 4, √(2² + 3.464²) ≈ 4 ✓
+
+PROBLEM 2: Rotate Back
+We have point (0, 5) after rotation.
+Rotate it back by -90° (clockwise)
+
+Step 1: Values
+cos(-90°) = 0, sin(-90°) = -1
+
+Step 2: Calculate
+x' = 0(0) - 5(-1) = 5
+y' = 0(-1) + 5(0) = 0
+
+Result: (5, 0)
+
+Visual: We rotated from 12 o'clock to 3 o'clock!
+
+PROBLEM 3: Robot Arm
+Arm starts at (10, 0) cm from shoulder
+Rotate 30° to reach object
+
+Step 1: Trig values
+cos(30°) = 0.866, sin(30°) = 0.5
+
+Step 2: New position
+x' = 10(0.866) - 0(0.5) = 8.66 cm
+y' = 10(0.5) + 0(0.866) = 5 cm
+
+Arm tip is now at (8.66, 5)!
+
+PROBLEM 4: Full Circle
+Start at (3, 0)
+Rotate by 360° (full circle)
+
+cos(360°) = 1, sin(360°) = 0
+x' = 3(1) - 0(0) = 3
+y' = 3(0) + 0(1) = 0
+
+Back to (3, 0)! Full circle returns to start ✓
+
+PROBLEM 5: Using Matrix
+Rotate (2, 3) by 180°
+
+Matrix: [-1   0]
+        [ 0  -1]
+
+Multiply: [-1   0] [2]   [-2]
+          [ 0  -1] [3] = [-3]
+
+Result: (-2, -3)
+
+This flips the point to opposite side!`
+        },
+        {
+          title: '🧩 Challenge: Robot Arm Control',
+          type: 'simulation',
+          content: `MISSION: Program a 2-joint robot arm!
+
+SETUP:
+• Joint 1 (shoulder): 0.5 m long
+• Joint 2 (elbow): 0.3 m long
+• Both start horizontal (0°)
+
+CHALLENGE 1: Reach point (0.6, 0.4)
+
+Step 1: Rotate joint 1 by 45°
+End of joint 1:
+x₁ = 0.5 × cos(45°) = 0.354 m
+y₁ = 0.5 × sin(45°) = 0.354 m
+
+Step 2: From there, rotate joint 2 by 30°
+Relative to joint 1:
+Δx = 0.3 × cos(45° + 30°) = 0.3 × cos(75°) = 0.078 m
+Δy = 0.3 × sin(75°) = 0.290 m
+
+Step 3: Final position
+x = 0.354 + 0.078 = 0.432 m
+y = 0.354 + 0.290 = 0.644 m
+
+Close to target!
+
+CHALLENGE 2: Rotate to vertical
+Both joints need to point up (90°)
+
+Joint 1 end: (0, 0.5)
+Joint 2 end: (0, 0.5 + 0.3) = (0, 0.8)
+
+Total reach: 0.8 m straight up!
+
+CHALLENGE 3: Maximum reach
+When both joints align horizontally:
+Max reach = 0.5 + 0.3 = 0.8 m
+
+CHALLENGE 4: Minimum reach
+When joints point opposite directions:
+Min reach = 0.5 - 0.3 = 0.2 m
+
+CHALLENGE 5: Draw a circle
+Keep joint 2 at 0°, rotate joint 1 full 360°
+This draws a circle with radius 0.8 m!
+
+YOUR TURN:
+Design a 3-joint arm:
+• Joint 1: 0.4 m
+• Joint 2: 0.3 m  
+• Joint 3: 0.2 m
+Calculate maximum and minimum reach!`
+        }
+      ],
+      
+      keyTakeaways: [
+        'Rotation formulas: x\' = x cos(θ) - y sin(θ), y\' = x sin(θ) + y cos(θ)',
+        'Rotation matrices multiply with point vectors to rotate them',
+        'Positive angles rotate counterclockwise, negative clockwise',
+        'Distance from origin stays constant during rotation',
+        '3D rotations happen around X, Y, or Z axes',
+        'Used everywhere: robotics, games, CAD, animation'
+      ],
+      
+      vocabulary: [
+        { term: 'Rotation', definition: 'Spinning around a point or axis' },
+        { term: 'Rotation Matrix', definition: 'A grid of numbers that rotates points when multiplied' },
+        { term: 'Counterclockwise', definition: 'Rotating opposite to clock hands (positive angle)' },
+        { term: 'Clockwise', definition: 'Rotating same as clock hands (negative angle)' },
+        { term: 'Axis', definition: 'Line around which rotation happens (X, Y, or Z)' }
+      ],
+      
+      quiz: [
+        {
+          question: 'Rotate (1, 0) by 90° counterclockwise:',
+          options: ['(0, 1)', '(1, 1)', '(-1, 0)', '(0, -1)'],
+          correct: 0
+        },
+        {
+          question: 'What is cos(0°)?',
+          options: ['0', '0.5', '0.707', '1'],
+          correct: 3
+        },
+        {
+          question: 'Rotation matrices are used with:',
+          options: ['Addition', 'Multiplication', 'Division', 'Subtraction'],
+          correct: 1
+        },
+        {
+          question: 'In 3D, how many rotation axes are there?',
+          options: ['1', '2', '3', '4'],
+          correct: 2
+        },
+        {
+          question: 'Rotate (0, 1) by 180°:',
+          options: ['(0, -1)', '(1, 0)', '(-1, 0)', '(0, 1)'],
+          correct: 0
+        }
+      ]
+    }
+  }
+];
