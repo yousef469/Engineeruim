@@ -222,7 +222,7 @@ Your Turn - Solve These:
     lessonNumber: 2,
     emoji: '🟢',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '15 min',
     content: {
       introduction: 'Master solving single-variable equations - the foundation of all engineering calculations.',
 
@@ -371,7 +371,7 @@ Challenge: Create your own engineering equation and solve it!`
     lessonNumber: 3,
     emoji: '🟢',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '20 min',
     content: {
       introduction: 'Discover how quadratic equations model motion, projectiles, and acceleration in engineering.',
 
@@ -527,7 +527,7 @@ What initial velocity is needed?`
     lessonNumber: 4,
     emoji: '🟢',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '20 min',
     content: {
       introduction: 'Learn to solve multiple equations with multiple unknowns - essential for circuits, forces, and complex systems.',
 
@@ -697,7 +697,7 @@ Can you solve this 3-equation system?
     lessonNumber: 5,
     emoji: '🟢',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '18 min',
     content: {
       introduction: 'Master exponents and powers - critical for understanding exponential growth, decay, and energy calculations.',
 
@@ -853,7 +853,7 @@ Real Engineering:
     lessonNumber: 6,
     emoji: '🟢',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '20 min',
     content: {
       introduction: 'Understand logarithms - the inverse of exponents, used in decibels, pH, earthquakes, and sensor readings.',
 
