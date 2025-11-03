@@ -17,7 +17,7 @@ export default function LearnSectionsPage() {
             borderColor: 'border-green-400/50',
             hoverBorderColor: 'hover:border-green-300',
             shadowColor: 'shadow-green-500/30',
-            path: '/learn/mathematics/engineering',
+            path: '/learn/mathphysics/engineering',
             recommended: true
         },
         {
@@ -30,7 +30,7 @@ export default function LearnSectionsPage() {
             borderColor: 'border-purple-400/50',
             hoverBorderColor: 'hover:border-purple-300',
             shadowColor: 'shadow-purple-500/30',
-            path: '/learn/mathematics/advanced',
+            path: '/learn/mathphysics/advanced',
             recommended: false
         }
     ];
