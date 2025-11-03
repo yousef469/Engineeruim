@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calculator, Lock, AlertCircle, Atom } from 'lucide-react';
+import { ArrowLeft, Lock, AlertCircle, Rocket, GraduationCap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function LearnSectionsPage() {
@@ -8,28 +8,30 @@ export default function LearnSectionsPage() {
 
     const prerequisiteSections = [
         {
-            id: 'mathematics',
-            icon: Calculator,
-            title: 'Mathematics',
-            description: 'Essential math concepts: algebra, geometry, trigonometry, and calculus',
+            id: 'engineering',
+            icon: Rocket,
+            title: 'Mathematics and Physics for Engineering',
+            description: 'Essential foundation for Rockets, Robotics, Automotive, and Planes',
             gradient: 'from-green-500 to-emerald-600',
             hoverGradient: 'from-green-600 to-emerald-700',
             borderColor: 'border-green-400/50',
             hoverBorderColor: 'hover:border-green-300',
             shadowColor: 'shadow-green-500/30',
-            path: '/learn/mathematics'
+            path: '/learn/mathematics/engineering',
+            recommended: true
         },
         {
-            id: 'physics',
-            icon: Atom,
-            title: 'Physics',
-            description: 'Fundamental physics: forces, motion, energy, and laws of nature',
-            gradient: 'from-blue-500 to-cyan-600',
-            hoverGradient: 'from-blue-600 to-cyan-700',
-            borderColor: 'border-blue-400/50',
-            hoverBorderColor: 'hover:border-blue-300',
-            shadowColor: 'shadow-blue-500/30',
-            path: '/learn/physics'
+            id: 'advanced',
+            icon: GraduationCap,
+            title: 'Advanced Mathematics and Physics',
+            description: 'Deep dive into advanced concepts and theoretical foundations',
+            gradient: 'from-purple-500 to-indigo-600',
+            hoverGradient: 'from-purple-600 to-indigo-700',
+            borderColor: 'border-purple-400/50',
+            hoverBorderColor: 'hover:border-purple-300',
+            shadowColor: 'shadow-purple-500/30',
+            path: '/learn/mathematics/advanced',
+            recommended: false
         }
     ];
 
@@ -58,20 +60,10 @@ export default function LearnSectionsPage() {
                         <div>
                             <h2 className="text-2xl font-bold text-white mb-3">Prerequisites Required</h2>
                             <p className="text-blue-200 text-lg mb-4">
-                                Before diving into mechanics (Rockets, Planes, Cars), you need to build a strong foundation in:
+                                Before diving into engineering journeys (Rockets, Planes, Cars, Robotics), you need to build a strong foundation in Mathematics and Physics.
                             </p>
-                            <ul className="space-y-2 text-blue-100">
-                                <li className="flex items-center gap-2">
-                                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                    <span><strong>Mathematics</strong> - Algebra, geometry, trigonometry, and calculus basics</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                    <span><strong>Physics</strong> - Forces, motion, energy, and fundamental laws</span>
-                                </li>
-                            </ul>
                             <p className="text-blue-300 mt-4 text-sm italic">
-                                💡 Start with Mathematics below to unlock the engineering journeys!
+                                💡 Start with "Mathematics and Physics for Engineering" below to unlock the engineering journeys!
                             </p>
                         </div>
                     </div>
