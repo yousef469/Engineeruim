@@ -1004,47 +1004,203 @@ Hint: Use 120° angles between them!`
       introduction: 'Master dot and cross products - powerful tools for calculating work, torque, and finding perpendicular vectors in engineering!',
       sections: [
         {
-          title: '🧠 Dot Product',
+          title: '🧠 Dot Product - Measuring Alignment',
           type: 'concept',
-          content: `Dot Product (·):
+          content: `The dot product tells you HOW MUCH two vectors point in the same direction!
+
+📐 DOT PRODUCT FORMULA:
 v · w = vₓwₓ + vᵧwᵧ + vᵤwᵤ
 
-Example: v = (2, 3), w = (4, 1)
-v · w = 2(4) + 3(1) = 8 + 3 = 11
+Think: Multiply matching components, then add them up!
 
-Uses:
-• Work = Force · Displacement
-• Check if perpendicular (dot = 0)
-• Find angle between vectors`
+🎯 STEP-BY-STEP EXAMPLE:
+v = (2, 3), w = (4, 1)
+
+Step 1: Multiply x-components
+2 × 4 = 8
+
+Step 2: Multiply y-components
+3 × 1 = 3
+
+Step 3: Add them together
+v · w = 8 + 3 = 11
+
+Result: 11 (a single number, not a vector!)
+
+💡 WHAT DOES IT MEAN?
+
+Positive result: Vectors point in similar directions
+• v · w > 0 → angle < 90°
+
+Zero result: Vectors are PERPENDICULAR!
+• v · w = 0 → angle = 90°
+
+Negative result: Vectors point in opposite directions
+• v · w < 0 → angle > 90°
+
+🔧 REAL-WORLD USES:
+
+1. WORK in Physics:
+   Work = Force · Displacement
+   
+   Example: Push box with F = (10, 0) N
+   Box moves d = (5, 3) m
+   Work = 10×5 + 0×3 = 50 Joules
+   
+2. CHECK PERPENDICULARITY:
+   v = (3, 4), w = (-4, 3)
+   v · w = 3×(-4) + 4×3 = -12 + 12 = 0
+   They're perpendicular! ✓
+
+3. FIND ANGLE BETWEEN VECTORS:
+   cos(θ) = (v · w) / (|v| × |w|)`
         },
         {
-          title: '🔧 Cross Product',
+          title: '🔧 Cross Product - Finding Perpendiculars',
           type: 'concept',
-          content: `Cross Product (×):
-v × w = (vᵧwᵤ - vᵤwᵧ, vᵤwₓ - vₓwᵤ, vₓwᵧ - vᵧwₓ)
+          content: `The cross product creates a NEW vector perpendicular to both inputs!
 
-2D simplified: |v × w| = vₓwᵧ - vᵧwₓ
+📐 2D SIMPLIFIED VERSION:
+For 2D vectors, we find the MAGNITUDE:
+|v × w| = vₓwᵧ - vᵧwₓ
 
-Uses:
-• Torque = r × F
-• Find perpendicular vector
-• Calculate area`
+Example: v = (3, 2), w = (1, 4)
+|v × w| = 3×4 - 2×1 = 12 - 2 = 10
+
+💡 WHAT DOES IT MEAN?
+
+The magnitude tells you:
+• Area of parallelogram formed by the vectors
+• How "perpendicular" the vectors are
+
+🔧 REAL-WORLD USES:
+
+1. TORQUE (Rotational Force):
+   τ = r × F
+   
+   Visual:
+        F (force)
+        ↑
+        |
+   ●────→ r (distance from pivot)
+   Pivot
+   
+   Torque = how much rotation you get!
+
+2. WRENCH EXAMPLE:
+   r = (0.3, 0, 0) m (wrench length)
+   F = (0, 50, 0) N (force perpendicular)
+   
+   In 2D: Torque = 0.3 × 50 = 15 N·m
+   
+   Longer wrench = more torque!
+   Perpendicular force = maximum torque!
+
+3. AREA CALCULATION:
+   Triangle with sides v = (4, 0) and w = (0, 3)
+   Area = ½|v × w| = ½(4×3 - 0×0) = 6 square units`
         },
         {
-          title: '🧮 Practice: Torque Calculation',
+          title: '🧮 Practice: Engineering Applications',
           type: 'practice',
-          content: `Wrench problem:
-r = (0.3, 0) m (wrench length)
-F = (0, 50) N (force)
-Torque = r × F = 0.3 × 50 = 15 N·m`
+          content: `Let's solve real problems!
+
+PROBLEM 1: Calculate Work Done
+A robot pushes with force F = (20, 15) N
+Object moves displacement d = (3, 2) m
+
+Question: How much work was done?
+
+Step 1: Use dot product
+Work = F · d
+
+Step 2: Calculate
+Work = 20×3 + 15×2
+Work = 60 + 30
+Work = 90 Joules
+
+Answer: 90 J of work done!
+
+PROBLEM 2: Check if Perpendicular
+Two support beams:
+Beam A: direction v = (4, 3)
+Beam B: direction w = (-3, 4)
+
+Question: Are they perpendicular?
+
+Step 1: Calculate dot product
+v · w = 4×(-3) + 3×4
+v · w = -12 + 12
+v · w = 0
+
+Answer: YES! They're perpendicular! ✓
+
+PROBLEM 3: Wrench Torque
+Wrench length: r = 0.4 m
+Applied force: F = 60 N (perpendicular)
+
+Question: What's the torque?
+
+Step 1: Use cross product magnitude
+Torque = r × F
+
+Step 2: Calculate (perpendicular case)
+Torque = 0.4 × 60
+Torque = 24 N·m
+
+Answer: 24 N·m of torque!`
         },
         {
-          title: '🧩 Challenge: Robot Arm Torque',
+          title: '🧩 Challenge: Robot Arm Design',
           type: 'simulation',
-          content: `Calculate torque on robot joint:
-Arm length: 0.5 m
-Force: 100 N perpendicular
-Torque = 0.5 × 100 = 50 N·m`
+          content: `Design a robot arm with optimal torque!
+
+SCENARIO:
+You're designing a robot arm that needs to lift objects.
+
+CHALLENGE 1: Single Joint Torque
+Arm length from joint: r = 0.5 m
+Motor applies force: F = 100 N perpendicular
+
+Calculate torque:
+τ = r × F = 0.5 × 100 = 50 N·m
+
+CHALLENGE 2: Angled Force
+Same arm, but force at 60° angle
+
+Step 1: Find perpendicular component
+F_perp = 100 × sin(60°) = 100 × 0.866 = 86.6 N
+
+Step 2: Calculate torque
+τ = 0.5 × 86.6 = 43.3 N·m
+
+Less torque! Perpendicular is best!
+
+CHALLENGE 3: Two-Joint Arm
+Joint 1: r₁ = 0.5 m, F₁ = 100 N
+Joint 2: r₂ = 0.3 m, F₂ = 80 N
+
+Total torque:
+τ₁ = 0.5 × 100 = 50 N·m
+τ₂ = 0.3 × 80 = 24 N·m
+τ_total = 50 + 24 = 74 N·m
+
+CHALLENGE 4: Optimize Design
+You need 60 N·m of torque
+Motor can provide 120 N of force
+
+What arm length do you need?
+τ = r × F
+60 = r × 120
+r = 60/120 = 0.5 m
+
+Design arm with 0.5 m length!
+
+YOUR TURN:
+Design a 3-joint robot arm that can generate:
+• 100 N·m total torque
+• Using motors that provide 150 N each
+• Calculate optimal arm lengths!`
         }
       ],
       keyTakeaways: [
@@ -1083,51 +1239,223 @@ Torque = 0.5 × 100 = 50 N·m`
       introduction: 'Understand 3D rotations and transformations - essential for robotics, animation, CAD, and game development!',
       sections: [
         {
-          title: '🧠 Rotation Basics',
+          title: '🧠 Rotation Basics - Spinning Points',
           type: 'concept',
-          content: `2D Rotation around origin:
+          content: `Rotation = spinning a point around the origin!
+
+📐 2D ROTATION FORMULAS:
+To rotate point (x, y) by angle θ around origin:
+
 x' = x cos(θ) - y sin(θ)
 y' = x sin(θ) + y cos(θ)
 
-Example: Rotate (1, 0) by 90°
+🎯 STEP-BY-STEP EXAMPLE:
+Rotate point (1, 0) by 90° counterclockwise
+
+Step 1: Identify values
+x = 1, y = 0, θ = 90°
+cos(90°) = 0, sin(90°) = 1
+
+Step 2: Apply formulas
 x' = 1(0) - 0(1) = 0
 y' = 1(1) + 0(0) = 1
-Result: (0, 1)
 
-3D Rotations:
-• Around X-axis
-• Around Y-axis  
-• Around Z-axis`
+Result: (0, 1) ✓
+
+Visual:
+     y
+     |
+  (0,1)●
+     |
+─────●─────→ x
+   (1,0)
+
+The point rotated 90° counterclockwise!
+
+💡 COMMON ROTATIONS:
+
+90° rotation:
+(x, y) → (-y, x)
+Example: (3, 2) → (-2, 3)
+
+180° rotation:
+(x, y) → (-x, -y)
+Example: (3, 2) → (-3, -2)
+
+270° rotation (or -90°):
+(x, y) → (y, -x)
+Example: (3, 2) → (2, -3)
+
+🎨 3D ROTATIONS:
+In 3D, we rotate around axes:
+
+• Rotate around X-axis: y and z change
+• Rotate around Y-axis: x and z change
+• Rotate around Z-axis: x and y change (like 2D!)
+
+Used in: drone orientation, robot arms, 3D games`
         },
         {
-          title: '🔧 Rotation Matrices',
+          title: '🔧 Rotation Matrices - The Power Tool',
           type: 'concept',
-          content: `2D Rotation Matrix:
+          content: `Rotation matrices let you rotate ANY point easily!
+
+📐 2D ROTATION MATRIX:
 R(θ) = [cos(θ)  -sin(θ)]
        [sin(θ)   cos(θ)]
 
-Multiply matrix by vector to rotate!
+To rotate point (x, y):
+[x']   [cos(θ)  -sin(θ)] [x]
+[y'] = [sin(θ)   cos(θ)] [y]
 
-3D rotations use 3×3 matrices
-Used in: robotics, game engines, CAD`
+🎯 EXAMPLE: Rotate (2, 1) by 45°
+
+Step 1: Set up matrix
+cos(45°) = 0.707, sin(45°) = 0.707
+R(45°) = [0.707  -0.707]
+         [0.707   0.707]
+
+Step 2: Multiply
+x' = 0.707(2) - 0.707(1) = 1.414 - 0.707 = 0.707
+y' = 0.707(2) + 0.707(1) = 1.414 + 0.707 = 2.121
+
+Result: (0.707, 2.121)
+
+💡 WHY USE MATRICES?
+
+1. Rotate multiple points at once
+2. Combine rotations easily
+3. Used in computer graphics
+4. Essential for robotics
+
+🎨 3D ROTATION MATRICES:
+
+Around Z-axis (like 2D):
+Rz(θ) = [cos(θ)  -sin(θ)  0]
+        [sin(θ)   cos(θ)  0]
+        [0        0       1]
+
+Around X-axis:
+Rx(θ) = [1   0        0      ]
+        [0   cos(θ)  -sin(θ)]
+        [0   sin(θ)   cos(θ)]
+
+Around Y-axis:
+Ry(θ) = [cos(θ)   0   sin(θ)]
+        [0        1   0     ]
+        [-sin(θ)  0   cos(θ)]
+
+🔧 REAL APPLICATIONS:
+• Robot arm joints
+• Drone stabilization
+• 3D game cameras
+• CAD software
+• Animation systems`
         },
         {
-          title: '🧮 Practice: Rotate a Point',
+          title: '🧮 Practice: Rotating Objects',
           type: 'practice',
-          content: `Rotate (2, 0) by 45°:
+          content: `Let's rotate some points!
+
+PROBLEM 1: Rotate (2, 0) by 45°
 cos(45°) = 0.707, sin(45°) = 0.707
+
 x' = 2(0.707) - 0(0.707) = 1.414
 y' = 2(0.707) + 0(0.707) = 1.414
-Result: (1.414, 1.414)`
+
+Result: (1.414, 1.414)
+
+PROBLEM 2: Rotate (4, 3) by 90°
+Use shortcut: (x, y) → (-y, x)
+
+Result: (-3, 4)
+
+Check with formulas:
+x' = 4(0) - 3(1) = -3 ✓
+y' = 4(1) + 3(0) = 4 ✓
+
+PROBLEM 3: Rotate Square
+Square corners: (1,1), (-1,1), (-1,-1), (1,-1)
+Rotate 45° around origin
+
+Corner (1, 1):
+x' = 1(0.707) - 1(0.707) = 0
+y' = 1(0.707) + 1(0.707) = 1.414
+New: (0, 1.414)
+
+The square becomes a diamond!
+
+PROBLEM 4: Robot Gripper
+Gripper at (10, 0) cm from robot center
+Robot rotates 30°
+
+cos(30°) = 0.866, sin(30°) = 0.5
+
+x' = 10(0.866) - 0(0.5) = 8.66 cm
+y' = 10(0.5) + 0(0.866) = 5 cm
+
+New position: (8.66, 5)`
         },
         {
-          title: '🧩 Challenge: Robot Arm Rotation',
+          title: '🧩 Challenge: Multi-Joint Robot Arm',
           type: 'simulation',
-          content: `Robot arm at (5, 0) rotates 60°:
-New position = (2.5, 4.33)
+          content: `Design and control a 2-joint robot arm!
 
-Calculate rotation for different angles
-Design a 3-joint robot arm!`
+SETUP:
+• Joint 1 (shoulder): at origin (0, 0)
+• Arm 1 length: 5 cm
+• Joint 2 (elbow): at end of arm 1
+• Arm 2 length: 3 cm
+
+CHALLENGE 1: Arm straight out
+Joint 1 angle: 0°
+Joint 2 angle: 0°
+
+Elbow position: (5, 0)
+Hand position: (5+3, 0) = (8, 0)
+
+CHALLENGE 2: Bend elbow 90°
+Joint 1: 0°
+Joint 2: 90°
+
+Elbow: (5, 0)
+Hand relative to elbow: (0, 3)
+Hand absolute: (5, 3)
+
+CHALLENGE 3: Rotate shoulder 45°
+Joint 1: 45°
+Joint 2: 0° (straight)
+
+Elbow position:
+x = 5 cos(45°) = 3.54
+y = 5 sin(45°) = 3.54
+Elbow: (3.54, 3.54)
+
+Hand (3 cm further at 45°):
+x = 3.54 + 3 cos(45°) = 5.66
+y = 3.54 + 3 sin(45°) = 5.66
+Hand: (5.66, 5.66)
+
+CHALLENGE 4: Complex Motion
+Joint 1: 30°
+Joint 2: 60° (relative to arm 1)
+
+Step 1: Find elbow
+x₁ = 5 cos(30°) = 4.33
+y₁ = 5 sin(30°) = 2.5
+Elbow: (4.33, 2.5)
+
+Step 2: Find hand
+Total angle = 30° + 60° = 90°
+x₂ = 4.33 + 3 cos(90°) = 4.33
+y₂ = 2.5 + 3 sin(90°) = 5.5
+Hand: (4.33, 5.5)
+
+YOUR MISSION:
+1. Position hand at (6, 4)
+2. Calculate required joint angles
+3. Design a 3-joint arm
+4. Create a circular motion path!`
         }
       ],
       keyTakeaways: [
