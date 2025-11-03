@@ -165,7 +165,7 @@ Your Turn: Design a gear system with 3:1 ratio!`
     }
   },
 
-  // LESSON 7: Coordinate Geometry - ENHANCED
+  // LESSON 7: Coordinate Geometry
   {
     id: 7,
     title: '3D Coordinate Geometry (x, y, z)',
@@ -174,7 +174,7 @@ Your Turn: Design a gear system with 3:1 ratio!`
     lessonNumber: 2,
     emoji: '🟣',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '18 min',
     content: {
       introduction: 'Learn to navigate 3D space using coordinates - essential for robotics, flight paths, and CAD design.',
 
@@ -327,7 +327,7 @@ Your Turn: Calculate a path with 3 waypoints!`
     }
   },
 
-  // LESSON 8: Triangle Trigonometry - ENHANCED
+  // LESSON 8: Triangle Trigonometry
   {
     id: 8,
     title: 'Triangles (sin, cos, tan)',
@@ -336,7 +336,7 @@ Your Turn: Calculate a path with 3 waypoints!`
     lessonNumber: 3,
     emoji: '🟣',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '20 min',
     content: {
       introduction: 'Master trigonometry - the mathematics of angles and triangles, crucial for navigation, forces, and rotations.',
 
@@ -487,7 +487,7 @@ Your Turn: Calculate angles for different heights!`
   }
   ,
 
-  // LESSON 9: Vectors - ENHANCED
+  // LESSON 9: Vectors 1 - Magnitude & Direction
   {
     id: 9,
     title: 'Vector Basics (direction & magnitude)',
@@ -496,7 +496,7 @@ Your Turn: Calculate angles for different heights!`
     lessonNumber: 4,
     emoji: '🟣',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '18 min',
     content: {
       introduction: 'Learn vectors - quantities with both magnitude and direction, essential for forces, velocity, and motion.',
       sections: [
@@ -574,7 +574,7 @@ Resultant = √(100² + 100²) ≈ 141.4 N at 45° NE`
     }
   },
 
-  // LESSON 10: Dot & Cross Product - ENHANCED
+  // LESSON 10: Vectors 2 - Dot & Cross Product
   {
     id: 10,
     title: 'Dot & Cross Product',
@@ -583,7 +583,7 @@ Resultant = √(100² + 100²) ≈ 141.4 N at 45° NE`
     lessonNumber: 5,
     emoji: '🟣',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '20 min',
     content: {
       introduction: 'Master dot and cross products - used for torque, work, and perpendicularity in engineering.',
       sections: [
@@ -653,7 +653,7 @@ Torque = 0.5 × 100 = 50 N·m`
     }
   },
 
-  // LESSON 11: Rotations - ENHANCED
+  // LESSON 11: Rotations in 3D
   {
     id: 11,
     title: 'Transformations & Rotations',
@@ -662,7 +662,7 @@ Torque = 0.5 × 100 = 50 N·m`
     lessonNumber: 6,
     emoji: '🟣',
     level: 'Beginner',
-    duration: '25 min',
+    duration: '20 min',
     content: {
       introduction: 'Understand 3D rotations and transformations - critical for robotics, animation, and CAD.',
       sections: [
