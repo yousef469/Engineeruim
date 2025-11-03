@@ -43,11 +43,11 @@ export default function MathematicsEngineeringPage() {
             <div className="border-b border-gray-700 bg-gray-900/50 backdrop-blur-sm">
                 <div className="max-w-7xl mx-auto px-4 py-6">
                     <button
-                        onClick={() => navigate('/learn/mathematics')}
+                        onClick={() => navigate('/learn/mathphysics/engineering')}
                         className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4"
                     >
                         <ArrowLeft className="w-5 h-5" />
-                        Back to Mathematics
+                        Back
                     </button>
                     <div className="flex items-center gap-4">
                         <Rocket className="w-12 h-12 text-green-400" />
