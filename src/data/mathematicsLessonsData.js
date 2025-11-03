@@ -12,7 +12,7 @@ const mathematicsLessons = [
     duration: '15 min',
     content: {
       introduction: 'Learn the fundamental language of engineering: variables, physical quantities, and why units are critical in every calculation.',
-      
+
       sections: [
         {
           title: '🧠 What Are Variables and Physical Quantities?',
@@ -95,21 +95,21 @@ Your Turn - Solve These:
    Formula: F = m × a (rearrange to find a)`
         }
       ],
-      
+
       keyTakeaways: [
         'Variables represent physical quantities (mass, force, velocity, etc.)',
         'Always include units with numbers to avoid costly mistakes',
         'Learn common conversions: km/h ↔ m/s, hours ↔ seconds',
         'Rearrange formulas to solve for any variable'
       ],
-      
+
       vocabulary: [
         { term: 'Variable', definition: 'A symbol (like m, v, t) that represents a quantity' },
         { term: 'Physical Quantity', definition: 'A measurable property like mass, speed, or force' },
         { term: 'Unit', definition: 'The standard measurement (kg, m/s, N)' },
         { term: 'Conversion', definition: 'Changing from one unit to another (e.g., km to m)' }
       ],
-      
+
       quiz: [
         {
           question: 'What does the variable "v" typically represent in physics?',
@@ -157,7 +157,7 @@ Your Turn - Solve These:
     duration: '15 min',
     content: {
       introduction: 'Master solving single-variable equations - the foundation of all engineering calculations.',
-      
+
       sections: [
         {
           title: '🧠 What is a Linear Equation?',
@@ -244,21 +244,21 @@ Find t: t = 30 seconds
 Challenge: Create your own engineering equation and solve it!`
         }
       ],
-      
+
       keyTakeaways: [
         'Linear equations have one variable and form straight lines',
         'Always do the same operation to both sides of the equation',
         'Check your answer by substituting back into the original equation',
         'Linear equations appear everywhere in engineering: motion, circuits, forces'
       ],
-      
+
       vocabulary: [
         { term: 'Linear Equation', definition: 'An equation with one variable to the first power (no x² or x³)' },
         { term: 'Variable', definition: 'The unknown value we are solving for (usually x, t, v, etc.)' },
         { term: 'Coefficient', definition: 'The number multiplying the variable (in 3x, the coefficient is 3)' },
         { term: 'Constant', definition: 'A fixed number that doesn\'t change' }
       ],
-      
+
       quiz: [
         {
           question: 'Solve: 2x + 6 = 18',
@@ -306,7 +306,7 @@ Challenge: Create your own engineering equation and solve it!`
     duration: '20 min',
     content: {
       introduction: 'Discover how quadratic equations model motion, projectiles, and acceleration in engineering.',
-      
+
       sections: [
         {
           title: '🧠 What is a Quadratic Equation?',
@@ -400,21 +400,21 @@ Design a jump where the car stays airborne for 6 seconds.
 What initial velocity is needed?`
         }
       ],
-      
+
       keyTakeaways: [
         'Quadratic equations model acceleration, projectiles, and parabolic motion',
         'The quadratic formula works for any quadratic equation',
         'In engineering, check if both solutions make physical sense',
         'Motion equations often use s = ut + ½at² (a quadratic!)'
       ],
-      
+
       vocabulary: [
         { term: 'Quadratic', definition: 'An equation with x² as the highest power' },
         { term: 'Parabola', definition: 'The U-shaped curve formed by quadratic equations' },
         { term: 'Discriminant', definition: 'b² - 4ac; tells us how many solutions exist' },
         { term: 'Projectile Motion', definition: 'The curved path of objects under gravity' }
       ],
-      
+
       quiz: [
         {
           question: 'What is the highest power in a quadratic equation?',
@@ -462,7 +462,7 @@ What initial velocity is needed?`
     duration: '20 min',
     content: {
       introduction: 'Learn to solve multiple equations with multiple unknowns - essential for circuits, forces, and complex systems.',
-      
+
       sections: [
         {
           title: '🧠 What is a System of Equations?',
@@ -565,21 +565,21 @@ Can you solve this 3-equation system?
 (Hint: Use elimination twice!)`
         }
       ],
-      
+
       keyTakeaways: [
         'Systems of equations have multiple unknowns and multiple constraints',
         'Use substitution or elimination to solve',
         'Check your solution in ALL original equations',
         'Real engineering often involves 3+ equations with 3+ unknowns'
       ],
-      
+
       vocabulary: [
         { term: 'System of Equations', definition: 'Multiple equations that must all be true simultaneously' },
         { term: 'Substitution', definition: 'Solving one equation for a variable, then replacing it in another' },
         { term: 'Elimination', definition: 'Adding or subtracting equations to remove a variable' },
         { term: 'Solution', definition: 'Values that satisfy all equations in the system' }
       ],
-      
+
       quiz: [
         {
           question: 'How many equations do you need to solve for 2 unknowns?',
@@ -632,7 +632,7 @@ Can you solve this 3-equation system?
     duration: '18 min',
     content: {
       introduction: 'Master exponents and powers - critical for understanding exponential growth, decay, and energy calculations.',
-      
+
       sections: [
         {
           title: '🧠 What Are Exponents?',
@@ -731,21 +731,21 @@ Real Engineering:
 • Moore's Law: transistors double every 2 years!`
         }
       ],
-      
+
       keyTakeaways: [
         'Exponents represent repeated multiplication',
         'Learn the 5 key exponent rules for calculations',
         'Exponential growth/decay appears everywhere in engineering',
         'Negative exponents mean reciprocals, fractional exponents mean roots'
       ],
-      
+
       vocabulary: [
         { term: 'Exponent', definition: 'The power to which a number is raised (the small number)' },
         { term: 'Base', definition: 'The number being multiplied repeatedly' },
         { term: 'Exponential Growth', definition: 'When something increases by a constant percentage' },
         { term: 'Exponential Decay', definition: 'When something decreases by a constant percentage' }
       ],
-      
+
       quiz: [
         {
           question: 'What is 2⁴?',
@@ -788,7 +788,7 @@ Real Engineering:
     duration: '20 min',
     content: {
       introduction: 'Understand logarithms - the inverse of exponents, used in decibels, pH, earthquakes, and sensor readings.',
-      
+
       sections: [
         {
           title: '🧠 What is a Logarithm?',
@@ -891,21 +891,21 @@ If pressure doubles from P to 2P, how much does voltage change?
 Challenge: Design your own logarithmic sensor!`
         }
       ],
-      
+
       keyTakeaways: [
         'Logarithms are the inverse of exponents',
         'Used in decibels (sound), pH (chemistry), Richter scale (earthquakes)',
         'Logarithms compress large ranges into manageable scales',
         'Product rule: log(xy) = log(x) + log(y) is extremely useful'
       ],
-      
+
       vocabulary: [
         { term: 'Logarithm', definition: 'The power to which a base must be raised to get a number' },
         { term: 'Decibel (dB)', definition: 'Logarithmic unit for sound intensity and power ratios' },
         { term: 'Natural Log (ln)', definition: 'Logarithm with base e ≈ 2.718' },
         { term: 'Common Log', definition: 'Logarithm with base 10, written as log(x)' }
       ],
-      
+
       quiz: [
         {
           question: 'What is log₁₀(1000)?',
@@ -948,7 +948,7 @@ Challenge: Design your own logarithmic sensor!`
     duration: '18 min',
     content: {
       introduction: 'Master the fundamental shapes and measurements that form the basis of all engineering design.',
-      
+
       sections: [
         {
           title: '🧠 Basic Shapes in Engineering',
@@ -1054,7 +1054,7 @@ A gear rotates 45°. How many degrees left to complete full rotation?
 Your Turn: Design a gear system with 3:1 ratio!`
         }
       ],
-      
+
       keyTakeaways: [
         'Circle area = πr², circumference = 2πr',
         'Rectangle area = length × width',
@@ -1062,7 +1062,7 @@ Your Turn: Design a gear system with 3:1 ratio!`
         'Break complex shapes into simple ones for calculation',
         'Angles: 360° = full circle, 90° = right angle'
       ],
-      
+
       vocabulary: [
         { term: 'Radius', definition: 'Distance from center to edge of a circle' },
         { term: 'Diameter', definition: 'Distance across a circle through center (2 × radius)' },
@@ -1070,7 +1070,7 @@ Your Turn: Design a gear system with 3:1 ratio!`
         { term: 'Area', definition: 'Amount of space inside a 2D shape' },
         { term: 'Composite Shape', definition: 'Shape made by combining multiple basic shapes' }
       ],
-      
+
       quiz: [
         {
           question: 'What is the area of a circle with radius 5 cm? (Use π ≈ 3.14)',
@@ -1113,7 +1113,7 @@ Your Turn: Design a gear system with 3:1 ratio!`
     duration: '18 min',
     content: {
       introduction: 'Learn to navigate 3D space using coordinates - essential for robotics, flight paths, and CAD design.',
-      
+
       sections: [
         {
           title: '🧠 The Coordinate System',
@@ -1216,7 +1216,7 @@ Point = (0 + 300/3, 0 + 400/3, 50 + 50/3)
 Your Turn: Calculate a path with 3 waypoints!`
         }
       ],
-      
+
       keyTakeaways: [
         '3D coordinates use (x, y, z) to locate points in space',
         'Distance formula: d = √[(Δx)² + (Δy)² + (Δz)²]',
@@ -1224,7 +1224,7 @@ Your Turn: Calculate a path with 3 waypoints!`
         'Slope = rise/run shows steepness of a path',
         'Essential for robotics, flight paths, and 3D modeling'
       ],
-      
+
       vocabulary: [
         { term: 'Coordinate', definition: 'A number that specifies position along an axis' },
         { term: 'Origin', definition: 'The point (0, 0, 0) where all axes meet' },
@@ -1232,7 +1232,7 @@ Your Turn: Calculate a path with 3 waypoints!`
         { term: 'Midpoint', definition: 'The point exactly halfway between two points' },
         { term: 'Slope', definition: 'The steepness of a line, calculated as rise/run' }
       ],
-      
+
       quiz: [
         {
           question: 'What is the distance from (0, 0) to (3, 4)?',
@@ -1275,7 +1275,7 @@ Your Turn: Calculate a path with 3 waypoints!`
     duration: '20 min',
     content: {
       introduction: 'Master trigonometry - the mathematics of angles and triangles, crucial for navigation, forces, and rotations.',
-      
+
       sections: [
         {
           title: '🧠 Right Triangle Basics',
@@ -1375,7 +1375,7 @@ Maximum angle = arctan(10,000/2,000) = arctan(5) ≈ 78.7°
 Your Turn: Calculate angles for different heights!`
         }
       ],
-      
+
       keyTakeaways: [
         'SOH-CAH-TOA: sin = O/H, cos = A/H, tan = O/A',
         'Use trig to find unknown sides or angles in right triangles',
@@ -1383,7 +1383,7 @@ Your Turn: Calculate angles for different heights!`
         'arctan, arcsin, arccos find angles from ratios',
         'Essential for navigation, slopes, and force analysis'
       ],
-      
+
       vocabulary: [
         { term: 'Hypotenuse', definition: 'Longest side of right triangle, opposite the 90° angle' },
         { term: 'Sine (sin)', definition: 'Ratio of opposite side to hypotenuse' },
@@ -1391,7 +1391,7 @@ Your Turn: Calculate angles for different heights!`
         { term: 'Tangent (tan)', definition: 'Ratio of opposite side to adjacent side' },
         { term: 'Inverse Trig', definition: 'Functions (arcsin, arccos, arctan) that find angles from ratios' }
       ],
-      
+
       quiz: [
         {
           question: 'In a right triangle, what is sin(θ)?',
@@ -1421,7 +1421,7 @@ Your Turn: Calculate angles for different heights!`
       ]
     }
   }
-,
+  ,
 
   // LESSON 9: Vectors 1 - Magnitude & Direction
   {
