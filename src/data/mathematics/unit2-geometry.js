@@ -733,55 +733,239 @@ Calculate heights at 15-second intervals!`
       introduction: 'Learn vectors - quantities with both size AND direction. Think of them as arrows that show force, velocity, or movement!',
       sections: [
         {
-          title: '🧠 What is a Vector?',
+          title: '🧠 What is a Vector? - Arrows with Purpose',
           type: 'concept',
-          content: `Scalar vs Vector:
-• Scalar: magnitude only (speed: 50 km/h)
-• Vector: magnitude AND direction (velocity: 50 km/h North)
+          content: `Vectors are like GPS directions - they tell you HOW MUCH and WHICH WAY!
 
-Vector Notation:
-• Arrow notation: →v or v⃗
-• Component form: v = (x, y) or v = (x, y, z)
-• Magnitude: |v| = √(x² + y²)
+📊 SCALAR vs VECTOR:
 
-Examples:
-• Force: 100 N at 30° angle
-• Velocity: 20 m/s Northeast
-• Displacement: 5 m right, 3 m up = (5, 3)`
+Scalar (just a number):
+• Speed: "50 km/h" - but which direction?
+• Temperature: "25°C" - no direction
+• Mass: "10 kg" - just amount
+
+Vector (number + direction):
+• Velocity: "50 km/h North" - speed AND direction!
+• Force: "100 N upward" - strength AND direction!
+• Displacement: "5 m East" - distance AND direction!
+
+🎯 VISUALIZING VECTORS AS ARROWS:
+
+Vector: 3 units right, 4 units up
+     ↑
+   4 |    ●  ← End point (3, 4)
+     |   /
+     |  /
+     | / ← This arrow IS the vector!
+     |/
+     ●────→
+     0  3
+
+The arrow shows:
+• Direction: Northeast (diagonal)
+• Magnitude: Length of arrow = √(3² + 4²) = 5 units
+
+📝 VECTOR NOTATION:
+• Arrow: v⃗ or →v
+• Components: v = (3, 4) or v = 3i + 4j
+• In 3D: v = (x, y, z)
+
+🎨 REAL-WORLD EXAMPLES:
+
+1. Wind Vector:
+   "20 m/s from the West"
+   ←─────● (arrow pointing East)
+   
+2. Robot Movement:
+   "Move 5m forward, 3m right"
+   Start ●─→─→─→─→─→
+         ↓
+         ↓
+         ↓ ● End
+         
+3. Force on a Box:
+   Push with 50N at 45° angle
+        ↗ (arrow at 45°)
+       ●
+      Box`
         },
         {
-          title: '🔧 Vector Operations',
+          title: '🔧 Vector Math - Adding and Measuring',
           type: 'concept',
-          content: `Adding Vectors:
-v₁ = (3, 4), v₂ = (1, 2)
-v₁ + v₂ = (3+1, 4+2) = (4, 6)
+          content: `Let's learn to work with vectors step by step!
 
-Magnitude:
-v = (3, 4)
-|v| = √(3² + 4²) = √25 = 5
+➕ ADDING VECTORS (Tip-to-Tail Method):
 
-Direction (angle):
-θ = arctan(y/x) = arctan(4/3) ≈ 53.1°
+Example: Walk 3m East, then 4m North
+Where do you end up?
 
-Scalar Multiplication:
-2v = 2(3, 4) = (6, 8)`
+Visual:
+     N
+     ↑
+   4 |    ● End (3, 4)
+     |   /|
+     |  / | ← Resultant vector
+     | /  |
+     |/   |
+     ●────→ E
+     0  3
+
+Step 1: Draw first vector (3, 0)
+Step 2: From its tip, draw second vector (0, 4)
+Step 3: Draw arrow from start to final end
+Result: (3, 4)
+
+Component Addition:
+v₁ = (3, 0)
+v₂ = (0, 4)
+v₁ + v₂ = (3+0, 0+4) = (3, 4)
+
+📏 MAGNITUDE (Length of Vector):
+Formula: |v| = √(x² + y² + z²)
+
+Example: v = (3, 4)
+|v| = √(3² + 4²)
+|v| = √(9 + 16)
+|v| = √25 = 5 units
+
+Think: It's the Pythagorean theorem!
+
+🧭 DIRECTION (Angle):
+Formula: θ = arctan(y/x)
+
+Example: v = (3, 4)
+θ = arctan(4/3)
+θ = arctan(1.333)
+θ ≈ 53.1° from horizontal
+
+✖️ SCALAR MULTIPLICATION:
+Multiply vector by a number = change its length
+
+Example: v = (2, 3)
+2v = (2×2, 2×3) = (4, 6)
+
+Visual:
+v:  ●──→
+2v: ●────────→ (twice as long, same direction)
+
+-v: ←──● (same length, opposite direction)
+
+🎯 UNIT VECTOR (Length = 1):
+Divide by magnitude to get direction only
+
+v = (3, 4), |v| = 5
+Unit vector = v/|v| = (3/5, 4/5) = (0.6, 0.8)
+Check: √(0.6² + 0.8²) = 1 ✓`
         },
         {
-          title: '🧮 Practice: Force Systems',
+          title: '🧮 Practice: Force Vectors on a Robot',
           type: 'practice',
-          content: `Problem: Two forces on a robot
-F₁ = (30, 40) N
-F₂ = (20, 10) N
-Resultant = (50, 50) N
-Magnitude = √(50² + 50²) ≈ 70.7 N`
+          content: `Let's solve real engineering problems!
+
+PROBLEM 1: Two Motors Pushing a Robot
+
+Motor 1 pushes with force F₁ = (30, 40) N
+Motor 2 pushes with force F₂ = (20, 10) N
+
+Question: What's the total force?
+
+Step 1: Add components
+F_total = F₁ + F₂
+F_total = (30+20, 40+10)
+F_total = (50, 50) N
+
+Step 2: Find magnitude
+|F_total| = √(50² + 50²)
+|F_total| = √(2500 + 2500)
+|F_total| = √5000
+|F_total| ≈ 70.7 N
+
+Step 3: Find direction
+θ = arctan(50/50) = arctan(1) = 45°
+
+Answer: 70.7 N at 45° angle!
+
+PROBLEM 2: Drone Velocity
+
+Drone flies at 10 m/s East and 5 m/s North
+
+Step 1: Write as vector
+v = (10, 5) m/s
+
+Step 2: Find speed (magnitude)
+|v| = √(10² + 5²)
+|v| = √(100 + 25)
+|v| = √125 ≈ 11.2 m/s
+
+Step 3: Find heading
+θ = arctan(5/10) = arctan(0.5) ≈ 26.6° North of East
+
+PROBLEM 3: Opposite Force
+
+A spring pulls with F = (15, 20) N
+What force cancels it out?
+
+Answer: -F = (-15, -20) N
+Check: (15, 20) + (-15, -20) = (0, 0) ✓
+
+PROBLEM 4: Triple the Force
+
+Original: F = (4, 3) N
+Triple it: 3F = (12, 9) N
+
+Magnitude check:
+|F| = √(16 + 9) = 5 N
+|3F| = √(144 + 81) = 15 N = 3 × 5 ✓`
         },
         {
-          title: '🧩 Challenge: 2D Force Balance',
+          title: '🧩 Challenge: 2D Force Balance System',
           type: 'simulation',
-          content: `Find resultant of forces:
-F₁ = 100 N East
-F₂ = 100 N North
-Resultant = √(100² + 100²) ≈ 141.4 N at 45° NE`
+          content: `Design a balanced force system for a hovering drone!
+
+SCENARIO:
+A drone needs to hover (net force = 0)
+Three forces act on it:
+
+Force 1 (Wind): F₁ = (20, 10) N pushing it
+Force 2 (Gravity): F₂ = (0, -50) N pulling down
+Force 3 (Motors): F₃ = (?, ?) N - YOU design this!
+
+CHALLENGE 1: Find F₃ for balance
+For balance: F₁ + F₂ + F₃ = (0, 0)
+
+Step 1: Add known forces
+F₁ + F₂ = (20, 10) + (0, -50)
+F₁ + F₂ = (20, -40) N
+
+Step 2: Find F₃
+F₃ = -(F₁ + F₂)
+F₃ = (-20, 40) N
+
+Check: (20, -40) + (-20, 40) = (0, 0) ✓
+
+CHALLENGE 2: Motor power needed
+|F₃| = √(20² + 40²)
+|F₃| = √(400 + 1600)
+|F₃| = √2000 ≈ 44.7 N
+
+CHALLENGE 3: Motor angle
+θ = arctan(40/-20) = arctan(-2)
+θ ≈ 116.6° (pointing up and left)
+
+CHALLENGE 4: Add a fourth force
+New wind gust: F₄ = (10, 5) N
+What must motors do now?
+
+New F₃ = -(F₁ + F₂ + F₄)
+F₃ = -[(20, 10) + (0, -50) + (10, 5)]
+F₃ = -(30, -35)
+F₃ = (-30, 35) N
+
+YOUR TURN:
+Design a 3-force system where:
+• All forces have magnitude 10 N
+• Net force = 0
+Hint: Use 120° angles between them!`
         }
       ],
       keyTakeaways: [
