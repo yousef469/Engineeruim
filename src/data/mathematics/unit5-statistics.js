@@ -1070,6 +1070,708 @@ Small input errors multiply!`
         }
       ]
     }
+  },
+
+  // LESSON 25: Units, Dimensions & Conversions
+  {
+    id: 25,
+    title: 'Units, Dimensions & Conversions - Dimensional Consistency',
+    unit: 'Statistics & Data',
+    unitNumber: 5,
+    lessonNumber: 5,
+    emoji: '🟡',
+    level: 'Beginner',
+    duration: '25 min',
+    content: {
+      introduction: 'Master dimensional analysis - the secret weapon that prevents engineering disasters! Learn to check if equations make sense and catch errors before they become expensive mistakes.',
+      
+      sections: [
+        {
+          title: '🧠 What are Dimensions? - The DNA of Equations',
+          type: 'concept',
+          content: `Dimensions tell you WHAT TYPE of quantity you have!
+
+🎯 FUNDAMENTAL DIMENSIONS:
+
+[L] = Length (meters, feet, km)
+[M] = Mass (kg, grams, tons)
+[T] = Time (seconds, hours, years)
+
+All other dimensions are combinations!
+
+📊 DERIVED DIMENSIONS:
+
+Velocity = Distance / Time
+[V] = [L]/[T] = [LT⁻¹]
+Units: m/s, km/h, mph
+
+Acceleration = Velocity / Time
+[A] = [LT⁻¹]/[T] = [LT⁻²]
+Units: m/s², ft/s²
+
+Force = Mass × Acceleration
+[F] = [M][LT⁻²] = [MLT⁻²]
+Units: Newton (N), pound-force (lbf)
+
+Energy = Force × Distance
+[E] = [MLT⁻²][L] = [ML²T⁻²]
+Units: Joule (J), calorie, BTU
+
+💡 THE GOLDEN RULE:
+
+Both sides of equation MUST have same dimensions!
+
+✓ CORRECT: F = ma
+[MLT⁻²] = [M][LT⁻²] ✓
+
+✗ WRONG: F = m + a
+[MLT⁻²] ≠ [M] + [LT⁻²] ✗
+Can't add mass to acceleration!
+
+🔧 REAL DISASTER EXAMPLE:
+
+NASA Mars Climate Orbiter (1999):
+One team used: Newtons [MLT⁻²]
+Other team used: pound-force [MLT⁻²]
+
+Same dimensions, different UNITS!
+Result: $327 million crash!
+
+Lesson: Check dimensions AND units!
+
+📐 DIMENSIONAL ANALYSIS STEPS:
+
+1. Write equation
+2. Replace each term with dimensions
+3. Simplify both sides
+4. Check if they match
+
+Example: Check v² = 2as
+
+Left side: [LT⁻¹]² = [L²T⁻²]
+Right side: [LT⁻²][L] = [L²T⁻²]
+Match! ✓ Equation is dimensionally correct!`
+        },
+        {
+          title: '🔧 Checking Equations - Dimensional Detective',
+          type: 'concept',
+          content: `Let's check if equations make sense!
+
+PROBLEM 1: Is F = ma correct?
+
+Step 1: Identify dimensions
+F = Force = [MLT⁻²]
+m = Mass = [M]
+a = Acceleration = [LT⁻²]
+
+Step 2: Check right side
+ma = [M][LT⁻²] = [MLT⁻²]
+
+Step 3: Compare
+Left: [MLT⁻²]
+Right: [MLT⁻²]
+Match! ✓
+
+PROBLEM 2: Is E = ½mv² correct?
+
+Step 1: Dimensions
+E = Energy = [ML²T⁻²]
+m = Mass = [M]
+v = Velocity = [LT⁻¹]
+
+Step 2: Check right side
+½ is dimensionless (just a number)
+mv² = [M][LT⁻¹]² = [M][L²T⁻²] = [ML²T⁻²]
+
+Step 3: Compare
+Left: [ML²T⁻²]
+Right: [ML²T⁻²]
+Match! ✓
+
+PROBLEM 3: Is v = at² WRONG?
+
+Step 1: Dimensions
+v = [LT⁻¹]
+a = [LT⁻²]
+t = [T]
+
+Step 2: Check right side
+at² = [LT⁻²][T²] = [LT⁰] = [L]
+
+Step 3: Compare
+Left: [LT⁻¹]
+Right: [L]
+NO MATCH! ✗
+
+Correct equation: v = at (not t²)
+
+🎯 FINDING MISSING EXPONENTS:
+
+Problem: Distance = velocity × time^?
+
+[L] = [LT⁻¹] × [T]^n
+
+Solve for n:
+[L] = [L][T⁻¹⁺ⁿ]
+
+For dimensions to match:
+-1 + n = 0
+n = 1
+
+Answer: Distance = velocity × time¹
+
+💡 UNIT CONVERSION USING DIMENSIONS:
+
+Convert 72 km/h to m/s:
+
+72 km/h × (1000 m/1 km) × (1 h/3600 s)
+= 72 × 1000/3600 m/s
+= 20 m/s
+
+Dimensions stay [LT⁻¹] throughout!`
+        },
+        {
+          title: '🧮 Practice: Dimensional Analysis',
+          type: 'practice',
+          content: `Check these equations!
+
+PROBLEM 1: Power = Force × Velocity
+Check: P = Fv
+
+Power: [ML²T⁻³] (Watts)
+Force: [MLT⁻²] (Newtons)
+Velocity: [LT⁻¹] (m/s)
+
+Right side:
+Fv = [MLT⁻²][LT⁻¹] = [ML²T⁻³]
+
+Match! ✓
+
+PROBLEM 2: Pressure = Force / Area
+Check: P = F/A
+
+Pressure: [ML⁻¹T⁻²] (Pascals)
+Force: [MLT⁻²]
+Area: [L²]
+
+Right side:
+F/A = [MLT⁻²]/[L²] = [ML⁻¹T⁻²]
+
+Match! ✓
+
+PROBLEM 3: Is momentum = mv correct?
+
+Momentum: [MLT⁻¹]
+Mass: [M]
+Velocity: [LT⁻¹]
+
+Right side:
+mv = [M][LT⁻¹] = [MLT⁻¹]
+
+Match! ✓
+
+PROBLEM 4: Find n in: Force = k × velocity^n
+
+[MLT⁻²] = [?] × [LT⁻¹]^n
+
+For drag force, n = 2:
+[MLT⁻²] = [ML⁻¹] × [L²T⁻²]
+[MLT⁻²] = [MLT⁻²] ✓
+
+k has dimensions [ML⁻¹]!
+
+PROBLEM 5: Unit Conversion
+Convert 100 N·m (Joules) to kg·m²/s²
+
+Energy: [ML²T⁻²]
+1 N = 1 kg·m/s²
+
+100 N·m = 100 (kg·m/s²)·m
+= 100 kg·m²/s²
+
+Same dimensions, different notation!`
+        },
+        {
+          title: '🧩 Challenge: Design Equation Checker',
+          type: 'simulation',
+          content: `Become a dimensional analysis expert!
+
+SCENARIO: Rocket Equation Analysis
+You're checking a new rocket equation
+
+CHALLENGE 1: Thrust Equation
+Proposed: T = ṁv + Ae(Pe - Pa)
+
+Where:
+T = Thrust [MLT⁻²]
+ṁ = mass flow rate [MT⁻¹]
+v = exhaust velocity [LT⁻¹]
+Ae = exit area [L²]
+Pe, Pa = pressures [ML⁻¹T⁻²]
+
+Check first term:
+ṁv = [MT⁻¹][LT⁻¹] = [MLT⁻²] ✓
+
+Check second term:
+Ae(Pe - Pa) = [L²][ML⁻¹T⁻²]
+= [MLT⁻²] ✓
+
+Both terms match thrust dimension!
+Equation is dimensionally correct! ✓
+
+CHALLENGE 2: Energy Balance
+Proposed: KE + PE = ½mv² + mgh
+
+Kinetic Energy:
+½mv² = [M][L²T⁻²] = [ML²T⁻²] ✓
+
+Potential Energy:
+mgh = [M][LT⁻²][L] = [ML²T⁻²] ✓
+
+Both have energy dimensions!
+Can be added! ✓
+
+CHALLENGE 3: Find Unknown Dimension
+Equation: F = k × x
+
+F = Force = [MLT⁻²]
+x = displacement = [L]
+k = ?
+
+Solve:
+[MLT⁻²] = [k][L]
+[k] = [MLT⁻²]/[L]
+[k] = [MT⁻²]
+
+k is a spring constant!
+Units: N/m or kg/s²
+
+CHALLENGE 4: Catch the Error
+Student writes: a = v + t
+
+Check:
+Left: [LT⁻²]
+Right: [LT⁻¹] + [T]
+
+Can't add velocity to time!
+Different dimensions! ✗
+
+Correct: a = v/t or a = Δv/Δt
+
+YOUR MISSION:
+1. Check 5 equations from textbook
+2. Find dimensional errors
+3. Correct the mistakes
+4. Verify with units!
+
+INTERACTIVE CHECKER:
+Input equation: _______
+System checks dimensions automatically
+Shows: ✓ or ✗ with explanation
+
+Example:
+Input: "E = mc²"
+Output: ✓ [ML²T⁻²] = [M][LT⁻¹]²
+"Energy equation is correct!"`
+        }
+      ],
+      
+      keyTakeaways: [
+        'Dimensions: [L]=length, [M]=mass, [T]=time',
+        'Both sides of equation must have same dimensions',
+        'Dimensional analysis catches equation errors',
+        'Units can differ, but dimensions must match',
+        'Use to find unknown exponents or constants'
+      ],
+      
+      vocabulary: [
+        { term: 'Dimension', definition: 'Fundamental type of physical quantity (length, mass, time)' },
+        { term: 'Dimensional Analysis', definition: 'Method of checking equation validity using dimensions' },
+        { term: 'Dimensional Consistency', definition: 'Both sides of equation have same dimensions' },
+        { term: 'Derived Dimension', definition: 'Combination of fundamental dimensions (e.g., velocity)' },
+        { term: 'Dimensionless', definition: 'Pure number with no dimensions (e.g., π, ratios)' }
+      ],
+      
+      quiz: [
+        {
+          question: 'What are the dimensions of velocity?',
+          options: ['[L]', '[LT⁻¹]', '[LT]', '[T⁻¹]'],
+          correct: 1
+        },
+        {
+          question: 'Can you add force and mass?',
+          options: ['Yes', 'No', 'Sometimes', 'Only in SI units'],
+          correct: 1
+        },
+        {
+          question: 'Dimensions of energy are:',
+          options: ['[ML²T⁻²]', '[MLT⁻²]', '[ML²T⁻¹]', '[MT⁻²]'],
+          correct: 0
+        },
+        {
+          question: 'If F = ma, and F = [MLT⁻²], m = [M], then a = ?',
+          options: ['[LT⁻¹]', '[LT⁻²]', '[T⁻²]', '[ML⁻¹T⁻²]'],
+          correct: 1
+        },
+        {
+          question: 'Dimensional analysis helps:',
+          options: ['Calculate exact values', 'Check equation validity', 'Measure quantities', 'Convert all units'],
+          correct: 1
+        }
+      ]
+    }
+  },
+
+  // LESSON 26: Vector Math in Physical Systems
+  {
+    id: 26,
+    title: 'Vector Math in Physical Systems - Motion Without Laws',
+    unit: 'Statistics & Data',
+    unitNumber: 5,
+    lessonNumber: 6,
+    emoji: '🟡',
+    level: 'Beginner',
+    duration: '25 min',
+    content: {
+      introduction: 'Vectors are everywhere in motion! Learn how to add velocities, combine forces, and track positions using vector mathematics. No physics laws needed - just pure vector power!',
+      
+      sections: [
+        {
+          title: '🧠 Vectors in Motion - Direction Matters!',
+          type: 'concept',
+          content: `In real systems, direction is just as important as magnitude!
+
+🎯 POSITION VECTORS:
+
+Robot position in 2D:
+r⃗ = (x, y) = (5, 3) meters
+
+Visual:
+     y
+     |
+   3 |    ● Robot
+     |   /
+     |  /
+     | /
+     |/_________ x
+     0    5
+
+Position vector points from origin to robot!
+
+📊 DISPLACEMENT VECTORS:
+
+Change in position = Final - Initial
+
+Start: r⃗₁ = (2, 1)
+End: r⃗₂ = (5, 4)
+
+Displacement:
+Δr⃗ = r⃗₂ - r⃗₁ = (5-2, 4-1) = (3, 3)
+
+Visual:
+     ↑
+   4 |    ● End
+     |   /
+     |  / Δr⃗
+   1 |●/ Start
+     |________
+     2    5
+
+Moved 3m right, 3m up!
+
+💡 VELOCITY VECTORS:
+
+Velocity = Displacement / Time
+v⃗ = Δr⃗ / Δt
+
+Example:
+Δr⃗ = (6, 8) meters
+Δt = 2 seconds
+
+v⃗ = (6/2, 8/2) = (3, 4) m/s
+
+Speed (magnitude):
+|v⃗| = √(3² + 4²) = √25 = 5 m/s
+
+Direction:
+θ = arctan(4/3) ≈ 53.1° from horizontal
+
+🔧 RELATIVE VELOCITY:
+
+Two objects moving:
+Car A: v⃗ₐ = (20, 0) m/s (east)
+Car B: v⃗ᵦ = (15, 10) m/s (northeast)
+
+Velocity of B relative to A:
+v⃗ᵦₐ = v⃗ᵦ - v⃗ₐ
+v⃗ᵦₐ = (15-20, 10-0) = (-5, 10) m/s
+
+From A's perspective, B moves 5 m/s west and 10 m/s north!
+
+📐 VECTOR ADDITION IN MOTION:
+
+Boat velocity: v⃗ᵦ = (5, 0) m/s (east)
+Current velocity: v⃗c = (0, 3) m/s (north)
+
+Total velocity:
+v⃗ₜₒₜₐₗ = v⃗ᵦ + v⃗c = (5, 3) m/s
+
+Visual:
+     ↑ Current
+     |  /
+     | / Total
+     |/
+     ●→ Boat
+     
+Boat moves northeast at √(5² + 3²) ≈ 5.83 m/s!`
+        },
+        {
+          title: '🔧 Vector Operations in Systems',
+          type: 'concept',
+          content: `Apply vectors to real motion problems!
+
+PROBLEM 1: Drone Navigation
+Drone at origin (0, 0)
+Command 1: Move (10, 5) meters
+Command 2: Move (3, 8) meters
+
+Final position:
+r⃗ = (10, 5) + (3, 8) = (13, 13) meters
+
+Distance from start:
+|r⃗| = √(13² + 13²) = √338 ≈ 18.4 meters
+
+PROBLEM 2: Wind Effect on Plane
+Plane airspeed: v⃗ₚ = (200, 0) m/s (east)
+Wind: v⃗w = (-20, 30) m/s (west + north)
+
+Ground velocity:
+v⃗g = v⃗ₚ + v⃗w = (200-20, 0+30) = (180, 30) m/s
+
+Ground speed:
+|v⃗g| = √(180² + 30²) = √33,300 ≈ 182.5 m/s
+
+Heading angle:
+θ = arctan(30/180) ≈ 9.5° north of east
+
+PROBLEM 3: River Crossing
+River flows: v⃗ᵣ = (2, 0) m/s (east)
+Swimmer aims: v⃗ₛ = (0, 1) m/s (north)
+
+Actual path:
+v⃗ₜₒₜₐₗ = (2, 1) m/s
+
+To cross 100m wide river:
+Time = 100m / 1 m/s = 100 seconds
+Drift = 2 m/s × 100s = 200 meters east!
+
+Visual:
+     North
+     ↑
+     |  /
+     | / Actual path
+     |/
+Start●→ East (current)
+
+🎯 VECTOR COMPONENTS:
+
+Break diagonal motion into x and y:
+
+Velocity at 45°, magnitude 10 m/s:
+vₓ = 10 × cos(45°) = 10 × 0.707 = 7.07 m/s
+vᵧ = 10 × sin(45°) = 10 × 0.707 = 7.07 m/s
+
+v⃗ = (7.07, 7.07) m/s
+
+💡 UNIT VECTORS:
+
+î = (1, 0) - points east
+ĵ = (0, 1) - points north
+
+Any vector:
+v⃗ = vₓî + vᵧĵ = 3î + 4ĵ
+
+Magnitude:
+|v⃗| = √(vₓ² + vᵧ²) = √(9 + 16) = 5`
+        },
+        {
+          title: '🧮 Practice: Motion Vector Problems',
+          type: 'practice',
+          content: `Solve real motion scenarios!
+
+PROBLEM 1: Robot Path
+Robot moves in sequence:
+Step 1: (5, 0) meters
+Step 2: (0, 5) meters
+Step 3: (-3, 2) meters
+
+Total displacement:
+Δr⃗ = (5, 0) + (0, 5) + (-3, 2)
+Δr⃗ = (2, 7) meters
+
+Distance traveled:
+d = 5 + 5 + √(9+4) = 10 + 3.6 = 13.6 m
+
+Displacement magnitude:
+|Δr⃗| = √(4 + 49) = √53 ≈ 7.3 m
+
+PROBLEM 2: Airplane Velocity
+Plane flies at 150 m/s at 30° north of east
+
+Components:
+vₓ = 150 × cos(30°) = 150 × 0.866 = 129.9 m/s
+vᵧ = 150 × sin(30°) = 150 × 0.5 = 75 m/s
+
+v⃗ = (129.9, 75) m/s
+
+After 10 seconds:
+Δr⃗ = v⃗ × t = (1299, 750) meters
+
+PROBLEM 3: Relative Motion
+Train A: v⃗ₐ = (30, 0) m/s (east)
+Train B: v⃗ᵦ = (20, 0) m/s (east)
+
+Relative velocity:
+v⃗ₐᵦ = v⃗ₐ - v⃗ᵦ = (10, 0) m/s
+
+Train A moves 10 m/s faster east!
+
+PROBLEM 4: Projectile Components
+Object launched at 20 m/s at 60° angle
+
+Horizontal: vₓ = 20 × cos(60°) = 10 m/s
+Vertical: vᵧ = 20 × sin(60°) = 17.3 m/s
+
+v⃗ = (10, 17.3) m/s
+
+After 2 seconds (ignoring gravity for now):
+Position: (20, 34.6) meters`
+        },
+        {
+          title: '🧩 Challenge: Multi-Object Vector System',
+          type: 'simulation',
+          content: `Track multiple moving objects!
+
+SCENARIO: Drone Swarm Navigation
+3 drones moving in formation
+
+CHALLENGE 1: Initial Positions
+Drone 1: r⃗₁ = (0, 0, 10) meters
+Drone 2: r⃗₂ = (5, 0, 10) meters
+Drone 3: r⃗₃ = (2.5, 4, 10) meters
+
+Formation center:
+r⃗center = (r⃗₁ + r⃗₂ + r⃗₃)/3
+r⃗center = (7.5, 4, 30)/3 = (2.5, 1.33, 10) meters
+
+CHALLENGE 2: Synchronized Movement
+All drones move by: Δr⃗ = (10, 5, 2) meters
+
+New positions:
+Drone 1: (10, 5, 12)
+Drone 2: (15, 5, 12)
+Drone 3: (12.5, 9, 12)
+
+Formation maintained! (same relative positions)
+
+CHALLENGE 3: Wind Effect
+Wind: v⃗w = (-2, 1, 0) m/s
+
+Drone 1 velocity: v⃗₁ = (5, 0, 1) m/s
+With wind: v⃗₁ₜₒₜₐₗ = (5-2, 0+1, 1) = (3, 1, 1) m/s
+
+All drones affected equally!
+
+CHALLENGE 4: Intercept Course
+Target at: r⃗ₜ = (50, 50, 15)
+Drone 1 at: r⃗₁ = (10, 5, 12)
+
+Required displacement:
+Δr⃗ = r⃗ₜ - r⃗₁ = (40, 45, 3) meters
+
+Distance:
+|Δr⃗| = √(1600 + 2025 + 9) = √3634 ≈ 60.3 m
+
+If speed = 10 m/s:
+Time = 60.3 / 10 = 6.03 seconds
+
+Velocity needed:
+v⃗ = Δr⃗ / t = (40, 45, 3) / 6.03
+v⃗ ≈ (6.6, 7.5, 0.5) m/s
+
+CHALLENGE 5: Collision Avoidance
+Drone A: r⃗ₐ = (0, 0, 10), v⃗ₐ = (5, 5, 0)
+Drone B: r⃗ᵦ = (20, 0, 10), v⃗ᵦ = (-3, 5, 0)
+
+After 2 seconds:
+r⃗ₐ(2) = (0, 0, 10) + 2(5, 5, 0) = (10, 10, 10)
+r⃗ᵦ(2) = (20, 0, 10) + 2(-3, 5, 0) = (14, 10, 10)
+
+Distance between:
+Δr⃗ = (14-10, 10-10, 10-10) = (4, 0, 0)
+|Δr⃗| = 4 meters
+
+Safe! (minimum 4m separation)
+
+YOUR MISSION:
+1. Track 5 drones in 3D space
+2. Calculate formation center
+3. Plan synchronized movements
+4. Avoid collisions
+5. Account for wind effects!
+
+INTERACTIVE VISUALIZER:
+Plot all drone positions
+Show velocity vectors
+Animate motion over time
+Display collision warnings!`
+        }
+      ],
+      
+      keyTakeaways: [
+        'Position vectors locate objects in space',
+        'Velocity vectors show speed and direction',
+        'Add vectors component-wise: (x₁+x₂, y₁+y₂)',
+        'Relative velocity: v⃗ₐᵦ = v⃗ₐ - v⃗ᵦ',
+        'Vector magnitude: |v⃗| = √(x² + y²)'
+      ],
+      
+      vocabulary: [
+        { term: 'Position Vector', definition: 'Vector from origin to object location' },
+        { term: 'Displacement', definition: 'Change in position; final minus initial' },
+        { term: 'Velocity Vector', definition: 'Rate of change of position; has magnitude and direction' },
+        { term: 'Relative Velocity', definition: 'Velocity of one object as seen from another' },
+        { term: 'Vector Components', definition: 'x, y, z parts of a vector' }
+      ],
+      
+      quiz: [
+        {
+          question: 'Position (2,3) + displacement (1,4) = ?',
+          options: ['(3,7)', '(2,12)', '(1,1)', '(3,4)'],
+          correct: 0
+        },
+        {
+          question: 'Velocity (5,0) + velocity (0,12) = ?',
+          options: ['(5,12)', '(0,12)', '(5,0)', '(60,0)'],
+          correct: 0
+        },
+        {
+          question: 'Magnitude of vector (3,4) is:',
+          options: ['3', '4', '5', '7'],
+          correct: 2
+        },
+        {
+          question: 'Relative velocity vₐ - vᵦ gives velocity of:',
+          options: ['A only', 'B only', 'A relative to B', 'B relative to A'],
+          correct: 2
+        },
+        {
+          question: 'Displacement (6,8) in 2 seconds gives velocity:',
+          options: ['(3,4)', '(6,8)', '(12,16)', '(8,10)'],
+          correct: 0
+        }
+      ]
+    }
   }
 ];
 

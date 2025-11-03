@@ -2,6 +2,7 @@
 import { unit2Lessons } from './mathematics/unit2-geometry.js';
 import { unit3Lessons } from './mathematics/unit3-calculus.js';
 import { unit4Lessons } from './mathematics/unit4-linear-algebra.js';
+import { unit5Lessons } from './mathematics/unit5-statistics.js';
 
 // Unit 1: Algebra lessons (0-5)
 const unit1Lessons = [
@@ -942,8 +943,8 @@ Challenge: Design your own logarithmic sensor!`
   }
 ];
 
-// Combine all units - ALL FULLY ENHANCED!
-const mathematicsLessons = [...unit1Lessons, ...unit2Lessons, ...unit3Lessons, ...unit4Lessons];
+// Combine all units - COMPLETE MATHEMATICS CURRICULUM!
+const mathematicsLessons = [...unit1Lessons, ...unit2Lessons, ...unit3Lessons, ...unit4Lessons, ...unit5Lessons];
 
 export default mathematicsLessons;
 
