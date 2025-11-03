@@ -1,5 +1,8 @@
 // Mathematics Engineering Lessons Data
-const mathematicsLessons = [
+import { unit2Lessons } from './mathematics/unit2-geometry.js';
+
+// Unit 1: Algebra lessons (0-5)
+const unit1Lessons = [
   // LESSON 0: Variables, Units & Symbols
   {
     id: 0,
@@ -934,8 +937,15 @@ Challenge: Design your own logarithmic sensor!`
         }
       ]
     }
-  },
+  }
+];
 
+// Combine Unit 1 (Algebra) and Unit 2 (Geometry - imported from enhanced file)
+const mathematicsLessons = [...unit1Lessons, ...unit2Lessons];
+
+export default mathematicsLessons;
+
+/* OLD LESSON 6-11 REMOVED - NOW USING ENHANCED VERSIONS FROM unit2-geometry.js
   // LESSON 6: Basic Shapes & Angles
   {
     id: 6,
@@ -1672,5 +1682,4 @@ Design a 3-joint robot arm!`
     }
   }
 ];
-
-export default mathematicsLessons;
+END OF OLD LESSONS - NOW USING ENHANCED VERSIONS */
