@@ -1,7 +1,4 @@
 // Mathematics Engineering Lessons Data
-// Now organized in separate files by unit for better management
-// See src/data/mathematics/ folder for unit-specific files
-
 const mathematicsLessons = [
   // LESSON 0: Variables, Units & Symbols
   {
