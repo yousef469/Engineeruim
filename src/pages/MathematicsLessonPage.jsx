@@ -20,7 +20,7 @@ export default function MathematicsLessonPage() {
           <h1 className="text-2xl font-bold mb-4">Lesson Not Found</h1>
           <button
             onClick={() => navigate('/learn/mathematics/engineering/map')}
-            className="px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg transition-colors"
+            className="px-6 py-3 bg-secondary hover:bg-secondary rounded-lg transition-colors"
           >
             Back to Map
           </button>
@@ -144,7 +144,7 @@ export default function MathematicsLessonPage() {
             {/* Current Section Content */}
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-white/20">
               <div className="flex items-center gap-3 mb-6">
-                <div className="text-green-400">
+                <div className="text-secondary">
                   {getSectionIcon(currentContent.type)}
                 </div>
                 <h2 className="text-3xl font-bold">{currentContent.title}</h2>
@@ -182,7 +182,7 @@ export default function MathematicsLessonPage() {
                 {lesson.content.vocabulary.length > 0 && (
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/20">
                     <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                      <Calculator className="w-5 h-5 text-green-400" />
+                      <Calculator className="w-5 h-5 text-secondary" />
                       Key Terms
                     </h3>
                     <div className="grid gap-4">
@@ -202,7 +202,7 @@ export default function MathematicsLessonPage() {
           /* Quiz Section */
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-white/20">
             <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <CheckCircle className="w-8 h-8 text-green-400" />
+              <CheckCircle className="w-8 h-8 text-secondary" />
               Quiz Time!
             </h2>
             
@@ -220,7 +220,7 @@ export default function MathematicsLessonPage() {
                           onClick={() => handleQuizAnswer(qIndex, oIndex)}
                           className={`w-full text-left p-4 rounded-lg transition-all ${
                             quizAnswers[qIndex] === oIndex
-                              ? 'bg-green-500/30 border-2 border-green-400'
+                              ? 'bg-secondary/30 border-2 border-green-400'
                               : 'bg-white/5 border-2 border-white/10 hover:border-green-400/50'
                           }`}
                         >
@@ -234,7 +234,7 @@ export default function MathematicsLessonPage() {
                 <button
                   onClick={handleQuizSubmit}
                   disabled={Object.keys(quizAnswers).length < lesson.content.quiz.length}
-                  className="w-full py-4 bg-green-500 hover:bg-green-600 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-lg font-bold text-lg transition-colors"
+                  className="w-full py-4 bg-secondary hover:bg-secondary disabled:bg-background-light disabled:cursor-not-allowed rounded-lg font-bold text-lg transition-colors"
                 >
                   Submit Quiz
                 </button>
@@ -265,7 +265,7 @@ export default function MathematicsLessonPage() {
                     
                     return (
                       <div key={qIndex} className={`p-6 rounded-xl border-2 ${
-                        isCorrect ? 'bg-green-500/10 border-green-400' : 'bg-red-500/10 border-red-400'
+                        isCorrect ? 'bg-secondary/10 border-green-400' : 'bg-red-500/10 border-red-400'
                       }`}>
                         <div className="font-bold mb-2">
                           {qIndex + 1}. {question.question}
@@ -303,7 +303,7 @@ export default function MathematicsLessonPage() {
           <button
             onClick={handleNext}
             disabled={showQuiz && !quizSubmitted}
-            className="flex items-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors font-bold"
+            className="flex items-center gap-2 px-6 py-3 bg-secondary hover:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors font-bold"
           >
             {showQuiz && quizSubmitted ? 'Complete Lesson' : isLastSection && !showQuiz ? 'Take Quiz' : 'Next'}
             <ArrowRight className="w-5 h-5" />

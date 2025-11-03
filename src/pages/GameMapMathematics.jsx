@@ -147,7 +147,7 @@ export default function GameMapMathematics() {
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
-              <Calculator className="w-8 h-8 text-green-400" />
+              <Calculator className="w-8 h-8 text-secondary" />
               <div>
                 <h1 className="text-xl font-bold">Mathematics for Engineering</h1>
                 <p className="text-sm text-green-200">27 Lessons • Master the language of engineering</p>
@@ -234,7 +234,7 @@ export default function GameMapMathematics() {
                                 ? 'bg-gradient-to-br from-green-400 to-emerald-500 border-green-300 shadow-lg shadow-green-500/50'
                                 : unlocked
                                 ? `bg-gradient-to-br ${level.color} border-white shadow-lg shadow-green-500/50 hover:scale-110`
-                                : 'bg-gray-700 border-gray-600'
+                                : 'bg-background-light border-primary/30'
                             }`}
                           >
                             {completed ? (
@@ -242,13 +242,13 @@ export default function GameMapMathematics() {
                             ) : unlocked ? (
                               <span className="text-3xl">{level.emoji}</span>
                             ) : (
-                              <Lock className="w-7 h-7 text-gray-400" />
+                              <Lock className="w-7 h-7 text-text-secondary" />
                             )}
                           </div>
                         </button>
 
                         <div className="mt-3 text-center max-w-[120px]">
-                          <div className={`font-bold text-sm mb-1 ${unlocked ? 'text-white' : 'text-gray-500'}`}>
+                          <div className={`font-bold text-sm mb-1 ${unlocked ? 'text-white' : 'text-text-muted'}`}>
                             {level.lesson}
                           </div>
                           <div className={`text-xs leading-tight ${unlocked ? 'text-green-200' : 'text-gray-600'}`}>
@@ -262,7 +262,7 @@ export default function GameMapMathematics() {
 
                 {unitIndex < units.length - 1 && (
                   <div className="flex justify-center my-8">
-                    <div className="w-1 h-12 bg-green-500/30 rounded-full" />
+                    <div className="w-1 h-12 bg-secondary/30 rounded-full" />
                   </div>
                 )}
               </div>

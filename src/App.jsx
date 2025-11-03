@@ -841,38 +841,38 @@ const Model3DViewer = ({ isOpen, onClose, modelType, modelInfo }) => {
   return (
     <div className="fixed inset-0 z-50 bg-gray-950">
       {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between p-4 bg-gray-900/95 backdrop-blur border-b border-gray-700">
+      <div className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between p-4 bg-background/95 backdrop-blur border-b border-primary/20">
         <div className="flex items-center gap-3">
-          {modelType === 'rocket' && <Rocket className="w-6 h-6 text-cyan-400" />}
-          {modelType === 'plane' && <Plane className="w-6 h-6 text-blue-400" />}
+          {modelType === 'rocket' && <Rocket className="w-6 h-6 text-primary" />}
+          {modelType === 'plane' && <Plane className="w-6 h-6 text-primary" />}
           {modelType === 'car' && <Car className="w-6 h-6 text-orange-400" />}
           <h2 className="text-xl font-bold text-white">{modelInfo.title}</h2>
         </div>
         <button
           onClick={onClose}
-          className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
+          className="p-2 hover:bg-background-light rounded-lg transition-colors"
         >
-          <X className="w-5 h-5 text-gray-400" />
+          <X className="w-5 h-5 text-text-secondary" />
         </button>
       </div>
 
       {/* Main Content - Info Left, 3D Right */}
       <div className="flex h-screen pt-16">
         {/* Info Panel - LEFT SIDE */}
-        <div className="w-2/5 bg-gray-900 p-8 overflow-y-auto border-r border-gray-700">
+        <div className="w-2/5 bg-background p-8 overflow-y-auto border-r border-primary/20">
           <h3 className="text-2xl font-bold text-white mb-4">{modelInfo.title}</h3>
-          <p className="text-gray-300 mb-8 text-lg">{modelInfo.description}</p>
+          <p className="text-text mb-8 text-lg">{modelInfo.description}</p>
           
           <div className="space-y-6">
             <div>
-              <h4 className="text-lg font-semibold text-cyan-400 mb-4">Key Components</h4>
+              <h4 className="text-lg font-semibold text-primary mb-4">Key Components</h4>
               <ul className="space-y-3">
                 {modelInfo.components.map((component, index) => (
-                  <li key={index} className="flex items-start gap-3 bg-gray-800/50 p-3 rounded-lg">
-                    <Info className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                  <li key={index} className="flex items-start gap-3 bg-background-light/50 p-3 rounded-lg">
+                    <Info className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                     <div>
                       <span className="text-white font-semibold block">{component.name}</span>
-                      <span className="text-gray-400 text-sm">{component.description}</span>
+                      <span className="text-text-secondary text-sm">{component.description}</span>
                     </div>
                   </li>
                 ))}
@@ -880,11 +880,11 @@ const Model3DViewer = ({ isOpen, onClose, modelType, modelInfo }) => {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-cyan-400 mb-4">Specifications</h4>
+              <h4 className="text-lg font-semibold text-primary mb-4">Specifications</h4>
               <div className="grid grid-cols-2 gap-3">
                 {modelInfo.specs.map((spec, index) => (
-                  <div key={index} className="bg-gray-800 p-4 rounded-lg border border-gray-700">
-                    <div className="text-xs text-gray-500 uppercase tracking-wide">{spec.label}</div>
+                  <div key={index} className="bg-background-light p-4 rounded-lg border border-primary/20">
+                    <div className="text-xs text-text-muted uppercase tracking-wide">{spec.label}</div>
                     <div className="text-lg text-white font-bold mt-1">{spec.value}</div>
                   </div>
                 ))}
@@ -901,21 +901,21 @@ const Model3DViewer = ({ isOpen, onClose, modelType, modelInfo }) => {
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/50">
               <div className="flex items-center">
-                <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+                <Loader2 className="w-8 h-8 text-primary animate-spin" />
                 <span className="ml-2 text-white text-lg">Loading 3D Model...</span>
               </div>
             </div>
           )}
 
           {/* Controls Help */}
-          <div className="absolute bottom-6 right-6 bg-gray-800/90 backdrop-blur p-4 rounded-lg border border-gray-700">
-            <div className="flex flex-col gap-3 text-sm text-gray-300">
+          <div className="absolute bottom-6 right-6 bg-background-light/90 backdrop-blur p-4 rounded-lg border border-primary/20">
+            <div className="flex flex-col gap-3 text-sm text-text">
               <div className="flex items-center gap-2">
-                <MousePointer className="w-5 h-5 text-cyan-400" />
+                <MousePointer className="w-5 h-5 text-primary" />
                 <span>Drag to rotate</span>
               </div>
               <div className="flex items-center gap-2">
-                <ZoomIn className="w-5 h-5 text-cyan-400" />
+                <ZoomIn className="w-5 h-5 text-primary" />
                 <span>Scroll to zoom</span>
               </div>
             </div>
@@ -979,18 +979,18 @@ const AITutorPanel = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed right-0 top-0 h-full w-full sm:w-96 bg-gray-900 border-l border-gray-700 z-40 flex flex-col">
+    <div className="fixed right-0 top-0 h-full w-full sm:w-96 bg-background border-l border-primary/20 z-40 flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-700">
+      <div className="flex items-center justify-between p-4 border-b border-primary/20">
         <div className="flex items-center gap-2">
-          <Bot className="w-6 h-6 text-cyan-400" />
+          <Bot className="w-6 h-6 text-primary" />
           <h3 className="text-lg font-semibold text-white">AI Engineering Tutor</h3>
         </div>
         <button
           onClick={onClose}
-          className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
+          className="p-2 hover:bg-background-light rounded-lg transition-colors"
         >
-          <X className="w-5 h-5 text-gray-400" />
+          <X className="w-5 h-5 text-text-secondary" />
         </button>
       </div>
 
@@ -1005,11 +1005,11 @@ const AITutorPanel = ({ isOpen, onClose }) => {
               className={`max-w-[80%] p-3 rounded-2xl ${
                 message.type === 'user'
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white'
-                  : 'bg-gray-800 text-gray-300 border border-gray-700'
+                  : 'bg-background-light text-text border border-primary/20'
               }`}
             >
               {message.type === 'bot' && (
-                <Bot className="w-4 h-4 inline mr-2 text-cyan-400" />
+                <Bot className="w-4 h-4 inline mr-2 text-primary" />
               )}
               {message.text}
             </div>
@@ -1018,11 +1018,11 @@ const AITutorPanel = ({ isOpen, onClose }) => {
         
         {isTyping && (
           <div className="flex justify-start">
-            <div className="bg-gray-800 border border-gray-700 px-4 py-3 rounded-2xl">
+            <div className="bg-background-light border border-primary/20 px-4 py-3 rounded-2xl">
               <div className="flex gap-1">
-                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" />
-                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
-                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                <span className="w-2 h-2 bg-primary rounded-full animate-bounce" />
+                <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
               </div>
             </div>
           </div>
@@ -1032,7 +1032,7 @@ const AITutorPanel = ({ isOpen, onClose }) => {
       </div>
 
       {/* Input Area */}
-      <div className="p-4 border-t border-gray-700">
+      <div className="p-4 border-t border-primary/20">
         <div className="flex gap-2">
           <input
             type="text"
@@ -1040,7 +1040,7 @@ const AITutorPanel = ({ isOpen, onClose }) => {
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
             placeholder="Ask about engineering..."
-            className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
+            className="flex-1 bg-background-light border border-primary/20 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
           />
           <button
             onClick={handleSendMessage}
@@ -1063,21 +1063,21 @@ const VehicleCard = ({ icon: Icon, title, description, gradient, onClick, delay 
     >
       <div className={`absolute inset-0 ${gradient} rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500` } />
       
-      <div className="relative bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 overflow-hidden">
+      <div className="relative bg-background/80 backdrop-blur-xl border border-primary/20/50 rounded-2xl p-6 overflow-hidden">
         <div className={`absolute inset-0 ${gradient} opacity-10 group-hover:opacity-20 transition-opacity` } />
         
         <div className={`relative z-10 w-16 h-16 ${gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform` }>
           <Icon className="w-8 h-8 text-white" />
         </div>
         
-        <h3 className="relative z-10 text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+        <h3 className="relative z-10 text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
           {title}
         </h3>
-        <p className="relative z-10 text-gray-400 mb-4">
+        <p className="relative z-10 text-text-secondary mb-4">
           {description}
         </p>
         
-        <div className="relative z-10 flex items-center text-cyan-400 group-hover:text-cyan-300 transition-colors">
+        <div className="relative z-10 flex items-center text-primary group-hover:text-cyan-300 transition-colors">
           <span className="text-sm font-semibold">Explore in 3D</span>
           <RotateCw className="w-4 h-4 ml-2 group-hover:rotate-180 transition-transform duration-500" />
         </div>

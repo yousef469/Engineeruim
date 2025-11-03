@@ -35,15 +35,15 @@ const HomePage = () => {
       
       {/* Engineerium - Interactive Engineering Platform */}
       {/* Header */}
-      <header className="border-b border-gray-700 bg-gray-900/50 backdrop-blur">
+      <header className="border-b border-primary/20 bg-background/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-8">
               <div className="flex items-center gap-3">
-                <Sparkles className="w-8 h-8 text-cyan-400" />
+                <Sparkles className="w-8 h-8 text-primary" />
                 <div>
                   <h1 className="text-3xl font-bold">{t('app.title')}</h1>
-                  <p className="text-gray-400 text-sm mt-1">{t('app.subtitle')}</p>
+                  <p className="text-text-secondary text-sm mt-1">{t('app.subtitle')}</p>
                 </div>
               </div>
               
@@ -51,13 +51,13 @@ const HomePage = () => {
               <nav className="hidden md:flex items-center gap-6">
                 <button
                   onClick={() => navigate('/ai-generator')}
-                  className="text-white hover:text-cyan-400 transition-colors font-medium"
+                  className="text-white hover:text-primary transition-colors font-medium"
                 >
                   AI 3D
                 </button>
                 <button
                   onClick={() => navigate('/pricing')}
-                  className="text-white hover:text-cyan-400 transition-colors font-medium"
+                  className="text-white hover:text-primary transition-colors font-medium"
                 >
                   Pricing
                 </button>
@@ -69,7 +69,7 @@ const HomePage = () => {
               {/* Language Selector Button */}
               <button
                 onClick={() => setShowLangModal(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm font-medium"
+                className="flex items-center gap-2 px-4 py-2 bg-background-light hover:bg-background-light rounded-lg transition-colors text-sm font-medium"
                 title={t('nav.language')}
               >
                 <Globe className="w-4 h-4" />
@@ -80,7 +80,7 @@ const HomePage = () => {
                 <div className="relative">
                   <button
                     onClick={() => setShowProfileMenu(!showProfileMenu)}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2 bg-background-light hover:bg-background-light rounded-lg transition-colors text-sm font-medium"
                   >
                     <User className="w-4 h-4" />
                     <span className="hidden sm:inline">{user.email?.split('@')[0]}</span>
@@ -88,23 +88,23 @@ const HomePage = () => {
                   </button>
                   
                   {showProfileMenu && (
-                    <div className="absolute right-0 mt-2 w-56 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50">
-                      <div className="p-3 border-b border-gray-700">
-                        <p className="text-xs text-gray-400">Signed in as</p>
+                    <div className="absolute right-0 mt-2 w-56 bg-background-light border border-primary/20 rounded-lg shadow-xl z-50">
+                      <div className="p-3 border-b border-primary/20">
+                        <p className="text-xs text-text-secondary">Signed in as</p>
                         <p className="text-sm text-white truncate">{user.email}</p>
                       </div>
                       <div className="py-2">
-                        <button onClick={() => { navigate('/upload'); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-gray-700 transition-colors text-left">
-                          <Upload className="w-4 h-4 text-green-400" />
+                        <button onClick={() => { navigate('/upload'); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-background-light transition-colors text-left">
+                          <Upload className="w-4 h-4 text-secondary" />
                           <span className="text-sm">Upload Model</span>
                         </button>
-                        <button onClick={() => { navigate('/collaborate'); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-gray-700 transition-colors text-left">
-                          <UsersIcon className="w-4 h-4 text-yellow-400" />
+                        <button onClick={() => { navigate('/collaborate'); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-background-light transition-colors text-left">
+                          <UsersIcon className="w-4 h-4 text-accent" />
                           <span className="text-sm">Collaborate</span>
                         </button>
                       </div>
-                      <div className="border-t border-gray-700 py-2">
-                        <button onClick={() => { signOut(); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-gray-700 transition-colors text-left text-red-400">
+                      <div className="border-t border-primary/20 py-2">
+                        <button onClick={() => { signOut(); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-background-light transition-colors text-left text-red-400">
                           <LogIn className="w-4 h-4" />
                           <span className="text-sm">{t('nav.signOut')}</span>
                         </button>
@@ -116,7 +116,7 @@ const HomePage = () => {
                 <>
                   <button
                     onClick={() => navigate('/auth')}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2 bg-background-light hover:bg-background-light rounded-lg transition-colors text-sm font-medium"
                   >
                     <LogIn className="w-4 h-4" />
                     <span>{t('nav.login')}</span>
@@ -141,14 +141,14 @@ const HomePage = () => {
           <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
             {t('home.hero.title')}
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-6">
+          <p className="text-xl text-text max-w-2xl mx-auto mb-6">
             {t('home.hero.subtitle')}
           </p>
           
           {/* New Features Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 rounded-full animate-pulse">
-            <Sparkles className="w-4 h-4 text-green-400" />
-            <span className="text-sm font-semibold text-green-400">
+            <Sparkles className="w-4 h-4 text-secondary" />
+            <span className="text-sm font-semibold text-secondary">
               {t('home.hero.new')}
             </span>
           </div>
@@ -158,7 +158,7 @@ const HomePage = () => {
         {!user && (
           <div className="mb-12 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl p-8 text-center">
             <h3 className="text-2xl font-bold mb-3">{t('home.hero.readyToExplore')}</h3>
-            <p className="text-gray-300 mb-6">{t('home.hero.signUpNow')}</p>
+            <p className="text-text mb-6">{t('home.hero.signUpNow')}</p>
             <button
               onClick={() => navigate('/auth')}
               className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg transition-all font-semibold text-lg"
@@ -242,7 +242,7 @@ const HomePage = () => {
             <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
               {t('home.interactive.title')}
             </h2>
-            <p className="text-gray-300">{t('home.interactive.subtitle')}</p>
+            <p className="text-text">{t('home.interactive.subtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
@@ -284,9 +284,9 @@ const HomePage = () => {
               </button>
               
               {/* Tooltip */}
-              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-gray-700 shadow-xl">
+              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-background text-white px-4 py-2 rounded-lg text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-primary/20 shadow-xl">
                 🔒 Upgrade to use this feature
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-gray-900 border-r border-b border-gray-700"></div>
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-2 h-2 bg-background border-r border-b border-primary/20"></div>
               </div>
             </div>
 
@@ -348,8 +348,8 @@ const HomePage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-gray-700 mt-20 py-8">
-        <div className="max-w-7xl mx-auto px-4 text-center text-gray-500">
+      <footer className="border-t border-primary/20 mt-20 py-8">
+        <div className="max-w-7xl mx-auto px-4 text-center text-text-muted">
           <p>{t('home.footer.copyright')}</p>
           <p className="text-xs mt-2 text-gray-600">{t('home.footer.version')}</p>
         </div>

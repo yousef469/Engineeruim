@@ -51,7 +51,7 @@ export default function SidebarMenu() {
       {/* Menu Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed top-4 left-4 z-40 p-3 bg-gray-800/90 backdrop-blur-sm border border-gray-700 rounded-xl hover:bg-gray-700 transition-all shadow-lg"
+        className="fixed top-4 left-4 z-40 p-3 bg-background-light/90 backdrop-blur-sm border border-primary/20 rounded-xl hover:bg-background-light transition-all shadow-lg"
         aria-label="Open menu"
       >
         <Menu className="w-6 h-6 text-white" />
@@ -67,24 +67,24 @@ export default function SidebarMenu() {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-r border-gray-700 z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full w-80 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 border-r border-primary/20 z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Header */}
-        <div className="p-6 border-b border-gray-700">
+        <div className="p-6 border-b border-primary/20">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-bold text-white">Menu</h2>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+              className="p-2 hover:bg-background-light rounded-lg transition-colors"
             >
-              <X className="w-6 h-6 text-gray-400" />
+              <X className="w-6 h-6 text-text-secondary" />
             </button>
           </div>
 
           {/* User Info */}
-          <div className="flex items-center gap-3 p-3 bg-gray-800/50 rounded-lg">
+          <div className="flex items-center gap-3 p-3 bg-background-light/50 rounded-lg">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
               <User className="w-6 h-6 text-white" />
             </div>
@@ -92,7 +92,7 @@ export default function SidebarMenu() {
               <p className="text-white font-semibold truncate">
                 {user.user_metadata?.full_name || user.email?.split('@')[0] || 'User'}
               </p>
-              <p className="text-gray-400 text-sm truncate">{user.email}</p>
+              <p className="text-text-secondary text-sm truncate">{user.email}</p>
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function SidebarMenu() {
             <button
               key={item.path}
               onClick={() => handleNavigation(item.path)}
-              className="w-full flex items-center gap-3 p-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all group"
+              className="w-full flex items-center gap-3 p-3 text-text hover:text-white hover:bg-background-light rounded-lg transition-all group"
             >
               <item.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
               <span className="font-medium">{item.label}</span>
@@ -112,13 +112,13 @@ export default function SidebarMenu() {
         </div>
 
         {/* Footer */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-700 bg-gray-900/50 backdrop-blur-sm">
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-primary/20 bg-background/50 backdrop-blur-sm">
           <button
             onClick={() => {
               navigate('/settings');
               setIsOpen(false);
             }}
-            className="w-full flex items-center gap-3 p-3 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all mb-2"
+            className="w-full flex items-center gap-3 p-3 text-text hover:text-white hover:bg-background-light rounded-lg transition-all mb-2"
           >
             <Settings className="w-5 h-5" />
             <span className="font-medium">Settings</span>

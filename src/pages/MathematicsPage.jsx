@@ -50,20 +50,20 @@ export default function MathematicsPage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
             {/* Header */}
-            <div className="border-b border-gray-700 bg-gray-900/50 backdrop-blur-sm">
+            <div className="border-b border-primary/20 bg-background/50 backdrop-blur-sm">
                 <div className="max-w-7xl mx-auto px-4 py-6">
                     <button
                         onClick={() => navigate('/learn/sections')}
-                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4"
+                        className="flex items-center gap-2 text-text-secondary hover:text-white transition-colors mb-4"
                     >
                         <ArrowLeft className="w-5 h-5" />
                         Back to Journey
                     </button>
                     <div className="flex items-center gap-4">
-                        <Calculator className="w-12 h-12 text-green-400" />
+                        <Calculator className="w-12 h-12 text-secondary" />
                         <div>
                             <h1 className="text-4xl font-bold">Mathematics</h1>
-                            <p className="text-gray-400">Choose your learning path</p>
+                            <p className="text-text-secondary">Choose your learning path</p>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ export default function MathematicsPage() {
                                 className={`group relative bg-gradient-to-br ${option.gradient} hover:${option.hoverGradient} rounded-3xl p-10 border-2 ${option.borderColor} ${option.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${option.shadowColor}`}
                             >
                                 {option.recommended && (
-                                    <div className="absolute -top-3 -right-3 bg-yellow-500 text-black px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+                                    <div className="absolute -top-3 -right-3 bg-accent text-black px-4 py-1 rounded-full text-sm font-bold shadow-lg">
                                         Recommended
                                     </div>
                                 )}
