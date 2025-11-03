@@ -11,7 +11,7 @@ export default function MathematicsLessonPage() {
   const [quizAnswers, setQuizAnswers] = useState({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
   
-  const lesson = mathematicsLessons[parseInt(lessonId)];
+  const lesson = mathematicsLessons.find(l => l.id === parseInt(lessonId));
   
   if (!lesson) {
     return (
