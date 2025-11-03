@@ -1,8 +1,8 @@
-// Unit 4: Linear Algebra Intro (Lessons 17-20) - FULLY ENHANCED
+// Unit 4: Linear Algebra Intro (Lessons 18-21) - FULLY ENHANCED
 export const unit4Lessons = [
-  // LESSON 17: Vectors & Matrices
+  // LESSON 18: Vectors & Matrices
   {
-    id: 17,
+    id: 18,
     title: 'Vectors & Matrices - Data Containers',
     unit: 'Linear Algebra Intro',
     unitNumber: 4,
@@ -297,9 +297,9 @@ YOUR MISSION:
     }
   },
 
-  // LESSON 18: Matrix Operations
+  // LESSON 19: Matrix Operations
   {
-    id: 18,
+    id: 19,
     title: 'Matrix Operations - Addition, Multiplication & Scaling',
     unit: 'Linear Algebra Intro',
     unitNumber: 4,
@@ -556,9 +556,9 @@ YOUR MISSION:
     }
   },
 
-  // LESSON 19: Solving Ax = b
+  // LESSON 20: Solving Ax = b
   {
-    id: 19,
+    id: 20,
     title: 'Solving Systems - The Matrix Way',
     unit: 'Linear Algebra Intro',
     unitNumber: 4,
@@ -817,9 +817,9 @@ YOUR MISSION:
     }
   },
 
-  // LESSON 20: Transformations
+  // LESSON 21: Transformations
   {
-    id: 20,
+    id: 21,
     title: 'Transformations - Moving & Rotating Objects',
     unit: 'Linear Algebra Intro',
     unitNumber: 4,

@@ -1,8 +1,8 @@
-// Unit 5: Basic Statistics & Data (Lessons 21-24) - FULLY ENHANCED
+// Unit 5: Statistics & Data (Lessons 22-27) - FULLY ENHANCED
 export const unit5Lessons = [
-  // LESSON 21: Data & Averages
+  // LESSON 22: Data & Averages
   {
-    id: 21,
+    id: 22,
     title: 'Data & Averages - Finding the Center',
     unit: 'Statistics & Data',
     unitNumber: 5,
@@ -272,9 +272,9 @@ YOUR MISSION:
     }
   },
 
-  // LESSON 22: Standard Deviation
+  // LESSON 23: Standard Deviation
   {
-    id: 22,
+    id: 23,
     title: 'Standard Deviation - Measuring Consistency',
     unit: 'Statistics & Data',
     unitNumber: 5,
@@ -550,9 +550,9 @@ YOUR MISSION:
     }
   },
 
-  // LESSON 23: Probability Basics
+  // LESSON 24: Probability Basics
   {
-    id: 23,
+    id: 24,
     title: 'Probability - Predicting Outcomes',
     unit: 'Statistics & Data',
     unitNumber: 5,
@@ -795,9 +795,9 @@ YOUR MISSION:
     }
   },
 
-  // LESSON 24: Error & Uncertainty
+  // LESSON 25: Error & Uncertainty
   {
-    id: 24,
+    id: 25,
     title: 'Error & Uncertainty - Dealing with Imperfection',
     unit: 'Statistics & Data',
     unitNumber: 5,
@@ -1072,9 +1072,9 @@ Small input errors multiply!`
     }
   },
 
-  // LESSON 25: Units, Dimensions & Conversions
+  // LESSON 26: Units, Dimensions & Conversions
   {
-    id: 25,
+    id: 26,
     title: 'Units, Dimensions & Conversions - Dimensional Consistency',
     unit: 'Statistics & Data',
     unitNumber: 5,
@@ -1422,9 +1422,9 @@ Output: ✓ [ML²T⁻²] = [M][LT⁻¹]²
     }
   },
 
-  // LESSON 26: Vector Math in Physical Systems
+  // LESSON 27: Vector Math in Physical Systems
   {
-    id: 26,
+    id: 27,
     title: 'Vector Math in Physical Systems - Motion Without Laws',
     unit: 'Statistics & Data',
     unitNumber: 5,

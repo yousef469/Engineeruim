@@ -1,8 +1,8 @@
-// Unit 2: Geometry & Trigonometry (Lessons 6-11)
+// Unit 2: Geometry & Trigonometry (Lessons 7-12)
 export const unit2Lessons = [
-  // LESSON 6: Basic Shapes & Angles
+  // LESSON 7: Basic Shapes & Angles
   {
-    id: 6,
+    id: 7,
     title: '2D Geometry (distance, area, angles)',
     unit: 'Geometry & Trigonometry',
     unitNumber: 2,
@@ -165,9 +165,9 @@ Your Turn: Design a gear system with 3:1 ratio!`
     }
   },
 
-  // LESSON 7: Coordinate Geometry - ENHANCED
+  // LESSON 8: Coordinate Geometry - ENHANCED
   {
-    id: 7,
+    id: 8,
     title: '3D Coordinate Geometry (x, y, z)',
     unit: 'Geometry & Trigonometry',
     unitNumber: 2,
@@ -400,9 +400,9 @@ Calculate total distance traveled!`
     }
   },
 
-  // LESSON 8: Triangle Trigonometry - ENHANCED
+  // LESSON 9: Triangle Trigonometry - ENHANCED
   {
-    id: 8,
+    id: 9,
     title: 'Triangles (sin, cos, tan)',
     unit: 'Geometry & Trigonometry',
     unitNumber: 2,
@@ -719,9 +719,9 @@ Calculate heights at 15-second intervals!`
   }
   ,
 
-  // LESSON 9: Vectors - ENHANCED
+  // LESSON 10: Vectors - ENHANCED
   {
-    id: 9,
+    id: 10,
     title: 'Vector Basics (direction & magnitude)',
     unit: 'Geometry & Trigonometry',
     unitNumber: 2,
@@ -990,9 +990,9 @@ Hint: Use 120° angles between them!`
     }
   },
 
-  // LESSON 10: Dot & Cross Product - ENHANCED
+  // LESSON 11: Dot & Cross Product - ENHANCED
   {
-    id: 10,
+    id: 11,
     title: 'Dot & Cross Product',
     unit: 'Geometry & Trigonometry',
     unitNumber: 2,
@@ -1225,9 +1225,9 @@ Design a 3-joint robot arm that can generate:
     }
   },
 
-  // LESSON 11: Rotations - ENHANCED
+  // LESSON 12: Rotations - ENHANCED
   {
-    id: 11,
+    id: 12,
     title: 'Transformations & Rotations',
     unit: 'Geometry & Trigonometry',
     unitNumber: 2,

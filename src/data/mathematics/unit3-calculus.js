@@ -1,8 +1,8 @@
-// Unit 3: Calculus Basics (Lessons 12-16) - FULLY ENHANCED
+// Unit 3: Calculus Basics (Lessons 13-17) - FULLY ENHANCED
 export const unit3Lessons = [
-  // LESSON 12: Derivative Concept
+  // LESSON 13: Derivative Concept
   {
-    id: 12,
+    id: 13,
     title: 'Derivatives - Understanding Rate of Change',
     unit: 'Calculus Basics',
     unitNumber: 3,
@@ -297,9 +297,9 @@ A ball is thrown with h(t) = 30t - 5t²
     }
   },
 
-  // LESSON 13: Velocity & Acceleration
+  // LESSON 14: Velocity & Acceleration
   {
-    id: 13,
+    id: 14,
     title: 'Velocity & Acceleration - Motion in Action',
     unit: 'Calculus Basics',
     unitNumber: 3,
@@ -548,9 +548,9 @@ Describe what's happening at each stage!`
     }
   },
 
-  // LESSON 14: Integration Concept
+  // LESSON 15: Integration Concept
   {
-    id: 14,
+    id: 15,
     title: 'Integration - Finding Total Change',
     unit: 'Calculus Basics',
     unitNumber: 3,
@@ -794,9 +794,9 @@ Starting from rest:
     }
   },
 
-  // LESSON 15: Basic Applications
+  // LESSON 16: Basic Applications
   {
-    id: 15,
+    id: 16,
     title: 'Calculus in Action - Energy, Motion & More',
     unit: 'Calculus Basics',
     unitNumber: 3,
@@ -974,9 +974,9 @@ Complete motion profile calculated!`
     }
   },
 
-  // LESSON 16: Graph Interpretation
+  // LESSON 17: Graph Interpretation
   {
-    id: 16,
+    id: 17,
     title: 'Reading Motion Graphs - The Visual Story',
     unit: 'Calculus Basics',
     unitNumber: 3,

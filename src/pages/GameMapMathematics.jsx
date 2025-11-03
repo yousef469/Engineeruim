@@ -6,10 +6,10 @@ export default function GameMapMathematics() {
   const navigate = useNavigate();
   const [completedLevels] = useState([0]);
 
-  // Generate all 37 lessons across 6 units
+  // Generate all 27 lessons across 5 units
   const generateLevels = () => {
     const levels = [];
-    let levelId = 0;
+    let levelId = 1; // Start from 1 instead of 0
 
     const units = [
       { 
@@ -66,28 +66,16 @@ export default function GameMapMathematics() {
         level: 'Intermediate'
       },
       { 
-        name: 'Basic Statistics & Data', 
+        name: 'Statistics & Data', 
         emoji: '🟡', 
         color: 'from-yellow-400 to-amber-500', 
         lessons: [
-          'Data, Averages & Standard Deviation',
-          'Basic Probability',
-          'Error & Uncertainty in Measurements',
-          'Plotting & Interpreting Data'
-        ],
-        level: 'Intermediate'
-      },
-      { 
-        name: 'Core Physics', 
-        emoji: '🔴', 
-        color: 'from-red-400 to-rose-500', 
-        lessons: [
+          'Data & Averages',
+          'Standard Deviation',
+          'Probability Basics',
+          'Error & Uncertainty',
           'Units, Dimensions & Conversions',
-          'Motion: Displacement, Velocity, Acceleration',
-          'Newton\'s Laws of Motion',
-          'Work, Energy & Power',
-          'Momentum & Collisions',
-          'Circular Motion & Gravity'
+          'Vector Math in Physical Systems'
         ],
         level: 'Intermediate'
       }
@@ -123,7 +111,7 @@ export default function GameMapMathematics() {
 
   // Organize lessons by units
   const units = [];
-  const lessonCounts = [6, 6, 5, 4, 4, 6]; // Lessons per unit
+  const lessonCounts = [6, 6, 5, 4, 6]; // Lessons per unit (removed physics unit)
   let currentIndex = 0;
   
   lessonCounts.forEach((count, i) => {
@@ -162,7 +150,7 @@ export default function GameMapMathematics() {
               <Calculator className="w-8 h-8 text-green-400" />
               <div>
                 <h1 className="text-xl font-bold">Mathematics for Engineering</h1>
-                <p className="text-sm text-green-200">37 Lessons • Master the language of engineering</p>
+                <p className="text-sm text-green-200">27 Lessons • Master the language of engineering</p>
               </div>
             </div>
             <div className="flex items-center gap-4">

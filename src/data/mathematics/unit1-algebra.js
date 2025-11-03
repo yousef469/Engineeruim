@@ -1,8 +1,8 @@
-// Unit 1: Algebra & Equations (Lessons 0-5)
+// Unit 1: Algebra & Equations (Lessons 1-6)
 export const unit1Lessons = [
-  // LESSON 0: Variables, Units & Symbols
+  // LESSON 1: Variables, Units & Symbols
   {
-    id: 0,
+    id: 1,
     title: 'Variables, Units & Symbols',
     unit: 'Algebra & Equations',
     unitNumber: 1,
@@ -145,9 +145,9 @@ Your Turn - Solve These:
     }
   },
 
-  // LESSON 1: Linear Equations
+  // LESSON 2: Linear Equations
   {
-    id: 1,
+    id: 2,
     title: 'Linear Equations',
     unit: 'Algebra & Equations',
     unitNumber: 1,
@@ -294,9 +294,9 @@ Challenge: Create your own engineering equation and solve it!`
     }
   },
 
-  // LESSON 2: Quadratic Equations
+  // LESSON 3: Quadratic Equations
   {
-    id: 2,
+    id: 3,
     title: 'Quadratic Equations',
     unit: 'Algebra & Equations',
     unitNumber: 1,
@@ -450,9 +450,9 @@ What initial velocity is needed?`
     }
   },
 
-  // LESSON 3: Systems of Equations
+  // LESSON 4: Systems of Equations
   {
-    id: 3,
+    id: 4,
     title: 'Systems of Equations (2-3 unknowns)',
     unit: 'Algebra & Equations',
     unitNumber: 1,
@@ -620,9 +620,9 @@ Can you solve this 3-equation system?
     }
   },
 
-  // LESSON 4: Exponents & Powers
+  // LESSON 5: Exponents & Powers
   {
-    id: 4,
+    id: 5,
     title: 'Exponents, Powers & Roots',
     unit: 'Algebra & Equations',
     unitNumber: 1,
@@ -776,9 +776,9 @@ Real Engineering:
     }
   },
 
-  // LESSON 5: Logarithms
+  // LESSON 6: Logarithms
   {
-    id: 5,
+    id: 6,
     title: 'Logarithms (sensors, sound, drag)',
     unit: 'Algebra & Equations',
     unitNumber: 1,
