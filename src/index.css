@@ -3,30 +3,30 @@
 @tailwind utilities;
 
 :root {
-  /* Primary Colors - Bright Blue */
-  --color-primary: #007BFF;
-  --color-primary-light: #3395FF;
-  --color-primary-dark: #0056B3;
+  /* Primary Colors - Electric Cyan */
+  --color-primary: #00D9FF;
+  --color-primary-light: #5FFFFF;
+  --color-primary-dark: #00A8CC;
   
-  /* Secondary Colors - Green-Teal */
-  --color-secondary: #00C68E;
-  --color-secondary-light: #00E5A0;
-  --color-secondary-dark: #00A076;
+  /* Secondary Colors - Neon Green */
+  --color-secondary: #00FF88;
+  --color-secondary-light: #66FFAA;
+  --color-secondary-dark: #00CC6A;
   
-  /* Background Colors - Dark Navy */
-  --color-background: #0C1220;
-  --color-background-light: #151D2E;
-  --color-background-dark: #070B14;
+  /* Background Colors - Deep Space Blue */
+  --color-background: #0A0E27;
+  --color-background-light: #1A1F3A;
+  --color-background-dark: #050711;
   
-  /* Accent Colors - Gold */
-  --color-accent: #FFD166;
-  --color-accent-light: #FFE099;
-  --color-accent-dark: #E6B84D;
+  /* Accent Colors - Bold Orange */
+  --color-accent: #FF6B35;
+  --color-accent-light: #FF8C61;
+  --color-accent-dark: #E5501A;
   
   /* Text Colors */
-  --color-text: #EAF2F8;
-  --color-text-secondary: #B8C5D0;
-  --color-text-muted: #8A96A3;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #B8E0FF;
+  --color-text-muted: #7A9FBF;
 }
 
 * {
@@ -42,8 +42,22 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background-color: var(--color-background);
+  background: linear-gradient(135deg, #0A0E27 0%, #050711 50%, #0A0E27 100%);
+  background-attachment: fixed;
   color: var(--color-text);
+}
+
+/* Glow effects for interactive elements */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.glow-accent {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
 }
 
 #root {

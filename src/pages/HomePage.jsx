@@ -138,7 +138,7 @@ const HomePage = () => {
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-pulse">
             {t('home.hero.title')}
           </h2>
           <p className="text-xl text-text max-w-2xl mx-auto mb-6">
@@ -146,7 +146,7 @@ const HomePage = () => {
           </p>
           
           {/* New Features Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 rounded-full animate-pulse">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/20 border-2 border-secondary rounded-full animate-pulse glow-secondary">
             <Sparkles className="w-4 h-4 text-secondary" />
             <span className="text-sm font-semibold text-secondary">
               {t('home.hero.new')}
@@ -156,12 +156,12 @@ const HomePage = () => {
 
         {/* CTA for non-authenticated users */}
         {!user && (
-          <div className="mb-12 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold mb-3">{t('home.hero.readyToExplore')}</h3>
+          <div className="mb-12 bg-primary/10 border-2 border-primary rounded-2xl p-8 text-center glow-primary">
+            <h3 className="text-2xl font-bold mb-3 text-primary">{t('home.hero.readyToExplore')}</h3>
             <p className="text-text mb-6">{t('home.hero.signUpNow')}</p>
             <button
               onClick={() => navigate('/auth')}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg transition-all font-semibold text-lg"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-primary hover:bg-primary-light text-background rounded-lg transition-all font-semibold text-lg glow-primary"
             >
               <UserPlus className="w-5 h-5" />
               <span>{t('home.hero.getStarted')}</span>
@@ -174,9 +174,9 @@ const HomePage = () => {
           {/* 3D Models Viewer */}
           <button
             onClick={() => user ? navigate('/viewer') : navigate('/auth')}
-            className="group relative bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-2xl p-8 border-2 border-cyan-400/50 hover:border-cyan-300 transition-all cursor-pointer hover:scale-105 hover:shadow-xl shadow-cyan-500/30"
+            className="group relative bg-gradient-to-br from-primary to-primary-dark hover:from-primary-light hover:to-primary rounded-2xl p-8 border-2 border-primary hover:border-primary-light transition-all cursor-pointer hover:scale-105 glow-primary"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
             
             <div className="relative z-10">
               <div className="flex justify-center gap-4 mb-6">
@@ -206,9 +206,9 @@ const HomePage = () => {
           {/* Learn Mechanics - Single Button */}
           <button
             onClick={() => user ? navigate('/learn') : navigate('/auth')}
-            className="group relative bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-2xl p-8 border-2 border-cyan-400/50 hover:border-cyan-300 transition-all cursor-pointer hover:scale-105 hover:shadow-xl shadow-cyan-500/30"
+            className="group relative bg-gradient-to-br from-secondary to-secondary-dark hover:from-secondary-light hover:to-secondary rounded-2xl p-8 border-2 border-secondary hover:border-secondary-light transition-all cursor-pointer hover:scale-105 glow-secondary"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
             
             <div className="relative z-10">
               <div className="flex items-center justify-center gap-4 mb-6">

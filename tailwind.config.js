@@ -8,29 +8,29 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#007BFF',
-          light: '#3395FF',
-          dark: '#0056B3',
+          DEFAULT: '#00D9FF',  // Bright electric cyan
+          light: '#5FFFFF',
+          dark: '#00A8CC',
         },
         secondary: {
-          DEFAULT: '#00C68E',
-          light: '#00E5A0',
-          dark: '#00A076',
+          DEFAULT: '#00FF88',  // Vibrant neon green
+          light: '#66FFAA',
+          dark: '#00CC6A',
         },
         background: {
-          DEFAULT: '#0C1220',
-          light: '#151D2E',
-          dark: '#070B14',
+          DEFAULT: '#0A0E27',  // Deep space blue
+          light: '#1A1F3A',
+          dark: '#050711',
         },
         accent: {
-          DEFAULT: '#FFD166',
-          light: '#FFE099',
-          dark: '#E6B84D',
+          DEFAULT: '#FF6B35',  // Bold orange-red
+          light: '#FF8C61',
+          dark: '#E5501A',
         },
         text: {
-          DEFAULT: '#EAF2F8',
-          secondary: '#B8C5D0',
-          muted: '#8A96A3',
+          DEFAULT: '#FFFFFF',
+          secondary: '#B8E0FF',
+          muted: '#7A9FBF',
         }
       },
       animation: {
