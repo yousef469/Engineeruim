@@ -19,19 +19,6 @@ export default function LearnSectionsPage() {
             shadowColor: 'shadow-green-500/30',
             path: '/learn/mathphysics/engineering',
             recommended: true
-        },
-        {
-            id: 'advanced',
-            icon: GraduationCap,
-            title: 'Advanced Mathematics and Physics',
-            description: 'Deep dive into advanced concepts and theoretical foundations',
-            gradient: 'from-purple-500 to-indigo-600',
-            hoverGradient: 'from-purple-600 to-indigo-700',
-            borderColor: 'border-purple-400/50',
-            hoverBorderColor: 'hover:border-purple-300',
-            shadowColor: 'shadow-purple-500/30',
-            path: '/learn/mathphysics/advanced',
-            recommended: false
         }
     ];
 

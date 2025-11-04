@@ -1106,11 +1106,8 @@ import CollaboratePage from './pages/CollaboratePage';
 import PhysicsPage from './pages/PhysicsPage';
 import MathematicsPage from './pages/MathematicsPage';
 import MathematicsEngineeringPage from './pages/MathematicsEngineeringPage';
-import MathematicsAdvancedPage from './pages/MathematicsAdvancedPage';
 import PhysicsEngineeringPage from './pages/PhysicsEngineeringPage';
-import PhysicsAdvancedPage from './pages/PhysicsAdvancedPage';
 import MathPhysicsEngineeringPage from './pages/MathPhysicsEngineeringPage';
-import MathPhysicsAdvancedPage from './pages/MathPhysicsAdvancedPage';
 import ElectronicsPage from './pages/ElectronicsPage';
 import BooksPage from './pages/BooksPage';
 import Leaderboard from './components/Leaderboard';
@@ -1154,13 +1151,10 @@ export default function App() {
           <Route path="/mechanics/cars" element={<ProtectedRoute><CarMechanicsPage /></ProtectedRoute>} />
           <Route path="/mechanics/planes" element={<ProtectedRoute><PlaneMechanicsPage /></ProtectedRoute>} />
           <Route path="/learn/mathphysics/engineering" element={<ProtectedRoute><MathPhysicsEngineeringPage /></ProtectedRoute>} />
-          <Route path="/learn/mathphysics/advanced" element={<ProtectedRoute><MathPhysicsAdvancedPage /></ProtectedRoute>} />
           <Route path="/learn/mathematics/engineering" element={<ProtectedRoute><MathematicsEngineeringPage /></ProtectedRoute>} />
           <Route path="/learn/mathematics/engineering/map" element={<ProtectedRoute><GameMapMathematics /></ProtectedRoute>} />
           <Route path="/learn/mathematics/engineering/lesson/:lessonId" element={<ProtectedRoute><MathematicsLessonPage /></ProtectedRoute>} />
-          <Route path="/learn/mathematics/advanced" element={<ProtectedRoute><MathematicsAdvancedPage /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering" element={<ProtectedRoute><PhysicsEngineeringPage /></ProtectedRoute>} />
-          <Route path="/learn/physics/advanced" element={<ProtectedRoute><PhysicsAdvancedPage /></ProtectedRoute>} />
           <Route path="/learn/electronics" element={<ProtectedRoute><ElectronicsPage /></ProtectedRoute>} />
           <Route path="/learn/books" element={<ProtectedRoute><BooksPage /></ProtectedRoute>} />
           <Route path="/compare" element={<ComparePage />} />
