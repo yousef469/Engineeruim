@@ -42,22 +42,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background: linear-gradient(135deg, #0A0E27 0%, #050711 50%, #0A0E27 100%);
-  background-attachment: fixed;
+  background-color: var(--color-background);
   color: var(--color-text);
 }
 
-/* Glow effects for interactive elements */
-.glow-primary {
-  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
-}
-
-.glow-secondary {
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-}
-
-.glow-accent {
-  box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+/* Glow effect for hero title only */
+.hero-title-glow {
+  filter: drop-shadow(0 0 30px rgba(0, 217, 255, 0.6)) 
+          drop-shadow(0 0 60px rgba(0, 255, 136, 0.4));
 }
 
 #root {
