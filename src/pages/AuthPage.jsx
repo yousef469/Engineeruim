@@ -34,7 +34,7 @@ export default function AuthPage() {
         }
         await signUp(email, password, fullName);
       }
-      navigate('/viewer');
+      navigate('/');
     } catch (err) {
       setError(err.message || t('auth.errors.general'));
     } finally {
