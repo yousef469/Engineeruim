@@ -1,22 +1,10 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Rocket, Plane, Car, Sparkles, LogIn, UserPlus, Globe, User, ChevronDown, Users as UsersIcon, Upload, Brain, Calculator } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
 import LanguageSelector from '../components/LanguageSelector';
 import SidebarMenu from '../components/SidebarMenu';
-
-// Lightweight 3D Model Component
-const RocketModel = () => {
-  return (
-    <mesh rotation={[0, 0, 0]}>
-      <coneGeometry args={[1, 3, 8]} />
-      <meshStandardMaterial color="#00D9FF" metalness={0.8} roughness={0.2} />
-    </mesh>
-  );
-};
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -236,16 +224,12 @@ const HomePage = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="h-96 bg-background rounded-2xl border-2 border-primary/30 overflow-hidden">
-                  <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-                    <ambientLight intensity={0.5} />
-                    <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-                    <pointLight position={[-10, -10, -10]} />
-                    <Suspense fallback={null}>
-                      <RocketModel />
-                    </Suspense>
-                    <OrbitControls autoRotate autoRotateSpeed={4} enableZoom={false} />
-                  </Canvas>
+                <div className="h-96 bg-background rounded-2xl border-2 border-primary/30 overflow-hidden flex items-center justify-center relative">
+                  <div className="text-center relative">
+                    <Rocket className="w-40 h-40 text-primary mx-auto mb-4 animate-float" />
+                    <div className="absolute inset-0 bg-primary/20 blur-3xl animate-pulse"></div>
+                    <p className="text-text-secondary relative z-10">Aerospace Engineering</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -255,10 +239,11 @@ const HomePage = () => {
           <section className="py-20">
             <div className="max-w-7xl mx-auto px-4">
               <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="h-96 bg-background-light rounded-2xl border-2 border-secondary/30 overflow-hidden flex items-center justify-center">
-                  <div className="text-center">
-                    <Car className="w-32 h-32 text-secondary mx-auto mb-4 animate-bounce" />
-                    <p className="text-text-secondary">Animated Car Model</p>
+                <div className="h-96 bg-background-light rounded-2xl border-2 border-secondary/30 overflow-hidden flex items-center justify-center relative">
+                  <div className="text-center relative">
+                    <Car className="w-40 h-40 text-secondary mx-auto mb-4 animate-float" />
+                    <div className="absolute inset-0 bg-secondary/20 blur-3xl animate-pulse"></div>
+                    <p className="text-text-secondary relative z-10">Interactive Car Engineering</p>
                   </div>
                 </div>
                 <div>
@@ -323,10 +308,11 @@ const HomePage = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="h-96 bg-background rounded-2xl border-2 border-primary/30 overflow-hidden flex items-center justify-center">
-                  <div className="text-center">
-                    <Plane className="w-32 h-32 text-primary mx-auto mb-4 animate-pulse" />
-                    <p className="text-text-secondary">Animated Plane Model</p>
+                <div className="h-96 bg-background rounded-2xl border-2 border-primary/30 overflow-hidden flex items-center justify-center relative">
+                  <div className="text-center relative">
+                    <Plane className="w-40 h-40 text-primary mx-auto mb-4 animate-float" style={{ animationDelay: '0.5s' }} />
+                    <div className="absolute inset-0 bg-primary/20 blur-3xl animate-pulse"></div>
+                    <p className="text-text-secondary relative z-10">Aviation Mechanics</p>
                   </div>
                 </div>
               </div>
@@ -337,10 +323,11 @@ const HomePage = () => {
           <section className="py-20">
             <div className="max-w-7xl mx-auto px-4">
               <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="h-96 bg-background-light rounded-2xl border-2 border-accent/30 overflow-hidden flex items-center justify-center">
-                  <div className="text-center">
-                    <Brain className="w-32 h-32 text-accent mx-auto mb-4 animate-spin" style={{ animationDuration: '3s' }} />
-                    <p className="text-text-secondary">Robotics System</p>
+                <div className="h-96 bg-background-light rounded-2xl border-2 border-accent/30 overflow-hidden flex items-center justify-center relative">
+                  <div className="text-center relative">
+                    <Brain className="w-40 h-40 text-accent mx-auto mb-4 animate-spin-slow" />
+                    <div className="absolute inset-0 bg-accent/20 blur-3xl animate-pulse"></div>
+                    <p className="text-text-secondary relative z-10">Robotics & AI</p>
                   </div>
                 </div>
                 <div>
