@@ -22,6 +22,7 @@ import GameMapRockets from './pages/GameMapRockets';
 import GameMapCars from './pages/GameMapCars';
 import GameMapPlanes from './pages/GameMapPlanes';
 import GameMapMathematics from './pages/GameMapMathematics';
+import GameMapPhysics from './pages/GameMapPhysics';
 import LessonsDemoPage from './pages/LessonsDemoPage';
 import RocketLessonPage from './pages/RocketLessonPage';
 import RocketLessonPageNew from './pages/RocketLessonPageNew';
@@ -1155,6 +1156,7 @@ export default function App() {
           <Route path="/learn/mathematics/engineering/map" element={<ProtectedRoute><GameMapMathematics /></ProtectedRoute>} />
           <Route path="/learn/mathematics/engineering/lesson/:lessonId" element={<ProtectedRoute><MathematicsLessonPage /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering" element={<ProtectedRoute><PhysicsEngineeringPage /></ProtectedRoute>} />
+          <Route path="/learn/physics/engineering/map" element={<ProtectedRoute><GameMapPhysics /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering/lesson/:lessonId" element={<ProtectedRoute><MathematicsLessonPage /></ProtectedRoute>} />
           <Route path="/learn/electronics" element={<ProtectedRoute><ElectronicsPage /></ProtectedRoute>} />
           <Route path="/learn/books" element={<ProtectedRoute><BooksPage /></ProtectedRoute>} />
