@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calculator, Star, Lock, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Zap, Star, Lock, CheckCircle } from 'lucide-react';
 
-export default function GameMapMathematics() {
+export default function GameMapPhysics() {
   const navigate = useNavigate();
   const [completedLevels] = useState([0]);
 
@@ -13,9 +13,9 @@ export default function GameMapMathematics() {
 
     const units = [
       { 
-        name: 'Algebra & Equations', 
+        name: 'Mechanics & Motion', 
         emoji: '🟢', 
-        color: 'from-green-400 to-emerald-500', 
+        color: 'from-blue-400 to-indigo-500', 
         lessons: [
           'Variables, Constants & Units',
           'Linear & Quadratic Equations',
@@ -27,7 +27,7 @@ export default function GameMapMathematics() {
         level: 'Beginner'
       },
       { 
-        name: 'Geometry & Trigonometry', 
+        name: 'Work, Energy & Power', 
         emoji: '🟣', 
         color: 'from-purple-400 to-pink-500', 
         lessons: [
@@ -41,7 +41,7 @@ export default function GameMapMathematics() {
         level: 'Beginner'
       },
       { 
-        name: 'Calculus (Basic Derivatives & Integrals)', 
+        name: 'Fluids & Pressure', 
         emoji: '🔵', 
         color: 'from-blue-400 to-cyan-500', 
         lessons: [
@@ -54,7 +54,7 @@ export default function GameMapMathematics() {
         level: 'Intermediate'
       },
       { 
-        name: 'Linear Algebra (Intro Level)', 
+        name: 'Thermodynamics', 
         emoji: '🟠', 
         color: 'from-orange-400 to-red-500', 
         lessons: [
@@ -66,7 +66,7 @@ export default function GameMapMathematics() {
         level: 'Intermediate'
       },
       { 
-        name: 'Statistics & Data', 
+        name: 'Waves, Electricity & Magnetism', 
         emoji: '🟡', 
         color: 'from-yellow-400 to-amber-500', 
         lessons: [
@@ -123,7 +123,7 @@ export default function GameMapMathematics() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-950 via-emerald-950 to-black text-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-indigo-950 to-black text-white">
       {/* Mathematical Grid Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-10">
         <svg width="100%" height="100%">
@@ -137,7 +137,7 @@ export default function GameMapMathematics() {
       </div>
 
       {/* Header */}
-      <div className="relative z-50 border-b border-green-700 bg-green-900/90 backdrop-blur-md sticky top-0 shadow-lg">
+      <div className="relative z-50 border-b border-blue-700 bg-blue-900/90 backdrop-blur-md sticky top-0 shadow-lg">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -147,10 +147,10 @@ export default function GameMapMathematics() {
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
-              <Calculator className="w-8 h-8 text-secondary" />
+              <Zap className="w-8 h-8 text-secondary" />
               <div>
-                <h1 className="text-xl font-bold">Mathematics for Engineering</h1>
-                <p className="text-sm text-green-200">27 Lessons • Master the language of engineering</p>
+                <h1 className="text-xl font-bold">Physics for Engineering</h1>
+                <p className="text-sm text-blue-200">27 Lessons • Master the language of engineering</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -172,7 +172,7 @@ export default function GameMapMathematics() {
             // Show level header at start of each difficulty level
             const showLevelHeader = unitIndex === 0 || unitIndex === 2;
             const levelInfo = {
-              0: { name: 'BEGINNER', subtitle: 'Foundation — the language of engineering', color: 'from-green-500 to-emerald-600', icon: '🟢' },
+              0: { name: 'BEGINNER', subtitle: 'Foundation — the language of engineering', color: 'from-blue-500 to-indigo-600', icon: '🟢' },
               2: { name: 'INTERMEDIATE', subtitle: 'Advanced tools for real engineering', color: 'from-blue-500 to-cyan-600', icon: '🔵' }
             };
             
@@ -191,7 +191,7 @@ export default function GameMapMathematics() {
                 
                 {/* Unit Header */}
                 <div className="mb-20 text-center">
-                  <div className="inline-block px-8 py-3 rounded-2xl border-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-green-400">
+                  <div className="inline-block px-8 py-3 rounded-2xl border-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 border-blue-400">
                     <div className="font-bold text-2xl mb-1">{unit.lessons[0].unit}</div>
                     <div className="text-sm opacity-80">
                       {unit.lessons[0].level} • Unit {unitIndex + 1} • {unit.lessons.length} Lessons
@@ -210,7 +210,7 @@ export default function GameMapMathematics() {
                       <div key={level.id} className="relative flex flex-col items-center">
                         {isCurrent && (
                           <div className="absolute -top-16 left-1/2 -translate-x-1/2 animate-bounce z-10">
-                            <Calculator 
+                            <Zap 
                               className="w-10 h-10 text-white drop-shadow-lg" 
                               style={{ 
                                 filter: 'drop-shadow(0 0 10px rgba(34, 197, 94, 0.8))'
@@ -225,15 +225,15 @@ export default function GameMapMathematics() {
                           className="group relative"
                         >
                           {isCurrent && (
-                            <div className="absolute inset-0 bg-green-400 rounded-full blur-xl opacity-50 animate-pulse" />
+                            <div className="absolute inset-0 bg-blue-400 rounded-full blur-xl opacity-50 animate-pulse" />
                           )}
 
                           <div
                             className={`relative w-20 h-20 rounded-full border-4 flex items-center justify-center transition-all ${
                               completed
-                                ? 'bg-gradient-to-br from-green-400 to-emerald-500 border-green-300 shadow-lg shadow-green-500/50'
+                                ? 'bg-gradient-to-br from-blue-400 to-indigo-500 border-blue-300 shadow-lg shadow-blue-500/50'
                                 : unlocked
-                                ? `bg-gradient-to-br ${level.color} border-white shadow-lg shadow-green-500/50 hover:scale-110`
+                                ? `bg-gradient-to-br ${level.color} border-white shadow-lg shadow-blue-500/50 hover:scale-110`
                                 : 'bg-background-light border-primary/30'
                             }`}
                           >
@@ -251,7 +251,7 @@ export default function GameMapMathematics() {
                           <div className={`font-bold text-sm mb-1 ${unlocked ? 'text-white' : 'text-text-muted'}`}>
                             {level.lesson}
                           </div>
-                          <div className={`text-xs leading-tight ${unlocked ? 'text-green-200' : 'text-gray-600'}`}>
+                          <div className={`text-xs leading-tight ${unlocked ? 'text-blue-200' : 'text-gray-600'}`}>
                             {level.lessonName}
                           </div>
                         </div>
@@ -284,3 +284,5 @@ export default function GameMapMathematics() {
     </div>
   );
 }
+
+
