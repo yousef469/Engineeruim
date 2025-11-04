@@ -8,16 +8,29 @@ export default function LearnSectionsPage() {
 
     const prerequisiteSections = [
         {
-            id: 'engineering',
+            id: 'physics',
             icon: Rocket,
-            title: 'Mathematics and Physics for Engineering',
-            description: 'Essential foundation for Rockets, Robotics, Automotive, and Planes',
+            title: 'Physics for Engineering',
+            description: 'Core physics principles: Mechanics, Energy, Fluids, Thermodynamics, Waves & Materials',
+            gradient: 'from-blue-500 to-cyan-600',
+            hoverGradient: 'from-blue-600 to-cyan-700',
+            borderColor: 'border-blue-400/50',
+            hoverBorderColor: 'hover:border-blue-300',
+            shadowColor: 'shadow-blue-500/30',
+            path: '/learn/physics/engineering',
+            recommended: true
+        },
+        {
+            id: 'mathematics',
+            icon: Rocket,
+            title: 'Mathematics for Engineering',
+            description: 'Essential math foundation: Algebra, Calculus, Geometry, Linear Algebra & Statistics',
             gradient: 'from-green-500 to-emerald-600',
             hoverGradient: 'from-green-600 to-emerald-700',
             borderColor: 'border-green-400/50',
             hoverBorderColor: 'hover:border-green-300',
             shadowColor: 'shadow-green-500/30',
-            path: '/learn/mathphysics/engineering',
+            path: '/learn/mathematics/engineering',
             recommended: true
         }
     ];
@@ -60,14 +73,14 @@ export default function LearnSectionsPage() {
             {/* Available Sections */}
             <div className="max-w-6xl mx-auto px-4 pb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Start Here</h2>
-                <div className="flex justify-center">
+                <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {prerequisiteSections.map((section) => {
                         const Icon = section.icon;
                         return (
                             <button
                                 key={section.id}
                                 onClick={() => navigate(section.path)}
-                                className={`group relative bg-gradient-to-br ${section.gradient} hover:${section.hoverGradient} rounded-3xl p-10 border-2 ${section.borderColor} ${section.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${section.shadowColor} max-w-2xl w-full`}
+                                className={`group relative bg-gradient-to-br ${section.gradient} hover:${section.hoverGradient} rounded-3xl p-10 border-2 ${section.borderColor} ${section.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${section.shadowColor}`}
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity" />
 
