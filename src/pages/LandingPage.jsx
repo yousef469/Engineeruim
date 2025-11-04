@@ -102,89 +102,8 @@ const HomePage = () => {
         </div>
       </header>
 
-      {/* LOGGED IN VIEW - Show interactive sections */}
-      {user ? (
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          {/* Hero Section */}
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent hero-title-glow">
-              Explore Engineering
-            </h2>
-            <p className="text-xl text-text max-w-2xl mx-auto mb-6">
-              Interactive 3D models, lessons, and simulations
-            </p>
-          </div>
-
-          {/* Main Sections Grid */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {/* 3D Models Viewer */}
-            <button
-              onClick={() => navigate('/viewer')}
-              className="group relative bg-gradient-to-br from-primary to-primary-dark hover:from-primary-light hover:to-primary rounded-2xl p-8 border-2 border-primary hover:border-primary-light transition-all cursor-pointer hover:scale-105"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
-              
-              <div className="relative z-10">
-                <div className="flex justify-center gap-4 mb-6">
-                  <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Rocket className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform delay-75">
-                    <Plane className="w-7 h-7 text-white" />
-                  </div>
-                  <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform delay-150">
-                    <Car className="w-7 h-7 text-white" />
-                  </div>
-                </div>
-                
-                <h3 className="text-2xl font-bold mb-3 text-white text-center">3D Model Viewer</h3>
-                <p className="text-white/90 text-center mb-4">
-                  Explore interactive 3D models of rockets, planes, and cars
-                </p>
-                
-                <div className="flex items-center justify-center text-white font-semibold group-hover:gap-3 gap-2 transition-all">
-                  <span>Explore Models</span>
-                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-              </div>
-            </button>
-
-            {/* Learn Mechanics */}
-            <button
-              onClick={() => navigate('/learn')}
-              className="group relative bg-gradient-to-br from-secondary to-secondary-dark hover:from-secondary-light hover:to-secondary rounded-2xl p-8 border-2 border-secondary hover:border-secondary-light transition-all cursor-pointer hover:scale-105"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
-              
-              <div className="relative z-10">
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Rocket className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Plane className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Car className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                
-                <h3 className="text-2xl font-bold mb-3 text-white text-center">Learn Mechanics</h3>
-                <p className="text-white/90 text-center text-sm mb-4">
-                  Choose from Rockets, Planes, or Cars to start learning
-                </p>
-                
-                <div className="flex items-center justify-center text-white font-semibold group-hover:gap-3 gap-2 transition-all">
-                  <span>Start Learning</span>
-                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
-      ) : (
-        /* LANDING PAGE FOR NON-LOGGED IN USERS */
-        <div className="w-full">
+      {/* LANDING PAGE */}
+      <div className="w-full">
           {/* Hero Section */}
           <section className="max-w-7xl mx-auto px-4 py-20 text-center">
             <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent hero-title-glow">
@@ -433,12 +352,6 @@ const HomePage = () => {
             </div>
           </section>
         </div>
-      )}
-
-      {/* Language Selector Modal */}
-      {showLangModal && (
-        <LanguageSelector onClose={() => setShowLangModal(false)} />
-      )}
     </div>
   );
 };
