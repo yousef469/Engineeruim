@@ -1,14 +1,110 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Rocket, Plane, Car, Sparkles, ArrowLeftRight, Users as UsersIcon, Lock } from 'lucide-react';
+import { Rocket, Plane, Car, Sparkles, ArrowLeftRight, Users as UsersIcon, Lock, LogIn, UserPlus, Globe, User, ChevronDown, Upload } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../contexts/AuthContext';
+import ModelComparison from '../components/ModelComparison';
+import LanguageSelector from '../components/LanguageSelector';
+import MixpanelTest from '../components/MixpanelTest';
+import SidebarMenu from '../components/SidebarMenu';
 
 const HomePageLoggedIn = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { user, signOut, showLanguageSelector, setShowLanguageSelector } = useAuth();
+  const [showComparison, setShowComparison] = useState(false);
+  const [showLangModal, setShowLangModal] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  useEffect(() => {
+    if (showLanguageSelector) {
+      setShowLangModal(true);
+    }
+  }, [showLanguageSelector]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+      <SidebarMenu />
+      
+      <header className="border-b border-primary/20 bg-background/50 backdrop-blur">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-8">
+              <div className="flex items-center gap-3">
+                <Sparkles className="w-8 h-8 text-primary" />
+                <div>
+                  <h1 className="text-3xl font-bold">{t('app.title')}</h1>
+                  <p className="text-text-secondary text-sm mt-1">{t('app.subtitle')}</p>
+                </div>
+              </div>
+              
+              <nav className="hidden md:flex items-center gap-6">
+                <button onClick={() => navigate('/ai-generator')} className="text-white hover:text-primary transition-colors font-medium">AI 3D</button>
+                <button onClick={() => navigate('/pricing')} className="text-white hover:text-primary transition-colors font-medium">Pricing</button>
+              </nav>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <button onClick={() => setShowLangModal(true)} className="flex items-center gap-2 px-4 py-2 bg-background-light hover:bg-background-light rounded-lg transition-colors text-sm font-medium">
+                <Globe className="w-4 h-4" />
+                <span className="hidden sm:inline">{t('nav.language')}</span>
+              </button>
+
+              {user ? (
+                <div className="relative">
+                  <button onClick={() => setShowProfileMenu(!showProfileMenu)} className="flex items-center gap-2 px-4 py-2 bg-background-light hover:bg-background-light rounded-lg transition-colors text-sm font-medium">
+                    <User className="w-4 h-4" />
+                    <span className="hidden sm:inline">{user.email?.split('@')[0]}</span>
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+                  
+                  {showProfileMenu && (
+                    <div className="absolute right-0 mt-2 w-56 bg-background-light border border-primary/20 rounded-lg shadow-xl z-50">
+                      <div className="p-3 border-b border-primary/20">
+                        <p className="text-xs text-text-secondary">Signed in as</p>
+                        <p className="text-sm text-white truncate">{user.email}</p>
+                      </div>
+                      <div className="py-2">
+                        <button onClick={() => { navigate('/dashboard'); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-background-light transition-colors text-left">
+                          <User className="w-4 h-4 text-primary" />
+                          <span className="text-sm">Dashboard</span>
+                        </button>
+                        <button onClick={() => { navigate('/upload'); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-background-light transition-colors text-left">
+                          <Upload className="w-4 h-4 text-secondary" />
+                          <span className="text-sm">Upload Model</span>
+                        </button>
+                        <button onClick={() => { navigate('/collaborate'); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-background-light transition-colors text-left">
+                          <UsersIcon className="w-4 h-4 text-accent" />
+                          <span className="text-sm">Collaborate</span>
+                        </button>
+                      </div>
+                      <div className="border-t border-primary/20 py-2">
+                        <button onClick={() => { signOut(); setShowProfileMenu(false); }} className="w-full flex items-center gap-3 px-4 py-2 hover:bg-background-light transition-colors text-left text-red-400">
+                          <LogIn className="w-4 h-4" />
+                          <span className="text-sm">{t('nav.signOut')}</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <>
+                  <button onClick={() => navigate('/auth')} className="flex items-center gap-2 px-4 py-2 bg-background-light hover:bg-background-light rounded-lg transition-colors text-sm font-medium">
+                    <LogIn className="w-4 h-4" />
+                    <span>{t('nav.login')}</span>
+                  </button>
+                  <button onClick={() => navigate('/auth')} className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg transition-colors text-sm font-medium">
+                    <UserPlus className="w-4 h-4" />
+                    <span>{t('nav.signUp')}</span>
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-16">
         <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent hero-title-glow">
           {t('home.hero.title')}
@@ -185,6 +281,18 @@ const HomePageLoggedIn = () => {
           </button>
         </div>
       </div>
+      </div>
+
+      <footer className="border-t border-primary/20 mt-20 py-8">
+        <div className="max-w-7xl mx-auto px-4 text-center text-text-muted">
+          <p>{t('home.footer.copyright')}</p>
+          <p className="text-xs mt-2 text-gray-600">{t('home.footer.version')}</p>
+        </div>
+      </footer>
+
+      <ModelComparison isOpen={showComparison} onClose={() => setShowComparison(false)} />
+      <LanguageSelector isOpen={showLangModal} onClose={() => { setShowLangModal(false); if (setShowLanguageSelector) { setShowLanguageSelector(false); }}} />
+      {import.meta.env.DEV && <MixpanelTest />}
     </div>
   );
 };
