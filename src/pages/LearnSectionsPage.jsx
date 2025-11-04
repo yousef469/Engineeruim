@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Lock, AlertCircle, Rocket, GraduationCap } from 'lucide-react';
+import { ArrowLeft, Lock, AlertCircle, Rocket } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function LearnSectionsPage() {
@@ -60,17 +60,17 @@ export default function LearnSectionsPage() {
             {/* Available Sections */}
             <div className="max-w-6xl mx-auto px-4 pb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Start Here</h2>
-                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div className="flex justify-center">
                     {prerequisiteSections.map((section) => {
                         const Icon = section.icon;
                         return (
                             <button
                                 key={section.id}
                                 onClick={() => navigate(section.path)}
-                                className={`group relative bg-gradient-to-br ${section.gradient} hover:${section.hoverGradient} rounded-3xl p-10 border-2 ${section.borderColor} ${section.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${section.shadowColor}`}
+                                className={`group relative bg-gradient-to-br ${section.gradient} hover:${section.hoverGradient} rounded-3xl p-10 border-2 ${section.borderColor} ${section.hoverBorderColor} transition-all cursor-pointer hover:scale-105 hover:shadow-2xl ${section.shadowColor} max-w-2xl w-full`}
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity" />
-                                
+
                                 <div className="relative z-10">
                                     <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                                         <Icon className="w-12 h-12 text-white" />
@@ -110,7 +110,7 @@ export default function LearnSectionsPage() {
                             <div className="absolute inset-0 bg-black/50 rounded-3xl flex items-center justify-center">
                                 <Lock className="w-16 h-16 text-white" />
                             </div>
-                            
+
                             <div className="relative z-10 blur-sm">
                                 <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-6 mx-auto">
                                     <span className="text-5xl">{item.icon}</span>
