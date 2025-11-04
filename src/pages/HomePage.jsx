@@ -169,6 +169,126 @@ const HomePage = () => {
               </div>
             </button>
           </div>
+
+          {/* Additional Features Section */}
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+                More Learning Tools
+              </h2>
+              <p className="text-text-secondary">Expand your engineering knowledge</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+              {/* Mathematics */}
+              <button
+                onClick={() => navigate('/mathematics')}
+                className="group relative bg-gradient-to-br from-secondary/20 to-secondary/5 hover:from-secondary/30 hover:to-secondary/10 rounded-2xl p-8 border-2 border-secondary/30 hover:border-secondary transition-all cursor-pointer hover:scale-105"
+              >
+                <div className="flex justify-center mb-4">
+                  <Calculator className="w-16 h-16 text-secondary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-secondary text-center">Mathematics</h3>
+                <p className="text-text-secondary text-center mb-4">
+                  Master calculus, algebra, and engineering math
+                </p>
+                <div className="flex items-center justify-center text-secondary font-semibold group-hover:gap-3 gap-2 transition-all">
+                  <span>Learn Math</span>
+                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </button>
+
+              {/* Physics */}
+              <button
+                onClick={() => navigate('/physics')}
+                className="group relative bg-gradient-to-br from-primary/20 to-primary/5 hover:from-primary/30 hover:to-primary/10 rounded-2xl p-8 border-2 border-primary/30 hover:border-primary transition-all cursor-pointer hover:scale-105"
+              >
+                <div className="flex justify-center mb-4">
+                  <Brain className="w-16 h-16 text-primary" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-primary text-center">Physics</h3>
+                <p className="text-text-secondary text-center mb-4">
+                  Explore mechanics, thermodynamics, and more
+                </p>
+                <div className="flex items-center justify-center text-primary font-semibold group-hover:gap-3 gap-2 transition-all">
+                  <span>Learn Physics</span>
+                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </button>
+
+              {/* Games */}
+              <button
+                onClick={() => navigate('/games')}
+                className="group relative bg-gradient-to-br from-accent/20 to-accent/5 hover:from-accent/30 hover:to-accent/10 rounded-2xl p-8 border-2 border-accent/30 hover:border-accent transition-all cursor-pointer hover:scale-105"
+              >
+                <div className="flex justify-center mb-4">
+                  <Sparkles className="w-16 h-16 text-accent" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-accent text-center">Games</h3>
+                <p className="text-text-secondary text-center mb-4">
+                  Learn through interactive engineering games
+                </p>
+                <div className="flex items-center justify-center text-accent font-semibold group-hover:gap-3 gap-2 transition-all">
+                  <span>Play Games</span>
+                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </button>
+
+              {/* AI 3D Generator */}
+              <button
+                onClick={() => navigate('/ai-generator')}
+                className="group relative bg-gradient-to-br from-purple-500/20 to-pink-500/5 hover:from-purple-500/30 hover:to-pink-500/10 rounded-2xl p-8 border-2 border-purple-400/30 hover:border-purple-400 transition-all cursor-pointer hover:scale-105"
+              >
+                <div className="flex justify-center mb-4">
+                  <Sparkles className="w-16 h-16 text-purple-400 animate-pulse" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-purple-400 text-center">AI 3D Generator</h3>
+                <p className="text-text-secondary text-center mb-4">
+                  Create 3D models from text using AI
+                </p>
+                <div className="flex items-center justify-center text-purple-400 font-semibold group-hover:gap-3 gap-2 transition-all">
+                  <span>Generate</span>
+                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </button>
+
+              {/* Collaborate */}
+              <button
+                onClick={() => navigate('/collaborate')}
+                className="group relative bg-gradient-to-br from-yellow-500/20 to-orange-500/5 hover:from-yellow-500/30 hover:to-orange-500/10 rounded-2xl p-8 border-2 border-yellow-400/30 hover:border-yellow-400 transition-all cursor-pointer hover:scale-105"
+              >
+                <div className="flex justify-center mb-4">
+                  <UsersIcon className="w-16 h-16 text-yellow-400" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-yellow-400 text-center">Collaborate</h3>
+                <p className="text-text-secondary text-center mb-4">
+                  Work together on engineering projects
+                </p>
+                <div className="flex items-center justify-center text-yellow-400 font-semibold group-hover:gap-3 gap-2 transition-all">
+                  <span>Start Collaborating</span>
+                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </button>
+
+              {/* Upload Models */}
+              <button
+                onClick={() => navigate('/upload')}
+                className="group relative bg-gradient-to-br from-green-500/20 to-emerald-500/5 hover:from-green-500/30 hover:to-emerald-500/10 rounded-2xl p-8 border-2 border-green-400/30 hover:border-green-400 transition-all cursor-pointer hover:scale-105"
+              >
+                <div className="flex justify-center mb-4">
+                  <Upload className="w-16 h-16 text-green-400" />
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-green-400 text-center">Upload Models</h3>
+                <p className="text-text-secondary text-center mb-4">
+                  Share your own 3D engineering models
+                </p>
+                <div className="flex items-center justify-center text-green-400 font-semibold group-hover:gap-3 gap-2 transition-all">
+                  <span>Upload</span>
+                  <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </button>
+            </div>
+          </div>
         </div>
       ) : (
         /* LANDING PAGE FOR NON-LOGGED IN USERS */
