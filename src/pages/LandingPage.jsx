@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Rocket, Plane, Car, UserPlus, Brain, Calculator, Sparkles, LogIn, Globe, User, ChevronDown, Users as UsersIcon, Upload } from 'lucide-react';
+import { Rocket, Plane, Car, UserPlus, Brain, Sparkles, LogIn, Globe, User, ChevronDown, Users as UsersIcon, Upload } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
@@ -213,46 +213,7 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section className="bg-background-light py-20">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <Calculator className="w-16 h-16 text-secondary" />
-              <h2 className="text-5xl font-bold text-secondary">Advanced Mathematics & Physics</h2>
-            </div>
-            <p className="text-2xl text-text mb-12 max-w-4xl mx-auto">Master the mathematical and physical foundations that power all engineering disciplines</p>
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="bg-background p-8 rounded-xl border-2 border-primary/30">
-                <h3 className="text-2xl font-bold text-primary mb-4">Mathematics</h3>
-                <ul className="text-left space-y-2 text-text-secondary">
-                  <li>• Calculus & Differential Equations</li>
-                  <li>• Linear Algebra & Matrices</li>
-                  <li>• Vector Mathematics</li>
-                  <li>• Statistics & Probability</li>
-                </ul>
-              </div>
-              <div className="bg-background p-8 rounded-xl border-2 border-secondary/30">
-                <h3 className="text-2xl font-bold text-secondary mb-4">Physics</h3>
-                <ul className="text-left space-y-2 text-text-secondary">
-                  <li>• Classical Mechanics</li>
-                  <li>• Thermodynamics</li>
-                  <li>• Electromagnetism</li>
-                  <li>• Fluid Dynamics</li>
-                </ul>
-              </div>
-              <div className="bg-background p-8 rounded-xl border-2 border-accent/30">
-                <h3 className="text-2xl font-bold text-accent mb-4">Applications</h3>
-                <ul className="text-left space-y-2 text-text-secondary">
-                  <li>• Real-world problem solving</li>
-                  <li>• Engineering calculations</li>
-                  <li>• Interactive simulations</li>
-                  <li>• Step-by-step solutions</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-20">
+        <section className="py-20 bg-background-light">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-5xl font-bold mb-6 text-primary">Ready to Start Your Engineering Journey?</h2>
             <p className="text-2xl text-text-secondary mb-12">Join thousands of students mastering engineering through interactive learning</p>
