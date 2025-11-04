@@ -142,7 +142,7 @@ export default function GameMapMathematics() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button
-                onClick={() => navigate('/learn/mathphysics/engineering')}
+                onClick={() => navigate('/learn')}
                 className="p-2 hover:bg-white/10 rounded-lg transition-colors"
               >
                 <ArrowLeft className="w-5 h-5" />

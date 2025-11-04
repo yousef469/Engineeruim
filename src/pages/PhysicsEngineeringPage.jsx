@@ -10,11 +10,11 @@ export default function PhysicsEngineeringPage() {
       <div className="border-b border-gray-700 bg-gray-900/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <button
-            onClick={() => navigate('/learn/sections')}
+            onClick={() => navigate('/learn')}
             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4"
           >
             <ArrowLeft className="w-5 h-5" />
-            Back to Journey
+            Back to Learn
           </button>
           <h1 className="text-5xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
             Physics for Engineering
