@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Rocket, Plane, Car, X, Loader2, MousePointer, ZoomIn, Info, Send, Sparkles, RotateCw } from 'lucide-react';
-import HomePage from './pages/HomePage';
+import HomeRouter from './pages/HomeRouter';
 import RocketsPage from './pages/RocketsPage';
 import PlanesPage from './pages/PlanesPage';
 import CarsPage from './pages/CarsPage';
@@ -1141,7 +1141,7 @@ export default function App() {
       <FloatingAIHelper />
       <Router>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomeRouter />} />
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/viewer" element={<ProtectedRoute><AllInOnePage /></ProtectedRoute>} />
           <Route path="/learn" element={<ProtectedRoute><LearnMechanicsPage /></ProtectedRoute>} />
