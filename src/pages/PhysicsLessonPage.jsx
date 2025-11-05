@@ -20,6 +20,9 @@ export default function PhysicsLessonPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
   const lesson = physicsLessons[lessonId];
+  
+  console.log('PhysicsLessonPage loaded - Lesson ID:', lessonId);
+  console.log('Physics Lesson Data:', lesson);
 
   if (!lesson) {
     return (
@@ -39,6 +42,11 @@ export default function PhysicsLessonPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-950 via-indigo-950 to-black text-white">
+      {/* DEBUG BANNER - REMOVE AFTER TESTING */}
+      <div className="bg-green-600 text-white text-center py-2 font-bold text-lg">
+        ✅ PHYSICS LESSON PAGE - Lesson {lessonId}
+      </div>
+      
       <div className="border-b border-blue-700 bg-blue-900/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <button
