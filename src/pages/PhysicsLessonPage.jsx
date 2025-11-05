@@ -20,6 +20,8 @@ export default function PhysicsLessonPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
   
+  // VERSION CHECK - If you see this in console, cache is cleared!
+  console.log('🔬 PHYSICS LESSON PAGE LOADED - Version 2024-11-05-FINAL');
   console.log('=== PHYSICS LESSON PAGE DEBUG ===');
   console.log('Lesson ID from URL:', lessonId);
   console.log('Available lesson IDs:', Object.keys(physicsLessons));
@@ -29,9 +31,9 @@ export default function PhysicsLessonPage() {
   const lesson = physicsLessons[lessonId];
   
   if (!lesson) {
-    console.error('LESSON NOT FOUND! ID:', lessonId);
+    console.error('❌ LESSON NOT FOUND! ID:', lessonId);
   } else {
-    console.log('Lesson found:', lesson.title);
+    console.log('✅ Lesson found:', lesson.title);
   }
 
   if (!lesson) {
