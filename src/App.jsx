@@ -1157,7 +1157,7 @@ export default function App() {
           <Route path="/learn/mathematics/engineering/lesson/:lessonId" element={<ProtectedRoute><MathematicsLessonPage /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering" element={<ProtectedRoute><PhysicsEngineeringPage /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering/map" element={<ProtectedRoute><GameMapPhysics /></ProtectedRoute>} />
-          <Route path="/learn/physics/engineering/lesson/:lessonId" element={<ProtectedRoute><MathematicsLessonPage /></ProtectedRoute>} />
+          <Route path="/learn/physics/engineering/lesson/:lessonId" element={<ProtectedRoute><PhysicsLessonPage /></ProtectedRoute>} />
           <Route path="/learn/electronics" element={<ProtectedRoute><ElectronicsPage /></ProtectedRoute>} />
           <Route path="/learn/books" element={<ProtectedRoute><BooksPage /></ProtectedRoute>} />
           <Route path="/compare" element={<ComparePage />} />
