@@ -22,32 +22,188 @@ export const unit1Lessons = {
         {
           title: '🛣️ 3. Distance vs Displacement',
           explanation: 'DISTANCE = total path length (scalar - just a number, always positive). DISPLACEMENT = straight line from start to end (vector - has direction, can be zero). Think of it this way: Distance tells you "how much ground you covered." Displacement tells you "how far you are from where you started." Distance can never decrease, but displacement can be zero even after traveling far!',
-          example: 'Race car example: Drive 5 km north, then 5 km south back to start. DISTANCE = 10 km (you drove 5+5). DISPLACEMENT = 0 km (you ended at the starting point). After 100 laps on a 5 km circular track: Distance = 500 km (total driven), Displacement = 0 km (back at start). GPS shows both: "8 km via Main St" (distance along roads) vs "5 km away" (displacement - straight line).'
+          example: 'Race car example: Drive 5 km north, then 5 km south back to start. DISTANCE = 10 km (you drove 5+5). DISPLACEMENT = 0 km (you ended at the starting point). After 100 laps on a 5 km circular track: Distance = 500 km (total driven), Displacement = 0 km (back at start). GPS shows both: "8 km via Main St" (distance along roads) vs "5 km away" (displacement - straight line).',
+          comparison: {
+            left: {
+              title: '📏 DISTANCE',
+              points: [
+                'Total path length traveled',
+                'Scalar (magnitude only)',
+                'Always positive (≥ 0)',
+                'Never decreases',
+                'No direction needed',
+                'Example: "I walked 10 km"'
+              ]
+            },
+            right: {
+              title: '➡️ DISPLACEMENT',
+              points: [
+                'Straight line: start → end',
+                'Vector (magnitude + direction)',
+                'Can be zero or negative',
+                'Can decrease (going back)',
+                'Direction required',
+                'Example: "I\'m 5 km North of start"'
+              ]
+            }
+          }
         },
         {
           title: '⚡ 4. Speed and Velocity',
           explanation: 'SPEED = how fast you move (scalar - just magnitude, no direction). Formula: speed = distance/time. VELOCITY = speed WITH direction (vector). Formula: velocity = displacement/time. Key difference: Two objects can have the same speed but different velocities if moving in different directions. Velocity can change even if speed stays constant - just change direction!',
-          example: 'Two cars both traveling at 100 km/h. Car A going North has velocity = 100 km/h ↑. Car B going South has velocity = 100 km/h ↓. SAME SPEED (100 km/h), but OPPOSITE VELOCITIES! A car turning around a circular track at constant 80 km/h: speed stays constant, but velocity constantly changes because direction changes. Your speedometer shows speed. Your GPS shows velocity (speed + direction like "100 km/h Northeast").'
+          example: 'Two cars both traveling at 100 km/h. Car A going North has velocity = 100 km/h ↑. Car B going South has velocity = 100 km/h ↓. SAME SPEED (100 km/h), but OPPOSITE VELOCITIES! A car turning around a circular track at constant 80 km/h: speed stays constant, but velocity constantly changes because direction changes. Your speedometer shows speed. Your GPS shows velocity (speed + direction like "100 km/h Northeast").',
+          comparison: {
+            left: {
+              title: '⚡ SPEED',
+              points: [
+                'How fast (magnitude only)',
+                'Scalar quantity',
+                'Formula: distance / time',
+                'Always positive',
+                'No direction',
+                'Shows on: Speedometer',
+                'Example: "100 km/h"'
+              ]
+            },
+            right: {
+              title: '🎯 VELOCITY',
+              points: [
+                'How fast + which way',
+                'Vector quantity',
+                'Formula: displacement / time',
+                'Can be positive/negative',
+                'Direction required',
+                'Shows on: GPS',
+                'Example: "100 km/h North"'
+              ]
+            }
+          }
         },
         {
           title: '🎯 5. Average vs Instantaneous',
           explanation: 'AVERAGE SPEED/VELOCITY = calculated over a time period (total distance/total time). INSTANTANEOUS SPEED/VELOCITY = at a specific moment (what your speedometer shows RIGHT NOW). Average smooths out all the variations. Instantaneous captures the exact moment. Your trip computer shows average. Your speedometer shows instantaneous.',
-          example: 'Road trip: You drive 240 km in 3 hours. AVERAGE speed = 240/3 = 80 km/h (one number for entire trip). But your INSTANTANEOUS speed varied constantly: 0 km/h at red lights, 120 km/h on highway, 40 km/h in city traffic, 0 km/h at gas station. Same trip, but instantaneous speed changed every moment while average stayed 80 km/h for the whole journey.'
+          example: 'Road trip: You drive 240 km in 3 hours. AVERAGE speed = 240/3 = 80 km/h (one number for entire trip). But your INSTANTANEOUS speed varied constantly: 0 km/h at red lights, 120 km/h on highway, 40 km/h in city traffic, 0 km/h at gas station. Same trip, but instantaneous speed changed every moment while average stayed 80 km/h for the whole journey.',
+          comparison: {
+            left: {
+              title: '📊 AVERAGE',
+              points: [
+                'Over a time period',
+                'Total distance / total time',
+                'One value for whole trip',
+                'Smooths out variations',
+                'Shows on: Trip computer',
+                'Example: "80 km/h average"',
+                'Doesn\'t change during trip'
+              ]
+            },
+            right: {
+              title: '⚡ INSTANTANEOUS',
+              points: [
+                'At a specific moment',
+                'Speed right now',
+                'Changes constantly',
+                'Captures exact moment',
+                'Shows on: Speedometer',
+                'Example: "120 km/h now"',
+                'Varies every second'
+              ]
+            }
+          }
         },
         {
           title: '🌀 6. Acceleration (Change in Velocity)',
           explanation: 'ACCELERATION = rate of change of velocity. Formula: a = Δv/Δt (change in velocity / time). Acceleration happens when: (1) speed changes (speeding up/slowing down), OR (2) direction changes (turning), OR (3) both! Zero acceleration = constant velocity (same speed AND direction). Acceleration is a vector - it has direction.',
-          example: 'Three examples: (1) Car speeding up from 0 to 100 km/h in 10 seconds: acceleration = +10 km/h/s (positive = speeding up). (2) Car braking from 100 to 0 km/h in 5 seconds: acceleration = -20 km/h/s (negative = slowing down). (3) Car turning at constant 60 km/h: still accelerating! (direction changing even though speed constant). Rocket launch: massive acceleration upward (speed AND altitude increasing).'
+          example: 'Three examples: (1) Car speeding up from 0 to 100 km/h in 10 seconds: acceleration = +10 km/h/s (positive = speeding up). (2) Car braking from 100 to 0 km/h in 5 seconds: acceleration = -20 km/h/s (negative = slowing down). (3) Car turning at constant 60 km/h: still accelerating! (direction changing even though speed constant). Rocket launch: massive acceleration upward (speed AND altitude increasing).',
+          comparison: {
+            left: {
+              title: '🚗 POSITIVE ACCELERATION',
+              points: [
+                'Speeding up',
+                'Velocity increasing',
+                'Same direction as motion',
+                'Example: 0 → 100 km/h',
+                'a = +10 km/h/s',
+                'Gas pedal pressed',
+                'Feels: pushed back in seat'
+              ]
+            },
+            right: {
+              title: '🛑 NEGATIVE ACCELERATION',
+              points: [
+                'Slowing down (braking)',
+                'Velocity decreasing',
+                'Opposite to motion',
+                'Example: 100 → 0 km/h',
+                'a = -20 km/h/s',
+                'Brake pedal pressed',
+                'Feels: pushed forward'
+              ]
+            }
+          }
         },
         {
           title: '🧭 7. Reference Frames & Relativity',
           explanation: 'Motion depends on WHERE you\'re observing from (your reference frame). Same object can be moving AND at rest simultaneously - depends on the observer! There\'s no absolute rest - only motion relative to something. This is why we say "relative to" when describing motion. Different observers see different motion for the same object!',
-          example: 'You\'re on a train moving at 200 km/h, throwing a ball straight up. To YOU (inside train): ball goes straight up and down, lands in your hand - you see vertical motion. To someone OUTSIDE (on ground): ball follows a curved path forward while going up and down - they see parabolic motion. SAME ball, SAME throw, but DIFFERENT observed motion! You are at rest relative to the train (0 km/h), but moving at 200 km/h relative to the ground. Both are correct - it depends on the reference frame!'
+          example: 'You\'re on a train moving at 200 km/h, throwing a ball straight up. To YOU (inside train): ball goes straight up and down, lands in your hand - you see vertical motion. To someone OUTSIDE (on ground): ball follows a curved path forward while going up and down - they see parabolic motion. SAME ball, SAME throw, but DIFFERENT observed motion! You are at rest relative to the train (0 km/h), but moving at 200 km/h relative to the ground. Both are correct - it depends on the reference frame!',
+          comparison: {
+            left: {
+              title: '🚂 INSIDE TRAIN (Your View)',
+              points: [
+                'You: at rest (0 km/h)',
+                'Ball: goes straight up/down',
+                'Path: vertical line ↕️',
+                'Lands in your hand',
+                'Reference: train frame',
+                'Everything seems normal',
+                'You feel stationary'
+              ]
+            },
+            right: {
+              title: '🌍 OUTSIDE TRAIN (Ground View)',
+              points: [
+                'You: moving (200 km/h)',
+                'Ball: curved parabolic path',
+                'Path: forward arc ⤴️',
+                'Moves with train',
+                'Reference: ground frame',
+                'Sees your motion',
+                'You\'re clearly moving'
+              ]
+            }
+          }
         },
         {
           title: '🪐 8. Types of Motion',
           explanation: 'Motion comes in different patterns: LINEAR (straight line - car on highway), CIRCULAR (rotating path - fan blade, wheel), OSCILLATORY (repetitive back & forth - pendulum, spring, piston), RANDOM (unpredictable - gas molecules, dust particles). Real engineering systems often combine multiple types!',
-          example: 'Car engine combines ALL four types: (1) LINEAR - Pistons move up/down in straight lines inside cylinders. (2) CIRCULAR - Crankshaft rotates in spinning motion. (3) OSCILLATORY - Valves open/close repeatedly in back-and-forth motion. (4) RANDOM - Fuel molecules move unpredictably before combustion. Airplane example: moves linearly through air, propeller rotates circularly, control surfaces oscillate for stability. Understanding all motion types helps engineers design better systems!'
+          example: 'Car engine combines ALL four types: (1) LINEAR - Pistons move up/down in straight lines inside cylinders. (2) CIRCULAR - Crankshaft rotates in spinning motion. (3) OSCILLATORY - Valves open/close repeatedly in back-and-forth motion. (4) RANDOM - Fuel molecules move unpredictably before combustion. Airplane example: moves linearly through air, propeller rotates circularly, control surfaces oscillate for stability. Understanding all motion types helps engineers design better systems!',
+          comparison: {
+            left: {
+              title: '➡️ LINEAR & CIRCULAR',
+              points: [
+                'LINEAR: Straight path',
+                '→ Car on highway',
+                '→ Piston up/down',
+                '→ Rocket launch',
+                'CIRCULAR: Rotating',
+                '⭕ Wheel spinning',
+                '⭕ Fan blade',
+                '⭕ Crankshaft'
+              ]
+            },
+            right: {
+              title: '↔️ OSCILLATORY & RANDOM',
+              points: [
+                'OSCILLATORY: Back & forth',
+                '↔️ Pendulum swing',
+                '↔️ Spring bouncing',
+                '↔️ Valve open/close',
+                'RANDOM: Unpredictable',
+                '💫 Gas molecules',
+                '💫 Dust particles',
+                '💫 Brownian motion'
+              ]
+            }
+          }
         }
       ],
       realWorld: [

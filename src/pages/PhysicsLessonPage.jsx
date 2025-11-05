@@ -109,6 +109,38 @@ export default function PhysicsLessonPage() {
                             <div key={index} className="bg-gray-800/50 border-2 border-blue-500/30 rounded-xl p-6 hover:border-blue-400/50 transition-colors">
                                 <h3 className="text-xl font-bold mb-3 text-blue-300">{concept.title}</h3>
                                 <p className="text-gray-200 mb-3">{concept.explanation}</p>
+                                
+                                {/* Comparison Boxes - Side by Side */}
+                                {concept.comparison && (
+                                    <div className="grid md:grid-cols-2 gap-4 mb-4">
+                                        {/* Left Box */}
+                                        <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/40 border-2 border-purple-400/50 rounded-lg p-4">
+                                            <h4 className="font-bold text-lg mb-3 text-purple-200">{concept.comparison.left.title}</h4>
+                                            <ul className="space-y-2">
+                                                {concept.comparison.left.points.map((point, i) => (
+                                                    <li key={i} className="text-sm text-purple-100 flex items-start gap-2">
+                                                        <span className="text-purple-400 mt-1">•</span>
+                                                        <span>{point}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                        
+                                        {/* Right Box */}
+                                        <div className="bg-gradient-to-br from-green-900/40 to-green-800/40 border-2 border-green-400/50 rounded-lg p-4">
+                                            <h4 className="font-bold text-lg mb-3 text-green-200">{concept.comparison.right.title}</h4>
+                                            <ul className="space-y-2">
+                                                {concept.comparison.right.points.map((point, i) => (
+                                                    <li key={i} className="text-sm text-green-100 flex items-start gap-2">
+                                                        <span className="text-green-400 mt-1">•</span>
+                                                        <span>{point}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                )}
+                                
                                 <div className="bg-blue-900/30 border-l-4 border-blue-400 p-4 rounded">
                                     <p className="text-sm text-blue-200">
                                         <span className="font-bold">Example:</span> {concept.example}
