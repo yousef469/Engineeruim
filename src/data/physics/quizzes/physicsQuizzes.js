@@ -89,5 +89,129 @@ export const physicsQuizzes = {
       { id: 3, type: 'true-false', question: 'Hybrid cars use both mechanical and electrical power.', correctAnswer: true, explanation: 'Correct! Hybrids combine gas engines (mechanical) with electric motors (electrical).' },
       { id: 4, type: 'multiple-choice', question: 'What advantage does electrical power have?', options: ['Higher efficiency', 'Long-distance transmission', 'More powerful', 'Cheaper'], correctAnswer: 1, explanation: 'Electrical power can be transmitted over long distances with minimal loss.' }
     ]
-  }
+  },
+  // Unit 3: Fluids (Lessons 11-15)
+  11: { lessonId: 11, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Pressure equals:', options: ['Force × Area', 'Force / Area', 'Mass × Velocity', 'Energy / Time'], correctAnswer: 1, explanation: 'Pressure = Force / Area. Same force over smaller area = higher pressure.' },
+    { id: 2, type: 'multiple-choice', question: 'Atmospheric pressure at sea level:', options: ['10 Pa', '1,000 Pa', '10,000 Pa', '100,000 Pa'], correctAnswer: 3, explanation: 'Atmospheric pressure ≈ 101,325 Pa (14.7 psi)' },
+    { id: 3, type: 'true-false', question: 'Pressure in liquid increases with depth.', correctAnswer: true, explanation: 'Correct! P = ρgh - pressure increases with depth.' },
+    { id: 4, type: 'multiple-choice', question: 'Why pressurize aircraft cabins?', options: ['Keep warm', 'Air pressure too low at altitude', 'Reduce noise', 'Save fuel'], correctAnswer: 1, explanation: 'At 35,000 ft, air pressure too low for breathing.' }
+  ]},
+  12: { lessonId: 12, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Buoyancy is:', options: ['Weight of object', 'Upward force by fluid', 'Density of water', 'Pressure'], correctAnswer: 1, explanation: 'Buoyancy = upward force fluids exert on objects.' },
+    { id: 2, type: 'true-false', question: 'Less dense objects float.', correctAnswer: true, explanation: 'Correct! Less dense than fluid = float. More dense = sink.' },
+    { id: 3, type: 'multiple-choice', question: 'Buoyant force equals:', options: ['Weight of object', 'Weight of fluid displaced', 'Volume', 'Pressure'], correctAnswer: 1, explanation: 'Archimedes: Buoyant force = weight of fluid displaced.' },
+    { id: 4, type: 'multiple-choice', question: 'Why ice floats:', options: ['Colder', 'Less dense than water', 'Solid', 'Air bubbles'], correctAnswer: 1, explanation: 'Ice (0.92 g/cm³) < water (1.0 g/cm³)' }
+  ]},
+  13: { lessonId: 13, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Bernoulli\'s Principle:', options: ['Faster = higher pressure', 'Faster = lower pressure', 'Pressure constant', 'Density increases'], correctAnswer: 1, explanation: 'Bernoulli: Faster fluid = lower pressure.' },
+    { id: 2, type: 'true-false', question: 'Wings use Bernoulli for lift.', correctAnswer: true, explanation: 'Correct! Faster air over top = lower pressure = lift.' },
+    { id: 3, type: 'multiple-choice', question: 'Narrow pipe section:', options: ['Pressure increases', 'Pressure decreases', 'Same', 'Zero'], correctAnswer: 1, explanation: 'Narrow = faster flow = lower pressure (Bernoulli).' },
+    { id: 4, type: 'multiple-choice', question: 'Race cars use aero for:', options: ['Lift', 'Downforce', 'Drag', 'Turbulence'], correctAnswer: 1, explanation: 'Downforce improves grip using inverted wings.' }
+  ]},
+  14: { lessonId: 14, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Drag proportional to:', options: ['Velocity', 'Velocity squared', 'Mass', 'Pressure'], correctAnswer: 1, explanation: 'Drag ∝ v². Double speed = 4x drag!' },
+    { id: 2, type: 'true-false', question: 'Streamlined shapes reduce drag.', correctAnswer: true, explanation: 'Correct! Streamlined = less turbulent wake = less drag.' },
+    { id: 3, type: 'multiple-choice', question: 'Viscosity is:', options: ['Density', 'Pressure', 'Internal friction', 'Temperature'], correctAnswer: 2, explanation: 'Viscosity = internal friction in fluids.' },
+    { id: 4, type: 'multiple-choice', question: 'Modern car Cd:', options: ['0.05', '0.30', '1.0', '2.0'], correctAnswer: 1, explanation: 'Modern cars Cd ≈ 0.25-0.30. Lower = better.' }
+  ]},
+  15: { lessonId: 15, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Mach number:', options: ['V / Speed of sound', 'Speed of sound / V', 'P / ρ', 'T / P'], correctAnswer: 0, explanation: 'Mach = Velocity / Speed of sound.' },
+    { id: 2, type: 'true-false', question: 'Shock waves form at supersonic speeds.', correctAnswer: true, explanation: 'Correct! Above Mach 1 = shock waves = sonic boom.' },
+    { id: 3, type: 'multiple-choice', question: 'Supersonic nozzle:', options: ['Converging', 'Diverging', 'Converging-diverging', 'Straight'], correctAnswer: 2, explanation: 'De Laval nozzle accelerates to supersonic.' },
+    { id: 4, type: 'multiple-choice', question: 'Rocket exhaust speed:', options: ['Subsonic', 'Mach 1', 'Mach 3-4', 'Mach 10+'], correctAnswer: 2, explanation: 'Rocket nozzles: Mach 3-4 for max thrust.' }
+  ]},
+  // Unit 4: Thermodynamics (Lessons 16-20)
+  16: { lessonId: 16, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Temperature vs Heat:', options: ['Same', 'Temp = avg KE, Heat = transfer', 'Heat hotter', 'Temp in Joules'], correctAnswer: 1, explanation: 'Temperature = avg molecular KE. Heat = energy transfer.' },
+    { id: 2, type: 'true-false', question: 'Materials expand when heated.', correctAnswer: true, explanation: 'Correct! Thermal expansion - most materials expand when heated.' },
+    { id: 3, type: 'multiple-choice', question: 'Specific heat:', options: ['Temperature', 'Energy to raise 1kg by 1°C', 'Heat capacity', 'Boiling point'], correctAnswer: 1, explanation: 'Specific heat = energy to raise 1kg by 1°C.' },
+    { id: 4, type: 'multiple-choice', question: 'Water as coolant because:', options: ['Cheap', 'High specific heat', 'Easy to find', 'Low boiling'], correctAnswer: 1, explanation: 'Water high specific heat = absorbs lots of heat.' }
+  ]},
+  17: { lessonId: 17, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Needs direct contact:', options: ['Radiation', 'Convection', 'Conduction', 'All'], correctAnswer: 2, explanation: 'Conduction requires direct contact.' },
+    { id: 2, type: 'multiple-choice', question: 'Heat through vacuum:', options: ['Conduction', 'Convection', 'Radiation', 'Cannot'], correctAnswer: 2, explanation: 'Only radiation works through vacuum.' },
+    { id: 3, type: 'true-false', question: 'Metals conduct heat well.', correctAnswer: true, explanation: 'Correct! Metals = excellent thermal conductors.' },
+    { id: 4, type: 'multiple-choice', question: 'Radiator uses:', options: ['Conduction only', 'Convection only', 'Radiation only', 'Conduction + convection'], correctAnswer: 3, explanation: 'Conducts to coolant, convects to air.' }
+  ]},
+  18: { lessonId: 18, questions: [
+    { id: 1, type: 'true-false', question: 'First Law: Energy conserved.', correctAnswer: true, explanation: 'Correct! Energy cannot be created/destroyed.' },
+    { id: 2, type: 'multiple-choice', question: 'Second Law:', options: ['Energy conserved', 'Heat flows hot to cold', 'F = ma', 'Momentum conserved'], correctAnswer: 1, explanation: 'Second Law: Heat flows hot to cold naturally.' },
+    { id: 3, type: 'multiple-choice', question: '100% efficient engine?', options: ['Yes, perfect materials', 'Yes, no friction', 'No, 2nd Law prevents', 'Yes, expensive'], correctAnswer: 2, explanation: 'Second Law prevents 100% efficiency.' },
+    { id: 4, type: 'multiple-choice', question: 'Gas engines use:', options: ['Carnot', 'Otto', 'Diesel', 'Brayton'], correctAnswer: 1, explanation: 'Gasoline = Otto cycle.' }
+  ]},
+  19: { lessonId: 19, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Four-stroke has:', options: ['2', '4', '6', '8'], correctAnswer: 1, explanation: 'Four strokes: Intake, Compression, Power, Exhaust.' },
+    { id: 2, type: 'true-false', question: 'Combustion pushes piston.', correctAnswer: true, explanation: 'Correct! High pressure from combustion pushes piston.' },
+    { id: 3, type: 'multiple-choice', question: 'Turbocharger:', options: ['Cools', 'Forces more air', 'Reduces fuel', 'Quiets'], correctAnswer: 1, explanation: 'Turbo forces more air in for more power.' },
+    { id: 4, type: 'multiple-choice', question: 'Most power:', options: ['4-cyl', 'V6', 'V8', 'Same'], correctAnswer: 2, explanation: 'More cylinders = more power. V8 = 400+ hp.' }
+  ]},
+  20: { lessonId: 20, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Max efficiency by:', options: ['Fuel', 'Temp difference', 'Size', 'Cylinders'], correctAnswer: 1, explanation: 'Carnot: η = 1 - (T_cold/T_hot). Larger ΔT = higher max.' },
+    { id: 2, type: 'true-false', question: 'Real < Carnot limit.', correctAnswer: true, explanation: 'Correct! Carnot = theoretical max.' },
+    { id: 3, type: 'multiple-choice', question: 'Most efficient:', options: ['Gas 30%', 'Diesel 40%', 'Electric 90%', 'Same'], correctAnswer: 2, explanation: 'Electric ~90% - not heat engine!' },
+    { id: 4, type: 'multiple-choice', question: 'Diesel more efficient why:', options: ['Better fuel', 'Higher compression = higher temp', 'More cylinders', 'Slower'], correctAnswer: 1, explanation: 'Higher compression → higher temp → higher efficiency.' }
+  ]},
+  // Unit 5: Waves & Electricity (Lessons 21-25)
+  21: { lessonId: 21, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Waves transfer:', options: ['Matter', 'Energy', 'Mass', 'Temperature'], correctAnswer: 1, explanation: 'Waves transfer energy without matter.' },
+    { id: 2, type: 'multiple-choice', question: 'Needs medium:', options: ['Light', 'Radio', 'Sound', 'EM waves'], correctAnswer: 2, explanation: 'Sound = mechanical, needs medium.' },
+    { id: 3, type: 'true-false', question: 'Sound faster in steel than air.', correctAnswer: true, explanation: 'Correct! 343 m/s air, 5000 m/s steel.' },
+    { id: 4, type: 'multiple-choice', question: 'Wave speed =', options: ['f + λ', 'f × λ', 'f / λ', 'λ / f'], correctAnswer: 1, explanation: 'Speed = Frequency × Wavelength' }
+  ]},
+  22: { lessonId: 22, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Frequency:', options: ['Distance between peaks', 'Height', 'Cycles per second', 'Speed'], correctAnswer: 2, explanation: 'Frequency = cycles/second (Hz).' },
+    { id: 2, type: 'multiple-choice', question: 'Amplitude:', options: ['Speed', 'Frequency', 'Max displacement', 'Wavelength'], correctAnswer: 2, explanation: 'Amplitude = max displacement from equilibrium.' },
+    { id: 3, type: 'true-false', question: 'FM varies frequency.', correctAnswer: true, explanation: 'Correct! FM = Frequency Modulation.' },
+    { id: 4, type: 'multiple-choice', question: 'Human hearing:', options: ['2-20 Hz', '20-200 Hz', '20-20k Hz', '20k-200k Hz'], correctAnswer: 2, explanation: 'Humans: 20 Hz to 20,000 Hz.' }
+  ]},
+  23: { lessonId: 23, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Voltage:', options: ['Electron flow', 'Potential difference', 'Resistance', 'Charge'], correctAnswer: 1, explanation: 'Voltage = electric potential difference.' },
+    { id: 2, type: 'multiple-choice', question: 'Current:', options: ['Potential', 'Rate of charge flow', 'Resistance', 'Power'], correctAnswer: 1, explanation: 'Current = rate of charge flow (Amperes).' },
+    { id: 3, type: 'true-false', question: 'Car battery = 12V.', correctAnswer: true, explanation: 'Correct! Most cars use 12V systems.' },
+    { id: 4, type: 'multiple-choice', question: 'Starter motor draws:', options: ['1-10 A', '10-50 A', '100-200 A', '500-1000 A'], correctAnswer: 2, explanation: 'Starter: 100-200A+ to crank engine.' }
+  ]},
+  24: { lessonId: 24, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Ohm\'s Law:', options: ['V = I + R', 'V = I × R', 'V = I / R', 'V = R / I'], correctAnswer: 1, explanation: 'V = I × R (Voltage = Current × Resistance)' },
+    { id: 2, type: 'multiple-choice', question: 'V=12V, R=6Ω, I=?', options: ['0.5 A', '2 A', '6 A', '72 A'], correctAnswer: 1, explanation: 'I = V/R = 12/6 = 2 A' },
+    { id: 3, type: 'true-false', question: 'Copper low resistance.', correctAnswer: true, explanation: 'Correct! Copper = excellent conductor.' },
+    { id: 4, type: 'multiple-choice', question: 'Power =', options: ['V + I', 'V × I', 'V / I', 'V - I'], correctAnswer: 1, explanation: 'P = V × I (Watts)' }
+  ]},
+  25: { lessonId: 25, questions: [
+    { id: 1, type: 'multiple-choice', question: 'EM induction:', options: ['Magnetism from electricity', 'Electricity from moving magnets', 'Resistance', 'Heat'], correctAnswer: 1, explanation: 'Induction: moving magnet → voltage (generators).' },
+    { id: 2, type: 'true-false', question: 'Motors: electrical → mechanical.', correctAnswer: true, explanation: 'Correct! Motors convert electrical to mechanical.' },
+    { id: 3, type: 'multiple-choice', question: 'Alternator:', options: ['Mechanical → electrical', 'Electrical → mechanical', 'Stores', 'Reduces voltage'], correctAnswer: 0, explanation: 'Alternator = generator, charges battery.' },
+    { id: 4, type: 'multiple-choice', question: 'Motor efficiency:', options: ['30%', '50%', '70%', '90%'], correctAnswer: 3, explanation: 'Electric motors ~90% efficient!' }
+  ]},
+  // Unit 6: Materials (Lessons 26-30)
+  26: { lessonId: 26, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Steel/aluminum are:', options: ['Ceramics', 'Polymers', 'Metals', 'Composites'], correctAnswer: 2, explanation: 'Steel/aluminum = metals.' },
+    { id: 2, type: 'multiple-choice', question: 'Ceramics for:', options: ['Ductility', 'Conductivity', 'High temp resistance', 'Low strength'], correctAnswer: 2, explanation: 'Ceramics: hard, brittle, high-temp resistant.' },
+    { id: 3, type: 'true-false', question: 'Carbon fiber = composite.', correctAnswer: true, explanation: 'Correct! Carbon fibers in polymer matrix.' },
+    { id: 4, type: 'multiple-choice', question: 'Titanium in rockets:', options: ['Cheap', 'Strongest', 'High strength-to-weight + temp', 'Easy'], correctAnswer: 2, explanation: 'Titanium: great strength-to-weight + high temp.' }
+  ]},
+  27: { lessonId: 27, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Stress:', options: ['F × A', 'F / A', 'ΔL', 'Energy'], correctAnswer: 1, explanation: 'Stress = Force / Area.' },
+    { id: 2, type: 'multiple-choice', question: 'Strain:', options: ['Force', 'Stress × Area', 'ΔL / L₀', 'Strength'], correctAnswer: 2, explanation: 'Strain = ΔL / L₀ (dimensionless)' },
+    { id: 3, type: 'true-false', question: '787 wings flex 26 feet.', correctAnswer: true, explanation: 'Correct! Wings flex dramatically in testing.' },
+    { id: 4, type: 'multiple-choice', question: 'Stress-strain curve:', options: ['Temp effects', 'Deformation behavior', 'Cost', 'Density'], correctAnswer: 1, explanation: 'Shows how material deforms under stress.' }
+  ]},
+  28: { lessonId: 28, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Elastic deformation:', options: ['Permanent', 'Reversible', 'Breaking', 'Thermal'], correctAnswer: 1, explanation: 'Elastic = reversible, returns to shape.' },
+    { id: 2, type: 'multiple-choice', question: 'Yield strength:', options: ['Max before break', 'Where plastic begins', 'Elastic modulus', 'Ultimate'], correctAnswer: 1, explanation: 'Yield = where plastic deformation starts.' },
+    { id: 3, type: 'true-false', question: 'Plastic = permanent.', correctAnswer: true, explanation: 'Correct! Plastic deformation is permanent.' },
+    { id: 4, type: 'multiple-choice', question: 'Bumpers:', options: ['Stay elastic', 'Deform plastically', 'Never deform', 'Break'], correctAnswer: 1, explanation: 'Bumpers deform plastically to absorb energy.' }
+  ]},
+  29: { lessonId: 29, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Fatigue:', options: ['Sudden fracture', 'Repeated stress failure', 'Thermal', 'Corrosion'], correctAnswer: 1, explanation: 'Fatigue = failure from repeated stress cycles.' },
+    { id: 2, type: 'true-false', question: 'Brittle breaks suddenly.', correctAnswer: true, explanation: 'Correct! Brittle = sudden. Ductile = deforms first.' },
+    { id: 3, type: 'multiple-choice', question: 'Inspect aircraft why:', options: ['Paint', 'Find fatigue cracks', 'Weight', 'Fuel'], correctAnswer: 1, explanation: 'Find cracks before catastrophic failure.' },
+    { id: 4, type: 'multiple-choice', question: 'Paperclip bending:', options: ['Stronger', 'Nothing', 'Fatigue breaks', 'Elastic'], correctAnswer: 2, explanation: 'Repeated bending = fatigue failure.' }
+  ]},
+  30: { lessonId: 30, questions: [
+    { id: 1, type: 'multiple-choice', question: 'Strength-to-weight:', options: ['S + W', 'S / Density', 'W / S', 'S × D'], correctAnswer: 1, explanation: 'Strength-to-weight = Strength / Density.' },
+    { id: 2, type: 'multiple-choice', question: 'Carbon fiber expensive:', options: ['Weak', 'Heavy', 'Complex manufacturing', 'Rare'], correctAnswer: 2, explanation: 'Complex manufacturing = expensive (~5x aluminum).' },
+    { id: 3, type: 'true-false', question: 'Material selection = trade-offs.', correctAnswer: true, explanation: 'Correct! Balance strength, weight, cost, temp, etc.' },
+    { id: 4, type: 'multiple-choice', question: 'Nickel superalloys:', options: ['Cheap', 'Light', 'Withstand 1200°C', 'Easy'], correctAnswer: 2, explanation: 'Withstand extreme 1200°C turbine temps.' }
+  ]}
 };
