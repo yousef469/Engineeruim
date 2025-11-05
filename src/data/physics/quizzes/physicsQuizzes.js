@@ -207,3 +207,184 @@ export const physicsQuizzes = {
     ]
   }
 };
+  // Unit 2: Energy (Lessons 6-10)
+  6: {
+    lessonId: 6,
+    questions: [
+      {
+        id: 1,
+        type: 'multiple-choice',
+        question: 'What is kinetic energy?',
+        options: ['Energy of position', 'Energy of motion', 'Stored energy', 'Chemical energy'],
+        correctAnswer: 1,
+        explanation: 'Kinetic energy is the energy of motion, calculated as KE = ½mv²'
+      },
+      {
+        id: 2,
+        type: 'multiple-choice',
+        question: 'If you double the speed of an object, its kinetic energy:',
+        options: ['Doubles', 'Triples', 'Quadruples', 'Stays the same'],
+        correctAnswer: 2,
+        explanation: 'KE = ½mv². Since velocity is squared, doubling speed quadruples kinetic energy.'
+      },
+      {
+        id: 3,
+        type: 'true-false',
+        question: 'Potential energy can be converted to kinetic energy.',
+        correctAnswer: true,
+        explanation: 'Correct! Energy constantly converts between forms, like PE to KE in a falling object.'
+      },
+      {
+        id: 4,
+        type: 'multiple-choice',
+        question: 'A rocket on the launchpad has:',
+        options: ['Only kinetic energy', 'Only potential energy', 'Both', 'Neither'],
+        correctAnswer: 1,
+        explanation: 'A stationary rocket has gravitational potential energy but no kinetic energy.'
+      }
+    ]
+  },
+  7: {
+    lessonId: 7,
+    questions: [
+      {
+        id: 1,
+        type: 'multiple-choice',
+        question: 'Work equals:',
+        options: ['Force × Distance', 'Mass × Velocity', 'Power × Time', 'Energy / Time'],
+        correctAnswer: 0,
+        explanation: 'Work = Force × Distance. Work is done when a force moves an object.'
+      },
+      {
+        id: 2,
+        type: 'multiple-choice',
+        question: 'Power is:',
+        options: ['Work / Time', 'Force × Distance', 'Mass × Acceleration', 'Energy × Distance'],
+        correctAnswer: 0,
+        explanation: 'Power = Work / Time, measuring how quickly work is done.'
+      },
+      {
+        id: 3,
+        type: 'true-false',
+        question: '1 horsepower equals approximately 746 Watts.',
+        correctAnswer: true,
+        explanation: 'Correct! 1 hp = 746 W, used for comparing engine power.'
+      },
+      {
+        id: 4,
+        type: 'multiple-choice',
+        question: 'A 300 hp engine produces how much power?',
+        options: ['300 W', '3,000 W', '74,600 W', '223,800 W'],
+        correctAnswer: 3,
+        explanation: '300 hp × 746 W/hp = 223,800 W (about 224 kW)'
+      }
+    ]
+  },
+  8: {
+    lessonId: 8,
+    questions: [
+      {
+        id: 1,
+        type: 'true-false',
+        question: 'Energy can be created and destroyed.',
+        correctAnswer: false,
+        explanation: 'False! Energy cannot be created or destroyed, only converted between forms.'
+      },
+      {
+        id: 2,
+        type: 'multiple-choice',
+        question: 'In a pendulum, where is kinetic energy maximum?',
+        options: ['At the highest point', 'At the lowest point', 'Halfway down', 'Constant everywhere'],
+        correctAnswer: 1,
+        explanation: 'At the lowest point, all PE has converted to KE, so velocity and KE are maximum.'
+      },
+      {
+        id: 3,
+        type: 'multiple-choice',
+        question: 'When a car brakes, kinetic energy converts to:',
+        options: ['Potential energy', 'Heat energy', 'Chemical energy', 'Nuclear energy'],
+        correctAnswer: 1,
+        explanation: 'Friction converts kinetic energy to heat, which is why brakes get hot.'
+      },
+      {
+        id: 4,
+        type: 'true-false',
+        question: 'A satellite in orbit has constant total energy.',
+        correctAnswer: true,
+        explanation: 'Correct! The satellite trades PE and KE, but total energy stays constant.'
+      }
+    ]
+  },
+  9: {
+    lessonId: 9,
+    questions: [
+      {
+        id: 1,
+        type: 'multiple-choice',
+        question: 'Efficiency is calculated as:',
+        options: ['Total energy in', 'Useful energy out / Total energy in', 'Power × Time', 'Force × Distance'],
+        correctAnswer: 1,
+        explanation: 'Efficiency = (Useful Energy Out / Total Energy In) × 100%'
+      },
+      {
+        id: 2,
+        type: 'multiple-choice',
+        question: 'A typical gasoline engine is about:',
+        options: ['10% efficient', '30% efficient', '60% efficient', '90% efficient'],
+        correctAnswer: 1,
+        explanation: 'Gasoline engines are typically 25-30% efficient, with 70% becoming waste heat.'
+      },
+      {
+        id: 3,
+        type: 'true-false',
+        question: 'Electric motors are more efficient than gasoline engines.',
+        correctAnswer: true,
+        explanation: 'Correct! Electric motors are ~90% efficient vs ~30% for gas engines.'
+      },
+      {
+        id: 4,
+        type: 'multiple-choice',
+        question: 'Where does most lost energy in a car engine go?',
+        options: ['Sound', 'Light', 'Heat', 'Vibration'],
+        correctAnswer: 2,
+        explanation: 'Most lost energy becomes heat through exhaust, cooling, and friction.'
+      }
+    ]
+  },
+  10: {
+    lessonId: 10,
+    questions: [
+      {
+        id: 1,
+        type: 'multiple-choice',
+        question: 'Mechanical power is transmitted through:',
+        options: ['Wires', 'Rotating shafts', 'Radio waves', 'Light'],
+        correctAnswer: 1,
+        explanation: 'Mechanical power uses rotating shafts, gears, and belts.'
+      },
+      {
+        id: 2,
+        type: 'multiple-choice',
+        question: 'Electrical power equals:',
+        options: ['Voltage × Current', 'Voltage / Current', 'Current / Voltage', 'Voltage + Current'],
+        correctAnswer: 0,
+        explanation: 'Electrical Power = Voltage × Current (P = V × I), measured in Watts.'
+      },
+      {
+        id: 3,
+        type: 'true-false',
+        question: 'Hybrid cars use both mechanical and electrical power.',
+        correctAnswer: true,
+        explanation: 'Correct! Hybrids combine gas engines (mechanical) with electric motors (electrical).'
+      },
+      {
+        id: 4,
+        type: 'multiple-choice',
+        question: 'What advantage does electrical power have?',
+        options: ['Higher efficiency', 'Long-distance transmission', 'More powerful', 'Cheaper'],
+        correctAnswer: 1,
+        explanation: 'Electrical power can be transmitted over long distances with minimal loss.'
+      }
+    ]
+  }
+};
