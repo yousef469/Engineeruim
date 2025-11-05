@@ -273,9 +273,12 @@ export default function PhysicsLessonPage() {
               <p className="text-blue-200">{lesson.subtitle}</p>
             </div>
             <div className="flex items-center gap-3">
-              <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-bold flex items-center gap-2 transition-colors">
-                <Play className="w-5 h-5" />
-                Start Lesson
+              <button 
+                onClick={() => navigate(`/learn/physics/engineering/quiz/${lessonId}`)}
+                className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
+              >
+                <CheckCircle className="w-5 h-5" />
+                Take Quiz
               </button>
             </div>
           </div>

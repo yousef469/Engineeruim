@@ -29,6 +29,8 @@ import RocketLessonPageNew from './pages/RocketLessonPageNew';
 import PlaneLessonPage from './pages/PlaneLessonPage';
 import CarLessonPage from './pages/CarLessonPage';
 import MathematicsLessonPage from './pages/MathematicsLessonPage';
+import PhysicsLessonPage from './pages/PhysicsLessonPage';
+import PhysicsQuizPage from './pages/PhysicsQuizPage';
 import PlaneQuizPage from './pages/PlaneQuizPage';
 import ProgressDashboard from './pages/ProgressDashboard';
 import UnitOverviewPage from './pages/UnitOverviewPage';
@@ -1158,6 +1160,7 @@ export default function App() {
           <Route path="/learn/physics/engineering" element={<ProtectedRoute><PhysicsEngineeringPage /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering/map" element={<ProtectedRoute><GameMapPhysics /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering/lesson/:lessonId" element={<ProtectedRoute><PhysicsLessonPage /></ProtectedRoute>} />
+          <Route path="/learn/physics/engineering/quiz/:lessonId" element={<ProtectedRoute><PhysicsQuizPage /></ProtectedRoute>} />
           <Route path="/learn/electronics" element={<ProtectedRoute><ElectronicsPage /></ProtectedRoute>} />
           <Route path="/learn/books" element={<ProtectedRoute><BooksPage /></ProtectedRoute>} />
           <Route path="/compare" element={<ComparePage />} />
