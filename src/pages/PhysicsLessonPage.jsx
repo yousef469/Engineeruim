@@ -19,10 +19,20 @@ const physicsLessons = {
 export default function PhysicsLessonPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
+  
+  console.log('=== PHYSICS LESSON PAGE DEBUG ===');
+  console.log('Lesson ID from URL:', lessonId);
+  console.log('Available lesson IDs:', Object.keys(physicsLessons));
+  console.log('Lesson 1 exists?', physicsLessons[1]);
+  console.log('Lesson for this ID:', physicsLessons[lessonId]);
+  
   const lesson = physicsLessons[lessonId];
   
-  console.log('PhysicsLessonPage loaded - Lesson ID:', lessonId);
-  console.log('Physics Lesson Data:', lesson);
+  if (!lesson) {
+    console.error('LESSON NOT FOUND! ID:', lessonId);
+  } else {
+    console.log('Lesson found:', lesson.title);
+  }
 
   if (!lesson) {
     return (
@@ -42,9 +52,10 @@ export default function PhysicsLessonPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-950 via-indigo-950 to-black text-white">
-      {/* DEBUG BANNER - REMOVE AFTER TESTING */}
-      <div className="bg-green-600 text-white text-center py-2 font-bold text-lg">
-        ✅ PHYSICS LESSON PAGE - Lesson {lessonId}
+      {/* DEBUG BANNER - VERY VISIBLE */}
+      <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-center py-6 font-bold text-3xl border-b-8 border-green-300 shadow-2xl">
+        🔬 PHYSICS LESSON PAGE 🔬 - Lesson {lessonId}
+        <div className="text-lg mt-2">Title: {lesson?.title || 'NOT FOUND'}</div>
       </div>
       
       <div className="border-b border-blue-700 bg-blue-900/90 backdrop-blur-md sticky top-0 z-50">
