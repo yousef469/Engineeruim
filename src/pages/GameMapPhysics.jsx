@@ -105,7 +105,7 @@ export default function GameMapPhysics() {
 
   const handleLevelClick = (level) => {
     if (isLevelUnlocked(level.id)) {
-      navigate(`/learn/mathematics/engineering/lesson/${level.id}`);
+      navigate(`/learn/physics/engineering/lesson/${level.id}`);
     }
   };
 
@@ -284,5 +284,6 @@ export default function GameMapPhysics() {
     </div>
   );
 }
+
 
 
