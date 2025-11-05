@@ -17,7 +17,7 @@ export default function PhysicsQuizPage() {
 
   useEffect(() => {
     if (!quiz) {
-      navigate('/physics');
+      navigate('/learn/physics/engineering/map');
     }
   }, [quiz, navigate]);
 
@@ -71,11 +71,11 @@ export default function PhysicsQuizPage() {
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white p-8">
         <div className="max-w-2xl mx-auto">
           <button
-            onClick={() => navigate('/physics')}
+            onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-blue-300 hover:text-blue-200 mb-8"
           >
             <ArrowLeft size={20} />
-            Back to Physics Lessons
+            Back
           </button>
 
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
@@ -134,10 +134,10 @@ export default function PhysicsQuizPage() {
                 Retake Quiz
               </button>
               <button
-                onClick={() => navigate('/physics')}
+                onClick={() => navigate(`/learn/physics/engineering/lesson/${lessonId}`)}
                 className="flex-1 bg-white/10 hover:bg-white/20 text-white py-3 px-6 rounded-lg font-semibold transition-colors"
               >
-                Back to Lessons
+                Back to Lesson
               </button>
             </div>
           </div>
@@ -150,11 +150,11 @@ export default function PhysicsQuizPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white p-8">
       <div className="max-w-3xl mx-auto">
         <button
-          onClick={() => navigate('/physics')}
+          onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-blue-300 hover:text-blue-200 mb-8"
         >
           <ArrowLeft size={20} />
-          Back to Physics Lessons
+          Back
         </button>
 
         <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
