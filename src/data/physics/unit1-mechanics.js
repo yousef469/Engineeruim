@@ -1,65 +1,80 @@
 export const unit1Lessons = {
   1: {
     id: 1,
-    title: 'What is Motion?',
-    subtitle: 'Understanding Displacement, Speed & Velocity',
-    description: 'Learn the fundamental concepts of motion and how objects move through space',
-    coreIdea: 'Displacement, speed, velocity',
-    engineeringExample: 'Car on a road, rocket lift-off animation',
+    title: 'Understanding Motion',
+    subtitle: 'The Foundation of All Movement in Engineering',
+    description: 'Master the core concepts of motion: position, displacement, speed, velocity, and reference frames',
+    coreIdea: 'Motion is change in position over time, relative to a reference frame',
+    engineeringExample: 'Car navigation, rocket trajectories, aircraft flight paths',
     content: {
-      intro: 'Motion is everywhere in engineering. From cars on highways to rockets launching into space, understanding how things move is the foundation of all mechanical systems. Motion can take many forms - straight lines, curves, rotations, and oscillations - each with unique characteristics that engineers must understand.',
+      intro: '🚀 Motion is everywhere in engineering - from cars on highways to rockets in space. But what IS motion? Motion is a change in position of an object with time. Here\'s the key insight: motion only makes sense relative to something else (a reference point). Even when you feel still, you\'re moving with Earth at 1,670 km/h! Understanding motion is the foundation of all mechanical engineering.',
       concepts: [
         {
-          title: '🌀 Types of Motion',
-          explanation: 'Motion comes in different forms depending on the path an object follows. Linear motion is straight-line movement (car on highway). Circular motion involves rotation around a fixed point (fan blade, wheel). Oscillatory motion repeats back and forth (pendulum, spring). Random motion has no predictable pattern (dust particles in air).',
-          example: 'A car engine combines all types: pistons move linearly up/down, crankshaft rotates circularly, valves oscillate open/closed, and fuel particles move randomly before combustion.'
+          title: '🧠 1. The Concept of Motion (Core Idea)',
+          explanation: 'Motion means an object\'s position changes over time. But motion is RELATIVE - it depends on what you compare yourself to. If your position changes relative to a reference point → you\'re in motion. If not → you\'re at rest (relative to that frame). Key insight: There\'s no absolute rest in the universe - only motion relative to something. Even sitting "still," you\'re moving with Earth (1,670 km/h rotation + 107,000 km/h around Sun)!',
+          example: 'You\'re on a plane flying at 900 km/h. Relative to the plane, you\'re at rest (0 km/h). Relative to the ground, you\'re moving at 900 km/h. Relative to another plane flying beside you, you\'re at rest again! Same situation, different motion - it all depends on your reference frame.'
         },
         {
-          title: '📏 Distance vs Displacement',
-          explanation: 'Distance is the total path length traveled - it only increases. Displacement is the straight-line distance from start to finish with direction - it can be zero even after traveling far.',
-          example: 'If you drive around a 5 km circular track and return to start: distance = 5 km (you traveled that far), but displacement = 0 km (you ended where you began). A race car completing 100 laps travels 500 km but has zero displacement!'
+          title: '📍 2. Position & Displacement',
+          explanation: 'POSITION (x, y, z) is your location at a given time - like coordinates on a map. DISPLACEMENT is the straight-line arrow from start position to end position (vector with direction). PATH is the actual route you followed. Key difference: Displacement ≠ Distance. Displacement is the SHORTEST straight line from start to end, regardless of the path taken.',
+          example: 'Imagine walking around a city block: You start at corner A, walk 100m north to B, 100m east to C, 100m south to D, 100m west back to A. Your PATH was a square (400m total). Your DISPLACEMENT is ZERO (you ended where you started - the straight-line distance from start to end is 0m). Position changed during the walk, but final displacement = 0!'
         },
         {
-          title: '⚡ Speed vs Velocity',
-          explanation: 'Speed is a scalar (just magnitude): how fast you\'re moving. Velocity is a vector (magnitude + direction): how fast AND which way. Speed = Distance/Time. Velocity = Displacement/Time with direction.',
-          example: 'Two cars both traveling at 100 km/h have the same speed. But if one goes North and one goes South, they have opposite velocities. A rocket at 1000 m/s upward has velocity = 1000 m/s ↑, while falling at 1000 m/s has velocity = 1000 m/s ↓'
+          title: '🛣️ 3. Distance vs Displacement',
+          explanation: 'DISTANCE = total path length covered (scalar - only magnitude, always positive, always increases). DISPLACEMENT = shortest straight line from start → end (vector - has magnitude AND direction, can be zero). Distance tells you "how much ground you covered." Displacement tells you "how far you are from where you started."',
+          example: 'A race car drives 5 km north, then 5 km south back to start. DISTANCE = 10 km (total path). DISPLACEMENT = 0 km (straight line from start to end). After 100 laps on a 5 km track: Distance = 500 km, Displacement = 0 km. GPS shows both: "8 km via Main St" (distance) vs "5 km away" (displacement).'
         },
         {
-          title: '🎯 Average vs Instantaneous',
-          explanation: 'Average speed/velocity is calculated over a time period. Instantaneous speed/velocity is at a specific moment (what your speedometer shows right now).',
-          example: 'On a road trip, your average speed might be 80 km/h over 3 hours, but your instantaneous speed varies: 0 km/h at red lights, 120 km/h on highway, 40 km/h in traffic.'
+          title: '⚡ 4. Speed and Velocity',
+          explanation: 'SPEED = how fast you move (scalar, no direction). Formula: speed = distance/time. VELOCITY = speed WITH direction (vector). Formula: velocity = displacement/time. Key insight: Velocity can change even if speed stays constant - just change direction! Two cars at 100 km/h have same speed but different velocities if going different directions.',
+          example: 'Car going 100 km/h North has velocity = 100 km/h ↑. Car going 100 km/h South has velocity = 100 km/h ↓. Same speed (100 km/h), opposite velocities! A car turning around a circular track at constant 80 km/h: speed is constant, but velocity constantly changes (direction changes). Your speedometer shows speed; GPS shows velocity (speed + direction).'
         },
         {
-          title: '🔄 Relative Motion',
-          explanation: 'Motion depends on your reference frame. An object can be moving relative to one observer but stationary relative to another.',
-          example: 'You\'re sitting in a train moving at 200 km/h. Relative to the ground, you\'re moving at 200 km/h. Relative to the train, you\'re stationary (0 km/h). Relative to a train passing you at 250 km/h, you\'re moving backward at 50 km/h!'
+          title: '🎯 5. Average vs Instantaneous',
+          explanation: 'AVERAGE SPEED/VELOCITY = calculated over a time period (total distance/total time). INSTANTANEOUS SPEED/VELOCITY = at a specific moment (what your speedometer shows RIGHT NOW). Average smooths out variations; instantaneous captures the moment.',
+          example: 'Road trip: You drive 240 km in 3 hours. Average speed = 240/3 = 80 km/h. But your instantaneous speed varied constantly: 0 km/h at red lights, 120 km/h on highway, 40 km/h in city traffic, 0 km/h at gas station. Your speedometer shows instantaneous speed; your trip computer calculates average speed.'
+        },
+        {
+          title: '🌀 6. Acceleration (Change in Velocity)',
+          explanation: 'ACCELERATION = rate of change of velocity. Formula: a = Δv/Δt (change in velocity / time). Acceleration happens when: (1) speed changes (speeding up/slowing down), OR (2) direction changes (turning), OR (3) both! Zero acceleration = constant velocity (same speed AND direction). Key: Acceleration is a vector - it has direction.',
+          example: 'Car speeding up from 0 to 100 km/h in 10 seconds: acceleration = 10 km/h per second. Car braking from 100 to 0 km/h in 5 seconds: acceleration = -20 km/h per second (negative = slowing down). Car turning at constant 60 km/h: still accelerating! (direction changing). Rocket launch: massive acceleration upward (speed AND altitude increasing).'
+        },
+        {
+          title: '🧭 7. Reference Frames & Relativity',
+          explanation: 'Motion depends on WHERE you\'re observing from (your reference frame). Same object can be moving AND at rest simultaneously - depends on the observer! There\'s no absolute rest - only motion relative to something. This is why we say "relative to" when describing motion.',
+          example: 'You\'re on a train moving at 200 km/h, throwing a ball straight up. To YOU (train reference frame): ball goes straight up and down, lands in your hand. To someone OUTSIDE (ground reference frame): ball follows a curved path forward while going up and down. Same ball, same throw, different motion observed! Passenger is at rest relative to train, but moving at 200 km/h relative to ground.'
+        },
+        {
+          title: '🪐 8. Types of Motion',
+          explanation: 'Motion comes in different patterns: LINEAR (straight line - car on highway), CIRCULAR (rotating path - fan blade, wheel), OSCILLATORY (repetitive back & forth - pendulum, spring, piston), RANDOM (unpredictable - gas molecules, dust particles). Real systems often combine multiple types!',
+          example: 'Car engine combines ALL types: Pistons move linearly (up/down in cylinders), crankshaft rotates circularly (spinning motion), valves oscillate (open/close repeatedly), fuel molecules move randomly (before combustion). Airplane: moves linearly through air, propeller rotates circularly, control surfaces oscillate for stability. Understanding motion types helps engineers design better systems!'
         }
       ],
       realWorld: [
         {
           icon: '🚗',
-          title: 'Car Navigation Systems',
-          description: 'GPS calculates displacement (straight-line distance to destination) vs actual distance (road path). It shows both "5 km away" (displacement) and "8 km via Main St" (distance). Engineers optimize routes balancing shortest distance vs fastest time.'
+          title: 'GPS Navigation Systems',
+          description: 'Your GPS calculates TWO things: displacement ("5 km away" - straight line to destination) and distance ("8 km via Main St" - actual road path). It uses velocity (speed + direction) to estimate arrival time. Engineers optimize routes balancing shortest distance vs fastest time vs fuel efficiency.'
         },
         {
           icon: '🚀',
-          title: 'Rocket Launch Trajectory',
-          description: 'Rockets need precise velocity control - both speed (7.8 km/s for orbit) and direction (must be tangent to Earth). Launch engineers calculate displacement from launch pad and velocity vector at every moment to ensure proper orbital insertion.'
+          title: 'Rocket Launch Trajectories',
+          description: 'Rockets need PRECISE velocity control - both speed (7.8 km/s for orbit) AND direction (must be tangent to Earth\'s surface). Launch engineers track position, displacement from launch pad, and velocity vector every millisecond. Small velocity errors = mission failure. Reference frame matters: velocity relative to Earth vs relative to Sun!'
         },
         {
           icon: '✈️',
-          title: 'Aircraft Navigation',
-          description: 'Pilots monitor multiple velocities: airspeed (speed through air, ~900 km/h), ground speed (velocity relative to ground, varies with wind), and true airspeed (corrected for altitude). Wind can make ground speed very different from airspeed!'
+          title: 'Aircraft Flight Navigation',
+          description: 'Pilots monitor MULTIPLE velocities: airspeed (speed through air ~900 km/h), ground speed (velocity relative to ground - varies with wind), true airspeed (corrected for altitude). A plane can have 900 km/h airspeed but only 700 km/h ground speed (headwind), or 1100 km/h ground speed (tailwind). Reference frames matter!'
         },
         {
           icon: '🏎️',
-          title: 'Race Car Telemetry',
-          description: 'F1 cars track instantaneous speed at every corner (data logged 1000 times/second). Engineers analyze speed traces to optimize racing lines. Drivers see average lap speed vs sector speeds to find where they\'re losing time.'
+          title: 'F1 Race Car Telemetry',
+          description: 'F1 cars track instantaneous speed 1000 times/second at every point on track. Engineers analyze speed traces to optimize racing lines. Drivers see average lap speed (e.g., 210 km/h) vs sector speeds to find where they\'re losing time. Acceleration data shows braking points and corner exit performance.'
         },
         {
           icon: '🛰️',
           title: 'Satellite Orbital Mechanics',
-          description: 'Satellites in geostationary orbit move at 3.07 km/s but appear stationary relative to Earth. Their displacement relative to ground is zero, but they travel 265,000 km daily! Engineers use relative motion to keep satellites positioned over specific locations.'
+          description: 'Geostationary satellites move at 3.07 km/s but appear STATIONARY relative to Earth (same reference frame). Their displacement relative to ground = 0, but they travel 265,000 km daily! Engineers use relative motion to keep satellites positioned over specific locations. Different reference frames = different observed motion!'
         }
       ]
     }
