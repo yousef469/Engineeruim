@@ -237,45 +237,195 @@ export const unit1Lessons = {
   },
   2: {
     id: 2,
-    title: 'Acceleration & Graphs',
-    subtitle: 'How Speed Changes Over Time',
-    description: 'Master the concept of acceleration and learn to read motion graphs',
-    coreIdea: 'Change of velocity over time',
-    engineeringExample: 'Airplane takeoff acceleration',
+    title: 'Newton\'s Laws of Motion',
+    subtitle: 'Forces and Inertia - How Motion Starts and Changes',
+    description: 'Master the three fundamental laws that govern all motion in the universe',
+    coreIdea: 'Forces cause acceleration. Objects resist changes in motion (inertia)',
+    engineeringExample: 'Rocket propulsion, car crashes, aircraft control',
     content: {
-      intro: 'Acceleration is the rate at which velocity changes. Every time you press the gas pedal or hit the brakes, you\'re creating acceleration.',
+      intro: '🎯 Newton\'s Three Laws are the foundation of ALL engineering mechanics. They explain why rockets fly, why seatbelts save lives, and how every machine works. These laws answer the fundamental question: What CAUSES motion to change? The answer: FORCES! Understanding forces and inertia is essential for designing anything that moves.',
       concepts: [
         {
-          title: 'What is Acceleration?',
-          explanation: 'Acceleration = Change in Velocity / Time. It measures how quickly speed changes.',
-          example: 'A car going from 0 to 60 mph in 6 seconds has acceleration of 10 mph/s'
+          title: '🛑 1. Newton\'s First Law - Law of Inertia',
+          explanation: 'An object at rest stays at rest, and an object in motion stays in motion at constant velocity, UNLESS acted upon by an external force. This is INERTIA - the resistance to changes in motion. More mass = more inertia = harder to start/stop moving. Key insight: Objects don\'t "naturally" slow down - friction is the force that stops them!',
+          example: 'You\'re in a car at 100 km/h. The car suddenly brakes (force on car), but YOUR body wants to keep moving at 100 km/h (inertia)! That\'s why you lurch forward - your body resists the change. Seatbelt applies force to change your motion. In space (no friction), a spacecraft coasts forever at constant velocity without using fuel - inertia keeps it moving!',
+          comparison: {
+            left: {
+              title: '🛑 AT REST (Inertia)',
+              points: [
+                'Object: stationary',
+                'Wants to: stay stationary',
+                'Needs: force to start moving',
+                'Example: Heavy box on floor',
+                'Hard to push = high inertia',
+                'Mass resists acceleration',
+                'No force = no motion'
+              ]
+            },
+            right: {
+              title: '➡️ IN MOTION (Inertia)',
+              points: [
+                'Object: moving at constant v',
+                'Wants to: keep moving forever',
+                'Needs: force to stop/turn',
+                'Example: Hockey puck on ice',
+                'Slides far = low friction',
+                'Mass resists deceleration',
+                'No force = constant motion'
+              ]
+            }
+          }
         },
         {
-          title: 'Position-Time Graphs',
-          explanation: 'Shows where an object is at each moment. Slope = velocity',
-          example: 'Steep slope = fast motion, flat line = stopped'
+          title: '⚡ 2. Newton\'s Second Law - F = ma',
+          explanation: 'Force = Mass × Acceleration. This is THE most important equation in mechanics! It tells you: (1) How much force needed to accelerate something, (2) How fast something accelerates for a given force, (3) Heavier objects need more force for same acceleration. Rearranged: a = F/m (acceleration = force / mass). More force = more acceleration. More mass = less acceleration.',
+          example: 'Push a shopping cart (10 kg) with 50 N force: a = 50/10 = 5 m/s². Push a car (1000 kg) with same 50 N: a = 50/1000 = 0.05 m/s² (100x slower!). Rocket engines produce HUGE force (millions of Newtons) to accelerate massive rockets. F-16 fighter: 130,000 N thrust, 10,000 kg mass = 13 m/s² acceleration (faster than falling!)',
+          comparison: {
+            left: {
+              title: '🚗 SMALL MASS (Easy to Accelerate)',
+              points: [
+                'Mass: 1000 kg (car)',
+                'Force: 2000 N',
+                'a = F/m = 2000/1000',
+                'Acceleration: 2 m/s²',
+                'Result: Quick acceleration',
+                'Easy to push/stop',
+                'Sports car performance'
+              ]
+            },
+            right: {
+              title: '🚛 LARGE MASS (Hard to Accelerate)',
+              points: [
+                'Mass: 10,000 kg (truck)',
+                'Force: 2000 N (same!)',
+                'a = F/m = 2000/10,000',
+                'Acceleration: 0.2 m/s²',
+                'Result: Slow acceleration',
+                'Hard to push/stop',
+                'Needs more braking distance'
+              ]
+            }
+          }
         },
         {
-          title: 'Velocity-Time Graphs',
-          explanation: 'Shows how fast an object moves at each moment. Slope = acceleration',
-          example: 'Straight line up = constant acceleration (like a car speeding up steadily)'
+          title: '🔄 3. Newton\'s Third Law - Action-Reaction',
+          explanation: 'For every action, there is an equal and opposite reaction. Forces ALWAYS come in pairs! When you push on something, it pushes back on you with equal force. Key insight: The forces act on DIFFERENT objects. This is how rockets work - they push gas backward, gas pushes rocket forward. You can\'t have one force without the other!',
+          example: 'Rocket engine: Pushes exhaust gas downward (action) → Gas pushes rocket upward (reaction). Walking: Your foot pushes ground backward (action) → Ground pushes you forward (reaction). Gun recoil: Bullet pushed forward (action) → Gun pushed backward (reaction). Swimming: You push water backward → Water pushes you forward. No water to push = can\'t swim in air!',
+          comparison: {
+            left: {
+              title: '🚀 ACTION FORCE',
+              points: [
+                'Rocket pushes gas DOWN',
+                'Force: 1,000,000 N ↓',
+                'Acts on: exhaust gas',
+                'Result: gas accelerates down',
+                'You push wall →',
+                'Foot pushes ground ←',
+                'Always has reaction pair'
+              ]
+            },
+            right: {
+              title: '⬆️ REACTION FORCE',
+              points: [
+                'Gas pushes rocket UP',
+                'Force: 1,000,000 N ↑ (equal!)',
+                'Acts on: rocket',
+                'Result: rocket accelerates up',
+                'Wall pushes you ←',
+                'Ground pushes foot →',
+                'Equal magnitude, opposite dir'
+              ]
+            }
+          }
+        },
+        {
+          title: '💪 4. What is a Force?',
+          explanation: 'A FORCE is a push or pull that can change an object\'s motion (accelerate it). Forces are vectors - they have magnitude (strength in Newtons) and direction. Multiple forces can act on one object simultaneously. NET FORCE = sum of all forces (vector addition). If net force = 0, object doesn\'t accelerate (stays at rest or constant velocity). If net force ≠ 0, object accelerates in direction of net force.',
+          example: 'Car on highway: Engine force forward (5000 N), air resistance backward (5000 N). Net force = 0, so constant velocity (no acceleration). Car accelerating: Engine 6000 N forward, resistance 4000 N backward. Net force = 2000 N forward, so car accelerates forward. Tug-of-war: Team A pulls 3000 N left, Team B pulls 2500 N right. Net = 500 N left, rope accelerates left.',
+          comparison: {
+            left: {
+              title: '⚖️ BALANCED FORCES (Net = 0)',
+              points: [
+                'All forces cancel out',
+                'Net force = 0 N',
+                'Acceleration = 0',
+                'Constant velocity OR at rest',
+                'Example: Cruise control',
+                'Engine = Air resistance',
+                'No change in motion'
+              ]
+            },
+            right: {
+              title: '⚡ UNBALANCED FORCES (Net ≠ 0)',
+              points: [
+                'Forces don\'t cancel',
+                'Net force ≠ 0 N',
+                'Acceleration ≠ 0',
+                'Velocity changes',
+                'Example: Accelerating car',
+                'Engine > Air resistance',
+                'Motion changes!'
+              ]
+            }
+          }
+        },
+        {
+          title: '🎯 5. Mass vs Weight',
+          explanation: 'MASS = amount of matter (kg), constant everywhere. WEIGHT = force of gravity on mass (Newtons). Weight = mass × g (where g = 9.8 m/s² on Earth). Your mass is the same on Earth, Moon, or space. Your weight changes! Moon gravity = 1.6 m/s² (1/6 of Earth), so you weigh 1/6 as much but same mass. Weight is a FORCE, mass is NOT.',
+          example: 'Astronaut: mass = 80 kg everywhere. On Earth: weight = 80 × 9.8 = 784 N. On Moon: weight = 80 × 1.6 = 128 N (feels lighter!). In space: weight = 0 N (weightless), but mass still 80 kg (same inertia - still hard to push). This is why Moon jumps are so high - less weight pulling you down, but same mass to accelerate.',
+          comparison: {
+            left: {
+              title: '⚖️ MASS',
+              points: [
+                'Amount of matter',
+                'Measured in: kg',
+                'Same everywhere',
+                'Scalar quantity',
+                'Causes: inertia',
+                'Example: 80 kg person',
+                'Never changes'
+              ]
+            },
+            right: {
+              title: '⬇️ WEIGHT',
+              points: [
+                'Force of gravity',
+                'Measured in: Newtons (N)',
+                'Changes with gravity',
+                'Vector (downward)',
+                'Causes: pressure on ground',
+                'Example: 784 N on Earth',
+                'Changes with location'
+              ]
+            }
+          }
         }
       ],
       realWorld: [
         {
-          icon: '✈️',
-          title: 'Airplane Takeoff',
-          description: 'Commercial jets accelerate at ~2.5 m/s² during takeoff, reaching 250 km/h in about 30 seconds'
+          icon: '🚀',
+          title: 'Rocket Propulsion',
+          description: 'Rockets use Newton\'s 3rd Law: Expel gas at high speed downward (action) → rocket pushed upward (reaction). SpaceX Falcon 9: 7.6 million N thrust. F = ma: 550,000 kg rocket × 13.8 m/s² = 7.6 million N. No air needed - works in space vacuum!'
         },
         {
           icon: '🚗',
-          title: 'Sports Car Performance',
-          description: 'High-performance cars can accelerate 0-100 km/h in under 3 seconds'
+          title: 'Car Safety Systems',
+          description: 'Crash at 100 km/h: Your body has huge inertia (1st Law). Seatbelt applies force over time to stop you safely (2nd Law: F = ma). Airbag increases stopping time, reducing peak force. Crumple zones absorb energy. Understanding forces saves lives!'
         },
         {
-          icon: '🚀',
-          title: 'Rocket Acceleration',
-          description: 'Space Shuttle accelerated at 3g (30 m/s²) - astronauts feel 3x their weight!'
+          icon: '✈️',
+          title: 'Aircraft Control',
+          description: 'Pilots control forces: Thrust (engines), Lift (wings), Drag (air resistance), Weight (gravity). Net force determines acceleration. To climb: Lift > Weight. To turn: Bank wings to redirect lift force. F-16 can pull 9g turns (9× normal weight force)!'
+        },
+        {
+          icon: '🏎️',
+          title: 'F1 Race Car Braking',
+          description: 'F1 car at 300 km/h → 0 in 100m. Huge deceleration needs huge force. Carbon brakes provide 5g deceleration (50 m/s²). Driver feels 5× body weight pushing forward (inertia). Brake force = 1.5× car weight. Tires must grip or car slides!'
+        },
+        {
+          icon: '🛰️',
+          title: 'Satellite Maneuvering',
+          description: 'Satellites use tiny thrusters (Newton\'s 3rd Law) to change orbit. Small forces over long time = big velocity change. Geostationary satellites: must balance gravity (inward force) with orbital motion. Net force provides centripetal acceleration for circular orbit.'
         }
       ]
     }
