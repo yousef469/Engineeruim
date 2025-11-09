@@ -6,6 +6,30 @@ export const unit6Lessons = {
     description: 'Learn about the main classes of engineering materials',
     coreIdea: 'Metals, ceramics, polymers, composites',
     engineeringExample: 'Rocket body vs car frame',
+    learningObjectives: [
+      'Identify major material classes and their typical properties',
+      'Explain stress, strain, and how materials respond to load',
+      'Choose materials based on strength-to-weight and application constraints'
+    ],
+    keyEquations: [
+      { eq: 'σ = F / A', meaning: 'Stress = Force divided by area' },
+      { eq: 'ε = ΔL / L₀', meaning: 'Strain = change in length over original length' }
+    ],
+    practiceProblems: [
+      {
+        id: '26a',
+        prompt: 'A rod with cross-sectional area 0.01 m² supports a 1000 N load. Calculate stress in the rod.',
+        solution: 'σ = F/A = 1000 / 0.01 = 100,000 Pa (100 kPa)',
+        hints: ['Stress = Force / Area.']
+      },
+      {
+        id: '26b',
+        prompt: 'A 2 m steel rod stretches 1 mm under load. Estimate the strain.',
+        solution: 'ε = ΔL / L₀ = 0.001 / 2 = 0.0005 (0.05%)',
+        hints: ['Convert mm to meters before dividing.']
+      }
+    ],
+    metadata: { difficulty: 'Medium', estTime: '20-30 min', tags: ['materials','stress','strain'] },
     content: {
       intro: 'Engineers choose from four main material classes: metals, ceramics, polymers, and composites. Each has unique properties for different applications.',
       concepts: [

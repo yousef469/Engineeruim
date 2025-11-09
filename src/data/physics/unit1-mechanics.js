@@ -6,6 +6,30 @@ export const unit1Lessons = {
     description: 'Master the core concepts of motion: position, displacement, speed, velocity, and reference frames',
     coreIdea: 'Motion is change in position over time, relative to a reference frame',
     engineeringExample: 'Car navigation, rocket trajectories, aircraft flight paths',
+    learningObjectives: [
+      'Explain position, displacement, speed, velocity, and acceleration',
+      'Differentiate distance vs displacement and speed vs velocity',
+      'Use basic kinematics equations to solve simple problems (v = Δx/Δt, a = Δv/Δt)'
+    ],
+    keyEquations: [
+      { eq: 'v = Δx / Δt', meaning: 'Average velocity = change in position over time' },
+      { eq: 'a = Δv / Δt', meaning: 'Acceleration = change in velocity over time' }
+    ],
+    practiceProblems: [
+      {
+        id: '1a',
+        prompt: 'A car travels 150 km in 3 hours. Calculate the average speed.',
+        solution: '50 km/h',
+        hints: ['Use speed = distance / time.']
+      },
+      {
+        id: '1b',
+        prompt: 'A ball is thrown upward with initial vertical speed 10 m/s. (Ignore air resistance.) Estimate the maximum height reached.',
+        solution: 'h = v^2/(2g) ≈ 10^2/(2×9.8) ≈ 5.1 m',
+        hints: ['Use v^2 = v0^2 - 2gh and set v = 0 at the top.']
+      }
+    ],
+    metadata: { difficulty: 'Easy', estTime: '15-25 min', tags: ['kinematics','motion','intro'] },
     content: {
       intro: '🚀 Motion is everywhere in engineering - from cars on highways to rockets in space. But what IS motion? Motion is a change in position of an object with time. Here\'s the key insight: motion only makes sense relative to something else (a reference point). Even when you feel still, you\'re moving with Earth at 1,670 km/h! Understanding motion is the foundation of all mechanical engineering.',
       concepts: [
