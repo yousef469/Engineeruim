@@ -8,38 +8,59 @@ export const physicsUnits = [
     lessons: [
       {
         id: 1,
-        title: 'What is Motion?',
-        description: 'Displacement, speed, velocity',
-        example: 'Car on a road, rocket lift-off animation',
-        concepts: ['Displacement', 'Speed', 'Velocity', 'Distance vs Displacement']
+        title: 'Understanding Motion',
+        description: 'Position, displacement, speed, velocity, reference frames',
+        example: 'Car navigation, rocket trajectories',
+        concepts: ['Position & Displacement', 'Distance vs Displacement', 'Speed vs Velocity', 'Reference Frames']
       },
       {
         id: 2,
-        title: 'Acceleration & Graphs',
-        description: 'Change of velocity over time',
-        example: 'Airplane takeoff acceleration',
-        concepts: ['Acceleration', 'Velocity-Time Graphs', 'Position-Time Graphs']
+        title: "Newton's Laws of Motion",
+        description: 'Forces, inertia, F=ma, action-reaction',
+        example: 'Rocket propulsion, car crashes',
+        concepts: ['Law of Inertia', 'F = ma', 'Action-Reaction', 'Mass vs Weight']
       },
       {
         id: 3,
-        title: "Newton's Laws",
-        description: 'The 3 laws in interactive style',
-        example: 'Rocket thrust vs weight',
-        concepts: ['First Law (Inertia)', 'Second Law (F=ma)', 'Third Law (Action-Reaction)']
+        title: 'Forces & Free-Body Diagrams',
+        description: 'Visual force analysis and problem solving',
+        example: 'Aircraft analysis, bridge design',
+        concepts: ['Free-Body Diagrams', 'Common Forces', 'Equilibrium', 'Problem Solving']
       },
       {
         id: 4,
-        title: 'Forces & Free-Body Diagrams',
-        description: 'Gravity, friction, normal force',
-        example: 'Vehicle tire friction',
-        concepts: ['Gravity', 'Friction', 'Normal Force', 'Free-Body Diagrams']
+        title: 'Friction, Normal Force & Tension',
+        description: 'Contact forces in everyday machines',
+        example: 'Brakes, elevators, pulleys',
+        concepts: ['Static & Kinetic Friction', 'Normal Force', 'Tension', 'Combined Forces']
       },
       {
         id: 5,
+        title: 'Circular Motion',
+        description: 'Turning cars, orbiting satellites',
+        example: 'Race cars, satellites, roller coasters',
+        concepts: ['Centripetal Acceleration', 'Centripetal Force', 'Orbital Motion', 'Banking']
+      },
+      {
+        id: 6,
         title: 'Momentum & Collisions',
-        description: 'Conservation of momentum',
-        example: 'Car crash simulation, rocket staging',
-        concepts: ['Momentum', 'Impulse', 'Conservation', 'Elastic vs Inelastic Collisions']
+        description: 'Conservation of momentum and impulse',
+        example: 'Car crashes, rocket staging',
+        concepts: ['Momentum', 'Conservation Law', 'Impulse', 'Explosions & Recoil']
+      },
+      {
+        id: 7,
+        title: 'Gravity & Weight',
+        description: 'Weight vs mass and gravitational fields',
+        example: 'Satellite orbits, structural loads',
+        concepts: ['Mass vs Weight', 'Gravitational Field', 'Universal Gravitation', 'Apparent Weight']
+      },
+      {
+        id: 8,
+        title: 'Projectile Motion',
+        description: 'How thrown and fired objects move',
+        example: 'Rockets, drones, cars on hills',
+        concepts: ['Independence of Motion', 'Launch Angles', 'Rocket Trajectories', 'Slopes']
       }
     ]
   },
