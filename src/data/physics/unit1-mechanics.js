@@ -580,90 +580,328 @@ export const unit1Lessons = {
   },
   4: {
     id: 4,
-    title: 'Forces & Free-Body Diagrams',
-    subtitle: 'Visualizing All Forces Acting on Objects',
-    description: 'Learn to identify and analyze forces using engineering diagrams',
-    coreIdea: 'Gravity, friction, normal force',
-    engineeringExample: 'Vehicle tire friction',
+    title: 'Friction, Normal Force & Tension',
+    subtitle: 'Everyday Forces in Machines',
+    description: 'Master the three most common forces in engineering systems',
+    coreIdea: 'Contact forces that make machines work',
+    engineeringExample: 'Brakes, pulleys, elevators, tire grip',
     content: {
-      intro: 'Engineers use Free-Body Diagrams (FBDs) to visualize all forces acting on an object. This is essential for designing safe vehicles and structures.',
+      intro: '🔧 Friction, Normal Force, and Tension are the workhorses of engineering! These contact forces appear in EVERY machine - from car brakes to elevator cables to robot joints. Understanding these forces is essential for designing anything that moves or supports loads.',
       concepts: [
         {
-          title: 'Gravity (Weight)',
-          explanation: 'Force pulling everything toward Earth. Weight = Mass × 9.8 m/s²',
-          example: 'A 1000kg car has weight = 9800N pulling it down'
+          title: '🛞 1. Friction - The Grip Force',
+          explanation: 'FRICTION opposes motion between surfaces. Two types: STATIC (prevents sliding - stronger) and KINETIC (during sliding - weaker). Formula: f = μN where μ = coefficient of friction, N = normal force. Higher μ = more grip. Friction converts kinetic energy to heat.',
+          example: 'Car braking: Brake pads press on rotors (high friction) to stop wheels. Tires grip road (static friction) - if you brake too hard, tires slide (kinetic friction, less grip) and you skid! Race cars use soft tires for high μ. Ice has low μ = slippery!',
+          comparison: {
+            left: {
+              title: '🛑 STATIC FRICTION',
+              points: [
+                'Prevents sliding',
+                'Object at rest',
+                'fs ≤ μsN (maximum)',
+                'Stronger than kinetic',
+                'Example: Parked car on hill',
+                'Adjusts to applied force',
+                'Must overcome to start moving'
+              ]
+            },
+            right: {
+              title: '➡️ KINETIC FRICTION',
+              points: [
+                'During sliding',
+                'Object moving',
+                'fk = μkN (constant)',
+                'Weaker than static',
+                'Example: Sliding box',
+                'Constant magnitude',
+                'Opposes motion direction'
+              ]
+            }
+          }
         },
         {
-          title: 'Normal Force',
-          explanation: 'The support force from a surface pushing up on an object',
-          example: 'When you stand on the ground, it pushes up on you with force equal to your weight'
+          title: '⬆️ 2. Normal Force - The Support',
+          explanation: 'NORMAL FORCE is the perpendicular support force from a surface. "Normal" means perpendicular (90°). Prevents objects from falling through surfaces. NOT always equal to weight! Depends on other forces and surface angle. On incline: N = mg cos(θ). In elevator: N changes with acceleration.',
+          example: 'You in elevator: At rest, N = your weight (feel normal). Accelerating up, N > weight (feel heavier, pushed into floor). Accelerating down, N < weight (feel lighter). Free fall, N = 0 (weightless)! Normal force is what you "feel" as your weight.',
+          comparison: {
+            left: {
+              title: '📏 FLAT SURFACE',
+              points: [
+                'N perpendicular to surface',
+                'N = mg (if no other forces)',
+                'Balances weight component',
+                'Example: Book on table',
+                'N points straight up',
+                'Simple calculation',
+                'N = Weight'
+              ]
+            },
+            right: {
+              title: '📐 INCLINED SURFACE',
+              points: [
+                'N perpendicular to slope',
+                'N = mg cos(θ)',
+                'Only balances perpendicular',
+                'Example: Car on hill',
+                'N points away from surface',
+                'Need trigonometry',
+                'N < Weight'
+              ]
+            }
+          }
         },
         {
-          title: 'Friction',
-          explanation: 'Force that opposes motion between surfaces. Essential for braking and turning.',
-          example: 'Car tires grip the road through friction - no friction = no control!'
+          title: '🪢 3. Tension - The Pull Force',
+          explanation: 'TENSION is the pulling force transmitted through ropes, cables, strings, chains. Always pulls AWAY from object (never pushes). Same tension throughout ideal rope (massless, unstretchable). In pulley systems, tension can change direction but not magnitude. T = ma for accelerating objects on rope.',
+          example: 'Elevator cable: Tension must support elevator weight PLUS provide upward force if accelerating up. Going up at constant speed: T = mg. Accelerating up: T = m(g + a). If cable breaks (T = 0), elevator free falls! Engineers design cables with huge safety factor - actual strength >> needed tension.',
+          comparison: {
+            left: {
+              title: '⬆️ SINGLE ROPE',
+              points: [
+                'One tension value',
+                'Pulls both ends equally',
+                'T throughout rope',
+                'Example: Hanging mass',
+                'T = Weight (if static)',
+                'Simple system',
+                'Direct force transmission'
+              ]
+            },
+            right: {
+              title: '🔄 PULLEY SYSTEM',
+              points: [
+                'Tension redirected',
+                'Same T if ideal pulley',
+                'Changes force direction',
+                'Example: Crane lifting',
+                'Mechanical advantage possible',
+                'Complex system',
+                'Can multiply force'
+              ]
+            }
+          }
+        },
+        {
+          title: '🔗 4. How These Forces Work Together',
+          explanation: 'In real systems, friction, normal, and tension work TOGETHER. Friction depends on normal force (f = μN). Tension can affect normal force. All three appear in most machines. Engineers must analyze all three simultaneously using free-body diagrams.',
+          example: 'Block pulled by rope on table: TENSION pulls block forward. FRICTION opposes motion (f = μN). NORMAL FORCE supports block (N = mg). WEIGHT pulls down. If T > f, block accelerates. If T = f, constant velocity. If T < f, block doesn\'t move (static friction).',
+          comparison: {
+            left: {
+              title: '🎯 HORIZONTAL SURFACE',
+              points: [
+                'N = mg (simple)',
+                'Friction: f = μN',
+                'Tension: pulls horizontally',
+                'Weight: straight down',
+                'Example: Sled on ice',
+                'Easy to analyze',
+                '2D problem'
+              ]
+            },
+            right: {
+              title: '📐 INCLINED PLANE',
+              points: [
+                'N = mg cos(θ)',
+                'Friction: up or down slope',
+                'Tension: along slope',
+                'Weight: break into components',
+                'Example: Car on ramp',
+                'Complex analysis',
+                'Need trig components'
+              ]
+            }
+          }
         }
       ],
       realWorld: [
         {
           icon: '🚗',
-          title: 'Vehicle Braking',
-          description: 'Friction between brake pads and rotors slows the car. Tire friction prevents skidding.'
+          title: 'Car Braking Systems',
+          description: 'Brake pads use friction (μ ≈ 0.4) to stop wheels. Tire-road friction (μ ≈ 0.7 dry, 0.3 wet) prevents skidding. ABS prevents wheel lock to maintain static friction. Normal force from car weight presses tires down. Heavier car = more N = more friction = better braking (but more momentum too!).'
         },
         {
-          icon: '✈️',
-          title: 'Aircraft Landing',
-          description: 'Pilots calculate normal force on landing gear to ensure safe touchdown'
+          icon: '🏗️',
+          title: 'Elevator Cable Tension',
+          description: 'Elevator cables must support weight PLUS acceleration forces. Going up: T = m(g + a). Safety factor of 10-12× means cable can hold 10× the load. Multiple cables for redundancy. If one breaks, others hold. Tension sensors monitor cable health. Engineers calculate exact T needed for every scenario.'
         },
         {
-          icon: '🚀',
-          title: 'Rocket on Launchpad',
-          description: 'Thrust must overcome weight (gravity) for liftoff. FBD shows: Thrust ↑ vs Weight ↓'
+          icon: '🏎️',
+          title: 'Race Car Tire Grip',
+          description: 'F1 tires: Soft compound for high μ (≈1.5!). Normal force increased by downforce (aerodynamics push car down). More N = more friction = faster cornering. Tire temperature affects μ - too cold = less grip. Engineers optimize tire pressure, compound, and downforce for maximum friction.'
+        },
+        {
+          icon: '🚡',
+          title: 'Cable Car Systems',
+          description: 'Tension in cable supports car weight + passengers. Pulleys redirect tension without changing magnitude. Cable must handle: static load (weight), dynamic load (acceleration), wind forces. San Francisco cable cars: 1.25 inch steel cable, 21,000 lb tension capacity. Friction between cable and grip mechanism pulls car.'
+        },
+        {
+          icon: '🏔️',
+          title: 'Rock Climbing Safety',
+          description: 'Rope tension = climber weight (static) or weight + fall force (dynamic). Friction in belay device controls rope. Normal force on rock face provides friction for grip. Climbing shoes: high μ rubber. Carabiners redirect tension. Engineers test ropes to 22 kN (5000 lb) - way more than needed for safety!'
         }
       ]
     }
   },
   5: {
     id: 5,
-    title: 'Momentum & Collisions',
-    subtitle: 'Conservation of Momentum in Action',
-    description: 'Understand how momentum is conserved in crashes and explosions',
-    coreIdea: 'Conservation of momentum',
-    engineeringExample: 'Car crash simulation, rocket staging',
+    title: 'Circular Motion',
+    subtitle: 'Turning Cars, Orbiting Satellites',
+    description: 'Master the physics of objects moving in circles',
+    coreIdea: 'Centripetal force keeps objects moving in circles',
+    engineeringExample: 'Car turns, satellite orbits, centrifuges',
     content: {
-      intro: 'Momentum is "mass in motion" and it\'s always conserved. This principle is crucial for crash safety and rocket design.',
+      intro: '🔄 Circular motion is EVERYWHERE in engineering - from car turns to satellite orbits to spinning turbines. The key insight: Objects moving in circles are ALWAYS accelerating (direction changing), so they NEED a net force toward the center. This is centripetal force!',
       concepts: [
         {
-          title: 'What is Momentum?',
-          explanation: 'Momentum = Mass × Velocity. Heavy or fast objects have more momentum.',
-          example: 'A truck at 50 km/h has more momentum than a car at 50 km/h'
+          title: '🎯 1. Centripetal Acceleration',
+          explanation: 'Objects in circular motion constantly change direction = constantly accelerating! CENTRIPETAL ACCELERATION points toward center of circle. Formula: ac = v²/r (speed squared / radius). Faster speed OR tighter turn = more acceleration. This is NOT a new type of acceleration - it\'s just acceleration toward center.',
+          example: 'Car turning: Even at constant 60 km/h, you\'re accelerating toward center of turn! Tighter turn (smaller r) = more acceleration = you feel pushed outward more. Race car at 200 km/h in tight turn: HUGE centripetal acceleration (can be 3-4g!). Your body wants to go straight (inertia), but car forces you to turn.',
+          comparison: {
+            left: {
+              title: '➡️ STRAIGHT LINE',
+              points: [
+                'Constant velocity',
+                'No acceleration',
+                'No net force needed',
+                'Direction unchanging',
+                'Example: Highway cruise',
+                'Inertia keeps you moving',
+                'No force toward center'
+              ]
+            },
+            right: {
+              title: '🔄 CIRCULAR PATH',
+              points: [
+                'Constant speed, changing v',
+                'Centripetal acceleration',
+                'Net force toward center',
+                'Direction always changing',
+                'Example: Roundabout',
+                'Force needed to turn',
+                'ac = v²/r toward center'
+              ]
+            }
+          }
         },
         {
-          title: 'Conservation Law',
-          explanation: 'Total momentum before collision = Total momentum after collision',
-          example: 'Two cars colliding: their combined momentum stays the same'
+          title: '💪 2. Centripetal Force',
+          explanation: 'CENTRIPETAL FORCE is the net force toward center that causes circular motion. Formula: Fc = mac = mv²/r. NOT a new type of force! It\'s the NET FORCE from real forces (friction, tension, gravity, normal). Whatever provides this inward force enables circular motion. No centripetal force = object flies off in straight line (tangent).',
+          example: 'Car turning: FRICTION between tires and road provides centripetal force inward. If you turn too fast or hit ice (low friction), not enough Fc → car slides outward in straight line! Satellite orbiting: GRAVITY provides centripetal force. If gravity "turned off," satellite would fly off tangent to orbit. String with ball: TENSION provides centripetal force.',
+          comparison: {
+            left: {
+              title: '🚗 HORIZONTAL CIRCLE (Car Turn)',
+              points: [
+                'Friction provides Fc',
+                'f = mv²/r (toward center)',
+                'Must have: f ≤ μN',
+                'Too fast → slide out',
+                'Example: Roundabout',
+                'Friction limit determines max v',
+                'Banking helps!'
+              ]
+            },
+            right: {
+              title: '🎡 VERTICAL CIRCLE (Loop)',
+              points: [
+                'Multiple forces combine',
+                'Top: N + mg = mv²/r',
+                'Bottom: N - mg = mv²/r',
+                'Need minimum speed',
+                'Example: Roller coaster',
+                'N changes around loop',
+                'Feel heavy/light'
+              ]
+            }
+          }
         },
         {
-          title: 'Impulse',
-          explanation: 'Impulse = Force × Time. Changing momentum requires impulse.',
-          example: 'Airbags increase collision time, reducing force on passengers'
+          title: '🌍 3. Orbital Motion',
+          explanation: 'ORBITS are circular motion where gravity provides centripetal force! Satellite doesn\'t fall because it\'s moving sideways fast enough. It\'s constantly "falling" toward Earth but missing! Orbital speed: v = √(GM/r). Closer orbit = faster speed needed. Geostationary orbit: 24hr period, appears stationary above Earth.',
+          example: 'ISS orbits at 400 km altitude, 7.66 km/s (27,600 km/h!). Gravity provides exact centripetal force needed: mg = mv²/r. If ISS slowed down, it would fall. If sped up, it would fly to higher orbit. Moon orbits at 1 km/s - slower because farther out (larger r). Satellites at different altitudes have different speeds!',
+          comparison: {
+            left: {
+              title: '🛰️ LOW EARTH ORBIT',
+              points: [
+                'Altitude: 200-2000 km',
+                'Speed: ~7.8 km/s',
+                'Period: 90-120 minutes',
+                'Strong gravity',
+                'Example: ISS, Hubble',
+                'Fast orbit',
+                'Closer to Earth'
+              ]
+            },
+            right: {
+              title: '🌐 GEOSTATIONARY ORBIT',
+              points: [
+                'Altitude: 35,786 km',
+                'Speed: 3.07 km/s',
+                'Period: 24 hours',
+                'Weaker gravity',
+                'Example: GPS, TV satellites',
+                'Slow orbit',
+                'Appears stationary'
+              ]
+            }
+          }
+        },
+        {
+          title: '🏎️ 4. Banking and Centrifuges',
+          explanation: 'BANKING: Tilting the surface so normal force has component toward center. Reduces reliance on friction. Optimal bank angle: tan(θ) = v²/(rg). At this angle, no friction needed! CENTRIFUGES: Spin objects in circle at high speed. "Centrifugal force" (outward) is actually inertia - objects want to go straight but are forced inward.',
+          example: 'Banked race track: Normal force points inward AND up. Horizontal component provides centripetal force. Vertical component balances weight. Can turn faster without sliding! Centrifuge: Spins at 10,000 rpm. Heavy particles experience huge "force" outward (actually inertia) and separate from light particles. Used in medicine, chemistry, astronaut training (simulate high-g).',
+          comparison: {
+            left: {
+              title: '📏 FLAT TURN',
+              points: [
+                'Only friction provides Fc',
+                'f = mv²/r',
+                'Limited by μ',
+                'Easy to slide out',
+                'Example: Parking lot',
+                'Lower max speed',
+                'Friction does all work'
+              ]
+            },
+            right: {
+              title: '📐 BANKED TURN',
+              points: [
+                'Normal force helps!',
+                'N sin(θ) provides Fc',
+                'Less friction needed',
+                'Harder to slide',
+                'Example: NASCAR track',
+                'Higher max speed',
+                'Banking does work'
+              ]
+            }
+          }
         }
       ],
       realWorld: [
         {
-          icon: '🚗',
-          title: 'Crash Safety',
-          description: 'Crumple zones extend collision time, reducing force (F = Δp/Δt). Saves lives!'
+          icon: '🏎️',
+          title: 'Race Car Cornering',
+          description: 'F1 cars corner at 5g (5× gravity acceleration!). Friction provides centripetal force: f = mv²/r. Soft tires + downforce increase friction. Banking at Daytona (31° angle) allows 320 km/h turns. Engineers calculate exact speed for each corner radius to maximize grip without sliding.'
         },
         {
-          icon: '🚀',
-          title: 'Rocket Staging',
-          description: 'Rockets drop empty stages to reduce mass, increasing velocity with same momentum'
+          icon: '🛰️',
+          title: 'Satellite Orbits',
+          description: 'GPS satellites orbit at 20,200 km altitude, 3.87 km/s speed. Gravity provides exact centripetal force: mg = mv²/r. ISS at 400 km needs 7.66 km/s - closer = faster! Geostationary satellites at 35,786 km orbit in 24 hours, appearing stationary. Engineers use orbital mechanics to position thousands of satellites.'
         },
         {
-          icon: '✈️',
-          title: 'Aircraft Collision Avoidance',
-          description: 'Systems calculate momentum vectors to prevent mid-air collisions'
+          icon: '🎢',
+          title: 'Roller Coaster Loops',
+          description: 'Vertical loops need minimum speed at top or you fall! At top: N + mg = mv²/r (both point down). At bottom: N - mg = mv²/r (N up, mg down). You feel 4-6g at bottom (heavy!), near 0g at top (weightless!). Engineers design loop radius based on track speed for safe forces.'
+        },
+        {
+          icon: '🧬',
+          title: 'Medical Centrifuges',
+          description: 'Spin blood samples at 3000-15,000 rpm. Heavy cells experience huge "centrifugal force" (actually inertia) and separate from plasma. Centripetal acceleration can reach 10,000g! Used for blood tests, DNA extraction, vaccine production. Engineers design for precise rpm and radius to separate specific particles.'
+        },
+        {
+          icon: '🏍️',
+          title: 'Motorcycle Leaning',
+          description: 'Motorcycles lean into turns to align net force (friction + normal) toward center. Lean angle: tan(θ) = v²/(rg). At 100 km/h in 50m radius turn, lean 45°! MotoGP riders lean 64° at 200+ km/h. Knee touches ground! Engineers design tires and suspension for extreme lean angles while maintaining grip.'
         }
       ]
     }
