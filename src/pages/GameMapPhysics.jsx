@@ -32,11 +32,11 @@ export default function GameMapPhysics() {
         emoji: '⚡', 
         color: 'from-yellow-400 to-orange-500', 
         lessons: [
-          'What "energy" really is, how force × distance = work',
-          'How motion and position store energy',
-          'How fast work is done (horsepower, watts)',
-          'Energy cannot be created/destroyed',
-          'Why real machines lose energy (heat, friction)'
+          'Work & Energy',
+          'Kinetic & Potential Energy',
+          'Power',
+          'Conservation of Energy',
+          'Efficiency'
         ],
         level: 'Beginner'
       },
