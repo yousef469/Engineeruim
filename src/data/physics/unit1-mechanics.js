@@ -432,45 +432,148 @@ export const unit1Lessons = {
   },
   3: {
     id: 3,
-    title: "Newton's Three Laws",
-    subtitle: 'The Foundation of All Motion',
-    description: 'Understand the three laws that govern every moving object in the universe',
-    coreIdea: 'The 3 laws in interactive style',
-    engineeringExample: 'Rocket thrust vs weight',
+    title: 'Forces & Free-Body Diagrams',
+    subtitle: 'How to Break Down Forces Visually',
+    description: 'Master the art of analyzing forces using free-body diagrams',
+    coreIdea: 'Visualize all forces to solve motion problems',
+    engineeringExample: 'Aircraft analysis, bridge design, rocket launch',
     content: {
-      intro: 'Sir Isaac Newton discovered three simple laws that explain ALL motion - from falling apples to orbiting satellites.',
+      intro: '📐 Free-Body Diagrams (FBDs) are THE most important tool in engineering mechanics. They let you visualize ALL forces acting on an object, making complex problems simple. Every engineer uses FBDs daily!',
       concepts: [
         {
-          title: "First Law: Inertia",
-          explanation: 'An object at rest stays at rest, an object in motion stays in motion (unless a force acts on it)',
-          example: 'Passengers lurch forward when a car brakes suddenly - they want to keep moving!'
+          title: '🎯 What is a Free-Body Diagram?',
+          explanation: 'A Free-Body Diagram shows an object as a simple shape with arrows representing ALL forces acting on it. Each arrow shows direction and magnitude of a force. The object is "free" from its surroundings - we only show forces, not the things causing them.',
+          example: 'Book on table: Draw book as box. Forces: Weight arrow pointing DOWN, Normal force arrow pointing UP. If forces balance, book doesn\'t accelerate.',
+          comparison: {
+            left: {
+              title: '📦 REAL SITUATION',
+              points: [
+                'Book on table',
+                'Table on floor',
+                'Complex scene',
+                'Many objects',
+                'Hard to analyze'
+              ]
+            },
+            right: {
+              title: '📐 FREE-BODY DIAGRAM',
+              points: [
+                'Book as simple box',
+                'Weight arrow ↓',
+                'Normal force arrow ↑',
+                'Only forces shown',
+                'Easy to analyze'
+              ]
+            }
+          }
         },
         {
-          title: 'Second Law: F = ma',
-          explanation: 'Force = Mass × Acceleration. More force = more acceleration. More mass = less acceleration.',
-          example: 'Pushing a shopping cart (light) is easier than pushing a car (heavy)'
+          title: '⬇️ Common Forces',
+          explanation: 'GRAVITY (Weight): Always DOWN, W = mg. NORMAL FORCE: Perpendicular to surface. FRICTION: Parallel to surface, opposes motion. TENSION: Along rope/cable. APPLIED FORCE: Any push/pull. AIR RESISTANCE: Opposes motion through air.',
+          example: 'Car on hill: Weight (mg) down, Normal perpendicular to hill, Friction up hill (prevents sliding), Engine force up hill.',
+          comparison: {
+            left: {
+              title: '📍 CONTACT FORCES',
+              points: [
+                'Normal Force (N)',
+                'Friction (f)',
+                'Tension (T)',
+                'Applied Force (F)',
+                'Need physical contact'
+              ]
+            },
+            right: {
+              title: '🌍 NON-CONTACT',
+              points: [
+                'Weight/Gravity (mg)',
+                'Air Resistance',
+                'Magnetic Force',
+                'Electric Force',
+                'Act at a distance'
+              ]
+            }
+          }
         },
         {
-          title: 'Third Law: Action-Reaction',
-          explanation: 'For every action, there is an equal and opposite reaction',
-          example: 'Rocket pushes gas down, gas pushes rocket up with equal force'
+          title: '📊 Drawing FBDs',
+          explanation: 'STEPS: (1) Draw object as dot/box. (2) Identify ALL forces ON object. (3) Draw force arrows from center. (4) Label each force. (5) Choose coordinate system. (6) Break angled forces into components.',
+          example: 'Hanging traffic light: Draw as circle. Forces: Weight (down), Tension from left cable (up-left), Tension from right cable (up-right). Break tensions into x and y components to solve.',
+          comparison: {
+            left: {
+              title: '❌ MISTAKES',
+              points: [
+                'Forgetting gravity',
+                'Wrong directions',
+                'Missing friction',
+                'Not labeling forces',
+                'Including forces object exerts'
+              ]
+            },
+            right: {
+              title: '✅ CORRECT',
+              points: [
+                'Include ALL forces',
+                'Correct directions',
+                'Check for friction',
+                'Label every force',
+                'Only forces ON object'
+              ]
+            }
+          }
+        },
+        {
+          title: '⚖️ Equilibrium vs Acceleration',
+          explanation: 'EQUILIBRIUM: ΣF = 0 (forces balance). No acceleration. At rest OR constant velocity. ACCELERATION: ΣF ≠ 0 (net force exists). Object speeds up, slows down, or turns. Net force = ma.',
+          example: 'Elevator: Constant speed up = Tension equals Weight (equilibrium). Starting to go up = Tension > Weight (accelerating up). You feel heavier!',
+          comparison: {
+            left: {
+              title: '⚖️ EQUILIBRIUM',
+              points: [
+                'ΣF = 0',
+                'Forces balance',
+                'a = 0',
+                'At rest OR constant v',
+                'Example: Cruise control'
+              ]
+            },
+            right: {
+              title: '⚡ ACCELERATION',
+              points: [
+                'ΣF ≠ 0',
+                'Forces unbalanced',
+                'a ≠ 0',
+                'Velocity changing',
+                'Example: Car speeding up'
+              ]
+            }
+          }
         }
       ],
       realWorld: [
         {
-          icon: '🚀',
-          title: 'Rocket Propulsion',
-          description: 'Rockets work by Newton\'s 3rd Law - expelling gas downward creates upward thrust'
-        },
-        {
-          icon: '🚗',
-          title: 'Car Acceleration',
-          description: 'F = ma: A 1000kg car needs 2000N force to accelerate at 2 m/s²'
-        },
-        {
           icon: '✈️',
-          title: 'Aircraft Thrust',
-          description: 'Jet engines push air backward (action), creating forward thrust (reaction)'
+          title: 'Aircraft Force Analysis',
+          description: 'Four forces: Lift (up), Weight (down), Thrust (forward), Drag (backward). FBD shows all four. To climb: Lift > Weight. Fighter jets analyze forces during 9g turns!'
+        },
+        {
+          icon: '🌉',
+          title: 'Bridge Design',
+          description: 'Engineers draw FBDs for every bridge component. Cable tensions, support reactions must balance perfectly. Golden Gate Bridge: FBDs for every cable and beam.'
+        },
+        {
+          icon: '🚀',
+          title: 'Rocket Launch',
+          description: 'FBD: Thrust (up), Weight (down), Drag (down). At liftoff: Thrust must exceed Weight + Drag. SpaceX Falcon 9: 7.6M N thrust vs 5.5M N weight!'
+        },
+        {
+          icon: '🏗️',
+          title: 'Crane Safety',
+          description: 'FBD of load: Weight (down), Cable tension (up). FBD of crane arm: Load tension, Support forces, Counterweight. Must balance or crane tips!'
+        },
+        {
+          icon: '🏎️',
+          title: 'Race Car Cornering',
+          description: 'FBD: Weight (down), Normal (up), Friction (toward center). Banking increases normal force component toward center for faster turns!'
         }
       ]
     }
