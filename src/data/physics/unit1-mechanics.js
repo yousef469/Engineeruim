@@ -905,5 +905,497 @@ export const unit1Lessons = {
         }
       ]
     }
+  },
+  6: {
+    id: 6,
+    title: 'Momentum & Collisions',
+    subtitle: 'Conservation of Momentum and Impulse',
+    description: 'Master momentum conservation in crashes, explosions, and rocket staging',
+    coreIdea: 'Momentum is always conserved in collisions',
+    engineeringExample: 'Car crashes, rocket staging, billiards',
+    content: {
+      intro: '💥 Momentum is "mass in motion" - and it\'s ALWAYS conserved! This principle is crucial for crash safety, rocket design, and understanding collisions. When objects collide, total momentum before = total momentum after. This lets engineers predict crash outcomes and design safer vehicles.',
+      concepts: [
+        {
+          title: '📊 1. What is Momentum?',
+          explanation: 'MOMENTUM = Mass × Velocity (p = mv). Vector quantity with direction. Heavy OR fast objects have high momentum. Units: kg⋅m/s. More momentum = harder to stop. Momentum depends on BOTH mass and velocity - doubling either doubles momentum.',
+          example: 'Truck (5000 kg) at 20 m/s: p = 100,000 kg⋅m/s. Car (1000 kg) at 20 m/s: p = 20,000 kg⋅m/s. Truck has 5× more momentum (same speed, 5× mass). Bullet (0.01 kg) at 1000 m/s: p = 10 kg⋅m/s. Small mass but HUGE velocity!',
+          comparison: {
+            left: {
+              title: '🚗 LOW MOMENTUM',
+              points: [
+                'Small mass OR slow speed',
+                'Easy to stop',
+                'Less damage in crash',
+                'Example: Bicycle at 5 m/s',
+                'p = 15 kg × 5 = 75 kg⋅m/s',
+                'Low kinetic energy',
+                'Safe collision'
+              ]
+            },
+            right: {
+              title: '🚛 HIGH MOMENTUM',
+              points: [
+                'Large mass AND/OR fast',
+                'Hard to stop',
+                'More damage in crash',
+                'Example: Truck at 25 m/s',
+                'p = 5000 × 25 = 125,000 kg⋅m/s',
+                'High kinetic energy',
+                'Dangerous collision'
+              ]
+            }
+          }
+        },
+        {
+          title: '⚖️ 2. Conservation of Momentum',
+          explanation: 'LAW: Total momentum BEFORE collision = Total momentum AFTER collision. Always! (if no external forces). p₁ᵢ + p₂ᵢ = p₁f + p₂f. Works for ANY collision: elastic, inelastic, explosions. This is one of the most fundamental laws in physics - momentum is NEVER created or destroyed.',
+          example: 'Two cars collide head-on: Car A (1000 kg, 20 m/s →) hits Car B (1500 kg, 15 m/s ←). Before: pₐ = +20,000, pᵦ = -22,500, Total = -2,500 kg⋅m/s. After: They stick together (2500 kg total). Conservation: 2500v = -2,500, so v = -1 m/s (moving left together).',
+          comparison: {
+            left: {
+              title: '🎱 ELASTIC COLLISION',
+              points: [
+                'Objects bounce apart',
+                'Momentum conserved ✓',
+                'KE conserved ✓',
+                'No energy lost',
+                'Example: Billiard balls',
+                'Perfect bounce',
+                'Rare in real world'
+              ]
+            },
+            right: {
+              title: '💥 INELASTIC COLLISION',
+              points: [
+                'Objects stick together',
+                'Momentum conserved ✓',
+                'KE NOT conserved ✗',
+                'Energy → heat, sound',
+                'Example: Car crash',
+                'Crumple zones',
+                'Most real collisions'
+              ]
+            }
+          }
+        },
+        {
+          title: '⚡ 3. Impulse - Changing Momentum',
+          explanation: 'IMPULSE = Force × Time (J = FΔt). Also equals change in momentum: J = Δp = mΔv. To change momentum, apply impulse. SAME momentum change can be: Large force, short time OR Small force, long time. Safety devices increase Δt to reduce F!',
+          example: 'Catching baseball: Ball has momentum 5 kg⋅m/s. To stop it: Δp = 5 kg⋅m/s needed. Stiff catch (Δt = 0.01s): F = 5/0.01 = 500 N (hurts!). Soft catch, pull back (Δt = 0.1s): F = 5/0.1 = 50 N (comfortable). Same Δp, different F by changing Δt!',
+          comparison: {
+            left: {
+              title: '💥 SHORT TIME (High Force)',
+              points: [
+                'Small Δt',
+                'Large F needed',
+                'F = Δp/Δt',
+                'Example: Hitting wall',
+                'Sudden stop',
+                'High injury risk',
+                'Δt = 0.01s → F huge!'
+              ]
+            },
+            right: {
+              title: '🛡️ LONG TIME (Low Force)',
+              points: [
+                'Large Δt',
+                'Small F needed',
+                'F = Δp/Δt',
+                'Example: Airbag',
+                'Gradual stop',
+                'Low injury risk',
+                'Δt = 0.1s → F small!'
+              ]
+            }
+          }
+        },
+        {
+          title: '🚀 4. Explosions & Recoil',
+          explanation: 'EXPLOSIONS are "reverse collisions" - objects start together, fly apart. Momentum STILL conserved! Before: p = 0 (at rest). After: p₁ + p₂ = 0 (equal and opposite). This explains rocket propulsion and gun recoil. Heavy object moves slow, light object moves fast.',
+          example: 'Rocket (1000 kg) expels gas (10 kg) at 2000 m/s backward. Before: p = 0. After: pᵣₒcₖₑₜ + pₘₐₛ = 0. So: 1000v + 10(-2000) = 0. Rocket velocity: v = +20 m/s forward! Light gas goes fast backward, heavy rocket goes slow forward. Same magnitude momentum, opposite directions.',
+          comparison: {
+            left: {
+              title: '🔫 GUN RECOIL',
+              points: [
+                'Bullet: small mass, high v',
+                'Gun: large mass, low v',
+                'pᵦᵤₗₗₑₜ + pₘᵤₙ = 0',
+                'Example: 0.01 kg at 1000 m/s',
+                'Gun: 2 kg at -5 m/s',
+                'Opposite directions',
+                'Equal magnitude momentum'
+              ]
+            },
+            right: {
+              title: '🚀 ROCKET PROPULSION',
+              points: [
+                'Exhaust: small mass, high v',
+                'Rocket: large mass, low v',
+                'pₑₓₕₐᵤₛₜ + pᵣₒcₖₑₜ = 0',
+                'Example: Gas at 3000 m/s',
+                'Rocket at 10 m/s',
+                'Continuous explosion',
+                'Works in space!'
+              ]
+            }
+          }
+        }
+      ],
+      realWorld: [
+        {
+          icon: '🚗',
+          title: 'Car Crash Safety',
+          description: 'Crumple zones increase collision time (Δt), reducing force on passengers (F = Δp/Δt). Airbags extend Δt from 0.01s to 0.1s, reducing peak force 10×! Seatbelts distribute force over body. Engineers use momentum conservation to predict crash outcomes and design safer cars. Modern cars can survive 60 mph crashes!'
+        },
+        {
+          icon: '🚀',
+          title: 'Rocket Staging',
+          description: 'Rockets drop empty stages to reduce mass while keeping momentum. Stage 1 burns out: drops 80% of mass! Remaining rocket has same momentum but less mass → higher velocity! SpaceX Falcon 9: Stage 1 (400,000 kg) separates, Stage 2 (25,000 kg) continues. Conservation of momentum enables multi-stage rockets to reach orbit.'
+        },
+        {
+          icon: '🏈',
+          title: 'Sports Collisions',
+          description: 'Football tackle: Momentum conserved. 100 kg player at 8 m/s tackles 80 kg player at 5 m/s. Total momentum before = after. They move together after impact. Helmets increase collision time to reduce force. Engineers design protective gear using impulse principles to minimize injury while allowing play.'
+        },
+        {
+          icon: '⚾',
+          title: 'Baseball Bat Physics',
+          description: 'Bat transfers momentum to ball. Heavy bat (more mass) = more momentum transfer = faster ball. "Sweet spot" maximizes energy transfer. Follow-through increases contact time (Δt), allowing more impulse. Pro players generate 8000 N force, ball leaves at 45 m/s (100 mph). Momentum conservation explains why heavier bats hit farther!'
+        },
+        {
+          icon: '🎱',
+          title: 'Billiards & Pool',
+          description: 'Nearly elastic collisions - momentum AND energy conserved. Cue ball transfers momentum to object ball. Head-on collision: cue ball stops, object ball moves with original velocity. Angle shots: momentum vectors add. Engineers study billiards to understand collision mechanics for vehicle safety and particle physics!'
+        }
+      ]
+    }
+  },
+  7: {
+    id: 7,
+    title: 'Gravity & Weight',
+    subtitle: 'Weight vs Mass and Gravitational Fields',
+    description: 'Understand gravity, weight, and how mass differs from weight',
+    coreIdea: 'Weight is the force of gravity on mass',
+    engineeringExample: 'Satellite orbits, structural loads, planetary missions',
+    content: {
+      intro: '🌍 Gravity is the force that holds the universe together! It keeps us on Earth, Moon orbiting Earth, Earth orbiting Sun. Understanding gravity is essential for aerospace engineering, structural design, and space missions. Key insight: Weight and mass are NOT the same!',
+      concepts: [
+        {
+          title: '⚖️ 1. Mass vs Weight',
+          explanation: 'MASS = amount of matter (kg). Constant everywhere. Causes inertia. WEIGHT = force of gravity on mass (Newtons). W = mg. Changes with gravity! On Moon: same mass, 1/6 weight. In space: same mass, zero weight (weightless). Weight is a FORCE, mass is NOT.',
+          example: 'Astronaut: mass = 80 kg everywhere. Earth (g = 9.8): W = 80 × 9.8 = 784 N. Moon (g = 1.6): W = 80 × 1.6 = 128 N (feels lighter!). Space station (g = 0): W = 0 N (weightless, floating). But mass still 80 kg - still hard to push (inertia)!',
+          comparison: {
+            left: {
+              title: '⚖️ MASS',
+              points: [
+                'Amount of matter',
+                'Measured in: kg',
+                'Same everywhere',
+                'Scalar quantity',
+                'Causes: inertia',
+                'Never changes',
+                'Intrinsic property'
+              ]
+            },
+            right: {
+              title: '⬇️ WEIGHT',
+              points: [
+                'Force of gravity',
+                'Measured in: Newtons (N)',
+                'Changes with location',
+                'Vector (downward)',
+                'W = mg',
+                'Varies with gravity',
+                'Depends on location'
+              ]
+            }
+          }
+        },
+        {
+          title: '🌍 2. Gravitational Field Strength (g)',
+          explanation: 'GRAVITATIONAL FIELD STRENGTH (g) = force per unit mass. On Earth: g = 9.8 N/kg (or 9.8 m/s²). Different planets have different g. Larger planet = stronger gravity = higher g. Formula: g = GM/r² where G = gravitational constant, M = planet mass, r = distance from center.',
+          example: 'Earth: g = 9.8 m/s². Jupiter (huge!): g = 24.8 m/s² (2.5× Earth). Mars (small): g = 3.7 m/s² (0.4× Earth). Moon: g = 1.6 m/s² (0.16× Earth). Sun surface: g = 274 m/s² (28× Earth!). Your weight changes dramatically on different planets, but mass stays same!',
+          comparison: {
+            left: {
+              title: '🌍 EARTH',
+              points: [
+                'g = 9.8 m/s²',
+                '80 kg person',
+                'Weight = 784 N',
+                'Feels normal',
+                'Can jump ~0.5m',
+                'Standard reference',
+                'Comfortable gravity'
+              ]
+            },
+            right: {
+              title: '🌙 MOON',
+              points: [
+                'g = 1.6 m/s²',
+                '80 kg person (same!)',
+                'Weight = 128 N',
+                'Feels very light',
+                'Can jump ~3m',
+                '1/6 Earth gravity',
+                'Easy to move'
+              ]
+            }
+          }
+        },
+        {
+          title: '🪐 3. Universal Gravitation',
+          explanation: 'NEWTON\'S LAW: Every mass attracts every other mass. F = GMm/r². G = gravitational constant. Larger masses = stronger force. Closer distance = MUCH stronger (r² in denominator). This explains planetary orbits, tides, galaxy formation. Gravity is ALWAYS attractive, never repulsive.',
+          example: 'Earth-Moon: F = (6.67×10⁻¹¹)(5.97×10²⁴)(7.35×10²²)/(3.84×10⁸)² = 1.98×10²⁰ N! Huge force keeps Moon orbiting. You and Earth: F = (6.67×10⁻¹¹)(5.97×10²⁴)(80)/(6.37×10⁶)² = 784 N (your weight!). Same formula works for everything from apples to galaxies.',
+          comparison: {
+            left: {
+              title: '🌍 NEAR SURFACE',
+              points: [
+                'Close to planet (small r)',
+                'Strong gravity',
+                'g approximately constant',
+                'Use W = mg (simple)',
+                'Example: Buildings, cars',
+                'r ≈ planet radius',
+                'Everyday situations'
+              ]
+            },
+            right: {
+              title: '🛰️ FAR FROM SURFACE',
+              points: [
+                'Far from planet (large r)',
+                'Weaker gravity',
+                'g decreases with altitude',
+                'Use F = GMm/r²',
+                'Example: Satellites, ISS',
+                'r > planet radius',
+                'Space applications'
+              ]
+            }
+          }
+        },
+        {
+          title: '🎢 4. Apparent Weight',
+          explanation: 'APPARENT WEIGHT = what you "feel" = Normal force. NOT always equal to actual weight! In elevator accelerating up: feel heavier (N > mg). Accelerating down: feel lighter (N < mg). Free fall: feel weightless (N = 0). Astronauts in orbit are in continuous free fall - that\'s why they float!',
+          example: 'You (80 kg, W = 784 N) in elevator: At rest: N = 784 N (feel normal). Accelerating up at 2 m/s²: N = m(g + a) = 80(9.8 + 2) = 944 N (feel 20% heavier!). Accelerating down at 2 m/s²: N = m(g - a) = 80(9.8 - 2) = 624 N (feel 20% lighter!). Free fall: N = 0 (weightless!).',
+          comparison: {
+            left: {
+              title: '⬆️ ACCELERATING UP',
+              points: [
+                'Elevator going up faster',
+                'N = m(g + a)',
+                'N > Weight',
+                'Feel heavier',
+                'Pushed into floor',
+                'Example: Rocket launch',
+                'Apparent weight increases'
+              ]
+            },
+            right: {
+              title: '⬇️ ACCELERATING DOWN',
+              points: [
+                'Elevator going down faster',
+                'N = m(g - a)',
+                'N < Weight',
+                'Feel lighter',
+                'Less pressure on floor',
+                'Example: Drop tower',
+                'Apparent weight decreases'
+              ]
+            }
+          }
+        }
+      ],
+      realWorld: [
+        {
+          icon: '🛰️',
+          title: 'Satellite Orbit Design',
+          description: 'Engineers calculate exact orbital altitude using gravity. ISS at 400 km: g = 8.7 m/s² (not zero!). Astronauts feel weightless because they\'re in free fall, not because there\'s no gravity. Geostationary satellites at 35,786 km: gravity weaker, slower orbit (24 hrs). GPS satellites at 20,200 km: medium orbit. Each altitude requires specific velocity!'
+        },
+        {
+          icon: '🏗️',
+          title: 'Structural Load Calculations',
+          description: 'Buildings must support weight of materials + occupants + snow/wind. Engineers calculate loads using W = mg. Skyscraper: millions of Newtons! Foundation must distribute weight to ground. Bridges: calculate weight of deck, vehicles, dynamic loads. Safety factor of 2-5× means structure can hold much more than expected weight.'
+        },
+        {
+          icon: '🚀',
+          title: 'Planetary Mission Planning',
+          description: 'Mars rovers designed for g = 3.7 m/s² (40% Earth). Lighter weight means different suspension, wheel design. Curiosity rover: 900 kg mass, 3330 N weight on Mars (vs 8820 N on Earth). Engineers test in reduced gravity using cables or parabolic flights. Different gravity affects landing systems, mobility, power requirements.'
+        },
+        {
+          icon: '🎢',
+          title: 'Roller Coaster G-Forces',
+          description: 'Riders experience changing apparent weight. Bottom of drop: 4-5g (feel 4-5× heavier!). Top of hill: near 0g (feel weightless). Engineers design for max 6g to prevent injury. Pilots train for 9g. Formula: N = m(g ± a). Positive g (acceleration up) = feel heavy. Negative g (acceleration down) = feel light.'
+        },
+        {
+          icon: '⚖️',
+          title: 'Precision Weighing',
+          description: 'Scales measure normal force (apparent weight), not mass! In accelerating elevator, scale reading changes. True mass measurement uses balance scale (compares masses, independent of g). Lab balances accurate to 0.0001g. Engineers account for local g variations (changes with latitude, altitude) for precise measurements. g at equator ≠ g at poles!'
+        }
+      ]
+    }
+  },
+  8: {
+    id: 8,
+    title: 'Projectile Motion',
+    subtitle: 'How Thrown and Fired Objects Move',
+    description: 'Master 2D motion of projectiles - from rockets to drones to cars on hills',
+    coreIdea: 'Horizontal and vertical motions are independent',
+    engineeringExample: 'Rocket trajectories, drone flight, artillery, sports',
+    content: {
+      intro: '🎯 Projectile motion combines everything we\'ve learned! Objects thrown, fired, or launched follow parabolic paths. Key insight: Horizontal and vertical motions are INDEPENDENT - analyze separately, then combine. This applies to rockets, drones, balls, bullets, and even cars jumping hills!',
+      concepts: [
+        {
+          title: '📐 1. Independence of Motion',
+          explanation: 'HORIZONTAL motion: Constant velocity (no acceleration, ignoring air resistance). vₓ = constant. VERTICAL motion: Constant acceleration (gravity). vᵧ = v₀ᵧ - gt. These are INDEPENDENT! Horizontal motion doesn\'t affect vertical, vertical doesn\'t affect horizontal. Analyze each separately using 1D equations, then combine.',
+          example: 'Ball thrown horizontally at 20 m/s from 45m cliff: HORIZONTAL: vₓ = 20 m/s (constant), x = 20t. VERTICAL: vᵧ = 0 - 9.8t (starts 0, accelerates down), y = 45 - 4.9t². Time to hit ground: 45 = 4.9t², t = 3s. Horizontal distance: x = 20(3) = 60m. Path is parabola!',
+          comparison: {
+            left: {
+              title: '↔️ HORIZONTAL MOTION',
+              points: [
+                'Constant velocity',
+                'No acceleration (aₓ = 0)',
+                'vₓ = v₀ₓ (doesn\'t change)',
+                'x = v₀ₓt',
+                'Independent of vertical',
+                'No gravity effect',
+                'Uniform motion'
+              ]
+            },
+            right: {
+              title: '↕️ VERTICAL MOTION',
+              points: [
+                'Changing velocity',
+                'Constant acceleration (aᵧ = -g)',
+                'vᵧ = v₀ᵧ - gt',
+                'y = v₀ᵧt - ½gt²',
+                'Independent of horizontal',
+                'Gravity pulls down',
+                'Accelerated motion'
+              ]
+            }
+          }
+        },
+        {
+          title: '🎯 2. Launch Angle Effects',
+          explanation: 'Launch angle determines trajectory shape. 45° gives maximum range (on flat ground). Higher angle: more height, less range. Lower angle: less height, more range. Initial velocity splits into components: v₀ₓ = v₀cos(θ), v₀ᵧ = v₀sin(θ). Range formula: R = v₀²sin(2θ)/g.',
+          example: 'Cannon fires at 100 m/s: At 30°: v₀ₓ = 87 m/s, v₀ᵧ = 50 m/s, Range = 884m. At 45°: v₀ₓ = 71 m/s, v₀ᵧ = 71 m/s, Range = 1020m (MAX!). At 60°: v₀ₓ = 50 m/s, v₀ᵧ = 87 m/s, Range = 884m. Notice: 30° and 60° give same range! 45° is optimal.',
+          comparison: {
+            left: {
+              title: '📉 LOW ANGLE (< 45°)',
+              points: [
+                'More horizontal velocity',
+                'Less vertical velocity',
+                'Lower maximum height',
+                'Flatter trajectory',
+                'Example: 30° launch',
+                'Good for distance',
+                'Less air time'
+              ]
+            },
+            right: {
+              title: '📈 HIGH ANGLE (> 45°)',
+              points: [
+                'Less horizontal velocity',
+                'More vertical velocity',
+                'Higher maximum height',
+                'Steeper trajectory',
+                'Example: 60° launch',
+                'Good for clearing obstacles',
+                'More air time'
+              ]
+            }
+          }
+        },
+        {
+          title: '🚀 3. Rocket & Drone Trajectories',
+          explanation: 'Rockets and drones are POWERED projectiles - they can change velocity mid-flight! Initial launch follows projectile motion. Then engines provide thrust to change trajectory. Gravity turn: rocket launches vertical, then tilts horizontal for orbit. Drones: constant thrust balances weight for hover, tilt for horizontal motion.',
+          example: 'Rocket launch: Stage 1: Vertical climb (thrust > weight), fighting gravity. Stage 2: Gravity turn at 10 km altitude, tilt 45° to build horizontal velocity. Stage 3: Nearly horizontal at 80 km, building orbital speed (7.8 km/s). Without thrust, would follow parabolic path back to Earth. Continuous thrust allows controlled trajectory!',
+          comparison: {
+            left: {
+              title: '⚾ UNPOWERED PROJECTILE',
+              points: [
+                'No thrust after launch',
+                'Follows parabolic path',
+                'Can\'t change trajectory',
+                'Gravity only force',
+                'Example: Baseball, bullet',
+                'Predictable path',
+                'Ballistic trajectory'
+              ]
+            },
+            right: {
+              title: '🚀 POWERED PROJECTILE',
+              points: [
+                'Continuous thrust',
+                'Can change trajectory',
+                'Controlled flight path',
+                'Thrust + gravity',
+                'Example: Rocket, drone',
+                'Adjustable path',
+                'Guided trajectory'
+              ]
+            }
+          }
+        },
+        {
+          title: '🏔️ 4. Projectiles on Slopes',
+          explanation: 'Launching from/onto slopes changes the problem! Must account for slope angle. Car jumping hill: leaves ramp at angle, lands on downslope. Range formula changes: R = v₀²[sin(2θ) + 2sin(θ)cos(θ)sin(α)]/(g cos²(α)) where α = slope angle. More complex but same principles!',
+          example: 'Ski jumper: Leaves ramp at 30° angle, 25 m/s. Lands on 40° downslope. HORIZONTAL: vₓ = 25cos(30°) = 21.7 m/s. VERTICAL: vᵧ = 25sin(30°) = 12.5 m/s. Must find where parabolic path intersects slope line. Lands 80m down slope after 4 seconds in air. Engineers design ramp angle and landing slope for safe speeds!',
+          comparison: {
+            left: {
+              title: '📏 FLAT GROUND',
+              points: [
+                'Simple range formula',
+                'R = v₀²sin(2θ)/g',
+                '45° gives max range',
+                'Symmetric trajectory',
+                'Example: Football field',
+                'Easy calculations',
+                'Standard case'
+              ]
+            },
+            right: {
+              title: '⛰️ SLOPED GROUND',
+              points: [
+                'Complex range formula',
+                'Depends on slope angle',
+                'Optimal angle ≠ 45°',
+                'Asymmetric trajectory',
+                'Example: Ski jump',
+                'Harder calculations',
+                'Real-world case'
+              ]
+            }
+          }
+        }
+      ],
+      realWorld: [
+        {
+          icon: '🚀',
+          title: 'Rocket Launch Trajectories',
+          description: 'SpaceX Falcon 9: Launches vertical, then gravity turn to build horizontal velocity. At 80 km altitude, mostly horizontal (pitch angle ~10°). Must reach 7.8 km/s horizontal velocity for orbit. Engineers calculate exact trajectory to minimize fuel while reaching target orbit. Projectile motion principles guide initial ascent before active guidance takes over.'
+        },
+        {
+          icon: '🚁',
+          title: 'Drone Flight Control',
+          description: 'Drones use projectile motion principles for ballistic flight (engine failure). Normal flight: thrust balances weight (hover). Tilt forward: horizontal component of thrust provides acceleration. GPS + IMU track position and velocity. If battery dies, drone follows parabolic path - pilots must predict landing spot using projectile equations!'
+        },
+        {
+          icon: '🏎️',
+          title: 'Car Jump Stunts',
+          description: 'Stunt drivers use projectile motion! Car leaves ramp at angle θ, speed v. Must calculate landing distance to position ramp. Evel Knievel jumps: precise speed needed for distance. Too slow = land short. Too fast = overshoot. Modern stunts use computer simulations of projectile motion to ensure safety. Same physics as cannonball!'
+        },
+        {
+          icon: '⚽',
+          title: 'Sports Ball Trajectories',
+          description: 'Soccer free kick: Ball launched at 30° angle, 30 m/s. Range = 79m (if no air resistance). Basketball 3-pointer: 45-50° angle for arc over defenders. Baseball home run: 30-35° angle, 45 m/s exit velocity, travels 120m. Engineers design balls and analyze trajectories using projectile motion. Spin adds complexity (Magnus effect)!'
+        },
+        {
+          icon: '💣',
+          title: 'Artillery & Ballistics',
+          description: 'Artillery shells follow projectile paths. Howitzer: adjustable angle for different ranges. 45° gives max range on flat ground. For targets on hills, adjust angle. Modern artillery computers solve projectile equations accounting for: launch angle, muzzle velocity, air resistance, wind, Earth rotation (Coriolis). Precision requires understanding projectile physics!'
+        }
+      ]
+    }
   }
 };
