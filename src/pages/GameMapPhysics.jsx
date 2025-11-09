@@ -6,76 +6,77 @@ export default function GameMapPhysics() {
   const navigate = useNavigate();
   const [completedLevels] = useState([0]);
 
-  // Generate all 27 lessons across 5 units
   const generateLevels = () => {
     const levels = [];
-    let levelId = 1; // Start from 1 instead of 0
+    let levelId = 1;
 
     const units = [
       { 
         name: 'Mechanics & Motion', 
-        emoji: '🟢', 
+        emoji: '🚀', 
         color: 'from-blue-400 to-indigo-500', 
         lessons: [
-          'Variables, Constants & Units',
-          'Linear & Quadratic Equations',
-          'Systems of Equations (2-3 unknowns)',
-          'Exponents, Powers & Roots',
-          'Logarithms (sensors, sound, drag)',
-          'Rearranging Formulas'
+          'Understanding Motion',
+          "Newton's Laws of Motion",
+          'Forces & Free-Body Diagrams',
+          'Friction, Normal Force & Tension',
+          'Circular Motion',
+          'Momentum & Collisions',
+          'Gravity & Weight',
+          'Projectile Motion'
         ],
         level: 'Beginner'
       },
       { 
         name: 'Work, Energy & Power', 
-        emoji: '🟣', 
-        color: 'from-purple-400 to-pink-500', 
+        emoji: '⚡', 
+        color: 'from-yellow-400 to-orange-500', 
         lessons: [
-          '2D Geometry (distance, area, angles)',
-          '3D Coordinate Geometry (x, y, z)',
-          'Triangles (sin, cos, tan)',
-          'Vector Basics (direction & magnitude)',
-          'Dot & Cross Product',
-          'Transformations & Rotations'
+          'What is Energy? Kinetic vs Potential',
+          'Work & Power: Force × Distance',
+          'Conservation of Energy Principle',
+          'Efficiency: Energy Losses in Systems',
+          'Power Systems: Mechanical vs Electrical'
         ],
         level: 'Beginner'
       },
       { 
         name: 'Fluids & Pressure', 
-        emoji: '🔵', 
-        color: 'from-blue-400 to-cyan-500', 
+        emoji: '🌊', 
+        color: 'from-cyan-400 to-blue-500', 
         lessons: [
-          'What is a Derivative (rate of change)',
-          'Velocity & Acceleration from Position',
-          'Integration (area, distance, work)',
-          'Simple Physical Models (free fall)',
-          'Graph Interpretation (slope, curvature)'
+          'Pressure: Force Per Area Explained',
+          'Buoyancy & Density: Why Things Float',
+          "Bernoulli's Principle: Lift & Airflow",
+          'Fluid Resistance: Drag & Viscosity',
+          'Compressible Flow: High-Speed Gases'
         ],
         level: 'Intermediate'
       },
       { 
         name: 'Thermodynamics', 
-        emoji: '🟠', 
-        color: 'from-orange-400 to-red-500', 
+        emoji: '🔥', 
+        color: 'from-red-400 to-orange-500', 
         lessons: [
-          'Vectors & Matrices',
-          'Adding, Scaling & Multiplying Matrices',
-          'Solving Systems (Ax = b)',
-          'Transformations & Rotation Matrices'
+          'Temperature & Heat: Energy Transfer',
+          'Heat Transfer: Conduction, Convection, Radiation',
+          'Laws of Thermodynamics: Energy Balance',
+          'Internal Combustion: How Engines Work',
+          'Efficiency Limits: Carnot Cycle'
         ],
         level: 'Intermediate'
       },
       { 
         name: 'Waves, Electricity & Magnetism', 
-        emoji: '🟡', 
-        color: 'from-yellow-400 to-amber-500', 
+        emoji: '📡', 
+        color: 'from-purple-400 to-pink-500', 
         lessons: [
-          'Data & Averages',
-          'Standard Deviation',
-          'Probability Basics',
-          'Error & Uncertainty',
-          'Units, Dimensions & Conversions',
-          'Vector Math in Physical Systems'
+          'Wave Properties: Sound, Light & Vibration',
+          'Frequency & Amplitude: Signal Basics',
+          'Electricity Basics: Charge, Voltage, Current',
+          "Circuits & Ohm's Law: Resistance Explained",
+          'Magnetism & Electromagnetism: Motors & Generators',
+          'Materials & Stress: Strength of Structures'
         ],
         level: 'Intermediate'
       }
@@ -100,7 +101,7 @@ export default function GameMapPhysics() {
   };
 
   const levels = generateLevels();
-  const isLevelUnlocked = () => true; // All lessons unlocked
+  const isLevelUnlocked = () => true;
   const isLevelCompleted = () => false;
 
   const handleLevelClick = (level) => {
@@ -109,9 +110,8 @@ export default function GameMapPhysics() {
     }
   };
 
-  // Organize lessons by units
   const units = [];
-  const lessonCounts = [6, 6, 5, 4, 6]; // Lessons per unit (removed physics unit)
+  const lessonCounts = [8, 5, 5, 5, 6];
   let currentIndex = 0;
   
   lessonCounts.forEach((count, i) => {
@@ -124,7 +124,6 @@ export default function GameMapPhysics() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-950 via-indigo-950 to-black text-white">
-      {/* Mathematical Grid Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-10">
         <svg width="100%" height="100%">
           <defs>
@@ -136,7 +135,6 @@ export default function GameMapPhysics() {
         </svg>
       </div>
 
-      {/* Header */}
       <div className="relative z-50 border-b border-blue-700 bg-blue-900/90 backdrop-blur-md sticky top-0 shadow-lg">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -150,7 +148,7 @@ export default function GameMapPhysics() {
               <Zap className="w-8 h-8 text-secondary" />
               <div>
                 <h1 className="text-xl font-bold">Physics for Engineering</h1>
-                <p className="text-sm text-blue-200">27 Lessons • Master the language of engineering</p>
+                <p className="text-sm text-blue-200">29 Lessons • Master the principles of motion and energy</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -163,22 +161,19 @@ export default function GameMapPhysics() {
         </div>
       </div>
 
-      {/* Grid Layout */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         <div className="space-y-12">
           {units.map((unit, unitIndex) => {
             const row = unit.isReversed ? [...unit.lessons].reverse() : unit.lessons;
             
-            // Show level header at start of each difficulty level
             const showLevelHeader = unitIndex === 0 || unitIndex === 2;
             const levelInfo = {
-              0: { name: 'BEGINNER', subtitle: 'Foundation — the language of engineering', color: 'from-blue-500 to-indigo-600', icon: '🟢' },
-              2: { name: 'INTERMEDIATE', subtitle: 'Advanced tools for real engineering', color: 'from-blue-500 to-cyan-600', icon: '🔵' }
+              0: { name: 'BEGINNER', subtitle: 'Foundation — understanding motion and forces', color: 'from-blue-500 to-indigo-600', icon: '🚀' },
+              2: { name: 'INTERMEDIATE', subtitle: 'Advanced physics for real engineering', color: 'from-cyan-500 to-blue-600', icon: '⚡' }
             };
             
             return (
               <div key={unitIndex} className="relative">
-                {/* Level Header */}
                 {showLevelHeader && (
                   <div className="mb-16 text-center">
                     <div className={`inline-block px-16 py-8 rounded-3xl border-4 shadow-2xl bg-gradient-to-r ${levelInfo[unitIndex].color} border-white/30`}>
@@ -189,7 +184,6 @@ export default function GameMapPhysics() {
                   </div>
                 )}
                 
-                {/* Unit Header */}
                 <div className="mb-20 text-center">
                   <div className="inline-block px-8 py-3 rounded-2xl border-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 border-blue-400">
                     <div className="font-bold text-2xl mb-1">{unit.lessons[0].unit}</div>
@@ -199,7 +193,6 @@ export default function GameMapPhysics() {
                   </div>
                 </div>
 
-                {/* Row of lessons */}
                 <div className={`grid gap-6`} style={{ gridTemplateColumns: `repeat(${unit.lessons.length}, minmax(0, 1fr))` }}>
                   {row.map((level) => {
                     const unlocked = isLevelUnlocked(level.id);
@@ -213,7 +206,7 @@ export default function GameMapPhysics() {
                             <Zap 
                               className="w-10 h-10 text-white drop-shadow-lg" 
                               style={{ 
-                                filter: 'drop-shadow(0 0 10px rgba(34, 197, 94, 0.8))'
+                                filter: 'drop-shadow(0 0 10px rgba(59, 130, 246, 0.8))'
                               }} 
                             />
                           </div>
@@ -269,12 +262,11 @@ export default function GameMapPhysics() {
             );
           })}
 
-          {/* Final Trophy */}
           <div className="flex justify-center mt-12">
             <div className="bg-gradient-to-r from-yellow-400 to-amber-500 rounded-3xl p-8 border-4 border-yellow-300 shadow-2xl shadow-yellow-500/50">
               <div className="text-center">
                 <div className="text-6xl mb-3">🏆</div>
-                <div className="text-2xl font-bold text-white">Foundation Complete!</div>
+                <div className="text-2xl font-bold text-white">Physics Complete!</div>
                 <div className="text-sm text-white/90 mt-1">Ready for Engineering Specialization</div>
               </div>
             </div>
@@ -284,6 +276,3 @@ export default function GameMapPhysics() {
     </div>
   );
 }
-
-
-
