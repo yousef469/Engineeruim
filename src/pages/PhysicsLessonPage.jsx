@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { unit1Lessons } from '../data/physics/unit1-mechanics';
@@ -29,6 +30,39 @@ export default function PhysicsLessonPage() {
     console.log('Lesson for this ID:', physicsLessons[lessonId]);
 
     const lesson = physicsLessons[lessonId];
+
+    // Local sub-component to render practice problems with toggleable solutions
+    const PracticeProblems = ({ problems }) => {
+        const [visible, setVisible] = useState({});
+        const toggle = (id) => setVisible(prev => ({ ...prev, [id]: !prev[id] }));
+
+        return (
+            <div className="bg-gradient-to-r from-indigo-900/10 to-indigo-800/5 border-2 border-indigo-600/20 rounded-2xl p-6 mb-8">
+                <h3 className="text-xl font-bold mb-4 text-indigo-200">📝 Practice Problems</h3>
+                <div className="space-y-4">
+                    {problems.map((p, i) => (
+                        <div key={p.id || i} className="bg-slate-900/40 border border-slate-700 rounded p-4">
+                            <div className="font-semibold text-sm text-gray-100 mb-2">{p.prompt}</div>
+                            {p.hints && p.hints.length > 0 && (
+                                <div className="text-sm text-gray-300 mb-2">Hints: {p.hints.join(' · ')}</div>
+                            )}
+                            <button
+                                onClick={() => toggle(p.id || i)}
+                                className="mt-2 px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded text-sm font-bold"
+                            >
+                                {visible[p.id || i] ? 'Hide solution' : 'Show solution'}
+                            </button>
+                            {visible[p.id || i] && (
+                                <div className="mt-3 p-3 bg-black/40 border border-gray-700 rounded text-sm text-green-200">
+                                    <div className="font-mono">{p.solution}</div>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    };
 
     if (!lesson) {
         console.error('❌ LESSON NOT FOUND! ID:', lessonId);
@@ -98,6 +132,36 @@ export default function PhysicsLessonPage() {
                     <h2 className="text-2xl font-bold mb-4">📚 Introduction</h2>
                     <p className="text-lg text-blue-100 leading-relaxed">{lesson.content.intro}</p>
                 </div>
+
+                {/* New: Learning Objectives, Key Equations, Practice Problems */}
+                {lesson.learningObjectives && lesson.learningObjectives.length > 0 && (
+                    <div className="bg-gradient-to-r from-yellow-500/10 to-yellow-400/5 border-2 border-yellow-400/20 rounded-2xl p-6 mb-8">
+                        <h3 className="text-xl font-bold mb-3 text-yellow-300">🎯 Learning Objectives</h3>
+                        <ul className="list-disc list-inside text-gray-100 space-y-2">
+                            {lesson.learningObjectives.map((obj, i) => (
+                                <li key={i}>{obj}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
+                {lesson.keyEquations && lesson.keyEquations.length > 0 && (
+                    <div className="bg-gradient-to-r from-slate-800/30 to-slate-700/20 border-2 border-slate-600/30 rounded-2xl p-6 mb-8">
+                        <h3 className="text-xl font-bold mb-4 text-slate-200">📐 Key Equations</h3>
+                        <div className="space-y-3">
+                            {lesson.keyEquations.map((eq, i) => (
+                                <div key={i} className="p-3 bg-slate-900/40 border border-slate-700 rounded">
+                                    <div className="font-mono text-sm text-yellow-200">{eq.eq}</div>
+                                    {eq.meaning && <div className="text-sm text-gray-300 mt-1">{eq.meaning}</div>}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {lesson.practiceProblems && lesson.practiceProblems.length > 0 && (
+                    <PracticeProblems problems={lesson.practiceProblems} />
+                )}
 
                 <div className="mb-12">
                     <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
