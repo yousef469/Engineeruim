@@ -28,15 +28,15 @@ export default function GameMapPhysics() {
         level: 'Beginner'
       },
       { 
-        name: 'Work, Energy & Power', 
+        name: 'Work & Energy', 
         emoji: '⚡', 
         color: 'from-yellow-400 to-orange-500', 
         lessons: [
-          'What is Energy? Kinetic vs Potential',
-          'Work & Power: Force × Distance',
-          'Conservation of Energy Principle',
-          'Efficiency: Energy Losses in Systems',
-          'Power Systems: Mechanical vs Electrical'
+          'What "energy" really is, how force × distance = work',
+          'How motion and position store energy',
+          'How fast work is done (horsepower, watts)',
+          'Energy cannot be created/destroyed',
+          'Why real machines lose energy (heat, friction)'
         ],
         level: 'Beginner'
       },
@@ -117,7 +117,7 @@ export default function GameMapPhysics() {
   lessonCounts.forEach((count, i) => {
     units.push({
       lessons: levels.slice(currentIndex, currentIndex + count),
-      isReversed: i % 2 === 1
+      isReversed: i % 2 === 1 && i !== 1 // Don't reverse unit 2 (index 1)
     });
     currentIndex += count;
   });
