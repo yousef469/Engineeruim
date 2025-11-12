@@ -1,9 +1,9 @@
 export const unit6Lessons = {
   26: {
     id: 26,
-    title: 'What Are Materials?',
+    title: 'Materials Overview: Metals, Ceramics, Polymers, Composites',
     subtitle: 'Metals, Ceramics, Composites',
-    description: 'Learn about the main classes of engineering materials',
+    description: 'Explore metals, ceramics, polymers, and composites; compare properties and uses',
     coreIdea: 'Metals, ceramics, polymers, composites',
     engineeringExample: 'Rocket body vs car frame',
     learningObjectives: [
