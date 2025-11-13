@@ -1,48 +1,28 @@
 // Complete Rocket Engineering Curriculum
 // MIT-Quality Content: Units 0-5 Complete!
 
-import { unit0Foundations } from './rockets/unit0-foundations.js';
+import { rocketUnit0Complete } from './rockets/unit0-complete.js';
 import { rocketUnit1Complete } from './rockets/unit1-complete.js';
 import { rocketUnit2Complete } from './rockets/unit2-complete.js';
 import { rocketUnit3Complete } from './rockets/unit3-complete.js';
 import { rocketUnit4Complete } from './rockets/unit4-complete.js';
 import { rocketUnit5Complete } from './rockets/unit5-complete.js';
-// Note: Only MIT-quality lessons included (Units 0-5)
-// Total: 28 comprehensive rocket engineering lessons
+// MIT-Quality Rocket Engineering Curriculum
+// Total: 28 comprehensive lessons across 6 units
 
 // Create lessons object
 export const rocketsLessons = {};
 
 // Add Unit 0 (Foundations) - Lessons 0-5
-// Convert string IDs (0.1, 0.2) to numeric IDs (0, 1, 2, 3, 4, 5)
-// Transform structure to match lesson page expectations
-const unit0Array = Object.values(unit0Foundations);
-unit0Array.forEach((lesson, index) => {
-  rocketsLessons[index] = {
-    id: index,
-    title: lesson.title,
-    unit: 'Foundations: Math & Physics Bridge',
-    duration: lesson.metadata?.estTime || '30 min',
+rocketUnit0Complete.forEach(lesson => {
+  rocketsLessons[lesson.id] = {
+    ...lesson,
     level: 'Beginner',
-    introduction: lesson.description,
     content: {
-      introduction: lesson.description,
-      sections: [
-        {
-          title: lesson.subtitle || 'Core Concepts',
-          content: `${lesson.coreIdea}\n\n**Learning Objectives:**\n${lesson.learningObjectives.map(obj => `• ${obj}`).join('\n')}`
-        },
-        {
-          title: 'Key Equations',
-          content: lesson.keyEquations.map(eq => `**${eq.meaning}:**\n${eq.eq}`).join('\n\n')
-        },
-        {
-          title: 'Practice Problems',
-          content: lesson.practiceProblems.map(prob => `**Problem ${prob.id}:**\n${prob.prompt}\n\n**Solution:** ${prob.solution}`).join('\n\n')
-        }
-      ],
-      keyTakeaways: lesson.learningObjectives,
-      vocabulary: []
+      introduction: lesson.introduction,
+      sections: lesson.sections,
+      keyTakeaways: lesson.keyTakeaways,
+      vocabulary: lesson.vocabulary
     },
     quiz: { questions: [] }
   };
