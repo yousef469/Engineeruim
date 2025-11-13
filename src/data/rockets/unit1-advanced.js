@@ -44,15 +44,15 @@ export const unit1AdvancedLessons = [
 
   {
     id: 9,
-    title: "Rocket Staging & Mass Optimization",
+    title: "Rocket Staging: Multiplying Delta-V",
     unit: "Rocket Fundamentals",
-    duration: "30 min",
-    introduction: "Staging is the key innovation that makes orbital spaceflight possible. By dropping empty tanks and engines during flight, rockets dramatically improve their mass ratio and delta-v capability.",
+    duration: "45 min",
+    introduction: "🚀 Staging is THE KEY innovation that makes spaceflight possible! By dropping empty tanks, you avoid carrying dead weight. This simple idea multiplies your delta-v and makes the impossible possible. Without staging, we'd never reach orbit! Every orbital rocket uses staging - it's not optional, it's essential!",
     
     sections: [
       {
-        title: "Why Staging is Necessary",
-        content: "To reach Low Earth Orbit (LEO):\n• Required Δv ≈ 9,500 m/s\n• Best chemical I_sp ≈ 450 s (LH₂/LOX)\n• Exhaust velocity: v_e = 4,415 m/s\n\nRequired mass ratio: R = e^(9,500/4,415) = 8.58\n\nThis means 88.4% must be fuel - barely feasible for single stage!\n\nWith Staging:\nTwo stages with R = 3.0 each:\n• Δv_total = 2 × 4,415 × ln(3) = 9,704 m/s\n• Each stage: 10% structure, 85% propellant, 5% payload\n• Much more practical!\n\nHistorical Example - Saturn V:\n• Total mass: 2,970,000 kg\n• Payload to LEO: 140,000 kg\n• Payload fraction: 4.7%\n\nSingle stage would need 0.3% payload fraction - impossible!"
+        title: "🎯 Why Staging Works - The Math",
+        content: "**The Problem with Single Stage:**\nAs you burn fuel, you're carrying empty tanks - dead weight!\n\n**To reach LEO:**\n• Required Δv ≈ 9,500 m/s\n• Best chemical Isp ≈ 450 s (LH₂/LOX)\n• Exhaust velocity: v_e = 4,415 m/s\n\n**Required mass ratio:**\nR = e^(9,500/4,415) = e^2.15 = 8.58\n\nThis means 88.4% must be fuel - barely feasible!\n\n**The Solution: DROP THE EMPTY TANKS!**\n\n**Two-stage rocket:**\nΔv_total = v_e1 × ln(R₁) + v_e2 × ln(R₂)\n\nIf both stages have R = 5:\n• Single stage: Δv = v_e × ln(5) = 1.61 v_e\n• Two stages: Δv = v_e × ln(5) + v_e × ln(5) = 3.22 v_e\n\n**Twice the delta-v with same mass ratios!**\n\n**Why It Works:**\n1. First stage accelerates everything\n2. Drop first stage (now empty)\n3. Second stage only accelerates payload + itself\n4. Much better mass ratio for second stage!\n\n**Effective Mass Ratio:**\nR_eff = R₁ × R₂\n\nFor R₁ = R₂ = 5:\nR_eff = 25\n\nSingle stage with R = 25 is impossible (96% fuel!)\nBut two stages with R = 5 each is practical (80% fuel each)\n\n**Historical Example - Saturn V:**\n• Total mass: 2,970,000 kg\n• Payload to LEO: 140,000 kg\n• Payload fraction: 4.7%\n• Three stages made this possible!\n\nSingle stage would need 0.3% payload fraction - impossible with any known materials!"
       },
       {
         title: "Multi-Stage Rocket Equation",
