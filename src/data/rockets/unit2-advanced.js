@@ -315,7 +315,99 @@ export const unit2AdvancedLessons = [
       { term: "Thrust-to-Weight (T/W)", definition: "Engine thrust divided by engine weight; typical 50-200" },
       { term: "Combustion Efficiency (η_c)", definition: "Ratio of actual to theoretical combustion performance" },
       { term: "Nozzle Efficiency (η_n)", definition: "Ratio of actual to ideal nozzle performance" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "18-1",
+        problem: "Calculate c* for an engine: P_c=10 MPa, A_t=0.05 m², ṁ=280 kg/s.",
+        solution: "c* = (P_c × A_t) / ṁ = (10×10⁶ × 0.05) / 280 = 500,000 / 280 = 1,786 m/s\nThis is typical for RP-1/LOX engines.",
+        hint: "Use c* = (P_c × A_t) / ṁ"
+      },
+      {
+        id: "18-2",
+        problem: "Engine has c*=1,800 m/s, C_F=1.55. Calculate Isp.",
+        solution: "Isp = (c* × C_F) / g₀ = (1,800 × 1.55) / 9.81 = 2,790 / 9.81 = 284 seconds\nTypical sea-level performance for kerosene engine.",
+        hint: "Isp = (c* × C_F) / g₀"
+      },
+      {
+        id: "18-3",
+        problem: "Compare two engines for same mission: Engine A (Isp=310s, T/W=185, cost=$1M) vs Engine B (Isp=340s, T/W=167, cost=$15M). For 100,000 kg rocket to LEO, which delivers more payload?",
+        solution: "Engine A: R = e^(9,500/3,041) = 20.1, Fuel = 95,000 kg, Structure (5%) = 5,000 kg, Payload = 0 kg (impossible!)\nEngine B: R = e^(9,500/3,335) = 16.8, Fuel = 94,000 kg, Structure (5.5%) = 5,500 kg, Payload = 500 kg\nEngine B barely works despite higher Isp! Need staging or better mass fractions.",
+        hint: "Calculate fuel needs for each, account for structure mass"
+      },
+      {
+        id: "18-4",
+        problem: "Engine has theoretical Isp=310s but actual=298s. Calculate total efficiency and identify losses if combustion efficiency is 97%.",
+        solution: "η_total = 298/310 = 0.961 = 96.1%\nη_c = 0.97 (given)\nη_n × η_other = 0.961/0.97 = 0.991\nLosses: Combustion 3%, Nozzle+other 0.9%, Total 3.9%\nVery efficient engine!",
+        hint: "η_total = actual/theoretical, then break down by component"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q18-1",
+          question: "What does characteristic velocity (c*) measure?",
+          options: [
+            "Exhaust velocity",
+            "Combustion chamber performance; typical 1,800-2,400 m/s",
+            "Nozzle performance",
+            "Thrust"
+          ],
+          correctAnswer: 1,
+          explanation: "c* = (P_c × A_t) / ṁ measures combustion chamber performance. Higher c* means better combustion efficiency. Typical values: RP-1/LOX ~1,800 m/s, LH₂/LOX ~2,400 m/s."
+        },
+        {
+          id: "q18-2",
+          question: "What is thrust coefficient (C_F)?",
+          options: [
+            "Thrust divided by weight",
+            "Nozzle performance parameter; relates thrust to chamber pressure",
+            "Combustion efficiency",
+            "Fuel consumption rate"
+          ],
+          correctAnswer: 1,
+          explanation: "C_F = T / (P_c × A_t) measures nozzle performance. Higher C_F means better expansion. Sea level: C_F ~1.3-1.6, Vacuum: C_F ~1.7-2.0."
+        },
+        {
+          id: "q18-3",
+          question: "What is engine thrust-to-weight ratio (T/W)?",
+          options: [
+            "Rocket TWR",
+            "Engine thrust divided by engine weight; typical 50-200",
+            "Specific impulse",
+            "Thrust coefficient"
+          ],
+          correctAnswer: 1,
+          explanation: "Engine T/W = engine thrust / engine weight. Higher is better (lighter engine). Merlin 1D: T/W ~180. RS-25: T/W ~73 (heavier but more complex)."
+        },
+        {
+          id: "q18-4",
+          question: "Why is total engine efficiency typically 94-98%?",
+          options: [
+            "Poor design",
+            "Losses from incomplete combustion (1-6%), nozzle friction (2-5%), and other factors",
+            "Fuel quality",
+            "Manufacturing defects"
+          ],
+          correctAnswer: 1,
+          explanation: "Even well-designed engines have losses: combustion (1-6%), nozzle friction/divergence (2-5%), kinetic losses (<1%). Total efficiency 94-98% is excellent!"
+        },
+        {
+          id: "q18-5",
+          question: "When comparing engines, what matters most for first stage?",
+          options: [
+            "Maximum Isp only",
+            "Balance of thrust, T/W, cost, and reliability (Isp less critical)",
+            "Lowest cost only",
+            "Highest chamber pressure"
+          ],
+          correctAnswer: 1,
+          explanation: "First stages need: high thrust (TWR>1.2), good T/W (lighter), reliability, and reasonable cost. Isp is important but not critical. Upper stages prioritize Isp more!"
+        }
+      ]
+    }
   }
 ];
 
