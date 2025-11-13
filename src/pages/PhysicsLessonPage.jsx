@@ -21,13 +21,15 @@ export default function PhysicsLessonPage() {
     const { lessonId } = useParams();
     const navigate = useNavigate();
 
-    // VERSION CHECK - If you see this in console, cache is cleared!
-    console.log('🔬 PHYSICS LESSON PAGE LOADED - Version 2024-11-05-FINAL');
-    console.log('=== PHYSICS LESSON PAGE DEBUG ===');
-    console.log('Lesson ID from URL:', lessonId);
-    console.log('Available lesson IDs:', Object.keys(physicsLessons));
-    console.log('Lesson 1 exists?', physicsLessons[1]);
-    console.log('Lesson for this ID:', physicsLessons[lessonId]);
+    // Debug logs only in development
+    if (import.meta.env.DEV) {
+        console.log('🔬 PHYSICS LESSON PAGE LOADED - Version 2024-11-05-FINAL');
+        console.log('=== PHYSICS LESSON PAGE DEBUG ===');
+        console.log('Lesson ID from URL:', lessonId);
+        console.log('Available lesson IDs:', Object.keys(physicsLessons));
+        console.log('Lesson 1 exists?', physicsLessons[1]);
+        console.log('Lesson for this ID:', physicsLessons[lessonId]);
+    }
 
     const lesson = physicsLessons[lessonId];
 
@@ -88,11 +90,13 @@ export default function PhysicsLessonPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-950 via-indigo-950 to-black text-white">
-            {/* DEBUG BANNER - VERY VISIBLE */}
-            <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-center py-6 font-bold text-3xl border-b-8 border-green-300 shadow-2xl">
-                🔬 PHYSICS LESSON PAGE 🔬 - Lesson {lessonId}
-                <div className="text-lg mt-2">Title: {lesson?.title || 'NOT FOUND'}</div>
-            </div>
+            {/* Debug banner only in development builds */}
+            {import.meta.env.DEV && (
+                <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-center py-6 font-bold text-3xl border-b-8 border-green-300 shadow-2xl">
+                    🔬 PHYSICS LESSON PAGE 🔬 - Lesson {lessonId}
+                    <div className="text-lg mt-2">Title: {lesson?.title || 'NOT FOUND'}</div>
+                </div>
+            )}
 
             <div className="border-b border-blue-700 bg-blue-900/90 backdrop-blur-md sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-6 py-4">

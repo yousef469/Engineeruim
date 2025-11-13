@@ -1,43 +1,43 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Rocket, Plane, Car, X, Loader2, MousePointer, ZoomIn, Info, Send, Sparkles, RotateCw } from 'lucide-react';
-import HomeRouter from './pages/HomeRouter';
-import RocketsPage from './pages/RocketsPage';
-import PlanesPage from './pages/PlanesPage';
-import CarsPage from './pages/CarsPage';
-import ModelViewerPage from './pages/ModelViewerPage';
-import RocketMechanicsPage from './pages/RocketMechanicsPage';
-import CarMechanicsPage from './pages/CarMechanicsPage';
-import PlaneMechanicsPage from './pages/PlaneMechanicsPage';
-import GamesPage from './pages/GamesPage';
-import QuizGame from './pages/QuizGame';
-import SimulationGame from './pages/SimulationGame';
-import MatchingGame from './pages/MatchingGame';
-import EngineBuilderGame from './pages/EngineBuilderGame';
-import UnifiedGame from './pages/UnifiedGame';
-import GameCategorySelect from './pages/GameCategorySelect';
-import GameMapRockets from './pages/GameMapRockets';
-import GameMapCars from './pages/GameMapCars';
-import GameMapPlanes from './pages/GameMapPlanes';
-import GameMapMathematics from './pages/GameMapMathematics';
-import GameMapPhysics from './pages/GameMapPhysics';
-import LessonsDemoPage from './pages/LessonsDemoPage';
-import RocketLessonPage from './pages/RocketLessonPage';
-import RocketLessonPageNew from './pages/RocketLessonPageNew';
-import PlaneLessonPage from './pages/PlaneLessonPage';
-import CarLessonPage from './pages/CarLessonPage';
-import MathematicsLessonPage from './pages/MathematicsLessonPage';
-import PhysicsLessonPage from './pages/PhysicsLessonPage';
-import PhysicsQuizPage from './pages/PhysicsQuizPage';
-import PlaneQuizPage from './pages/PlaneQuizPage';
-import ProgressDashboard from './pages/ProgressDashboard';
-import UnitOverviewPage from './pages/UnitOverviewPage';
-import BeginnerLessonPage from './pages/BeginnerLessonPage';
-import BeginnerQuizPage from './pages/BeginnerQuizPage';
-import LearningHubPage from './pages/LearningHubPage';
-import TestCurriculumPage from './pages/TestCurriculumPage';
+const HomeRouter = lazy(() => import('./pages/HomeRouter'));
+const RocketsPage = lazy(() => import('./pages/RocketsPage'));
+const PlanesPage = lazy(() => import('./pages/PlanesPage'));
+const CarsPage = lazy(() => import('./pages/CarsPage'));
+const ModelViewerPage = lazy(() => import('./pages/ModelViewerPage'));
+const RocketMechanicsPage = lazy(() => import('./pages/RocketMechanicsPage'));
+const CarMechanicsPage = lazy(() => import('./pages/CarMechanicsPage'));
+const PlaneMechanicsPage = lazy(() => import('./pages/PlaneMechanicsPage'));
+const GamesPage = lazy(() => import('./pages/GamesPage'));
+const QuizGame = lazy(() => import('./pages/QuizGame'));
+const SimulationGame = lazy(() => import('./pages/SimulationGame'));
+const MatchingGame = lazy(() => import('./pages/MatchingGame'));
+const EngineBuilderGame = lazy(() => import('./pages/EngineBuilderGame'));
+const UnifiedGame = lazy(() => import('./pages/UnifiedGame'));
+const GameCategorySelect = lazy(() => import('./pages/GameCategorySelect'));
+const GameMapRockets = lazy(() => import('./pages/GameMapRockets'));
+const GameMapCars = lazy(() => import('./pages/GameMapCars'));
+const GameMapPlanes = lazy(() => import('./pages/GameMapPlanes'));
+const GameMapMathematics = lazy(() => import('./pages/GameMapMathematics'));
+const GameMapPhysics = lazy(() => import('./pages/GameMapPhysics'));
+const LessonsDemoPage = lazy(() => import('./pages/LessonsDemoPage'));
+const RocketLessonPage = lazy(() => import('./pages/RocketLessonPage'));
+const RocketLessonPageNew = lazy(() => import('./pages/RocketLessonPageNew'));
+const PlaneLessonPage = lazy(() => import('./pages/PlaneLessonPage'));
+const CarLessonPage = lazy(() => import('./pages/CarLessonPage'));
+const MathematicsLessonPage = lazy(() => import('./pages/MathematicsLessonPage'));
+const PhysicsLessonPage = lazy(() => import('./pages/PhysicsLessonPage'));
+const PhysicsQuizPage = lazy(() => import('./pages/PhysicsQuizPage'));
+const PlaneQuizPage = lazy(() => import('./pages/PlaneQuizPage'));
+const ProgressDashboard = lazy(() => import('./pages/ProgressDashboard'));
+const UnitOverviewPage = lazy(() => import('./pages/UnitOverviewPage'));
+const BeginnerLessonPage = lazy(() => import('./pages/BeginnerLessonPage'));
+const BeginnerQuizPage = lazy(() => import('./pages/BeginnerQuizPage'));
+const LearningHubPage = lazy(() => import('./pages/LearningHubPage'));
+const TestCurriculumPage = lazy(() => import('./pages/TestCurriculumPage'));
 
 // ==================== 3D VIEWER COMPONENT ====================
 const ThreeJSViewer = ({ modelType, hotspots = [] }) => {
@@ -1091,28 +1091,28 @@ const VehicleCard = ({ icon: Icon, title, description, gradient, onClick, delay 
 
 // ==================== MAIN APP COMPONENT ====================
 import IntroAnimation from './components/IntroAnimation';
-import AllInOnePage from './pages/AllInOnePage';
-import AuthPage from './pages/AuthPage';
-import ComparePage from './pages/ComparePage';
-import DashboardPage from './pages/DashboardPage';
+const AllInOnePage = lazy(() => import('./pages/AllInOnePage'));
+const AuthPage = lazy(() => import('./pages/AuthPage'));
+const ComparePage = lazy(() => import('./pages/ComparePage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 import BookmarksNotes from './components/BookmarksNotes';
 import CollaborationMode from './components/CollaborationMode';
 import ModelUpload from './components/ModelUpload';
 import GamificationSystem from './components/GamificationSystem';
-import AI3DGeneratorPage from './pages/AI3DGeneratorPage';
-import PricingPage from './pages/PricingPage';
-import ProgressionPage from './pages/ProgressionPage';
-import LearnMechanicsPage from './pages/LearnMechanicsPage';
-import LearnSectionsPage from './pages/LearnSectionsPage';
-import LearnInformationPage from './pages/LearnInformationPage';
-import CollaboratePage from './pages/CollaboratePage';
-import PhysicsPage from './pages/PhysicsPage';
-import MathematicsPage from './pages/MathematicsPage';
-import MathematicsEngineeringPage from './pages/MathematicsEngineeringPage';
-import PhysicsEngineeringPage from './pages/PhysicsEngineeringPage';
-import MathPhysicsEngineeringPage from './pages/MathPhysicsEngineeringPage';
-import ElectronicsPage from './pages/ElectronicsPage';
-import BooksPage from './pages/BooksPage';
+const AI3DGeneratorPage = lazy(() => import('./pages/AI3DGeneratorPage'));
+const PricingPage = lazy(() => import('./pages/PricingPage'));
+const ProgressionPage = lazy(() => import('./pages/ProgressionPage'));
+const LearnMechanicsPage = lazy(() => import('./pages/LearnMechanicsPage'));
+const LearnSectionsPage = lazy(() => import('./pages/LearnSectionsPage'));
+const LearnInformationPage = lazy(() => import('./pages/LearnInformationPage'));
+const CollaboratePage = lazy(() => import('./pages/CollaboratePage'));
+const PhysicsPage = lazy(() => import('./pages/PhysicsPage'));
+const MathematicsPage = lazy(() => import('./pages/MathematicsPage'));
+const MathematicsEngineeringPage = lazy(() => import('./pages/MathematicsEngineeringPage'));
+const PhysicsEngineeringPage = lazy(() => import('./pages/PhysicsEngineeringPage'));
+const MathPhysicsEngineeringPage = lazy(() => import('./pages/MathPhysicsEngineeringPage'));
+const ElectronicsPage = lazy(() => import('./pages/ElectronicsPage'));
+const BooksPage = lazy(() => import('./pages/BooksPage'));
 import Leaderboard from './components/Leaderboard';
 import CommunityQA from './components/CommunityQA';
 
@@ -1140,7 +1140,15 @@ export default function App() {
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
       <FloatingAIHelper />
       <Router>
-        <Routes>
+        <React.Suspense fallback={
+          <div className="min-h-screen flex items-center justify-center bg-black text-white">
+            <div className="flex items-center gap-3">
+              <Loader2 className="animate-spin" />
+              <span>Loading...</span>
+            </div>
+          </div>
+        }>
+          <Routes>
           <Route path="/" element={<HomeRouter />} />
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/viewer" element={<ProtectedRoute><AllInOnePage /></ProtectedRoute>} />
@@ -1169,8 +1177,6 @@ export default function App() {
           <Route path="/games/map/rockets" element={<ProtectedRoute><GameMapRockets /></ProtectedRoute>} />
           <Route path="/games/map/cars" element={<ProtectedRoute><GameMapCars /></ProtectedRoute>} />
           <Route path="/games/map/planes" element={<ProtectedRoute><GameMapPlanes /></ProtectedRoute>} />
-          <Route path="/games/map/cars" element={<ProtectedRoute><GameMapCars /></ProtectedRoute>} />
-          <Route path="/games/map/rockets" element={<ProtectedRoute><GameMapRockets /></ProtectedRoute>} />
           <Route path="/lessons/demo" element={<ProtectedRoute><LessonsDemoPage /></ProtectedRoute>} />
           <Route path="/lessons/rockets/:lessonId" element={<ProtectedRoute><RocketLessonPage /></ProtectedRoute>} />
           <Route path="/games/play/planes/lesson/:lessonId" element={<ProtectedRoute><PlaneLessonPage /></ProtectedRoute>} />
@@ -1194,15 +1200,17 @@ export default function App() {
           {/* New Features */}
           <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
           <Route path="/bookmarks" element={<ProtectedRoute><BookmarksNotes /></ProtectedRoute>} />
-          <Route path="/collaborate" element={<ProtectedRoute><CollaborationMode /></ProtectedRoute>} />
+          {/* Removed duplicate /collaborate route to avoid conflicts */}
+          {/* Use existing components for leaderboard and community */}
           <Route path="/collaborate/:sessionId" element={<ProtectedRoute><CollaborationMode /></ProtectedRoute>} />
           <Route path="/upload" element={<ProtectedRoute><ModelUpload /></ProtectedRoute>} />
           <Route path="/progression" element={<ProtectedRoute><ProgressionPage /></ProtectedRoute>} />
-          <Route path="/leaderboard" element={<ProtectedRoute><LeaderboardPage /></ProtectedRoute>} />
-          <Route path="/community" element={<ProtectedRoute><CommunityPage /></ProtectedRoute>} />
+          <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
+          <Route path="/community" element={<ProtectedRoute><CommunityQA /></ProtectedRoute>} />
           <Route path="/ai-generator" element={<AI3DGeneratorPage />} />
           <Route path="/pricing" element={<PricingPage />} />
-        </Routes>
+          </Routes>
+        </React.Suspense>
       </Router>
     </>
   );
