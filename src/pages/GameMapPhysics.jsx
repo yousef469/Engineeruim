@@ -75,8 +75,20 @@ export default function GameMapPhysics() {
           'Frequency & Amplitude: Signal Basics',
           'Electricity Basics: Charge, Voltage, Current',
           "Circuits & Ohm's Law: Resistance Explained",
-          'Magnetism & Electromagnetism: Motors & Generators',
-          'Materials & Stress: Strength of Structures'
+          'Magnetism & Electromagnetism: Motors & Generators'
+        ],
+        level: 'Intermediate'
+      },
+      { 
+        name: 'Materials & Structures', 
+        emoji: '🏗️', 
+        color: 'from-gray-400 to-slate-500', 
+        lessons: [
+          'What Are Materials?: Metals, Ceramics, Composites',
+          'Stress & Strain: Force vs Deformation',
+          'Elastic & Plastic Deformation: Reversible vs Permanent',
+          'Failure & Fatigue: How Things Break',
+          'Material Selection: Weight, Strength, Cost'
         ],
         level: 'Intermediate'
       }
@@ -111,7 +123,7 @@ export default function GameMapPhysics() {
   };
 
   const units = [];
-  const lessonCounts = [8, 5, 5, 5, 6];
+  const lessonCounts = [8, 5, 5, 5, 5, 5];
   let currentIndex = 0;
   
   lessonCounts.forEach((count, i) => {
@@ -148,7 +160,7 @@ export default function GameMapPhysics() {
               <Zap className="w-8 h-8 text-secondary" />
               <div>
                 <h1 className="text-xl font-bold">Physics for Engineering</h1>
-                <p className="text-sm text-blue-200">29 Lessons • Master the principles of motion and energy</p>
+                <p className="text-sm text-blue-200">33 Lessons • Master the principles of motion and energy</p>
               </div>
             </div>
             <div className="flex items-center gap-4">

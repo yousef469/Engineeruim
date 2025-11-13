@@ -8,56 +8,56 @@ export const physicsUnits = [
     lessons: [
       {
         id: 1,
-        title: 'Understanding Motion',
+        title: 'Mechanics & Motion: Understanding Motion',
         description: 'Position, displacement, speed, velocity, reference frames',
         example: 'Car navigation, rocket trajectories',
         concepts: ['Position & Displacement', 'Distance vs Displacement', 'Speed vs Velocity', 'Reference Frames']
       },
       {
         id: 2,
-        title: "Newton's Laws of Motion",
+        title: "Mechanics & Motion: Newton's Laws of Motion",
         description: 'Forces, inertia, F=ma, action-reaction',
         example: 'Rocket propulsion, car crashes',
         concepts: ['Law of Inertia', 'F = ma', 'Action-Reaction', 'Mass vs Weight']
       },
       {
         id: 3,
-        title: 'Forces & Free-Body Diagrams',
+        title: 'Mechanics & Motion: Forces & Free-Body Diagrams',
         description: 'Visual force analysis and problem solving',
         example: 'Aircraft analysis, bridge design',
         concepts: ['Free-Body Diagrams', 'Common Forces', 'Equilibrium', 'Problem Solving']
       },
       {
         id: 4,
-        title: 'Friction, Normal Force & Tension',
+        title: 'Mechanics & Motion: Friction, Normal Force & Tension',
         description: 'Contact forces in everyday machines',
         example: 'Brakes, elevators, pulleys',
         concepts: ['Static & Kinetic Friction', 'Normal Force', 'Tension', 'Combined Forces']
       },
       {
         id: 5,
-        title: 'Circular Motion',
+        title: 'Mechanics & Motion: Circular Motion',
         description: 'Turning cars, orbiting satellites',
         example: 'Race cars, satellites, roller coasters',
         concepts: ['Centripetal Acceleration', 'Centripetal Force', 'Orbital Motion', 'Banking']
       },
       {
         id: 6,
-        title: 'Momentum & Collisions',
+        title: 'Mechanics & Motion: Momentum & Collisions',
         description: 'Conservation of momentum and impulse',
         example: 'Car crashes, rocket staging',
         concepts: ['Momentum', 'Conservation Law', 'Impulse', 'Explosions & Recoil']
       },
       {
         id: 7,
-        title: 'Gravity & Weight',
+        title: 'Mechanics & Motion: Gravity & Weight',
         description: 'Weight vs mass and gravitational fields',
         example: 'Satellite orbits, structural loads',
         concepts: ['Mass vs Weight', 'Gravitational Field', 'Universal Gravitation', 'Apparent Weight']
       },
       {
         id: 8,
-        title: 'Projectile Motion',
+        title: 'Mechanics & Motion: Projectile Motion',
         description: 'How thrown and fired objects move',
         example: 'Rockets, drones, cars on hills',
         concepts: ['Independence of Motion', 'Launch Angles', 'Rocket Trajectories', 'Slopes']
@@ -72,36 +72,36 @@ export const physicsUnits = [
     color: 'from-yellow-500 to-orange-600',
     lessons: [
       {
-        id: 6,
-        title: 'What is Energy?',
+        id: 9,
+        title: 'Work, Energy & Power: What is Energy?',
         description: 'Kinetic vs potential',
         example: 'Moving vs parked car',
         concepts: ['Kinetic Energy', 'Potential Energy', 'Energy Forms']
       },
       {
-        id: 7,
-        title: 'Work & Power',
+        id: 10,
+        title: 'Work, Energy & Power: Work & Power',
         description: 'Force × distance, rate of doing work',
         example: "Lifting a plane's landing gear",
         concepts: ['Work', 'Power', 'Efficiency']
       },
       {
-        id: 8,
-        title: 'Conservation of Energy',
+        id: 11,
+        title: 'Work, Energy & Power: Conservation of Energy',
         description: 'Energy cannot be lost',
         example: 'Roller coaster or orbit demo',
         concepts: ['Energy Conservation', 'Energy Transfer', 'Energy Transformation']
       },
       {
-        id: 9,
-        title: 'Efficiency',
+        id: 12,
+        title: 'Work, Energy & Power: Efficiency',
         description: 'Energy losses',
         example: 'Car engine efficiency vs electric motor',
         concepts: ['Efficiency', 'Energy Loss', 'Heat Waste']
       },
       {
-        id: 10,
-        title: 'Power Systems',
+        id: 13,
+        title: 'Work, Energy & Power: Power Systems',
         description: 'Mechanical vs electrical power',
         example: 'Rocket turbopump or electric motor power flow',
         concepts: ['Mechanical Power', 'Electrical Power', 'Power Transmission']
@@ -116,36 +116,36 @@ export const physicsUnits = [
     color: 'from-cyan-500 to-blue-600',
     lessons: [
       {
-        id: 11,
-        title: 'What is Pressure?',
+        id: 14,
+        title: 'Fluids & Pressure: What is Pressure?',
         description: 'Force per area',
         example: 'Tire pressure or cabin pressure',
         concepts: ['Pressure', 'Force per Area', 'Atmospheric Pressure']
       },
       {
-        id: 12,
-        title: 'Buoyancy & Density',
+        id: 15,
+        title: 'Fluids & Pressure: Buoyancy & Density',
         description: 'Floating and lifting',
         example: 'Hot air balloon, fuel tank design',
         concepts: ['Buoyancy', 'Density', 'Archimedes Principle']
       },
       {
-        id: 13,
-        title: "Bernoulli's Principle",
+        id: 16,
+        title: "Fluids & Pressure: Bernoulli's Principle",
         description: 'Pressure and speed relation',
         example: 'Airplane wing lift demo',
         concepts: ['Bernoulli Equation', 'Lift', 'Pressure-Velocity Relationship']
       },
       {
-        id: 14,
-        title: 'Fluid Resistance',
+        id: 17,
+        title: 'Fluids & Pressure: Fluid Resistance',
         description: 'Drag and viscosity',
         example: 'Car aerodynamics test',
         concepts: ['Drag Force', 'Viscosity', 'Reynolds Number']
       },
       {
-        id: 15,
-        title: 'Compressible Flow',
+        id: 18,
+        title: 'Fluids & Pressure: Compressible Flow',
         description: 'Gases at high speed',
         example: 'Rocket nozzle exhaust animation',
         concepts: ['Compressibility', 'Mach Number', 'Shock Waves']
@@ -160,36 +160,36 @@ export const physicsUnits = [
     color: 'from-red-500 to-orange-600',
     lessons: [
       {
-        id: 16,
-        title: 'Temperature & Heat',
+        id: 19,
+        title: 'Thermodynamics: Temperature & Heat',
         description: 'Energy transfer',
         example: 'Engine heating and cooling',
         concepts: ['Temperature', 'Heat', 'Thermal Energy']
       },
       {
-        id: 17,
-        title: 'Heat Transfer Types',
+        id: 20,
+        title: 'Thermodynamics: Heat Transfer Types',
         description: 'Conduction, convection, radiation',
         example: 'Rocket engine cooling',
         concepts: ['Conduction', 'Convection', 'Radiation']
       },
       {
-        id: 18,
-        title: 'Laws of Thermodynamics',
+        id: 21,
+        title: 'Thermodynamics: Laws of Thermodynamics',
         description: 'Energy balance',
         example: 'Car engine or jet turbine cycle',
         concepts: ['First Law', 'Second Law', 'Entropy']
       },
       {
-        id: 19,
-        title: 'Internal Combustion',
+        id: 22,
+        title: 'Thermodynamics: Internal Combustion',
         description: 'Fuel burning = force',
         example: 'Car piston engine demo',
         concepts: ['Combustion', 'Otto Cycle', 'Diesel Cycle']
       },
       {
-        id: 20,
-        title: 'Efficiency Limits',
+        id: 23,
+        title: 'Thermodynamics: Efficiency Limits',
         description: 'Carnot cycle',
         example: 'Jet vs rocket efficiency chart',
         concepts: ['Carnot Efficiency', 'Heat Engines', 'Theoretical Limits']
@@ -204,36 +204,36 @@ export const physicsUnits = [
     color: 'from-purple-500 to-pink-600',
     lessons: [
       {
-        id: 21,
-        title: 'What Are Waves?',
+        id: 24,
+        title: 'Waves, Electricity & Magnetism: What Are Waves?',
         description: 'Sound, light, vibration',
         example: 'Jet engine noise visualization',
         concepts: ['Wave Properties', 'Frequency', 'Wavelength', 'Amplitude']
       },
       {
-        id: 22,
-        title: 'Frequency & Amplitude',
+        id: 25,
+        title: 'Waves, Electricity & Magnetism: Frequency & Amplitude',
         description: 'Basic signal understanding',
         example: 'Communication between rocket & base',
         concepts: ['Frequency', 'Amplitude', 'Period', 'Wave Speed']
       },
       {
-        id: 23,
-        title: 'Electricity Basics',
+        id: 26,
+        title: 'Waves, Electricity & Magnetism: Electricity Basics',
         description: 'Charge, voltage, current',
         example: 'Car battery demo',
         concepts: ['Electric Charge', 'Voltage', 'Current', 'Resistance']
       },
       {
-        id: 24,
-        title: "Circuits & Ohm's Law",
+        id: 27,
+        title: "Waves, Electricity & Magnetism: Circuits & Ohm's Law",
         description: 'Resistance, voltage, current',
         example: 'Simple electric car wiring',
         concepts: ["Ohm's Law", 'Series Circuits', 'Parallel Circuits']
       },
       {
-        id: 25,
-        title: 'Magnetism & Induction',
+        id: 28,
+        title: 'Waves, Electricity & Magnetism: Magnetism & Induction',
         description: 'Motors & generators',
         example: 'Electric car motor or rocket pumps',
         concepts: ['Magnetic Fields', 'Electromagnetic Induction', 'Motors', 'Generators']
@@ -248,36 +248,36 @@ export const physicsUnits = [
     color: 'from-gray-500 to-slate-600',
     lessons: [
       {
-        id: 26,
-        title: 'What Are Materials?',
+        id: 29,
+        title: 'Materials & Structures: What Are Materials?',
         description: 'Metals, ceramics, polymers, composites',
         example: 'Rocket body vs car frame',
         concepts: ['Material Types', 'Properties', 'Selection Criteria']
       },
       {
-        id: 27,
-        title: 'Stress & Strain',
+        id: 30,
+        title: 'Materials & Structures: Stress & Strain',
         description: 'Force vs deformation',
         example: 'Airplane wing flex test',
         concepts: ['Stress', 'Strain', 'Elastic Modulus', "Young's Modulus"]
       },
       {
-        id: 28,
-        title: 'Elastic & Plastic Deformation',
+        id: 31,
+        title: 'Materials & Structures: Elastic & Plastic Deformation',
         description: 'Reversible vs permanent',
         example: 'Bumper crash test',
         concepts: ['Elastic Deformation', 'Plastic Deformation', 'Yield Point']
       },
       {
-        id: 29,
-        title: 'Failure & Fatigue',
+        id: 32,
+        title: 'Materials & Structures: Failure & Fatigue',
         description: 'How things break',
         example: 'Reusable rocket inspection',
         concepts: ['Failure Modes', 'Fatigue', 'Crack Propagation', 'Safety Factors']
       },
       {
-        id: 30,
-        title: 'Material Selection',
+        id: 33,
+        title: 'Materials & Structures: Material Selection',
         description: 'Choose for weight, strength, cost',
         example: 'Jet engine turbine or car chassis material selector',
         concepts: ['Material Selection', 'Trade-offs', 'Cost vs Performance']
