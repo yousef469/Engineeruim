@@ -6,37 +6,39 @@ export const unit1Lessons = [
     id: 6,
     title: "Newton's Third Law & Rocket Thrust Generation",
     unit: "Rocket Fundamentals",
-    duration: "25 min",
-    introduction: "Understanding how rockets generate thrust is fundamental to all rocket engineering. Unlike jet engines that use atmospheric air, rockets carry both fuel and oxidizer, making them the only propulsion system that works in the vacuum of space.",
+    duration: "45 min",
+    introduction: "🚀 Rockets are the ONLY propulsion system that works in the vacuum of space! Unlike jets that need air, rockets carry everything they need. Master the physics of thrust generation and understand why rockets accelerate faster as they burn fuel. This lesson covers the fundamental equation T = ṁ·v_e and real examples from SpaceX, NASA, and more!",
     
     sections: [
       {
-        title: "Newton's Third Law Applied to Rockets",
-        content: "Newton's Third Law: For every action, there is an equal and opposite reaction.\n\nIn rockets:\n• Action: Rocket expels mass (exhaust gases) backward at high velocity\n• Reaction: Rocket experiences forward thrust force\n\nMathematical Foundation:\nF = dp/dt\n\nFor a rocket expelling mass:\nF_thrust = ṁ × v_e\n\nWhere:\n• ṁ = mass flow rate (kg/s)\n• v_e = exhaust velocity (m/s)\n\nThis is the fundamental thrust equation."
+        title: "🧠 Newton's Third Law: The Foundation of Rocketry",
+        content: "**For every action, there is an equal and opposite reaction.**\n\nThis simple law enables space travel! Here's how:\n\n**ACTION:** Rocket expels exhaust gases backward at high velocity (v_e)\n**REACTION:** Rocket experiences forward thrust force (T)\n\n**The Physics:**\nWhen a rocket burns fuel, it creates hot gases that expand and accelerate through the nozzle. These gases exit at tremendous speed (2,000-4,500 m/s). As the rocket pushes gases backward, the gases push the rocket forward with equal force.\n\n**Mathematical Foundation:**\nNewton's Second Law: F = ma = m(dv/dt)\n\nBut for rockets, we care about MOMENTUM:\nF = dp/dt = d(mv)/dt\n\nFor a rocket expelling mass:\n• Rocket loses mass: dm (negative)\n• Exhaust gains momentum: dm × v_e\n• Rocket gains momentum: -dm × v_e (opposite direction)\n\nThis leads to the fundamental thrust equation:\n**T = ṁ × v_e**\n\nWhere:\n• T = thrust force (Newtons)\n• ṁ = mass flow rate (kg/s) - how fast fuel is consumed\n• v_e = exhaust velocity (m/s) - how fast gases exit\n\n**Key Insight:** Thrust depends on TWO factors:\n1. How MUCH mass you expel (ṁ)\n2. How FAST you expel it (v_e)\n\nYou can get the same thrust by:\n• Expelling lots of mass slowly (high ṁ, low v_e)\n• Expelling little mass quickly (low ṁ, high v_e)\n\nDifferent engines make different trade-offs!\n\n**Example: SpaceX Merlin 1D Engine**\nThe Merlin 1D powers the Falcon 9 rocket.\n\n**Given:**\n• Propellant flow rate: ṁ = 275 kg/s\n• Exhaust velocity: v_e = 3,050 m/s (sea level)\n\n**Calculate Thrust:**\nT = ṁ × v_e = 275 × 3,050 = 838,750 N = 839 kN\n\n**Actual Merlin 1D thrust:** 845 kN at sea level (within 1%!)\n\n**What does 845 kN mean?**\n• That's 845,000 Newtons of force\n• Equivalent to lifting 86,000 kg against gravity\n• About the weight of 60 cars!\n• And Falcon 9 has NINE of them!"
       },
       {
-        title: "Thrust Calculation & Real Examples",
-        content: "Basic Thrust Formula: T = ṁ × v_e\n\nExample 1: SpaceX Merlin 1D Engine\n• Propellant flow rate: ṁ = 275 kg/s\n• Exhaust velocity: v_e = 3,050 m/s\n• Thrust: T = 275 × 3,050 = 838,750 N = 839 kN\n• Actual Merlin 1D thrust: 845 kN (very close!)\n\nExample 2: Space Shuttle Main Engine (RS-25)\n• ṁ = 514 kg/s (LH₂/LOX combined)\n• v_e = 4,440 m/s (vacuum)\n• T = 514 × 4,440 = 2,282 kN\n• Actual RS-25 vacuum thrust: 2,279 kN\n\nKey Observations:\n• Higher exhaust velocity = more efficient thrust\n• Higher mass flow = more thrust (but uses fuel faster)\n• Trade-off between efficiency and thrust level"
+        title: "🔧 Real Rocket Engine Comparisons",
+        content: "Let's analyze real rocket engines to understand thrust generation:\n\n**The Thrust Equation:** T = ṁ × v_e\n\n**Trade-offs:**\n1. **High Mass Flow (ṁ):** More thrust, but burns fuel faster\n2. **High Exhaust Velocity (v_e):** More efficient, but harder to achieve\n\n**Engine Comparison:**\n\n**Solid Rocket Boosters (Space Shuttle SRB):**\n• ṁ = 5,000 kg/s (HUGE!)\n• v_e = 2,650 m/s (moderate)\n• T = 13,250 kN per booster\n• Characteristics: Massive thrust, simple, can't throttle\n\n**Liquid Hydrogen/Oxygen (RS-25 - Space Shuttle Main Engine):**\n• ṁ = 514 kg/s (moderate)\n• v_e = 4,440 m/s (VERY HIGH!)\n• T = 2,279 kN (vacuum)\n• Characteristics: Efficient, complex, expensive\n\n**Kerosene/Oxygen (Merlin 1D):**\n• ṁ = 275 kg/s (moderate)\n• v_e = 3,050 m/s (good)\n• T = 845 kN (sea level)\n• Characteristics: Balanced, reliable, cost-effective\n\n**Saturn V F-1 Engine (Apollo Moon Rocket):**\nThe F-1 is the most powerful single-chamber rocket engine ever flown!\n\n• Propellant: RP-1 (kerosene) + LOX\n• Mass flow rate: ṁ = 2,578 kg/s (MASSIVE!)\n• Exhaust velocity: v_e = 2,580 m/s\n• Thrust: T = 2,578 × 2,580 = 6,651 kN = 6.65 MN\n\n**Saturn V had FIVE F-1 engines:**\nTotal thrust = 5 × 6,651 = 33,255 kN = 33.3 MN\n\nThat's equivalent to:\n• Lifting 3.4 million kg against gravity\n• The weight of 2,300 cars\n• 40 times the thrust of a Boeing 747!"
       },
       {
-        title: "Thrust-to-Weight Ratio & Launch Requirements",
-        content: "Thrust-to-Weight Ratio (TWR): TWR = T/(mg)\n\nMinimum TWR for Liftoff: TWR > 1.0\nPractical rockets need TWR > 1.2 to 1.5 for safe liftoff.\n\nExample: Falcon 9 Liftoff Analysis\n• Total mass at liftoff: m = 549,000 kg\n• 9 Merlin 1D engines: T = 9 × 845 kN = 7,605 kN\n• Weight: W = 549,000 × 9.81 = 5,386 kN\n• TWR = 7,605/5,386 = 1.41\n\nAnalysis:\n• TWR = 1.41 means thrust is 41% greater than weight\n• Net upward force: 7,605 - 5,386 = 2,219 kN\n• Initial acceleration: a = 2,219,000/549,000 = 4.04 m/s²\n\nTWR Increases During Flight:\nAs fuel burns, mass decreases but thrust stays constant.\nAt burnout (90% fuel consumed): TWR_final = 14.1\nThis is why rockets accelerate faster as they climb!"
+        title: "⚖️ Thrust-to-Weight Ratio: The Launch Requirement",
+        content: "**Thrust-to-Weight Ratio (TWR)** determines if a rocket can lift off!\n\n**Definition:** TWR = T / (mg)\n\nWhere:\n• T = total thrust (N)\n• m = rocket mass (kg)\n• g = 9.81 m/s²\n\n**Physical Meaning:**\nTWR compares thrust force to weight force:\n• TWR < 1.0: Thrust less than weight → Rocket stays on ground\n• TWR = 1.0: Thrust equals weight → Rocket hovers (unstable!)\n• TWR > 1.0: Thrust exceeds weight → Rocket lifts off!\n\n**Practical Requirements:**\n• Minimum for liftoff: TWR > 1.0\n• Safe liftoff: TWR > 1.2 (20% margin)\n• Typical rockets: TWR = 1.2 to 1.5 at liftoff\n\n**Why TWR Increases During Flight:**\nAs fuel burns:\n• Mass (m) DECREASES rapidly\n• Thrust (T) stays roughly CONSTANT\n• Therefore TWR = T/m INCREASES!\n\nThis is why rockets accelerate faster as they climb!\n\n**Example: Falcon 9 Liftoff Analysis**\n\n**Given at Liftoff:**\n• Total mass: m = 549,000 kg\n• Number of engines: 9 Merlin 1D\n• Thrust per engine: 845 kN\n• Total thrust: T = 9 × 845 = 7,605 kN\n\n**Step 1: Calculate Weight**\nW = mg = 549,000 × 9.81 = 5,386 kN\n\n**Step 2: Calculate TWR**\nTWR = T / W = 7,605 / 5,386 = 1.41\n\n✓ TWR = 1.41 > 1.0 → Rocket WILL lift off!\n✓ TWR = 1.41 > 1.2 → Safe margin!\n\n**Step 3: Calculate Net Force**\nF_net = T - W = 7,605 - 5,386 = 2,219 kN\n\n**Step 4: Calculate Initial Acceleration**\na = F_net / m = 2,219,000 / 549,000 = 4.04 m/s² = 0.41g\n\n**At Burnout (162 seconds later):**\n• Remaining mass: m_f ≈ 55,000 kg (90% fuel consumed)\n• Thrust still: T = 7,605 kN\n• TWR_final = 7,605 / 540 = 14.1!\n• Acceleration: 128 m/s² = 13g!\n\nThis is why rockets shut down engines before burnout - to limit acceleration!"
       }
     ],
     
     keyTakeaways: [
-      "Rocket thrust is generated by expelling mass at high velocity: T = ṁ·v_e",
+      "Rocket thrust: T = ṁ·v_e - expelling mass creates force by Newton's Third Law",
       "Rockets work by momentum conservation, not by pushing against anything",
-      "Thrust-to-Weight Ratio must exceed 1.0 for liftoff from Earth",
-      "TWR increases during flight as fuel is consumed and mass decreases",
-      "Rockets perform better in vacuum due to optimal nozzle expansion"
+      "Thrust-to-Weight Ratio must exceed 1.0 for liftoff; typical rockets have TWR = 1.2-1.5",
+      "TWR increases during flight as fuel burns and mass decreases",
+      "Different engines trade off mass flow (ṁ) vs exhaust velocity (v_e) for different missions",
+      "Falcon 9: TWR increases from 1.41 at liftoff to 14+ at burnout!"
     ],
     
     vocabulary: [
-      { term: "Thrust (T)", definition: "Force generated by expelling mass, measured in Newtons (N) or kilonewtons (kN)" },
-      { term: "Mass Flow Rate (ṁ)", definition: "Rate of propellant consumption in kg/s" },
-      { term: "Exhaust Velocity (v_e)", definition: "Speed at which gases exit the nozzle, typically 2,000-4,500 m/s" },
-      { term: "Thrust-to-Weight Ratio (TWR)", definition: "Ratio of thrust force to weight; must exceed 1.0 for vertical liftoff" }
+      { term: "Thrust (T)", definition: "Force generated by expelling mass; measured in Newtons (N) or kilonewtons (kN)" },
+      { term: "Mass Flow Rate (ṁ)", definition: "Rate of propellant consumption in kg/s; determines how fast fuel is used" },
+      { term: "Exhaust Velocity (v_e)", definition: "Speed at which gases exit the nozzle; typically 2,000-4,500 m/s for chemical rockets" },
+      { term: "Thrust-to-Weight Ratio (TWR)", definition: "Ratio of thrust force to weight; must exceed 1.0 for vertical liftoff from Earth" },
+      { term: "Specific Impulse (Isp)", definition: "Efficiency metric for rocket engines; Isp = v_e / g₀; measured in seconds" }
     ]
   },
 
