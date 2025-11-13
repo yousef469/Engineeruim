@@ -1,7 +1,7 @@
 // Complete Aircraft Engineering Curriculum
 // MIT-Quality Content: Units 0-5 Complete!
 
-import { unit0Lessons } from './planes/unit0-foundations.js';
+import { unit0Foundations } from './planes/unit0-foundations.js';
 import { allPlanesLessons } from './planes/units-complete.js';
 import { generateAllAerospaceLessons } from './generateAerospaceLessons.js';
 
@@ -30,7 +30,7 @@ function getUnitName(lessonId) {
 export const planesLessons = {};
 
 // Add Unit 0 (Foundations) - Lessons 0-5
-unit0Lessons.forEach(lesson => {
+Object.values(unit0Foundations).forEach(lesson => {
   planesLessons[lesson.id] = {
     ...lesson,
     level: 'Beginner',

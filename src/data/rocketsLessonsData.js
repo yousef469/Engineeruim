@@ -1,7 +1,7 @@
 // Complete Rocket Engineering Curriculum
 // MIT-Quality Content: Units 0-5 Complete!
 
-import { unit0Lessons } from './rockets/unit0-foundations.js';
+import { unit0Foundations } from './rockets/unit0-foundations.js';
 import { rocketUnit1Complete } from './rockets/unit1-complete.js';
 import { rocketUnit2Complete } from './rockets/unit2-complete.js';
 import { rocketUnit3Complete } from './rockets/unit3-complete.js';
@@ -33,7 +33,7 @@ function getUnitName(lessonId) {
 export const rocketsLessons = {};
 
 // Add Unit 0 (Foundations) - Lessons 0-5
-unit0Lessons.forEach(lesson => {
+Object.values(unit0Foundations).forEach(lesson => {
   rocketsLessons[lesson.id] = {
     ...lesson,
     level: 'Beginner',
