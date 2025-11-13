@@ -182,7 +182,99 @@ Three stages R = 4 each need 75% fuel per stage - achievable!`
       { term: "Exhaust Velocity (v_e)", definition: "Speed of exhaust gases relative to rocket; typically 2,500-4,500 m/s for chemical rockets" },
       { term: "Staging", definition: "Dropping empty tanks/engines during flight to improve mass ratio" },
       { term: "Specific Impulse (Isp)", definition: "Isp = v_e/g_0; engine efficiency metric in seconds" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "0-1",
+        problem: "A rocket has initial mass m_0 = 10,000 kg and final mass m_f = 2,000 kg. The exhaust velocity is v_e = 3,000 m/s. Calculate the delta-v.",
+        solution: "R = m_0/m_f = 10,000/2,000 = 5\nΔv = v_e × ln(R) = 3,000 × ln(5) = 3,000 × 1.609 = 4,827 m/s",
+        hint: "Use Δv = v_e × ln(m_0/m_f). Calculate R first, then ln(R), then multiply by v_e."
+      },
+      {
+        id: "0-2",
+        problem: "A mission requires Δv = 6,000 m/s. Your engine has v_e = 3,500 m/s. What mass ratio is needed?",
+        solution: "Δv = v_e × ln(R)\n6,000 = 3,500 × ln(R)\nln(R) = 6,000/3,500 = 1.714\nR = e^1.714 = 5.55\nNeed mass ratio of 5.55 (84.5% fuel)",
+        hint: "Rearrange to ln(R) = Δv/v_e, then R = e^(Δv/v_e)"
+      },
+      {
+        id: "0-3",
+        problem: "Compare single-stage vs two-stage: Single stage R=20, or two stages each R=4.5. Which has better total mass ratio?",
+        solution: "Single stage: R_total = 20\nTwo stages: R_total = R_1 × R_2 = 4.5 × 4.5 = 20.25\nTwo stages slightly better! But more importantly, R=4.5 per stage is achievable while R=20 single stage is nearly impossible.",
+        hint: "For staging, multiply the mass ratios. But also consider what's physically buildable!"
+      },
+      {
+        id: "0-4",
+        problem: "Falcon 9 first stage: m_0 = 549,000 kg, m_f = 25,600 kg, v_e = 3,050 m/s. Calculate Δv and fuel percentage.",
+        solution: "R = 549,000/25,600 = 21.45\nΔv = 3,050 × ln(21.45) = 3,050 × 3.066 = 9,351 m/s\nFuel mass = 549,000 - 25,600 = 523,400 kg\nFuel % = 523,400/549,000 = 95.3%",
+        hint: "Calculate R, then Δv, then fuel mass = m_0 - m_f"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q0-1",
+          question: "What does the rocket equation Δv = v_e × ln(m_0/m_f) tell us?",
+          options: [
+            "Velocity increases linearly with fuel mass",
+            "Velocity increases logarithmically with mass ratio",
+            "Velocity is independent of exhaust velocity",
+            "Velocity decreases as fuel burns"
+          ],
+          correctAnswer: 1,
+          explanation: "The ln (natural logarithm) means velocity increases logarithmically with mass ratio. This creates exponential fuel requirements - doubling Δv requires squaring the mass ratio!"
+        },
+        {
+          id: "q0-2",
+          question: "Why is single-stage-to-orbit (SSTO) so difficult?",
+          options: [
+            "Engines aren't powerful enough",
+            "Requires mass ratio ~15, leaving only ~7% for structure and payload",
+            "Atmosphere creates too much drag",
+            "Gravity is too strong"
+          ],
+          correctAnswer: 1,
+          explanation: "LEO requires Δv ≈ 9,500 m/s. With v_e ≈ 3,500 m/s, you need R ≈ 15, meaning 93% fuel. Typical structure is 10-15% of total mass, leaving almost nothing for payload!"
+        },
+        {
+          id: "q0-3",
+          question: "How does staging help overcome the rocket equation?",
+          options: [
+            "It increases exhaust velocity",
+            "It reduces gravity losses",
+            "It drops dead weight (empty tanks), improving mass ratio",
+            "It makes the rocket more aerodynamic"
+          ],
+          correctAnswer: 2,
+          explanation: "Staging drops empty tanks and engines that are no longer needed. This dramatically improves the mass ratio for the remaining stages. Total R = R_1 × R_2 × R_3..."
+        },
+        {
+          id: "q0-4",
+          question: "If a rocket needs to double its Δv, how much more fuel is needed?",
+          options: [
+            "2× more fuel",
+            "4× more fuel (R² relationship)",
+            "Depends on exhaust velocity",
+            "10× more fuel"
+          ],
+          correctAnswer: 1,
+          explanation: "Doubling Δv means: Δv_new = 2×Δv_old = v_e × ln(R_new). This requires R_new = R_old². So if R was 5, it becomes 25. Fuel requirements grow exponentially!"
+        },
+        {
+          id: "q0-5",
+          question: "What is the 'mass ratio' R in the rocket equation?",
+          options: [
+            "Fuel mass / total mass",
+            "Initial mass / final mass (m_0/m_f)",
+            "Payload mass / fuel mass",
+            "Thrust / weight"
+          ],
+          correctAnswer: 1,
+          explanation: "R = m_0/m_f is the ratio of wet mass (fully fueled) to dry mass (empty). A higher R means more fuel relative to structure, enabling more Δv."
+        }
+      ]
+    }
   },
 
   {
@@ -388,7 +480,99 @@ T_transfer = π√(24,468³/3.986×10⁵) = 18,934 seconds = 5.26 hours
       { term: "Periapsis", definition: "Closest point in orbit to central body; highest velocity point" },
       { term: "Apoapsis", definition: "Farthest point in orbit from central body; lowest velocity point" },
       { term: "Hohmann Transfer", definition: "Most fuel-efficient two-burn maneuver between circular orbits" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "1-1",
+        problem: "Calculate the orbital velocity for a satellite at 500 km altitude. (Earth radius = 6,371 km, GM = 3.986×10⁵ km³/s²)",
+        solution: "r = 6,371 + 500 = 6,871 km\nv = √(GM/r) = √(3.986×10⁵/6,871) = √(58,020) = 7.61 km/s",
+        hint: "Use v = √(GM/r). Remember r = Earth radius + altitude!"
+      },
+      {
+        id: "1-2",
+        problem: "What is the orbital period of the ISS at 400 km altitude? (a = 6,771 km, GM = 3.986×10⁵ km³/s²)",
+        solution: "T = 2π√(a³/GM) = 2π√((6,771)³/(3.986×10⁵))\nT = 2π√(3.102×10¹¹/3.986×10⁵) = 2π√(7.781×10⁵)\nT = 2π × 882.1 = 5,541 seconds = 92.4 minutes",
+        hint: "Use Kepler's Third Law: T = 2π√(a³/GM)"
+      },
+      {
+        id: "1-3",
+        problem: "Calculate escape velocity from Earth's surface. (r = 6,371 km, GM = 3.986×10⁵ km³/s²)",
+        solution: "v_esc = √(2GM/r) = √(2 × 3.986×10⁵/6,371)\nv_esc = √(1.251×10⁵) = 11.18 km/s\nNote: This is √2 × v_circular = 1.414 × 7.91 = 11.18 km/s ✓",
+        hint: "v_escape = √(2GM/r) = √2 × v_circular"
+      },
+      {
+        id: "1-4",
+        problem: "Calculate the Δv for a Hohmann transfer from LEO (r₁=6,771 km) to GEO (r₂=42,164 km).",
+        solution: "v_LEO = √(3.986×10⁵/6,771) = 7.67 km/s\nv_transfer_peri = √(3.986×10⁵ × 2×42,164/(6,771×48,935)) = 10.15 km/s\nΔv₁ = 10.15 - 7.67 = 2.48 km/s\n\nv_GEO = √(3.986×10⁵/42,164) = 3.07 km/s\nv_transfer_apo = √(3.986×10⁵ × 2×6,771/(42,164×48,935)) = 1.61 km/s\nΔv₂ = 3.07 - 1.61 = 1.46 km/s\n\nTotal Δv = 2.48 + 1.46 = 3.94 km/s",
+        hint: "Calculate velocities at LEO and GEO, then transfer orbit velocities at periapsis and apoapsis"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q1-1",
+          question: "What does Kepler's Third Law tell us?",
+          options: [
+            "Orbital velocity increases with altitude",
+            "Orbital period squared is proportional to semi-major axis cubed",
+            "All orbits are circular",
+            "Escape velocity is constant"
+          ],
+          correctAnswer: 1,
+          explanation: "Kepler's Third Law: T² ∝ a³, or precisely T² = (4π²/GM)·a³. This means farther orbits take longer to complete!"
+        },
+        {
+          id: "q1-2",
+          question: "How does orbital velocity change with altitude?",
+          options: [
+            "Increases with altitude",
+            "Decreases with altitude (v = √(GM/r))",
+            "Stays constant",
+            "Depends on the rocket"
+          ],
+          correctAnswer: 1,
+          explanation: "v = √(GM/r) means velocity DECREASES as r increases. LEO satellites orbit at ~7.8 km/s, while GEO satellites orbit at only ~3.1 km/s!"
+        },
+        {
+          id: "q1-3",
+          question: "What is the relationship between escape velocity and circular orbital velocity?",
+          options: [
+            "v_escape = v_circular",
+            "v_escape = √2 × v_circular ≈ 1.414 × v_circular",
+            "v_escape = 2 × v_circular",
+            "No relationship"
+          ],
+          correctAnswer: 1,
+          explanation: "v_escape = √(2GM/r) and v_circular = √(GM/r), so v_escape = √2 × v_circular. At any altitude, escape velocity is 41.4% higher than orbital velocity!"
+        },
+        {
+          id: "q1-4",
+          question: "Why is the Hohmann transfer the most efficient orbit change?",
+          options: [
+            "It uses the least fuel",
+            "It's the fastest",
+            "It requires only two burns at optimal points",
+            "It avoids the atmosphere"
+          ],
+          correctAnswer: 2,
+          explanation: "Hohmann transfer uses two burns at periapsis and apoapsis (where velocity changes are most efficient). It's the minimum-energy transfer between circular orbits, though not the fastest!"
+        },
+        {
+          id: "q1-5",
+          question: "The ISS orbits at 400 km altitude with period ~92 minutes. What would happen at 800 km?",
+          options: [
+            "Period would be shorter",
+            "Period would be longer (Kepler's Third Law)",
+            "Period would stay the same",
+            "ISS would escape Earth"
+          ],
+          correctAnswer: 1,
+          explanation: "Kepler's Third Law: T² ∝ a³. Higher altitude = larger semi-major axis = longer period. At 800 km, period would be ~100 minutes."
+        }
+      ]
+    }
   },
 
   {
