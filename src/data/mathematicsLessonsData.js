@@ -13,12 +13,14 @@ import { unit5Lessons } from './mathematics/unit5-statistics.js';
 // Unit 5: Statistics & Data (Lessons 22-27)
 
 // Combine all units into one object (like physics)
+// Note: unit1 is already an object, units 2-5 are still arrays (will be converted)
 const mathematicsLessons = {
   ...unit1Lessons,
-  ...unit2Lessons,
-  ...unit3Lessons,
-  ...unit4Lessons,
-  ...unit5Lessons
+  // Convert arrays to object format for units 2-5 (temporary until converted)
+  ...Object.fromEntries(unit2Lessons.map(lesson => [lesson.id, lesson])),
+  ...Object.fromEntries(unit3Lessons.map(lesson => [lesson.id, lesson])),
+  ...Object.fromEntries(unit4Lessons.map(lesson => [lesson.id, lesson])),
+  ...Object.fromEntries(unit5Lessons.map(lesson => [lesson.id, lesson]))
 };
 
 export default mathematicsLessons;
