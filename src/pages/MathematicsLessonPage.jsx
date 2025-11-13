@@ -1,315 +1,242 @@
-import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock, Calculator, Brain, Wrench, Puzzle } from 'lucide-react';
+import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 import mathematicsLessons from '../data/mathematicsLessonsData';
 
 export default function MathematicsLessonPage() {
-  const { lessonId } = useParams();
-  const navigate = useNavigate();
-  const [currentSection, setCurrentSection] = useState(0);
-  const [showQuiz, setShowQuiz] = useState(false);
-  const [quizAnswers, setQuizAnswers] = useState({});
-  const [quizSubmitted, setQuizSubmitted] = useState(false);
-  
-  const lesson = mathematicsLessons.find(l => l.id === parseInt(lessonId));
-  
-  if (!lesson) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Lesson Not Found</h1>
-          <button
-            onClick={() => navigate('/learn/mathematics/engineering/map')}
-            className="px-6 py-3 bg-secondary hover:bg-secondary rounded-lg transition-colors"
-          >
-            Back to Map
-          </button>
-        </div>
-      </div>
-    );
-  }
+    const { lessonId } = useParams();
+    const navigate = useNavigate();
 
-  const totalSections = lesson.content.sections.length;
-  const isLastSection = currentSection === totalSections - 1;
+    const lesson = mathematicsLessons[parseInt(lessonId)];
 
-  const handleNext = () => {
-    if (isLastSection && !showQuiz) {
-      setShowQuiz(true);
-    } else if (showQuiz) {
-      navigate('/learn/mathematics/engineering/map');
-    } else {
-      setCurrentSection(currentSection + 1);
-    }
-  };
+    // Local sub-component to render practice problems with toggleable solutions
+    const PracticeProblems = ({ problems }) => {
+        const [visible, setVisible] = useState({});
+        const toggle = (id) => setVisible(prev => ({ ...prev, [id]: !prev[id] }));
 
-  const handlePrevious = () => {
-    if (showQuiz) {
-      setShowQuiz(false);
-    } else if (currentSection > 0) {
-      setCurrentSection(currentSection - 1);
-    }
-  };
-
-  const handleQuizAnswer = (questionIndex, answerIndex) => {
-    setQuizAnswers({ ...quizAnswers, [questionIndex]: answerIndex });
-  };
-
-  const handleQuizSubmit = () => {
-    setQuizSubmitted(true);
-  };
-
-  const calculateScore = () => {
-    let correct = 0;
-    lesson.content.quiz.forEach((q, i) => {
-      if (quizAnswers[i] === q.correct) correct++;
-    });
-    return correct;
-  };
-
-  const getSectionIcon = (type) => {
-    switch(type) {
-      case 'concept': return <Brain className="w-6 h-6" />;
-      case 'practice': return <Wrench className="w-6 h-6" />;
-      case 'simulation': return <Puzzle className="w-6 h-6" />;
-      default: return <BookOpen className="w-6 h-6" />;
-    }
-  };
-
-  const currentContent = lesson.content.sections[currentSection];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-green-950 via-emerald-950 to-black text-white">
-      {/* Header */}
-      <div className="border-b border-green-700 bg-green-900/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => navigate('/learn/mathematics/engineering/map')}
-              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span>Back to Map</span>
-            </button>
-            
-            <div className="flex items-center gap-3">
-              <Clock className="w-5 h-5 text-green-300" />
-              <span className="text-sm">{lesson.duration}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Lesson Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        {/* Lesson Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="text-6xl">{lesson.emoji}</div>
-            <div>
-              <div className="text-sm text-white/60 mb-1">
-                {lesson.level} • Unit {lesson.unitNumber} • Lesson {lesson.lessonNumber}
-              </div>
-              <h1 className="text-4xl font-bold">{lesson.title}</h1>
-              <div className="text-lg text-white/80 mt-2">{lesson.unit}</div>
-            </div>
-          </div>
-          
-          {/* Progress Bar */}
-          <div className="w-full bg-white/20 rounded-full h-2 mt-6">
-            <div
-              className="bg-gradient-to-r from-green-400 to-emerald-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: showQuiz ? '100%' : `${((currentSection + 1) / totalSections) * 100}%` }}
-            />
-          </div>
-          <div className="text-sm text-white/60 mt-2 text-center">
-            {showQuiz ? 'Quiz Time!' : `Section ${currentSection + 1} of ${totalSections}`}
-          </div>
-        </div>
-
-        {!showQuiz ? (
-          <>
-            {/* Introduction (only on first section) */}
-            {currentSection === 0 && (
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/20">
-                <div className="flex items-start gap-3">
-                  <BookOpen className="w-6 h-6 text-green-300 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">Introduction</h3>
-                    <p className="text-white/90 leading-relaxed">{lesson.content.introduction}</p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Current Section Content */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-white/20">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="text-secondary">
-                  {getSectionIcon(currentContent.type)}
-                </div>
-                <h2 className="text-3xl font-bold">{currentContent.title}</h2>
-              </div>
-              <div className="prose prose-invert prose-lg max-w-none">
-                {currentContent.content.split('\n\n').map((paragraph, index) => (
-                  <p key={index} className="mb-4 text-white/90 leading-relaxed whitespace-pre-line">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            {/* Key Takeaways (only on last section) */}
-            {isLastSection && (
-              <>
-                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-green-400/30">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0 mt-1" />
-                    <div className="flex-1">
-                      <h3 className="font-bold text-lg mb-3">Key Takeaways</h3>
-                      <ul className="space-y-2">
-                        {lesson.content.keyTakeaways.map((takeaway, index) => (
-                          <li key={index} className="flex items-start gap-2">
-                            <span className="text-green-300 mt-1">•</span>
-                            <span className="text-white/90">{takeaway}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Vocabulary */}
-                {lesson.content.vocabulary.length > 0 && (
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/20">
-                    <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                      <Calculator className="w-5 h-5 text-secondary" />
-                      Key Terms
-                    </h3>
-                    <div className="grid gap-4">
-                      {lesson.content.vocabulary.map((item, index) => (
-                        <div key={index} className="border-l-4 border-green-400 pl-4">
-                          <div className="font-bold text-green-300">{item.term}</div>
-                          <div className="text-white/80 text-sm mt-1">{item.definition}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </>
-            )}
-          </>
-        ) : (
-          /* Quiz Section */
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-white/20">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <CheckCircle className="w-8 h-8 text-secondary" />
-              Quiz Time!
-            </h2>
-            
-            {!quizSubmitted ? (
-              <div className="space-y-6">
-                {lesson.content.quiz.map((question, qIndex) => (
-                  <div key={qIndex} className="bg-white/5 rounded-xl p-6 border border-white/10">
-                    <div className="font-bold text-lg mb-4">
-                      {qIndex + 1}. {question.question}
-                    </div>
-                    <div className="space-y-3">
-                      {question.options.map((option, oIndex) => (
-                        <button
-                          key={oIndex}
-                          onClick={() => handleQuizAnswer(qIndex, oIndex)}
-                          className={`w-full text-left p-4 rounded-lg transition-all ${
-                            quizAnswers[qIndex] === oIndex
-                              ? 'bg-secondary/30 border-2 border-green-400'
-                              : 'bg-white/5 border-2 border-white/10 hover:border-green-400/50'
-                          }`}
-                        >
-                          {option}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-                
-                <button
-                  onClick={handleQuizSubmit}
-                  disabled={Object.keys(quizAnswers).length < lesson.content.quiz.length}
-                  className="w-full py-4 bg-secondary hover:bg-secondary disabled:bg-background-light disabled:cursor-not-allowed rounded-lg font-bold text-lg transition-colors"
-                >
-                  Submit Quiz
-                </button>
-              </div>
-            ) : (
-              /* Quiz Results */
-              <div>
-                <div className="text-center mb-8">
-                  <div className="text-6xl mb-4">
-                    {calculateScore() === lesson.content.quiz.length ? '🏆' : calculateScore() >= lesson.content.quiz.length * 0.7 ? '⭐' : '📚'}
-                  </div>
-                  <div className="text-3xl font-bold mb-2">
-                    Score: {calculateScore()} / {lesson.content.quiz.length}
-                  </div>
-                  <div className="text-xl text-white/80">
-                    {calculateScore() === lesson.content.quiz.length
-                      ? 'Perfect! You mastered this lesson!'
-                      : calculateScore() >= lesson.content.quiz.length * 0.7
-                      ? 'Great job! Keep learning!'
-                      : 'Keep practicing! Review the lesson and try again.'}
-                  </div>
-                </div>
-
+        return (
+            <div className="bg-gradient-to-r from-indigo-900/10 to-indigo-800/5 border-2 border-indigo-600/20 rounded-2xl p-6 mb-8">
+                <h3 className="text-xl font-bold mb-4 text-indigo-200">📝 Practice Problems</h3>
                 <div className="space-y-4">
-                  {lesson.content.quiz.map((question, qIndex) => {
-                    const userAnswer = quizAnswers[qIndex];
-                    const isCorrect = userAnswer === question.correct;
-                    
-                    return (
-                      <div key={qIndex} className={`p-6 rounded-xl border-2 ${
-                        isCorrect ? 'bg-secondary/10 border-green-400' : 'bg-red-500/10 border-red-400'
-                      }`}>
-                        <div className="font-bold mb-2">
-                          {qIndex + 1}. {question.question}
+                    {problems.map((p, i) => (
+                        <div key={p.id || i} className="bg-slate-900/40 border border-slate-700 rounded p-4">
+                            <div className="font-semibold text-sm text-gray-100 mb-2">{p.prompt}</div>
+                            {p.hints && p.hints.length > 0 && (
+                                <div className="text-sm text-gray-300 mb-2">Hints: {p.hints.join(' · ')}</div>
+                            )}
+                            <button
+                                onClick={() => toggle(p.id || i)}
+                                className="mt-2 px-3 py-1 bg-green-600 hover:bg-green-700 rounded text-sm font-bold"
+                            >
+                                {visible[p.id || i] ? 'Hide solution' : 'Show solution'}
+                            </button>
+                            {visible[p.id || i] && (
+                                <div className="mt-3 p-3 bg-black/40 border border-gray-700 rounded text-sm text-green-200">
+                                    <div className="font-mono whitespace-pre-line">{p.solution}</div>
+                                </div>
+                            )}
                         </div>
-                        <div className="text-sm">
-                          <div className={isCorrect ? 'text-green-300' : 'text-red-300'}>
-                            Your answer: {question.options[userAnswer]}
-                          </div>
-                          {!isCorrect && (
-                            <div className="text-green-300 mt-1">
-                              Correct answer: {question.options[question.correct]}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
+                    ))}
                 </div>
-              </div>
-            )}
-          </div>
-        )}
+            </div>
+        );
+    };
 
-        {/* Navigation Buttons */}
-        <div className="flex justify-between items-center">
-          <button
-            onClick={handlePrevious}
-            disabled={currentSection === 0 && !showQuiz}
-            className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Previous
-          </button>
-          
-          <button
-            onClick={handleNext}
-            disabled={showQuiz && !quizSubmitted}
-            className="flex items-center gap-2 px-6 py-3 bg-secondary hover:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors font-bold"
-          >
-            {showQuiz && quizSubmitted ? 'Complete Lesson' : isLastSection && !showQuiz ? 'Take Quiz' : 'Next'}
-            <ArrowRight className="w-5 h-5" />
-          </button>
+    if (!lesson) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex items-center justify-center">
+                <div className="text-center">
+                    <h1 className="text-4xl font-bold mb-4">Lesson Not Found</h1>
+                    <button
+                        onClick={() => navigate('/learn/mathematics/engineering/map')}
+                        className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
+                    >
+                        Back to Mathematics Map
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    // Check if lesson uses new structure (physics-style) or old structure
+    const hasNewStructure = lesson.content && lesson.content.intro && lesson.content.concepts;
+
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-green-950 via-emerald-950 to-black text-white">
+            <div className="border-b border-green-700 bg-green-900/90 backdrop-blur-md sticky top-0 z-50">
+                <div className="max-w-7xl mx-auto px-6 py-4">
+                    <button
+                        onClick={() => navigate(-1)}
+                        className="flex items-center gap-2 text-green-200 hover:text-white transition-colors mb-3"
+                    >
+                        <ArrowLeft className="w-5 h-5" />
+                        Back
+                    </button>
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <div className="flex items-center gap-3 mb-2">
+                                <span className="px-3 py-1 bg-green-500/20 border border-green-400 rounded-full text-sm font-bold">
+                                    LESSON {lesson.id}
+                                </span>
+                                <span className="text-green-300 text-sm">{lesson.coreIdea}</span>
+                            </div>
+                            <h1 className="text-3xl font-bold mb-1">{lesson.title}</h1>
+                            <p className="text-green-200">{lesson.subtitle}</p>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            {lesson.content.quiz && (
+                                <button
+                                    onClick={() => navigate(`/learn/mathematics/engineering/quiz/${lessonId}`)}
+                                    className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
+                                >
+                                    <CheckCircle className="w-5 h-5" />
+                                    Take Quiz
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="max-w-5xl mx-auto px-6 py-12">
+                {hasNewStructure ? (
+                    // New structure (physics-style)
+                    <>
+                        <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-2 border-green-400/30 rounded-2xl p-8 mb-12">
+                            <h2 className="text-2xl font-bold mb-4">📚 Introduction</h2>
+                            <p className="text-lg text-green-100 leading-relaxed">{lesson.content.intro}</p>
+                        </div>
+
+                        {lesson.learningObjectives && lesson.learningObjectives.length > 0 && (
+                            <div className="bg-gradient-to-r from-yellow-500/10 to-yellow-400/5 border-2 border-yellow-400/20 rounded-2xl p-6 mb-8">
+                                <h3 className="text-xl font-bold mb-3 text-yellow-300">🎯 Learning Objectives</h3>
+                                <ul className="list-disc list-inside text-gray-100 space-y-2">
+                                    {lesson.learningObjectives.map((obj, i) => (
+                                        <li key={i}>{obj}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
+                        {lesson.keyEquations && lesson.keyEquations.length > 0 && (
+                            <div className="bg-gradient-to-r from-slate-800/30 to-slate-700/20 border-2 border-slate-600/30 rounded-2xl p-6 mb-8">
+                                <h3 className="text-xl font-bold mb-4 text-slate-200">📐 Key Equations</h3>
+                                <div className="space-y-3">
+                                    {lesson.keyEquations.map((eq, i) => (
+                                        <div key={i} className="p-3 bg-slate-900/40 border border-slate-700 rounded">
+                                            <div className="text-yellow-200">
+                                                <BlockMath>{eq.eq}</BlockMath>
+                                            </div>
+                                            {eq.meaning && <div className="text-sm text-gray-300 mt-1">{eq.meaning}</div>}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {lesson.practiceProblems && lesson.practiceProblems.length > 0 && (
+                            <PracticeProblems problems={lesson.practiceProblems} />
+                        )}
+
+                        <div className="mb-12">
+                            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+                                <span className="text-4xl">🎯</span>
+                                Core Concepts
+                            </h2>
+                            <div className="space-y-6">
+                                {lesson.content.concepts.map((concept, index) => (
+                                    <div key={index} className="bg-gray-800/50 border-2 border-green-500/30 rounded-xl p-6 hover:border-green-400/50 transition-colors">
+                                        <h3 className="text-xl font-bold mb-3 text-green-300">{concept.title}</h3>
+                                        <p className="text-gray-200 mb-3">{concept.explanation}</p>
+                                        
+                                        {concept.comparison && (
+                                            <div className="grid md:grid-cols-2 gap-4 mb-4">
+                                                <div className="bg-gradient-to-br from-purple-900/40 to-purple-800/40 border-2 border-purple-400/50 rounded-lg p-4">
+                                                    <h4 className="font-bold text-lg mb-3 text-purple-200">{concept.comparison.left.title}</h4>
+                                                    <ul className="space-y-2">
+                                                        {concept.comparison.left.points.map((point, i) => (
+                                                            <li key={i} className="text-sm text-purple-100 flex items-start gap-2">
+                                                                <span className="text-purple-400 mt-1">•</span>
+                                                                <span>{point}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                                <div className="bg-gradient-to-br from-green-900/40 to-green-800/40 border-2 border-green-400/50 rounded-lg p-4">
+                                                    <h4 className="font-bold text-lg mb-3 text-green-200">{concept.comparison.right.title}</h4>
+                                                    <ul className="space-y-2">
+                                                        {concept.comparison.right.points.map((point, i) => (
+                                                            <li key={i} className="text-sm text-green-100 flex items-start gap-2">
+                                                                <span className="text-green-400 mt-1">•</span>
+                                                                <span>{point}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        )}
+                                        
+                                        <div className="bg-green-900/30 border-l-4 border-green-400 p-4 rounded">
+                                            <p className="text-sm text-green-200">
+                                                <span className="font-bold">Example:</span> {concept.example}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {lesson.content.realWorld && lesson.content.realWorld.length > 0 && (
+                            <div className="mb-12">
+                                <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
+                                    <span className="text-4xl">🔧</span>
+                                    Real Engineering Applications
+                                </h2>
+                                <div className="grid md:grid-cols-3 gap-6">
+                                    {lesson.content.realWorld.map((app, index) => (
+                                        <div key={index} className="bg-gradient-to-br from-green-600/20 to-emerald-600/20 border-2 border-green-400/30 rounded-xl p-6 hover:scale-105 transition-transform">
+                                            <div className="text-5xl mb-4">{app.icon}</div>
+                                            <h3 className="text-lg font-bold mb-2 text-green-300">{app.title}</h3>
+                                            <p className="text-sm text-gray-300">{app.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    // Old structure (backward compatibility)
+                    <div className="text-center text-white/60">
+                        <p>This lesson is using the old format. Please update it to the new structure.</p>
+                    </div>
+                )}
+
+                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-2 border-green-400/30 rounded-2xl p-8">
+                    <div className="flex items-center gap-4 mb-4">
+                        <CheckCircle className="w-8 h-8 text-green-400" />
+                        <h2 className="text-2xl font-bold">Lesson Complete!</h2>
+                    </div>
+                    <p className="text-gray-200 mb-6">
+                        You've mastered the fundamentals of {lesson.title}. Ready for the next challenge?
+                    </p>
+                    <div className="flex gap-4">
+                        <button
+                            onClick={() => navigate(`/learn/mathematics/engineering/lesson/${parseInt(lessonId) + 1}`)}
+                            className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold transition-colors"
+                        >
+                            Next Lesson →
+                        </button>
+                        <button
+                            onClick={() => navigate('/learn/mathematics/engineering/map')}
+                            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg font-bold transition-colors"
+                        >
+                            Back to Map
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

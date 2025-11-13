@@ -12,13 +12,13 @@ import { unit5Lessons } from './mathematics/unit5-statistics.js';
 // Unit 4: Linear Algebra Intro (Lessons 18-21)
 // Unit 5: Statistics & Data (Lessons 22-27)
 
-// Combine all units into one array
-const mathematicsLessons = [
+// Combine all units into one object (like physics)
+const mathematicsLessons = {
   ...unit1Lessons,
   ...unit2Lessons,
   ...unit3Lessons,
   ...unit4Lessons,
   ...unit5Lessons
-];
+};
 
 export default mathematicsLessons;

@@ -81,13 +81,14 @@ export default function GameMapMathematics() {
       }
     ];
 
+    let sequentialLessonNumber = 1; // Global counter for sequential numbering 1-27
     units.forEach((unit) => {
       unit.lessons.forEach((lessonName, i) => {
         levels.push({
           id: levelId++,
           type: 'lesson',
           unit: unit.name,
-          lesson: `Lesson ${i + 1}`,
+          lesson: `Lesson ${sequentialLessonNumber++}`, // Use sequential number 1-27
           lessonName: lessonName,
           emoji: unit.emoji,
           color: unit.color,
