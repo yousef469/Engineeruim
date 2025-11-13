@@ -39,7 +39,99 @@ export const unit1AdvancedLessons = [
       { term: "Cryogenic Propellant", definition: "Fuel/oxidizer stored below -150°C (LH₂, LOX, LCH₄)" },
       { term: "Expansion Ratio (ε)", definition: "Nozzle exit area / throat area; affects vacuum performance" },
       { term: "ISRU", definition: "In-Situ Resource Utilization; making propellant on other planets" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "8-1",
+        problem: "An engine has exhaust velocity v_e = 3,600 m/s. Calculate its specific impulse.",
+        solution: "Isp = v_e/g₀ = 3,600/9.81 = 367 seconds",
+        hint: "Use Isp = v_e/g₀ where g₀ = 9.81 m/s²"
+      },
+      {
+        id: "8-2",
+        problem: "Mission needs 7,000 m/s Δv with 5,000 kg payload. Compare fuel needs: Engine A (Isp=320s) vs Engine B (Isp=450s).",
+        solution: "Engine A: v_e = 320×9.81 = 3,139 m/s, R = e^(7,000/3,139) = 9.49, m₀ = 47,450 kg, Fuel = 42,450 kg\nEngine B: v_e = 450×9.81 = 4,415 m/s, R = e^(7,000/4,415) = 5.05, m₀ = 25,250 kg, Fuel = 20,250 kg\nEngine B saves 22,200 kg (52% less fuel!)",
+        hint: "Calculate v_e from Isp, then use rocket equation"
+      },
+      {
+        id: "8-3",
+        problem: "Why does hydrogen (Isp=450s) need larger tanks than kerosene (Isp=310s) despite better efficiency?",
+        solution: "Hydrogen density: 71 kg/m³, Kerosene: 820 kg/m³\nFor 10,000 kg fuel: H₂ volume = 141 m³, Kerosene = 12 m³\nHydrogen needs 11.5× larger tanks! Trade-off: better Isp but huge tanks and cryogenic complexity.",
+        hint: "Volume = mass/density. Compare densities."
+      },
+      {
+        id: "8-4",
+        problem: "Ion engine (Isp=3,500s) vs chemical (Isp=350s) for 5,000 m/s Δv mission with 1,000 kg spacecraft. Compare fuel needs.",
+        solution: "Chemical: v_e = 3,434 m/s, R = e^(5,000/3,434) = 4.28, Fuel = 3,280 kg\nIon: v_e = 34,335 m/s, R = e^(5,000/34,335) = 1.157, Fuel = 157 kg\nIon engine needs 21× less fuel! This is why deep space missions use ion propulsion.",
+        hint: "Calculate R for each, then fuel = m₀ - m_f"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q8-1",
+          question: "What does specific impulse (Isp) measure?",
+          options: [
+            "Thrust of the engine",
+            "Efficiency: seconds of thrust per kg of propellant",
+            "Fuel consumption rate",
+            "Exhaust temperature"
+          ],
+          correctAnswer: 1,
+          explanation: "Isp measures efficiency - how many seconds of thrust you get per kg of propellant. Higher Isp = better efficiency = less fuel needed!"
+        },
+        {
+          id: "q8-2",
+          question: "Why does hydrogen have higher Isp than kerosene?",
+          options: [
+            "Burns hotter",
+            "Lighter exhaust molecules (H₂O vs CO₂) accelerate faster at same temperature",
+            "More energy per kg",
+            "Better combustion"
+          ],
+          correctAnswer: 1,
+          explanation: "v_e ∝ √(T/M). Hydrogen produces lighter molecules (H₂O, M=18) vs kerosene (CO₂, M=44). Lighter molecules = higher exhaust velocity = higher Isp!"
+        },
+        {
+          id: "q8-3",
+          question: "What is the main disadvantage of hydrogen propellant?",
+          options: [
+            "Low Isp",
+            "Very low density (71 kg/m³) requires huge tanks and cryogenic systems",
+            "Expensive",
+            "Dangerous"
+          ],
+          correctAnswer: 1,
+          explanation: "Hydrogen has excellent Isp but terrible density (11× less dense than kerosene). This means huge tanks, cryogenic complexity (-253°C), and boil-off issues. Trade-off: performance vs practicality!"
+        },
+        {
+          id: "q8-4",
+          question: "Why do ion engines have Isp of 3,000-10,000s vs chemical rockets at 300-450s?",
+          options: [
+            "Better fuel",
+            "Electric acceleration produces much higher exhaust velocity than chemical combustion",
+            "Larger nozzles",
+            "More efficient combustion"
+          ],
+          correctAnswer: 1,
+          explanation: "Ion engines use electric fields to accelerate ions to 30,000-100,000 m/s! Chemical combustion is limited to ~4,500 m/s. This 10-20× higher v_e gives 10-20× higher Isp!"
+        },
+        {
+          id: "q8-5",
+          question: "How much does a 10% Isp increase reduce fuel requirements?",
+          options: [
+            "10% less fuel",
+            "20-30% less fuel (exponential relationship)",
+            "5% less fuel",
+            "50% less fuel"
+          ],
+          correctAnswer: 1,
+          explanation: "Due to the exponential rocket equation, a 10% Isp increase typically reduces fuel by 20-30%! This is why even small Isp improvements are valuable."
+        }
+      ]
+    }
   },
 
   {
@@ -77,7 +169,99 @@ export const unit1AdvancedLessons = [
       { term: "Hot Staging", definition: "Upper stage ignites before separation" },
       { term: "Cold Staging", definition: "Stages separate first, then upper stage ignites" },
       { term: "Payload Fraction", definition: "Ratio of payload mass to total initial mass" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "9-1",
+        problem: "Two-stage rocket: Stage 1 (m₀=100,000 kg, m_f=20,000 kg, v_e=3,000 m/s), Stage 2 (m₀=20,000 kg, m_f=4,000 kg, v_e=3,500 m/s). Calculate total Δv.",
+        solution: "Stage 1: Δv₁ = 3,000 × ln(100,000/20,000) = 3,000 × ln(5) = 4,828 m/s\nStage 2: Δv₂ = 3,500 × ln(20,000/4,000) = 3,500 × ln(5) = 5,632 m/s\nTotal: Δv = 4,828 + 5,632 = 10,460 m/s ✓ Enough for orbit!",
+        hint: "Calculate Δv for each stage separately, then add them"
+      },
+      {
+        id: "9-2",
+        problem: "Compare: Single-stage R=25 vs Two-stage R₁=5, R₂=5. Which is more practical?",
+        solution: "Single: R=25 means 96% fuel, 4% structure+payload - impossible!\nTwo-stage: R_eff = 5×5 = 25 (same total), but each stage only needs 80% fuel - achievable!\nStaging makes the impossible possible by dropping dead weight.",
+        hint: "Calculate fuel fraction for each: (R-1)/R"
+      },
+      {
+        id: "9-3",
+        problem: "Three-stage rocket with equal mass ratios R=4 each. What is effective total mass ratio?",
+        solution: "R_total = R₁ × R₂ × R₃ = 4 × 4 × 4 = 64\nWith v_e = 3,500 m/s: Δv = 3,500 × ln(64) = 3,500 × 4.159 = 14,557 m/s\nEnough for Moon missions!",
+        hint: "For staging: R_total = R₁ × R₂ × R₃"
+      },
+      {
+        id: "9-4",
+        problem: "Why did Saturn V use 3 stages instead of 2?",
+        solution: "Mission Δv: ~11,000 m/s to Moon\nWith 2 stages (R=10 each): Δv = v_e × ln(100) = v_e × 4.605\nNeeds v_e = 2,387 m/s - too low for chemical rockets\nWith 3 stages (R=5 each): Δv = v_e × ln(125) = v_e × 4.828\nNeeds v_e = 2,278 m/s - achievable!\nPlus: 3 stages allows different propellants (RP-1 then LH₂)",
+        hint: "Calculate required v_e for each option"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q9-1",
+          question: "Why is staging necessary for orbital flight?",
+          options: [
+            "To increase thrust",
+            "To drop empty tanks (dead weight), improving mass ratio for remaining stages",
+            "To reduce cost",
+            "For safety"
+          ],
+          correctAnswer: 1,
+          explanation: "Staging drops empty tanks and engines that are dead weight. This dramatically improves the mass ratio for remaining stages. Without staging, single-stage-to-orbit is nearly impossible!"
+        },
+        {
+          id: "q9-2",
+          question: "How do you calculate total Δv for a multi-stage rocket?",
+          options: [
+            "Multiply the Δv of each stage",
+            "Add the Δv of each stage: Δv_total = Δv₁ + Δv₂ + Δv₃",
+            "Take the average",
+            "Use only the largest stage"
+          ],
+          correctAnswer: 1,
+          explanation: "Multi-stage Δv is additive! Δv_total = Δv₁ + Δv₂ + Δv₃. Each stage adds its delta-v to the total."
+        },
+        {
+          id: "q9-3",
+          question: "What is the effective mass ratio for two stages with R₁=6 and R₂=4?",
+          options: [
+            "R_eff = 10 (add them)",
+            "R_eff = 24 (multiply them: R₁ × R₂)",
+            "R_eff = 5 (average)",
+            "R_eff = 2 (divide)"
+          ],
+          correctAnswer: 1,
+          explanation: "For staging, mass ratios multiply: R_eff = R₁ × R₂ = 6 × 4 = 24. This is why staging is so powerful - you get the benefit of multiplied mass ratios!"
+        },
+        {
+          id: "q9-4",
+          question: "What is optimal staging strategy?",
+          options: [
+            "Make first stage as large as possible",
+            "Equal mass ratios for all stages (R₁ = R₂ = R₃)",
+            "Make last stage largest",
+            "Random distribution"
+          ],
+          correctAnswer: 1,
+          explanation: "For maximum Δv with given total mass, use equal mass ratios: R₁ = R₂ = R₃. Real rockets deviate due to propellant choices and practical constraints."
+        },
+        {
+          id: "q9-5",
+          question: "Why don't rockets use 10 stages if staging is so good?",
+          options: [
+            "Too expensive",
+            "Diminishing returns: each stage adds complexity, and 2-3 stages is optimal balance",
+            "Not enough fuel",
+            "Too heavy"
+          ],
+          correctAnswer: 1,
+          explanation: "Each stage adds complexity, cost, and failure points. Analysis shows 2-3 stages is optimal for most missions. More stages give diminishing returns while increasing complexity exponentially!"
+        }
+      ]
+    }
   },
 
   {
