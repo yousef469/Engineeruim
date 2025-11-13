@@ -49,6 +49,12 @@ allPlanesLessons.forEach(lesson => {
   planesLessons[lesson.id] = {
     ...lesson,
     level: lesson.id < 12 ? 'Beginner' : lesson.id < 16 ? 'Intermediate' : 'Advanced',
+    content: {
+      introduction: lesson.introduction,
+      sections: lesson.sections,
+      keyTakeaways: lesson.keyTakeaways,
+      vocabulary: lesson.vocabulary
+    },
     quiz: { questions: [] }
   };
 });

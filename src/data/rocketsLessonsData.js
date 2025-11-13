@@ -53,6 +53,12 @@ rocketUnit1Complete.forEach(lesson => {
   rocketsLessons[lesson.id] = {
     ...lesson,
     level: 'Beginner',
+    content: {
+      introduction: lesson.introduction,
+      sections: lesson.sections,
+      keyTakeaways: lesson.keyTakeaways,
+      vocabulary: lesson.vocabulary
+    },
     quiz: { questions: [] }
   };
 });
@@ -62,6 +68,12 @@ rocketUnit2Complete.forEach(lesson => {
   rocketsLessons[lesson.id] = {
     ...lesson,
     level: 'Intermediate',
+    content: {
+      introduction: lesson.introduction,
+      sections: lesson.sections,
+      keyTakeaways: lesson.keyTakeaways,
+      vocabulary: lesson.vocabulary
+    },
     quiz: { questions: [] }
   };
 });
@@ -71,6 +83,12 @@ rocketUnit3Complete.forEach(lesson => {
   rocketsLessons[lesson.id] = {
     ...lesson,
     level: 'Intermediate',
+    content: {
+      introduction: lesson.introduction,
+      sections: lesson.sections,
+      keyTakeaways: lesson.keyTakeaways,
+      vocabulary: lesson.vocabulary
+    },
     quiz: { questions: [] }
   };
 });
@@ -80,6 +98,12 @@ rocketUnit4Complete.forEach(lesson => {
   rocketsLessons[lesson.id] = {
     ...lesson,
     level: 'Advanced',
+    content: {
+      introduction: lesson.introduction,
+      sections: lesson.sections,
+      keyTakeaways: lesson.keyTakeaways,
+      vocabulary: lesson.vocabulary
+    },
     quiz: { questions: [] }
   };
 });
@@ -89,6 +113,12 @@ rocketUnit5Complete.forEach(lesson => {
   rocketsLessons[lesson.id] = {
     ...lesson,
     level: 'Advanced',
+    content: {
+      introduction: lesson.introduction,
+      sections: lesson.sections,
+      keyTakeaways: lesson.keyTakeaways,
+      vocabulary: lesson.vocabulary
+    },
     quiz: { questions: [] }
   };
 });
