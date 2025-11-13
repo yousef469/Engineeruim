@@ -1414,7 +1414,99 @@ Transfer time: ~260 days
       { term: "Inclination (i)", definition: "Angle between orbital plane and equator; minimum = launch latitude" },
       { term: "Launch Azimuth (β)", definition: "Compass heading at launch; determines orbital inclination" },
       { term: "Synodic Period", definition: "Time between planetary alignments; determines launch windows" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "4-1",
+        problem: "Cape Canaveral is at 28.5°N. What is the minimum orbital inclination achievable with a due-east launch?",
+        solution: "Minimum inclination = launch latitude = 28.5°\nDue east (β=90°) gives minimum inclination and maximum Earth rotation benefit (~408 m/s free Δv).",
+        hint: "Minimum inclination equals launch latitude for eastward launches"
+      },
+      {
+        id: "4-2",
+        problem: "Calculate Earth's rotation velocity at Cape Canaveral (28.5°N). Earth rotates at 465 m/s at equator.",
+        solution: "v_rot = 465 × cos(28.5°) = 465 × 0.877 = 408 m/s\nThis is free delta-v for eastward launches! Westward launches must overcome this, costing 816 m/s total.",
+        hint: "v_rot(latitude) = v_equator × cos(latitude)"
+      },
+      {
+        id: "4-3",
+        problem: "Calculate the synodic period for Mars missions. Earth year = 365 days, Mars year = 687 days.",
+        solution: "T_syn = 1/(1/T_E - 1/T_M)\nT_syn = 1/(1/365 - 1/687)\nT_syn = 1/(0.00274 - 0.00146)\nT_syn = 1/0.00128 = 780 days = 26 months\n\nThis is why Mars launch windows occur every 26 months!",
+        hint: "Synodic period: T_syn = 1/(1/T_1 - 1/T_2)"
+      },
+      {
+        id: "4-4",
+        problem: "Why does the ISS have an inclination of 51.6° when Cape Canaveral is at 28.5°N?",
+        solution: "ISS inclination = 51.6° allows Russian launches from Baikonur (45.6°N) to reach it.\n\nFrom Cape: Can launch to any i ≥ 28.5°\nFrom Baikonur: Can launch to any i ≥ 45.6°\n\nCompromise: i = 51.6° allows both sites to reach ISS with reasonable plane change costs.",
+        hint: "ISS inclination is a political/logistical compromise between launch sites"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q4-1",
+          question: "What is a gravity turn?",
+          options: [
+            "Flying straight up then turning horizontal",
+            "Pitching over early and following the velocity vector (prograde)",
+            "Turning to avoid obstacles",
+            "A maneuver to change orbital planes"
+          ],
+          correctAnswer: 1,
+          explanation: "Gravity turn pitches over early (~10-20 seconds after liftoff) and then follows the velocity vector. This minimizes gravity losses by reducing time spent climbing vertically!"
+        },
+        {
+          id: "q4-2",
+          question: "Why do most launches go eastward?",
+          options: [
+            "It's safer",
+            "To gain Earth's rotation velocity (~400-465 m/s free Δv)",
+            "Better weather",
+            "Tradition"
+          ],
+          correctAnswer: 1,
+          explanation: "Earth rotates eastward at ~465 m/s at the equator. Launching eastward adds this velocity for free! At Cape Canaveral (28.5°N), you get ~408 m/s free Δv. Westward launches must overcome this, costing 816 m/s!"
+        },
+        {
+          id: "q4-3",
+          question: "What determines the minimum orbital inclination from a launch site?",
+          options: [
+            "Rocket power",
+            "Launch site latitude (can't go lower without plane change)",
+            "Weather",
+            "Fuel type"
+          ],
+          correctAnswer: 1,
+          explanation: "Minimum inclination = launch latitude. Cape Canaveral (28.5°N) can't launch into orbits below 28.5° inclination without expensive plane changes. This is why equatorial launch sites are valuable!"
+        },
+        {
+          id: "q4-4",
+          question: "Why do Mars launch windows occur every 26 months?",
+          options: [
+            "Mars takes 26 months to orbit the Sun",
+            "Synodic period: time for Earth and Mars to realign for optimal transfer",
+            "It takes 26 months to build a rocket",
+            "Weather patterns"
+          ],
+          correctAnswer: 1,
+          explanation: "Synodic period = 1/(1/T_Earth - 1/T_Mars) = 780 days = 26 months. This is how long it takes for Earth and Mars to return to the same relative positions for a Hohmann transfer!"
+        },
+        {
+          id: "q4-5",
+          question: "What is the ISS launch window like?",
+          options: [
+            "Anytime, any day",
+            "Once per month",
+            "Instantaneous window, twice per day (~5-10 minutes each)",
+            "Once per year"
+          ],
+          correctAnswer: 2,
+          explanation: "ISS has an instantaneous launch window! The orbital plane passes over Cape Canaveral twice per day. Each window lasts only ~5-10 minutes. Miss it and you wait ~12 hours for the next one!"
+        }
+      ]
+    }
   },
 
   {
@@ -1685,7 +1777,99 @@ Optimization is finding the best balance!`
       { term: "Axial Load", definition: "Compressive force along rocket axis; F = m×a" },
       { term: "Isogrid", definition: "Machined structure with triangular pattern; 50% lighter than solid" },
       { term: "Common Bulkhead", definition: "Shared wall between tanks; saves mass of one bulkhead" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "5-1",
+        problem: "A rocket has total mass 100,000 kg and experiences max acceleration of 5g. Calculate the axial load at the base.",
+        solution: "F_axial = m × a_max = 100,000 × (5 × 9.81) = 100,000 × 49.05 = 4,905,000 N = 4.9 MN\nThis enormous force must be carried by the structure!",
+        hint: "F = m × a, where a_max = 5g = 49.05 m/s²"
+      },
+      {
+        id: "5-2",
+        problem: "Falcon 9 first stage: Total mass 549,000 kg, structure 16,900 kg, engines 4,230 kg, systems 2,000 kg, propellant 519,200 kg. Calculate structural mass fraction.",
+        solution: "Dry mass = structure + engines + systems = 16,900 + 4,230 + 2,000 = 23,130 kg\nStructural fraction λ = 23,130/549,000 = 0.042 = 4.2%\n\nPropellant fraction = 519,200/549,000 = 94.6%\n\nOnly 4.2% is structure - the rest is fuel! This is why rockets are so fragile.",
+        hint: "λ = (structure + engines + systems) / total mass"
+      },
+      {
+        id: "5-3",
+        problem: "Compare specific strength: Aluminum (ρ=2,840 kg/m³, σ=400 MPa) vs Carbon Fiber (ρ=1,600 kg/m³, σ=600 MPa).",
+        solution: "Aluminum: σ/ρ = 400×10⁶/2,840 = 141,000 Pa·m³/kg\nCarbon Fiber: σ/ρ = 600×10⁶/1,600 = 375,000 Pa·m³/kg\n\nCFRP is 2.66× better! But it's expensive and can't hold cryogenics easily. Trade-offs!",
+        hint: "Specific strength = σ/ρ (strength divided by density)"
+      },
+      {
+        id: "5-4",
+        problem: "Adding 1,000 kg payload with mass ratio R=15. How much does launch mass increase?",
+        solution: "Direct calculation: Δm_0 = 1,000 × 15 = 15,000 kg\n\nBut structure also increases! Assume 10% structural fraction:\nStructure increase = 15,000 × 0.10 = 1,500 kg\nThis needs more fuel: 1,500 × 15 = 22,500 kg\nWhich needs more structure: 22,500 × 0.10 = 2,250 kg\n\nIterative calculation converges to ~18,000 kg total increase!\n\nThis is why payload fractions are so small (2-4%).",
+        hint: "Adding payload requires fuel, which requires structure, which requires more fuel..."
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q5-1",
+          question: "What is structural mass fraction (λ)?",
+          options: [
+            "Ratio of fuel to total mass",
+            "Ratio of structure mass to total mass (typically 4-10%)",
+            "Ratio of payload to structure",
+            "Thrust-to-weight ratio"
+          ],
+          correctAnswer: 1,
+          explanation: "λ = m_structure/m_total. First stages: λ ≈ 4-6%. Upper stages: λ ≈ 6-10%. Every kg of structure is one less kg of fuel or payload!"
+        },
+        {
+          id: "q5-2",
+          question: "Why do rockets experience maximum axial load at the base?",
+          options: [
+            "That's where the engines are",
+            "The base must support the entire rocket's weight during max acceleration",
+            "Aerodynamic forces",
+            "Thermal expansion"
+          ],
+          correctAnswer: 1,
+          explanation: "F_axial = m × a_max. The base must support the entire rocket's mass during maximum acceleration (often 5-10g). For Falcon 9: 549,000 kg × 5g = 26.9 MN of force!"
+        },
+        {
+          id: "q5-3",
+          question: "What is specific strength and why does it matter?",
+          options: [
+            "Total strength of the material",
+            "Strength-to-weight ratio (σ/ρ); higher means lighter structures",
+            "Strength at high temperatures",
+            "Strength under pressure"
+          ],
+          correctAnswer: 1,
+          explanation: "Specific strength = σ/ρ (strength/density). Carbon fiber has 2.7× better specific strength than aluminum, allowing lighter structures. But it's expensive and has other trade-offs!"
+        },
+        {
+          id: "q5-4",
+          question: "Why is adding payload so expensive in terms of launch mass?",
+          options: [
+            "Payload is heavy",
+            "Exponential relationship: more payload needs more fuel, which needs more structure, which needs more fuel...",
+            "Regulations",
+            "Insurance costs"
+          ],
+          correctAnswer: 1,
+          explanation: "Adding 1 kg payload with R=15 requires ~15-18 kg at liftoff due to the exponential spiral: payload → fuel → structure → more fuel → more structure. This is why payload fractions are only 2-4%!"
+        },
+        {
+          id: "q5-5",
+          question: "What is an isogrid structure?",
+          options: [
+            "A type of engine",
+            "Machined structure with triangular pattern; 50% lighter than solid walls",
+            "A fuel tank design",
+            "A type of nozzle"
+          ],
+          correctAnswer: 1,
+          explanation: "Isogrid is a machined structure with triangular pockets, removing material where it's not needed. It's 50% lighter than solid walls with the same strength! Space Shuttle ET saved 3,000 kg using isogrid."
+        }
+      ]
+    }
   }
 ];
 
