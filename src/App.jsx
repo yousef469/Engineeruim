@@ -29,6 +29,7 @@ const RocketLessonPageNew = lazy(() => import('./pages/RocketLessonPageNew'));
 const PlaneLessonPage = lazy(() => import('./pages/PlaneLessonPage'));
 const CarLessonPage = lazy(() => import('./pages/CarLessonPage'));
 const MathematicsLessonPage = lazy(() => import('./pages/MathematicsLessonPage'));
+const MathematicsQuizPage = lazy(() => import('./pages/MathematicsQuizPage'));
 const PhysicsLessonPage = lazy(() => import('./pages/PhysicsLessonPage'));
 const PhysicsQuizPage = lazy(() => import('./pages/PhysicsQuizPage'));
 const PlaneQuizPage = lazy(() => import('./pages/PlaneQuizPage'));
@@ -1165,6 +1166,7 @@ export default function App() {
           <Route path="/learn/mathematics/engineering" element={<ProtectedRoute><MathematicsEngineeringPage /></ProtectedRoute>} />
           <Route path="/learn/mathematics/engineering/map" element={<ProtectedRoute><GameMapMathematics /></ProtectedRoute>} />
           <Route path="/learn/mathematics/engineering/lesson/:lessonId" element={<ProtectedRoute><MathematicsLessonPage /></ProtectedRoute>} />
+          <Route path="/learn/mathematics/engineering/quiz/:lessonId" element={<ProtectedRoute><MathematicsQuizPage /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering" element={<ProtectedRoute><PhysicsEngineeringPage /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering/map" element={<ProtectedRoute><GameMapPhysics /></ProtectedRoute>} />
           <Route path="/learn/physics/engineering/lesson/:lessonId" element={<ProtectedRoute><PhysicsLessonPage /></ProtectedRoute>} />

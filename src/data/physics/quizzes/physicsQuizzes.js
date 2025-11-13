@@ -1,4 +1,4 @@
-// Physics Quizzes for lessons 1-10
+// Physics Quizzes for lessons 1-33
 export const physicsQuizzes = {
   1: {
     lessonId: 1,
@@ -213,7 +213,7 @@ export const physicsQuizzes = {
       { id: 4, type: 'multiple-choice', question: 'Motor efficiency:', options: ['30%', '50%', '70%', '90%'], correctAnswer: 3, explanation: 'Electric motors ~90% efficient!' }
     ]
   },
-  // Unit 6: Materials (Lessons 26-30)
+  // Unit 6: Materials (Lessons 26-33)
   26: {
     lessonId: 26, questions: [
       { id: 1, type: 'multiple-choice', question: 'Steel/aluminum are:', options: ['Ceramics', 'Polymers', 'Metals', 'Composites'], correctAnswer: 2, explanation: 'Steel/aluminum = metals.' },
@@ -252,6 +252,30 @@ export const physicsQuizzes = {
       { id: 2, type: 'multiple-choice', question: 'Carbon fiber expensive:', options: ['Weak', 'Heavy', 'Complex manufacturing', 'Rare'], correctAnswer: 2, explanation: 'Complex manufacturing = expensive (~5x aluminum).' },
       { id: 3, type: 'true-false', question: 'Material selection = trade-offs.', correctAnswer: true, explanation: 'Correct! Balance strength, weight, cost, temp, etc.' },
       { id: 4, type: 'multiple-choice', question: 'Nickel superalloys:', options: ['Cheap', 'Light', 'Withstand 1200°C', 'Easy'], correctAnswer: 2, explanation: 'Withstand extreme 1200°C turbine temps.' }
+    ]
+  },
+  31: {
+    lessonId: 31, questions: [
+      { id: 1, type: 'multiple-choice', question: 'Elastic deformation is:', options: ['Permanent', 'Reversible', 'Always breaks', 'Only in metals'], correctAnswer: 1, explanation: 'Elastic deformation is reversible - material returns to original shape when force is removed.' },
+      { id: 2, type: 'true-false', question: 'Yield strength marks where plastic deformation begins.', correctAnswer: true, explanation: 'Correct! Yield strength is the stress at which plastic deformation starts.' },
+      { id: 3, type: 'multiple-choice', question: 'Plastic deformation:', options: ['Returns to original shape', 'Is permanent', 'Only in rubber', 'Never happens'], correctAnswer: 1, explanation: 'Plastic deformation is permanent - material does not return to original shape.' },
+      { id: 4, type: 'multiple-choice', question: 'Bumpers are designed to:', options: ['Stay elastic', 'Deform plastically to absorb energy', 'Never deform', 'Break immediately'], correctAnswer: 1, explanation: 'Bumpers deform plastically in crashes to absorb energy and protect passengers.' }
+    ]
+  },
+  32: {
+    lessonId: 32, questions: [
+      { id: 1, type: 'multiple-choice', question: 'Fatigue failure occurs from:', options: ['Single overload', 'Repeated stress cycles', 'High temperature only', 'Corrosion only'], correctAnswer: 1, explanation: 'Fatigue is failure from repeated stress cycles, even at low stress levels.' },
+      { id: 2, type: 'true-false', question: 'Brittle materials break suddenly without warning.', correctAnswer: true, explanation: 'Correct! Brittle materials fracture suddenly, while ductile materials deform first.' },
+      { id: 3, type: 'multiple-choice', question: 'Why inspect aircraft regularly?', options: ['For paint', 'To find fatigue cracks before failure', 'For weight', 'For fuel'], correctAnswer: 1, explanation: 'Regular inspection finds fatigue cracks before they cause catastrophic failure.' },
+      { id: 4, type: 'multiple-choice', question: 'Bending a paperclip repeatedly causes:', options: ['It gets stronger', 'Nothing', 'Fatigue failure', 'It becomes elastic'], correctAnswer: 2, explanation: 'Repeated bending causes fatigue - small cracks grow until sudden failure.' }
+    ]
+  },
+  33: {
+    lessonId: 33, questions: [
+      { id: 1, type: 'multiple-choice', question: 'Strength-to-weight ratio is calculated as:', options: ['Strength + Weight', 'Strength / Density', 'Weight / Strength', 'Strength × Density'], correctAnswer: 1, explanation: 'Strength-to-weight ratio = Strength / Density. Higher is better for weight-sensitive applications.' },
+      { id: 2, type: 'multiple-choice', question: 'Why is carbon fiber expensive?', options: ['It\'s weak', 'It\'s heavy', 'Complex manufacturing process', 'It\'s rare'], correctAnswer: 2, explanation: 'Carbon fiber is expensive due to complex manufacturing (~5x cost of aluminum).' },
+      { id: 3, type: 'true-false', question: 'Material selection requires balancing multiple factors.', correctAnswer: true, explanation: 'Correct! Engineers balance strength, weight, cost, temperature resistance, and manufacturability.' },
+      { id: 4, type: 'multiple-choice', question: 'Nickel superalloys are used in jet engines because they:', options: ['Are cheap', 'Are light', 'Withstand 1200°C temperatures', 'Are easy to manufacture'], correctAnswer: 2, explanation: 'Nickel superalloys can withstand extreme temperatures (1200°C) in turbine engines.' }
     ]
   }
 };

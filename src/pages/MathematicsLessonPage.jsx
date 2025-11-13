@@ -68,7 +68,7 @@ export default function MathematicsLessonPage() {
             <div className="border-b border-green-700 bg-green-900/90 backdrop-blur-md sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-6 py-4">
                     <button
-                        onClick={() => navigate(-1)}
+                        onClick={() => navigate('/learn/mathematics/engineering/map')}
                         className="flex items-center gap-2 text-green-200 hover:text-white transition-colors mb-3"
                     >
                         <ArrowLeft className="w-5 h-5" />
@@ -86,15 +86,13 @@ export default function MathematicsLessonPage() {
                             <p className="text-green-200">{lesson.subtitle}</p>
                         </div>
                         <div className="flex items-center gap-3">
-                            {lesson.content.quiz && (
-                                <button
-                                    onClick={() => navigate(`/learn/mathematics/engineering/quiz/${lessonId}`)}
-                                    className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
-                                >
-                                    <CheckCircle className="w-5 h-5" />
-                                    Take Quiz
-                                </button>
-                            )}
+                            <button
+                                onClick={() => navigate(`/learn/mathematics/engineering/quiz/${lessonId}`)}
+                                className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
+                            >
+                                <CheckCircle className="w-5 h-5" />
+                                Take Quiz
+                            </button>
                         </div>
                     </div>
                 </div>

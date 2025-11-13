@@ -103,7 +103,7 @@ export default function PhysicsLessonPage() {
             <div className="border-b border-blue-700 bg-blue-900/90 backdrop-blur-md sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-6 py-4">
                     <button
-                        onClick={() => navigate(-1)}
+                        onClick={() => navigate('/learn/physics/engineering/map')}
                         className="flex items-center gap-2 text-blue-200 hover:text-white transition-colors mb-3"
                     >
                         <ArrowLeft className="w-5 h-5" />

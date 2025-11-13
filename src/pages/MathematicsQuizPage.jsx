@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, XCircle, Award } from 'lucide-react';
-import { physicsQuizzes } from '../data/physics/quizzes/physicsQuizzes';
+import { mathematicsQuizzes } from '../data/mathematics/quizzes/mathematicsQuizzes';
 import MultipleChoiceQuestion from '../components/quiz/MultipleChoiceQuestion';
 import TrueFalseQuestion from '../components/quiz/TrueFalseQuestion';
 
-export default function PhysicsQuizPage() {
+export default function MathematicsQuizPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -13,11 +13,11 @@ export default function PhysicsQuizPage() {
   const [showResults, setShowResults] = useState(false);
   const [score, setScore] = useState(0);
 
-  const quiz = physicsQuizzes[lessonId];
+  const quiz = mathematicsQuizzes[parseInt(lessonId)];
 
   useEffect(() => {
     if (!quiz) {
-      navigate('/learn/physics/engineering/map');
+      navigate('/learn/mathematics/engineering/map');
     }
   }, [quiz, navigate]);
 
@@ -68,11 +68,11 @@ export default function PhysicsQuizPage() {
 
   if (showResults) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white p-8">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-green-900 to-slate-900 text-white p-8">
         <div className="max-w-2xl mx-auto">
           <button
-            onClick={() => navigate('/learn/physics/engineering/map')}
-            className="flex items-center gap-2 text-blue-300 hover:text-blue-200 mb-8"
+            onClick={() => navigate('/learn/mathematics/engineering/map')}
+            className="flex items-center gap-2 text-green-300 hover:text-green-200 mb-8"
           >
             <ArrowLeft size={20} />
             Back
@@ -82,13 +82,13 @@ export default function PhysicsQuizPage() {
             <div className="text-center mb-8">
               <Award className="w-20 h-20 mx-auto mb-4 text-yellow-400" />
               <h1 className="text-4xl font-bold mb-2">Quiz Complete!</h1>
-              <p className="text-xl text-blue-200">Lesson {lessonId} Quiz Results</p>
+              <p className="text-xl text-green-200">Lesson {lessonId} Quiz Results</p>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl p-6 mb-8">
+            <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-xl p-6 mb-8">
               <div className="text-center">
                 <div className="text-6xl font-bold mb-2">{percentage}%</div>
-                <div className="text-xl text-blue-200">
+                <div className="text-xl text-green-200">
                   {score} out of {totalQuestions} correct
                 </div>
               </div>
@@ -117,7 +117,7 @@ export default function PhysicsQuizPage() {
                       <div className="flex-1">
                         <p className="font-semibold mb-2">Question {idx + 1}: {q.question}</p>
                         {!isCorrect && (
-                          <p className="text-sm text-blue-200">{q.explanation}</p>
+                          <p className="text-sm text-green-200">{q.explanation}</p>
                         )}
                       </div>
                     </div>
@@ -129,12 +129,12 @@ export default function PhysicsQuizPage() {
             <div className="flex gap-4">
               <button
                 onClick={resetQuiz}
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors"
+                className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors"
               >
                 Retake Quiz
               </button>
               <button
-                onClick={() => navigate(`/learn/physics/engineering/lesson/${lessonId}`)}
+                onClick={() => navigate(`/learn/mathematics/engineering/lesson/${lessonId}`)}
                 className="flex-1 bg-white/10 hover:bg-white/20 text-white py-3 px-6 rounded-lg font-semibold transition-colors"
               >
                 Back to Lesson
@@ -147,11 +147,11 @@ export default function PhysicsQuizPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-green-900 to-slate-900 text-white p-8">
       <div className="max-w-3xl mx-auto">
         <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-blue-300 hover:text-blue-200 mb-8"
+          onClick={() => navigate('/learn/mathematics/engineering/map')}
+          className="flex items-center gap-2 text-green-300 hover:text-green-200 mb-8"
         >
           <ArrowLeft size={20} />
           Back
@@ -161,13 +161,13 @@ export default function PhysicsQuizPage() {
           <div className="mb-8">
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold">Lesson {lessonId} Quiz</h1>
-              <span className="text-blue-200">
+              <span className="text-green-200">
                 Question {currentQuestion + 1} of {totalQuestions}
               </span>
             </div>
             <div className="w-full bg-white/20 rounded-full h-2">
               <div
-                className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                className="bg-green-500 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${((currentQuestion + 1) / totalQuestions) * 100}%` }}
               />
             </div>
@@ -203,7 +203,7 @@ export default function PhysicsQuizPage() {
             <button
               onClick={handleNext}
               disabled={!isAnswered}
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
+              className="px-6 py-3 bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
             >
               {currentQuestion === totalQuestions - 1 ? 'Finish Quiz' : 'Next Question'}
             </button>
@@ -213,3 +213,4 @@ export default function PhysicsQuizPage() {
     </div>
   );
 }
+
