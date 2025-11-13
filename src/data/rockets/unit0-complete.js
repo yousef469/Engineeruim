@@ -753,7 +753,99 @@ Solution: Throttle engines down at max-Q
       { term: "Drag Loss", definition: "Delta-v lost to atmospheric drag; ~200 m/s typical" },
       { term: "Max-Q", definition: "Point of maximum dynamic pressure during ascent; requires throttling" },
       { term: "Gravity Turn", definition: "Optimal ascent trajectory that minimizes gravity losses" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "2-1",
+        problem: "A rocket has mass 100,000 kg and thrust 1,500,000 N. Calculate TWR and initial acceleration.",
+        solution: "Weight: W = mg = 100,000 × 9.81 = 981,000 N\nTWR = T/W = 1,500,000/981,000 = 1.53\nNet force: F_net = T - W = 1,500,000 - 981,000 = 519,000 N\nAcceleration: a = F_net/m = 519,000/100,000 = 5.19 m/s² = 0.53g",
+        hint: "TWR = T/(mg), then a = (T-W)/m"
+      },
+      {
+        id: "2-2",
+        problem: "If a rocket burns vertically for 150 seconds, how much Δv is lost to gravity?",
+        solution: "Δv_loss = g × t = 9.81 × 150 = 1,472 m/s\nThis is why rockets pitch over quickly - every second vertical wastes ~10 m/s!",
+        hint: "Gravity loss = g × burn_time for vertical flight"
+      },
+      {
+        id: "2-3",
+        problem: "Falcon 9: m_0=549,000 kg, m_f=55,000 kg, T=7,605 kN constant. Find TWR at liftoff and burnout.",
+        solution: "Liftoff: TWR = 7,605,000/(549,000×9.81) = 7,605/5,386 = 1.41\nBurnout: TWR = 7,605,000/(55,000×9.81) = 7,605/540 = 14.1\nTWR increased by 10× during flight!",
+        hint: "Calculate weight at each point, then TWR = T/W"
+      },
+      {
+        id: "2-4",
+        problem: "Why does LEO require 9,400 m/s Δv when orbital velocity is only 7,800 m/s?",
+        solution: "Orbital velocity: 7,800 m/s\nGravity losses: ~1,400 m/s\nDrag losses: ~200 m/s\nTotal: 7,800 + 1,400 + 200 = 9,400 m/s\nThe 'extra' 1,600 m/s is wasted fighting gravity and drag!",
+        hint: "Total Δv = orbital velocity + gravity losses + drag losses"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q2-1",
+          question: "What is the minimum TWR required for a rocket to lift off?",
+          options: [
+            "TWR = 0.5",
+            "TWR = 1.0 (thrust equals weight)",
+            "TWR > 1.0 (thrust exceeds weight)",
+            "TWR = 2.0"
+          ],
+          correctAnswer: 2,
+          explanation: "TWR must exceed 1.0 for liftoff. If TWR = 1.0, thrust exactly equals weight and the rocket hovers (unstable). Typical rockets have TWR = 1.2-1.5 for safe margin."
+        },
+        {
+          id: "q2-2",
+          question: "Why does TWR increase during flight?",
+          options: [
+            "Thrust increases as engines warm up",
+            "Mass decreases as fuel burns, while thrust stays constant",
+            "Gravity decreases with altitude",
+            "Air resistance decreases"
+          ],
+          correctAnswer: 1,
+          explanation: "TWR = T/(mg). As fuel burns, mass m decreases rapidly while thrust T stays roughly constant. Therefore TWR = T/m increases! This is why rockets accelerate faster as they climb."
+        },
+        {
+          id: "q2-3",
+          question: "What are 'gravity losses' in rocketry?",
+          options: [
+            "Fuel wasted due to gravity",
+            "Delta-v wasted fighting gravity during ascent (~1,400 m/s)",
+            "Weight of the rocket",
+            "Gravity pulling the rocket back down"
+          ],
+          correctAnswer: 1,
+          explanation: "Gravity losses are the Δv wasted fighting gravity during ascent. For vertical flight: Δv_loss = g × t_burn. Typical ascent wastes ~1,400 m/s, which is why LEO needs 9,400 m/s instead of just 7,800 m/s!"
+        },
+        {
+          id: "q2-4",
+          question: "How does a gravity turn reduce losses?",
+          options: [
+            "It increases thrust",
+            "It pitches over early, spending less time fighting gravity vertically",
+            "It reduces drag",
+            "It increases TWR"
+          ],
+          correctAnswer: 1,
+          explanation: "Gravity turn pitches the rocket over early, so it spends less time climbing vertically. This minimizes time fighting gravity directly, reducing gravity losses from ~2,500 m/s to ~1,400 m/s!"
+        },
+        {
+          id: "q2-5",
+          question: "Why do rockets throttle down at max-Q?",
+          options: [
+            "To save fuel",
+            "To reduce dynamic pressure and prevent structural failure",
+            "To increase efficiency",
+            "To reduce gravity losses"
+          ],
+          correctAnswer: 1,
+          explanation: "Max-Q is the point of maximum dynamic pressure (q = ½ρv²). High pressure can break the rocket! Throttling down reduces thrust temporarily, lowering acceleration and keeping structural loads safe."
+        }
+      ]
+    }
   },
 
   {
@@ -985,7 +1077,99 @@ In vacuum: P_a = 0
       { term: "Expansion Ratio (ε)", definition: "Ratio of exit area to throat area; determines exit pressure" },
       { term: "Chamber Pressure (P_c)", definition: "Pressure in combustion chamber; typically 5-20 MPa" },
       { term: "Throat", definition: "Narrowest part of nozzle where flow reaches Mach 1" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "3-1",
+        problem: "An engine has v_e = 3,400 m/s. Calculate its specific impulse (Isp).",
+        solution: "Isp = v_e/g_0 = 3,400/9.81 = 347 seconds\nThis is typical for RP-1/LOX engines like Merlin 1D.",
+        hint: "Isp = v_e/g_0 where g_0 = 9.81 m/s²"
+      },
+      {
+        id: "3-2",
+        problem: "Compare fuel requirements: Mission needs 10,000 kg payload, Δv = 9,000 m/s. Engine A: Isp=350s, Engine B: Isp=450s. How much fuel does each need?",
+        solution: "Engine A: v_e = 350×9.81 = 3,434 m/s\nR = e^(9,000/3,434) = e^2.62 = 13.7\nm_0 = 10,000×13.7 = 137,000 kg → Fuel = 127,000 kg\n\nEngine B: v_e = 450×9.81 = 4,415 m/s\nR = e^(9,000/4,415) = e^2.04 = 7.7\nm_0 = 10,000×7.7 = 77,000 kg → Fuel = 67,000 kg\n\nEngine B saves 60,000 kg of fuel! (47% less)",
+        hint: "Calculate v_e from Isp, then use rocket equation to find mass ratio"
+      },
+      {
+        id: "3-3",
+        problem: "Merlin 1D: Sea level Isp=282s, Vacuum Isp=311s. Why the difference?",
+        solution: "Sea level: P_ambient = 101 kPa (atmosphere pushes back)\nVacuum: P_ambient = 0 (no back pressure)\n\nΔIsp = 311 - 282 = 29 seconds (10.3% improvement)\n\nIn vacuum, the pressure thrust term (P_e-P_a)·A_e is maximized because P_a=0. This is why upper stage engines have larger nozzles!",
+        hint: "Thrust = ṁ·v_e + (P_e-P_a)·A_e. In vacuum, P_a=0 increases thrust"
+      },
+      {
+        id: "3-4",
+        problem: "Why does hydrogen (Isp=450s) need 5× larger tanks than kerosene (Isp=350s) despite better performance?",
+        solution: "Hydrogen density: 71 kg/m³\nKerosene density: 820 kg/m³\nDensity ratio: 820/71 = 11.5×\n\nFor same mass of fuel:\nH₂ volume = 11.5× larger\n\nBut H₂ needs less fuel (better Isp):\nH₂ fuel: 67,000 kg → 944 m³\nKerosene fuel: 127,000 kg → 155 m³\n\nActual ratio: 944/155 = 6.1× larger tanks!\n\nTrade-off: Better Isp but huge tanks (and cryogenic complexity)",
+        hint: "Volume = mass/density. H₂ is 11.5× less dense but needs less mass"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q3-1",
+          question: "What does specific impulse (Isp) measure?",
+          options: [
+            "Thrust of the engine",
+            "Efficiency: seconds of thrust per kg of propellant",
+            "Exhaust temperature",
+            "Fuel consumption rate"
+          ],
+          correctAnswer: 1,
+          explanation: "Isp = v_e/g_0 measures engine efficiency in seconds. Higher Isp means more thrust per kg of fuel. Isp=300s means 1 kg of fuel produces 300 seconds worth of thrust at 1g acceleration."
+        },
+        {
+          id: "q3-2",
+          question: "Why do vacuum engines have higher Isp than sea-level engines?",
+          options: [
+            "They burn hotter",
+            "No atmospheric back-pressure, so pressure thrust is maximized",
+            "They use better fuel",
+            "They have more thrust"
+          ],
+          correctAnswer: 1,
+          explanation: "Thrust = ṁ·v_e + (P_e-P_a)·A_e. At sea level, P_a=101 kPa pushes back. In vacuum, P_a=0, so the pressure thrust term is maximized. This is why upper stages have larger nozzles!"
+        },
+        {
+          id: "q3-3",
+          question: "Which propellant combination has the highest Isp?",
+          options: [
+            "Solid propellants (Isp~250-280s)",
+            "RP-1/LOX kerosene (Isp~300-350s)",
+            "LH₂/LOX hydrogen (Isp~380-465s)",
+            "Methane/LOX (Isp~330-380s)"
+          ],
+          correctAnswer: 2,
+          explanation: "Hydrogen/oxygen has the highest Isp (~450s vacuum) because hydrogen has the lowest molecular weight, producing the highest exhaust velocity. But it requires huge tanks due to low density!"
+        },
+        {
+          id: "q3-4",
+          question: "What is the expansion ratio (ε) of a nozzle?",
+          options: [
+            "Ratio of chamber pressure to exit pressure",
+            "Ratio of exit area to throat area (A_e/A_t)",
+            "Ratio of thrust to weight",
+            "Ratio of fuel to oxidizer"
+          ],
+          correctAnswer: 1,
+          explanation: "ε = A_e/A_t is the expansion ratio. Larger ε means more expansion, lower exit pressure, and higher exhaust velocity. Sea-level engines: ε~15-20. Vacuum engines: ε~40-120."
+        },
+        {
+          id: "q3-5",
+          question: "Why don't all engines use hydrogen for maximum Isp?",
+          options: [
+            "Hydrogen is expensive",
+            "Hydrogen requires huge tanks (low density) and cryogenic systems",
+            "Hydrogen doesn't burn well",
+            "Hydrogen is dangerous"
+          ],
+          correctAnswer: 1,
+          explanation: "Hydrogen has excellent Isp but terrible density (71 kg/m³ vs 820 kg/m³ for kerosene). This means 11× larger tanks! Plus cryogenic complexity (-253°C). Trade-off: performance vs practicality."
+        }
+      ]
+    }
   },
 
   {
