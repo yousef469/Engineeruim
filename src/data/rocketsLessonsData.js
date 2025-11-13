@@ -14,10 +14,13 @@ import { rocketUnit5Complete } from './rockets/unit5-complete.js';
 export const rocketsLessons = {};
 
 // Add Unit 0 (Foundations) - Lessons 0-5
-rocketUnit0Complete.forEach(lesson => {
+rocketUnit0Complete.forEach((lesson, index) => {
   rocketsLessons[lesson.id] = {
     ...lesson,
+    emoji: '🧮',
     level: 'Beginner',
+    unitNumber: 0,
+    lessonNumber: index + 1,
     content: {
       introduction: lesson.introduction,
       sections: lesson.sections,
@@ -29,10 +32,13 @@ rocketUnit0Complete.forEach(lesson => {
 });
 
 // Add Unit 1 (Rocket Fundamentals) - Lessons 6-11
-rocketUnit1Complete.forEach(lesson => {
+rocketUnit1Complete.forEach((lesson, index) => {
   rocketsLessons[lesson.id] = {
     ...lesson,
+    emoji: '🚀',
     level: 'Beginner',
+    unitNumber: 1,
+    lessonNumber: index + 1,
     content: {
       introduction: lesson.introduction,
       sections: lesson.sections,
@@ -44,10 +50,13 @@ rocketUnit1Complete.forEach(lesson => {
 });
 
 // Add Unit 2 (Propulsion Physics) - Lessons 12-19
-rocketUnit2Complete.forEach(lesson => {
+rocketUnit2Complete.forEach((lesson, index) => {
   rocketsLessons[lesson.id] = {
     ...lesson,
+    emoji: '🔥',
     level: 'Intermediate',
+    unitNumber: 2,
+    lessonNumber: index + 1,
     content: {
       introduction: lesson.introduction,
       sections: lesson.sections,
@@ -59,10 +68,13 @@ rocketUnit2Complete.forEach(lesson => {
 });
 
 // Add Unit 3 (Orbital Mechanics) - Lessons 20-23
-rocketUnit3Complete.forEach(lesson => {
+rocketUnit3Complete.forEach((lesson, index) => {
   rocketsLessons[lesson.id] = {
     ...lesson,
+    emoji: '🪐',
     level: 'Intermediate',
+    unitNumber: 3,
+    lessonNumber: index + 1,
     content: {
       introduction: lesson.introduction,
       sections: lesson.sections,
@@ -74,10 +86,13 @@ rocketUnit3Complete.forEach(lesson => {
 });
 
 // Add Unit 4 (Structures & Materials) - Lessons 24-25
-rocketUnit4Complete.forEach(lesson => {
+rocketUnit4Complete.forEach((lesson, index) => {
   rocketsLessons[lesson.id] = {
     ...lesson,
+    emoji: '🏗️',
     level: 'Advanced',
+    unitNumber: 4,
+    lessonNumber: index + 1,
     content: {
       introduction: lesson.introduction,
       sections: lesson.sections,
@@ -89,10 +104,13 @@ rocketUnit4Complete.forEach(lesson => {
 });
 
 // Add Unit 5 (GNC) - Lessons 26-27
-rocketUnit5Complete.forEach(lesson => {
+rocketUnit5Complete.forEach((lesson, index) => {
   rocketsLessons[lesson.id] = {
     ...lesson,
+    emoji: '🧠',
     level: 'Advanced',
+    unitNumber: 5,
+    lessonNumber: index + 1,
     content: {
       introduction: lesson.introduction,
       sections: lesson.sections,
