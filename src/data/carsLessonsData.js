@@ -1,17 +1,11 @@
 // Complete Automotive Engineering Curriculum
 // MIT-Quality Content with Real Engineering
 
-import { unit0Foundations } from './cars/unit0-foundations.js';
-import { carsUnit1Lessons } from './cars/unit1-vehicle-dynamics.js';
-import { carsUnit1AdvancedLessons } from './cars/unit1-advanced.js';
+import { allAutomotiveLessons } from './cars/all-units.js';
 import { generateAllAutomotiveLessons } from './generateAutomotiveLessons.js';
 
-// Combine MIT-quality lessons with generated lessons
-const mitQualityLessons = [
-  ...Object.values(unit0Foundations),  // Lessons 0-5: Foundations
-  ...carsUnit1Lessons,                 // Lesson 6: Forces & Traction
-  ...carsUnit1AdvancedLessons          // Lesson 7: Acceleration
-];
+// MIT-quality lessons from complete units
+const mitQualityLessons = allAutomotiveLessons;
 
 // Generate remaining lessons for complete curriculum
 const generatedLessons = generateAllAutomotiveLessons();
