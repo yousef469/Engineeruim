@@ -299,7 +299,99 @@ export const unit1AdvancedLessons = [
       { term: "Gravity Loss", definition: "Delta-v wasted fighting gravity during vertical flight" },
       { term: "Max-Q", definition: "Maximum dynamic pressure point during ascent" },
       { term: "MECO", definition: "Main Engine Cut-Off; end of powered flight for a stage" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "10-1",
+        problem: "A rocket has mass 200,000 kg and thrust 2,800 kN. Calculate TWR and acceleration.",
+        solution: "Weight: W = mg = 200,000 × 9.81 = 1,962 kN\nTWR = T/W = 2,800/1,962 = 1.43\nNet force: F_net = T - W = 838 kN\nAcceleration: a = F_net/m = 838,000/200,000 = 4.19 m/s² = 0.43g",
+        hint: "TWR = T/(mg), then a = (T-W)/m"
+      },
+      {
+        id: "10-2",
+        problem: "If a rocket burns vertically for 180 seconds, how much Δv is lost to gravity?",
+        solution: "Δv_gravity = g × t = 9.81 × 180 = 1,766 m/s\nThis is why rockets pitch over quickly - every second vertical wastes ~10 m/s!",
+        hint: "Gravity loss = g × burn_time for vertical flight"
+      },
+      {
+        id: "10-3",
+        problem: "Rocket starts with TWR=1.35, mass=300,000 kg. After 120s, mass=100,000 kg. If thrust constant, find new TWR.",
+        solution: "Initial: T = TWR × mg = 1.35 × 300,000 × 9.81 = 3,973 kN\nFinal: TWR = T/(m×g) = 3,973/(100,000 × 9.81/1000) = 3,973/981 = 4.05\nTWR tripled as fuel burned!",
+        hint: "Find thrust from initial TWR, then calculate new TWR with reduced mass"
+      },
+      {
+        id: "10-4",
+        problem: "Why does Falcon 9 throttle to 60% before MECO?",
+        solution: "At burnout: m ≈ 25,600 kg, T_full = 7,605 kN\nFull thrust TWR = 7,605/(25,600 × 9.81/1000) = 30.3\nAcceleration = 287 m/s² = 29g - would destroy payload!\nAt 60% throttle: TWR = 18.2, a = 17g - still high but manageable for cargo.",
+        hint: "Calculate TWR at burnout with full thrust, then with 60% thrust"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q10-1",
+          question: "What is the minimum TWR required for liftoff?",
+          options: [
+            "TWR = 0.5",
+            "TWR = 1.0",
+            "TWR > 1.0 (thrust must exceed weight)",
+            "TWR = 2.0"
+          ],
+          correctAnswer: 2,
+          explanation: "TWR must exceed 1.0 for liftoff. If TWR = 1.0, thrust equals weight and the rocket hovers (unstable). Typical rockets have TWR = 1.2-1.5 for safe margin."
+        },
+        {
+          id: "q10-2",
+          question: "Why does TWR increase during flight?",
+          options: [
+            "Thrust increases",
+            "Mass decreases as fuel burns, while thrust stays constant",
+            "Gravity decreases",
+            "Air resistance decreases"
+          ],
+          correctAnswer: 1,
+          explanation: "TWR = T/(mg). As fuel burns, mass m decreases rapidly while thrust T stays roughly constant. Therefore TWR increases! This is why rockets accelerate faster as they climb."
+        },
+        {
+          id: "q10-3",
+          question: "What are gravity losses?",
+          options: [
+            "Fuel wasted due to gravity",
+            "Delta-v wasted fighting gravity during vertical flight (~1,500 m/s)",
+            "Weight of the rocket",
+            "Gravity pulling rocket down"
+          ],
+          correctAnswer: 1,
+          explanation: "Gravity losses are Δv wasted fighting gravity during ascent. For vertical flight: Δv_loss = g × t_burn. Typical ascent wastes ~1,500 m/s, which is why LEO needs 9,500 m/s instead of just 7,800 m/s!"
+        },
+        {
+          id: "q10-4",
+          question: "Why do rockets throttle down before burnout?",
+          options: [
+            "To save fuel",
+            "To limit acceleration as mass decreases (prevent excessive g-forces)",
+            "To reduce noise",
+            "For safety"
+          ],
+          correctAnswer: 1,
+          explanation: "As fuel burns, TWR increases dramatically. Without throttling, acceleration could reach 20-30g, destroying the payload! Rockets throttle down to limit acceleration to safe levels (3-8g)."
+        },
+        {
+          id: "q10-5",
+          question: "What is the optimal TWR for first stage liftoff?",
+          options: [
+            "As high as possible",
+            "TWR = 1.2-1.5 (balances gravity losses vs structural mass)",
+            "TWR = 1.0",
+            "TWR = 3.0"
+          ],
+          correctAnswer: 1,
+          explanation: "TWR = 1.2-1.5 is optimal. Higher TWR reduces gravity losses but requires heavier structure. Lower TWR increases gravity losses. This range balances efficiency vs practicality."
+        }
+      ]
+    }
   },
 
   {
@@ -338,7 +430,99 @@ export const unit1AdvancedLessons = [
       { term: "Staged Combustion", definition: "All propellant goes through turbopump; pre-burner exhaust enters main chamber" },
       { term: "Full-Flow Staged Combustion", definition: "Both fuel and oxidizer have separate pre-burners; highest efficiency" },
       { term: "Hypergolic Propellant", definition: "Propellants that ignite on contact; no igniter needed" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "11-1",
+        problem: "Compare solid vs liquid for a booster: Solid (Isp=270s, density=1,800 kg/m³) vs Liquid RP-1/LOX (Isp=310s, density=1,000 kg/m³). For 100,000 kg propellant, find volume and Δv (assume R=5).",
+        solution: "Solid: Volume = 100,000/1,800 = 55.6 m³, Δv = 270×9.81×ln(5) = 4,263 m/s\nLiquid: Volume = 100,000/1,000 = 100 m³, Δv = 310×9.81×ln(5) = 4,896 m/s\nLiquid gives 15% more Δv but needs 80% larger tanks!",
+        hint: "Volume = mass/density, Δv = Isp×g₀×ln(R)"
+      },
+      {
+        id: "11-2",
+        problem: "Why did Space Shuttle use solid boosters instead of liquid?",
+        solution: "Advantages: Simple (no pumps/valves), reliable, high thrust density (compact), low cost, reusable\nDisadvantages: Can't throttle (but not needed for boosters), lower Isp (but acceptable for first 2 minutes)\nDecision: Simplicity and cost outweighed Isp penalty for booster application.",
+        hint: "Consider mission requirements: boosters need high thrust, short burn time"
+      },
+      {
+        id: "11-3",
+        problem: "Why does Starship use methane instead of RP-1 or hydrogen?",
+        solution: "vs RP-1: Methane has higher Isp (370s vs 340s), cleaner burning (no coking), better for reusability\nvs LH₂: Methane has better density (423 vs 71 kg/m³), easier to store (-162°C vs -253°C), can be produced on Mars (ISRU)\nResult: Methane is the 'goldilocks' propellant - good Isp, reasonable density, Mars-compatible!",
+        hint: "Compare Isp, density, temperature, and Mars ISRU potential"
+      },
+      {
+        id: "11-4",
+        problem: "Gas generator (95% efficient) vs staged combustion (99% efficient). For 1,000 kN thrust, how much more propellant does gas generator waste?",
+        solution: "Staged combustion: 100% propellant → chamber\nGas generator: ~5% propellant → turbine exhaust (wasted)\nFor 1,000 kN thrust at ṁ=300 kg/s:\nGas gen wastes: 300 × 0.05 = 15 kg/s\nOver 150s burn: 2,250 kg wasted\nBut gas generator is simpler and cheaper!",
+        hint: "Calculate wasted propellant from efficiency difference"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q11-1",
+          question: "What is the main advantage of solid rocket motors?",
+          options: [
+            "High Isp",
+            "Extreme simplicity and reliability (no pumps, valves, or moving parts)",
+            "Can throttle",
+            "Restartable"
+          ],
+          correctAnswer: 1,
+          explanation: "Solid rockets are incredibly simple - just a case filled with propellant. No pumps, valves, or plumbing. This makes them very reliable and low-cost, perfect for boosters and military applications!"
+        },
+        {
+          id: "q11-2",
+          question: "What is the main disadvantage of solid rockets?",
+          options: [
+            "Low thrust",
+            "Expensive",
+            "Cannot throttle or restart once ignited",
+            "Low reliability"
+          ],
+          correctAnswer: 2,
+          explanation: "Once a solid rocket ignites, it burns until fuel is exhausted. You cannot throttle, stop, or restart it. This limits applications where control is needed."
+        },
+        {
+          id: "q11-3",
+          question: "Why does hydrogen give the highest Isp?",
+          options: [
+            "Burns hotter",
+            "Lightest exhaust molecules (H₂O) accelerate faster at same temperature",
+            "More energy",
+            "Better combustion"
+          ],
+          correctAnswer: 1,
+          explanation: "v_e ∝ √(T/M). Hydrogen produces the lightest exhaust molecules (H₂O, M=18 g/mol). Lighter molecules accelerate faster at the same temperature, giving higher exhaust velocity and Isp!"
+        },
+        {
+          id: "q11-4",
+          question: "What is full-flow staged combustion?",
+          options: [
+            "A type of solid rocket",
+            "Both fuel and oxidizer have separate pre-burners; highest efficiency cycle",
+            "A cooling method",
+            "A nozzle design"
+          ],
+          correctAnswer: 1,
+          explanation: "FFSC has separate pre-burners for fuel and oxidizer. All propellant goes through turbopumps before entering main chamber. This gives 99.5% efficiency but is very complex. Only Raptor uses it operationally!"
+        },
+        {
+          id: "q11-5",
+          question: "Why do first stages typically use RP-1 or methane instead of hydrogen?",
+          options: [
+            "Cheaper",
+            "Higher density means smaller tanks, less drag, and better thrust-to-weight",
+            "Higher Isp",
+            "Easier to ignite"
+          ],
+          correctAnswer: 1,
+          explanation: "First stages need high thrust and compact size. RP-1 (820 kg/m³) and methane (423 kg/m³) are much denser than hydrogen (71 kg/m³). Smaller tanks = less drag = better for atmospheric flight!"
+        }
+      ]
+    }
   }
 ];
 
