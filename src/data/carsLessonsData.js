@@ -38,21 +38,54 @@ function getUnitName(lessonId) {
 const allLessons = {};
 
 // Add MIT-quality lessons first (they override generated ones)
-mitQualityLessons.forEach(lesson => {
-  allLessons[lesson.id] = {
-    ...lesson,
-    level: lesson.id < 6 ? 'Beginner' : 'Intermediate',
-    unit: lesson.unit || getUnitName(lesson.id),
-    content: {
-      introduction: lesson.introduction,
-      sections: lesson.sections,
-      keyTakeaways: lesson.keyTakeaways,
-      vocabulary: lesson.vocabulary
-    },
-    quiz: {
-      questions: []
-    }
-  };
+mitQualityLessons.forEach((lesson, index) => {
+  const lessonId = lesson.id || index;
+  
+  // Handle Unit 0 lessons (different structure)
+  if (typeof lessonId === 'string' || lessonId < 6) {
+    allLessons[index] = {
+      id: index,
+      title: lesson.title,
+      unit: 'Foundations: Math & Physics Bridge',
+      duration: lesson.metadata?.estTime || '30 min',
+      level: 'Beginner',
+      introduction: lesson.description,
+      content: {
+        introduction: lesson.description,
+        sections: [
+          {
+            title: lesson.subtitle || 'Core Concepts',
+            content: `${lesson.coreIdea}\n\n**Learning Objectives:**\n${lesson.learningObjectives?.map(obj => `• ${obj}`).join('\n') || ''}`
+          },
+          {
+            title: 'Key Equations',
+            content: lesson.keyEquations?.map(eq => `**${eq.meaning}:**\n${eq.eq}`).join('\n\n') || 'No equations'
+          },
+          {
+            title: 'Practice Problems',
+            content: lesson.practiceProblems?.map(prob => `**Problem ${prob.id}:**\n${prob.prompt}\n\n**Solution:** ${prob.solution}`).join('\n\n') || 'No problems'
+          }
+        ],
+        keyTakeaways: lesson.learningObjectives || [],
+        vocabulary: []
+      },
+      quiz: { questions: [] }
+    };
+  } else {
+    // Handle regular lessons (Units 1+)
+    allLessons[lessonId] = {
+      ...lesson,
+      level: lessonId < 6 ? 'Beginner' : 'Intermediate',
+      unit: lesson.unit || getUnitName(lessonId),
+      content: {
+        introduction: lesson.introduction,
+        sections: lesson.sections,
+        keyTakeaways: lesson.keyTakeaways,
+        vocabulary: lesson.vocabulary
+      },
+      quiz: { questions: [] }
+    };
+  }
 });
 
 // Add generated lessons for IDs not covered by MIT-quality content
