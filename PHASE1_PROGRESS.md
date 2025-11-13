@@ -29,13 +29,26 @@
 ### ⏳ Unit 5: GNC (2 lessons) - PENDING
 - Lessons 26-27: Need to add
 
-## Status: 6/28 lessons complete (21%)
+## Status: 12/28 lessons complete (43%)
+
+**COMPLETED:**
+- ✅ Unit 0: All 6 lessons (0-5) - COMPLETE
+- ✅ Unit 1: All 6 lessons (6-11) - COMPLETE
+
+**IN PROGRESS:**
+- 🔄 Unit 2: 0/8 lessons (12-19) - Starting now
+
+**REMAINING:**
+- ⏳ Unit 3: 4 lessons (20-23)
+- ⏳ Unit 4: 2 lessons (24-25)
+- ⏳ Unit 5: 2 lessons (26-27)
 
 ## Next Steps:
-1. Complete Unit 1 (Lessons 6-11)
-2. Complete Unit 2 (Lessons 12-19)
-3. Complete Unit 3 (Lessons 20-23)
-4. Complete Unit 4 (Lessons 24-25)
-5. Complete Unit 5 (Lessons 26-27)
+1. ✅ Complete Unit 0 (Lessons 0-5)
+2. ✅ Complete Unit 1 (Lessons 6-11)
+3. 🔄 Complete Unit 2 (Lessons 12-19) - IN PROGRESS
+4. Complete Unit 3 (Lessons 20-23)
+5. Complete Unit 4 (Lessons 24-25)
+6. Complete Unit 5 (Lessons 26-27)
 
-## Estimated Time Remaining: 3-4 hours
+## Estimated Time Remaining: 2-3 hours for remaining 16 lessons
