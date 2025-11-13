@@ -58,12 +58,12 @@ export default function LearnSectionsPage() {
                     <div className="flex items-start gap-4">
                         <AlertCircle className="w-8 h-8 text-blue-400 flex-shrink-0 mt-1" />
                         <div>
-                            <h2 className="text-2xl font-bold text-white mb-3">Prerequisites Required</h2>
+                            <h2 className="text-2xl font-bold text-white mb-3">Build Your Foundation</h2>
                             <p className="text-blue-200 text-lg mb-4">
-                                Before diving into engineering journeys (Rockets, Planes, Cars, Robotics), you need to build a strong foundation in Mathematics and Physics.
+                                Start with Mathematics and Physics to build a strong foundation, or jump directly into engineering journeys (Rockets, Planes, Cars, Electronics).
                             </p>
                             <p className="text-blue-300 mt-4 text-sm italic">
-                                💡 Start with "Mathematics and Physics for Engineering" below to unlock the engineering journeys!
+                                💡 All sections are now unlocked! Choose your path and start learning.
                             </p>
                         </div>
                     </div>
@@ -106,32 +106,36 @@ export default function LearnSectionsPage() {
                 </div>
             </div>
 
-            {/* Locked Sections */}
+            {/* Engineering Sections */}
             <div className="max-w-6xl mx-auto px-4 pb-16">
-                <h2 className="text-3xl font-bold mb-8 text-center text-gray-400">Coming Soon (Complete Prerequisites First)</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 opacity-50">
+                <h2 className="text-3xl font-bold mb-8 text-center">Engineering Journeys</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {[
-                        { title: 'Rockets', icon: '🚀', color: 'from-orange-500 to-red-600' },
-                        { title: 'Planes', icon: '✈️', color: 'from-blue-500 to-indigo-600' },
-                        { title: 'Cars', icon: '🚗', color: 'from-purple-500 to-pink-600' },
-                        { title: 'Robotics', icon: '🤖', color: 'from-teal-500 to-cyan-600' }
+                        { title: 'Rockets', icon: '🚀', color: 'from-orange-500 to-red-600', path: '/games/rockets', description: '80 lessons on rocket engineering' },
+                        { title: 'Planes', icon: '✈️', color: 'from-blue-500 to-indigo-600', path: '/games/planes', description: '89 lessons on aircraft design' },
+                        { title: 'Cars', icon: '🚗', color: 'from-purple-500 to-pink-600', path: '/games/cars', description: '86 lessons on automotive engineering' },
+                        { title: 'Electronics', icon: '⚡', color: 'from-teal-500 to-cyan-600', path: '/learn/electronics', description: 'Circuit design & embedded systems' }
                     ].map((item) => (
-                        <div
+                        <button
                             key={item.title}
-                            className={`relative bg-gradient-to-br ${item.color} rounded-3xl p-10 border-2 border-gray-600`}
+                            onClick={() => navigate(item.path)}
+                            className={`group relative bg-gradient-to-br ${item.color} rounded-3xl p-10 border-2 border-white/20 hover:border-white/40 transition-all cursor-pointer hover:scale-105 hover:shadow-2xl`}
                         >
-                            <div className="absolute inset-0 bg-black/50 rounded-3xl flex items-center justify-center">
-                                <Lock className="w-16 h-16 text-white" />
-                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity" />
 
-                            <div className="relative z-10 blur-sm">
-                                <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-6 mx-auto">
+                            <div className="relative z-10">
+                                <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform">
                                     <span className="text-5xl">{item.icon}</span>
                                 </div>
                                 <h3 className="text-3xl font-bold mb-4 text-white text-center">{item.title}</h3>
-                                <p className="text-white/90 text-center">Locked until prerequisites complete</p>
+                                <p className="text-white/90 text-center text-sm">{item.description}</p>
+                                
+                                <div className="flex items-center justify-center gap-2 text-white font-semibold mt-4">
+                                    <span>Start Journey</span>
+                                    <ArrowLeft className="w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+                                </div>
                             </div>
-                        </div>
+                        </button>
                     ))}
                 </div>
             </div>
