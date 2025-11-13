@@ -39,7 +39,99 @@ export const unit1Lessons = [
       { term: "Exhaust Velocity (v_e)", definition: "Speed at which gases exit the nozzle; typically 2,000-4,500 m/s for chemical rockets" },
       { term: "Thrust-to-Weight Ratio (TWR)", definition: "Ratio of thrust force to weight; must exceed 1.0 for vertical liftoff from Earth" },
       { term: "Specific Impulse (Isp)", definition: "Efficiency metric for rocket engines; Isp = v_e / g₀; measured in seconds" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "6-1",
+        problem: "An engine has mass flow rate ṁ = 400 kg/s and exhaust velocity v_e = 2,800 m/s. Calculate thrust.",
+        solution: "T = ṁ × v_e = 400 × 2,800 = 1,120,000 N = 1,120 kN = 1.12 MN",
+        hint: "Use T = ṁ × v_e"
+      },
+      {
+        id: "6-2",
+        problem: "Saturn V had 5 F-1 engines, each producing 6,651 kN. Total mass at liftoff was 2,970,000 kg. Calculate TWR.",
+        solution: "Total thrust: T = 5 × 6,651 = 33,255 kN\nWeight: W = mg = 2,970,000 × 9.81 = 29,136 kN\nTWR = T/W = 33,255/29,136 = 1.14\nBarely enough to lift off! Saturn V had minimal margin.",
+        hint: "TWR = T/(mg). Calculate total thrust and weight first."
+      },
+      {
+        id: "6-3",
+        problem: "Compare two engines with same thrust (1,000 kN): Engine A: ṁ=500 kg/s, Engine B: ṁ=250 kg/s. Find v_e for each.",
+        solution: "Engine A: v_e = T/ṁ = 1,000,000/500 = 2,000 m/s\nEngine B: v_e = T/ṁ = 1,000,000/250 = 4,000 m/s\nEngine B is 2× more efficient! Same thrust with half the fuel consumption.",
+        hint: "Rearrange T = ṁ × v_e to get v_e = T/ṁ"
+      },
+      {
+        id: "6-4",
+        problem: "A rocket starts with TWR=1.3 and mass 200,000 kg. After 100 seconds, mass is 80,000 kg. If thrust stays constant, what is new TWR?",
+        solution: "Initial: TWR₁ = 1.3, so T = 1.3 × mg = 1.3 × 200,000 × 9.81 = 2,551 kN\nFinal: TWR₂ = T/(m₂g) = 2,551/(80,000 × 9.81/1000) = 2,551/785 = 3.25\nTWR increased by 2.5× as fuel burned!",
+        hint: "Find thrust from initial TWR, then calculate new TWR with reduced mass"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q6-1",
+          question: "What is the thrust equation for rockets?",
+          options: [
+            "T = m × a",
+            "T = ṁ × v_e (mass flow rate × exhaust velocity)",
+            "T = F/m",
+            "T = v × t"
+          ],
+          correctAnswer: 1,
+          explanation: "T = ṁ × v_e is the fundamental thrust equation. Thrust depends on how much mass you expel (ṁ) and how fast you expel it (v_e)!"
+        },
+        {
+          id: "q6-2",
+          question: "Why do rockets work in the vacuum of space?",
+          options: [
+            "They push against space itself",
+            "They use momentum conservation - expelling mass backward creates forward thrust",
+            "They need air to push against",
+            "They use magnetic fields"
+          ],
+          correctAnswer: 1,
+          explanation: "Rockets work by Newton's Third Law and momentum conservation. Expelling exhaust backward creates equal and opposite forward thrust. No air needed!"
+        },
+        {
+          id: "q6-3",
+          question: "What happens to TWR as a rocket burns fuel?",
+          options: [
+            "TWR decreases",
+            "TWR stays constant",
+            "TWR increases (mass decreases, thrust stays constant)",
+            "TWR becomes zero"
+          ],
+          correctAnswer: 2,
+          explanation: "TWR = T/(mg). As fuel burns, mass m decreases while thrust T stays roughly constant. Therefore TWR increases! Falcon 9 goes from TWR=1.41 to TWR=14 during first stage burn."
+        },
+        {
+          id: "q6-4",
+          question: "Which engine is more efficient: High ṁ/low v_e or Low ṁ/high v_e?",
+          options: [
+            "High ṁ/low v_e (like solid boosters)",
+            "Low ṁ/high v_e (like hydrogen engines) - uses less fuel for same thrust",
+            "Both equally efficient",
+            "Depends on altitude"
+          ],
+          correctAnswer: 1,
+          explanation: "Low ṁ/high v_e is more efficient! For same thrust T=ṁ×v_e, higher v_e means lower ṁ (less fuel consumption). This is why hydrogen engines (high v_e) are preferred for upper stages."
+        },
+        {
+          id: "q6-5",
+          question: "Why must TWR exceed 1.0 for liftoff?",
+          options: [
+            "For safety margins",
+            "Thrust must exceed weight to have net upward force",
+            "To reach orbital velocity",
+            "To overcome air resistance"
+          ],
+          correctAnswer: 1,
+          explanation: "If TWR < 1.0, thrust is less than weight and the rocket can't lift off. TWR = 1.0 means hovering (unstable). TWR > 1.0 creates net upward force for liftoff!"
+        }
+      ]
+    }
   },
 
   {
@@ -79,7 +171,99 @@ export const unit1Lessons = [
       { term: "Wet Mass (m₀)", definition: "Total mass at start including all propellant" },
       { term: "Dry Mass (m_f)", definition: "Mass after propellant consumed: structure + payload + residuals" },
       { term: "Specific Impulse (Isp)", definition: "Isp = v_e/g₀; efficiency metric in seconds" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "7-1",
+        problem: "A rocket has m₀=50,000 kg, m_f=5,000 kg, v_e=3,200 m/s. Calculate Δv.",
+        solution: "R = m₀/m_f = 50,000/5,000 = 10\nΔv = v_e × ln(R) = 3,200 × ln(10) = 3,200 × 2.303 = 7,370 m/s",
+        hint: "Use Δv = v_e × ln(m₀/m_f). Calculate R first, then ln(R)."
+      },
+      {
+        id: "7-2",
+        problem: "A mission needs 8,000 m/s Δv. Engine has v_e=4,000 m/s. For 10,000 kg payload, find total launch mass.",
+        solution: "R = e^(Δv/v_e) = e^(8,000/4,000) = e² = 7.39\nm₀ = m_f × R = 10,000 × 7.39 = 73,900 kg\nFuel needed = 73,900 - 10,000 = 63,900 kg (86.5% fuel!)",
+        hint: "Find R from Δv and v_e, then m₀ = m_f × R"
+      },
+      {
+        id: "7-3",
+        problem: "Compare single-stage R=12 vs two-stage with R₁=3.5 and R₂=3.5. Which gives more Δv? (v_e=3,500 m/s)",
+        solution: "Single: Δv = 3,500 × ln(12) = 3,500 × 2.485 = 8,698 m/s\nTwo-stage: R_total = 3.5 × 3.5 = 12.25\nΔv = 3,500 × ln(12.25) = 3,500 × 2.505 = 8,768 m/s\nTwo-stage gives 70 m/s more! Plus R=3.5 per stage is much more buildable than R=12 single stage.",
+        hint: "For staging, multiply mass ratios: R_total = R₁ × R₂"
+      },
+      {
+        id: "7-4",
+        problem: "Why is SSTO so hard? Calculate required R for LEO (Δv=9,500 m/s) with best engine (v_e=4,400 m/s).",
+        solution: "R = e^(Δv/v_e) = e^(9,500/4,400) = e^2.16 = 8.67\nFuel fraction = (R-1)/R = 7.67/8.67 = 88.5%\nStructure typically needs 10-15% of total mass.\n88.5% fuel + 10% structure = 98.5% - only 1.5% for payload!\nThis is why SSTO is nearly impossible.",
+        hint: "Calculate R, then fuel fraction. Compare to typical structural requirements."
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q7-1",
+          question: "What is the Tsiolkovsky Rocket Equation?",
+          options: [
+            "T = ṁ × v_e",
+            "Δv = v_e × ln(m₀/m_f) - relates velocity change to mass ratio",
+            "F = ma",
+            "v = √(GM/r)"
+          ],
+          correctAnswer: 1,
+          explanation: "Δv = v_e × ln(m₀/m_f) is THE fundamental equation of spaceflight. It shows that velocity change depends logarithmically on mass ratio - creating exponential fuel requirements!"
+        },
+        {
+          id: "q7-2",
+          question: "Why does the rocket equation have a logarithm?",
+          options: [
+            "It's just a mathematical trick",
+            "Because integrating 1/m gives ln(m) - mass decreases as fuel burns",
+            "To make calculations easier",
+            "It doesn't - that's a simplification"
+          ],
+          correctAnswer: 1,
+          explanation: "The ln comes from integrating dm/m during the derivation. As the rocket burns fuel, mass decreases continuously, and integrating 1/m gives the natural logarithm!"
+        },
+        {
+          id: "q7-3",
+          question: "What happens to fuel requirements if you double the Δv?",
+          options: [
+            "Fuel doubles",
+            "Fuel quadruples (R² relationship)",
+            "Fuel triples",
+            "Depends on the engine"
+          ],
+          correctAnswer: 1,
+          explanation: "Doubling Δv means R_new = R_old². If R was 5, it becomes 25! This exponential relationship is why orbital missions need so much fuel."
+        },
+        {
+          id: "q7-4",
+          question: "Why is single-stage-to-orbit (SSTO) so difficult?",
+          options: [
+            "Engines aren't powerful enough",
+            "Requires R≈15, meaning 93% fuel - leaves almost nothing for structure and payload",
+            "Too expensive",
+            "Regulations prevent it"
+          ],
+          correctAnswer: 1,
+          explanation: "LEO needs Δv≈9,500 m/s. With v_e≈3,500 m/s, you need R≈15 (93% fuel). Typical structure is 10-15%, leaving <2% for payload. This is why staging is necessary!"
+        },
+        {
+          id: "q7-5",
+          question: "How does staging help overcome the rocket equation?",
+          options: [
+            "It increases exhaust velocity",
+            "It drops dead weight (empty tanks), so R_total = R₁ × R₂ × R₃...",
+            "It reduces gravity losses",
+            "It makes rockets more aerodynamic"
+          ],
+          correctAnswer: 1,
+          explanation: "Staging drops empty tanks and engines that are dead weight. Total mass ratio multiplies: R_total = R₁ × R₂. Two stages with R=4 each give R_total=16, much more achievable than single-stage R=16!"
+        }
+      ]
+    }
   }
 ];
 
