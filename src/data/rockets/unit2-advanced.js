@@ -43,7 +43,99 @@ export const unit2AdvancedLessons = [
       { term: "Control Authority", definition: "Ability to generate torque for vehicle control" },
       { term: "Throttling", definition: "Varying engine thrust level" },
       { term: "Engine-Out Capability", definition: "Ability to complete mission with one or more engines failed" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "16-1",
+        problem: "An engine gimbals 12° with thrust 1,200 kN. Calculate lateral and axial thrust components.",
+        solution: "θ = 12° = 0.209 rad\nT_lateral = T × sin(θ) = 1,200 × sin(12°) = 1,200 × 0.208 = 250 kN\nT_axial = T × cos(θ) = 1,200 × cos(12°) = 1,200 × 0.978 = 1,174 kN\nLateral thrust provides steering, axial provides forward acceleration.",
+        hint: "Use T_lateral = T×sin(θ) and T_axial = T×cos(θ)"
+      },
+      {
+        id: "16-2",
+        problem: "Falcon 9 has 4 outer engines at L=4m from centerline, each producing 845 kN thrust. If all gimbal 10°, calculate total torque.",
+        solution: "Per engine: T_lateral = 845 × sin(10°) = 147 kN\nTorque per engine: τ = 147 × 4 = 588 kN·m\nTotal (4 engines): τ_total = 4 × 588 = 2,352 kN·m\nEnormous control authority!",
+        hint: "Calculate lateral thrust, then torque = force × distance, then multiply by 4 engines"
+      },
+      {
+        id: "16-3",
+        problem: "Why can't Falcon 9 hover during landing?",
+        solution: "Minimum thrust: 1 engine at 40% = 845 × 0.40 = 338 kN\nStage weight at landing: ~25,000 kg × 9.81 = 245 kN\nTWR = 338/245 = 1.38 > 1.0\nMinimum thrust exceeds weight, so it can't hover! Must use 'suicide burn' - time perfectly to reach zero velocity at touchdown.",
+        hint: "Compare minimum thrust to stage weight"
+      },
+      {
+        id: "16-4",
+        problem: "An engine throttles from 100% to 60% in 1.5 seconds. If thrust is 2,000 kN at 100%, what is the average thrust change rate?",
+        solution: "Thrust change: 2,000 × (1.00 - 0.60) = 800 kN\nTime: 1.5 seconds\nRate: 800/1.5 = 533 kN/s\nThis rapid response enables precise control during landing and ascent.",
+        hint: "Calculate thrust change, then divide by time"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q16-1",
+          question: "What is thrust vectoring?",
+          options: [
+            "Increasing thrust",
+            "Changing thrust direction by gimbaling engines to control vehicle attitude",
+            "Throttling engines",
+            "Shutting down engines"
+          ],
+          correctAnswer: 1,
+          explanation: "Thrust vectoring changes the direction of thrust by pivoting (gimbaling) the engine. This creates lateral force for steering and attitude control!"
+        },
+        {
+          id: "q16-2",
+          question: "What is the typical gimbal range for rocket engines?",
+          options: [
+            "±1-3°",
+            "±5-15° (provides sufficient control authority)",
+            "±20-30°",
+            "±45°"
+          ],
+          correctAnswer: 1,
+          explanation: "Most rocket engines gimbal ±5-15°. This provides sufficient lateral thrust for control while maintaining most thrust in the axial direction. Larger angles would waste too much thrust!"
+        },
+        {
+          id: "q16-3",
+          question: "Why is throttling capability important for landing?",
+          options: [
+            "To save fuel",
+            "To control descent rate and achieve precise touchdown velocity",
+            "To reduce noise",
+            "For safety only"
+          ],
+          correctAnswer: 1,
+          explanation: "Throttling allows precise control of descent rate during landing. Without it, you can't adjust for variations in mass, wind, or trajectory. Essential for SpaceX-style propulsive landing!"
+        },
+        {
+          id: "q16-4",
+          question: "What is engine-out capability?",
+          options: [
+            "Ability to shut down engines",
+            "Ability to complete mission even if one or more engines fail",
+            "Ability to restart engines",
+            "Ability to throttle"
+          ],
+          correctAnswer: 1,
+          explanation: "Engine-out capability means the rocket can still complete its mission if one or more engines fail. Falcon 9 can reach orbit with 1 engine out. This requires multiple engines and excess performance!"
+        },
+        {
+          id: "q16-5",
+          question: "Why do modern engines use electromechanical actuators instead of hydraulic?",
+          options: [
+            "Cheaper",
+            "Simpler, lighter, and more reliable (no hydraulic fluid)",
+            "Faster",
+            "More powerful"
+          ],
+          correctAnswer: 1,
+          explanation: "Electromechanical actuators (electric motors + gears) are simpler, lighter, and more reliable than hydraulic systems. No hydraulic fluid, pumps, or lines needed. Merlin 1D uses this approach!"
+        }
+      ]
+    }
   },
 
   {
@@ -87,7 +179,99 @@ export const unit2AdvancedLessons = [
       { term: "Full-Flow Staged Combustion", definition: "Both propellants have separate pre-burners; highest efficiency" },
       { term: "Pre-burner", definition: "Small combustion chamber that generates gas to drive turbine" },
       { term: "Expander Cycle", definition: "Fuel heated in cooling jacket drives turbine; gentle, reliable" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "17-1",
+        problem: "Gas generator uses 3% propellant for turbine. For ṁ=300 kg/s total, how much is wasted vs staged combustion?",
+        solution: "Gas generator waste: 300 × 0.03 = 9 kg/s\nStaged combustion waste: 0 kg/s (all goes through main chamber)\nOver 150s burn: 9 × 150 = 1,350 kg wasted\nBut gas generator is simpler and cheaper!",
+        hint: "Calculate 3% of total flow rate, then multiply by burn time"
+      },
+      {
+        id: "17-2",
+        problem: "Compare efficiency: Gas generator (96%) vs Staged combustion (99%) vs FFSC (99.5%). For 10,000 m/s Δv mission with 5,000 kg payload, calculate fuel needs (v_e=3,500 m/s base).",
+        solution: "Gas gen: v_e = 3,500×0.96 = 3,360 m/s, R = e^(10,000/3,360) = 17.8, Fuel = 84,000 kg\nStaged: v_e = 3,500×0.99 = 3,465 m/s, R = e^(10,000/3,465) = 15.6, Fuel = 73,000 kg\nFFSC: v_e = 3,500×0.995 = 3,483 m/s, R = e^(10,000/3,483) = 15.2, Fuel = 71,000 kg\nFFSC saves 13,000 kg vs gas generator!",
+        hint: "Apply efficiency to v_e, then use rocket equation"
+      },
+      {
+        id: "17-3",
+        problem: "Why did SpaceX choose gas generator for Merlin but FFSC for Raptor?",
+        solution: "Merlin (2002-2009 development):\n- Needed: Simple, cheap, reliable, reusable\n- Gas generator: Proven, easy to develop, good enough\n- Trade-off: 3% efficiency loss acceptable\n\nRaptor (2012-2019 development):\n- Needed: Maximum performance for Mars mission\n- FFSC: Highest efficiency, better for reusability\n- Trade-off: Complex but worth it for long-term goals\n- Modern tech made FFSC achievable",
+        hint: "Consider mission requirements and development era"
+      },
+      {
+        id: "17-4",
+        problem: "RS-25 uses oxidizer-rich staged combustion at P_c=20.6 MPa. Why not use simpler gas generator?",
+        solution: "RS-25 requirements:\n- Need: Maximum Isp for Space Shuttle (LH₂/LOX)\n- Target: 450+ seconds Isp\n- High P_c needed: 20+ MPa for best performance\n\nGas generator limitations:\n- Typically limited to P_c < 15 MPa\n- Lower efficiency (96% vs 99%)\n- Would give Isp ~420s instead of 452s\n\nResult: 7% Isp improvement worth the complexity for Shuttle's reusable design.",
+        hint: "Consider Isp requirements and chamber pressure capabilities"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q17-1",
+          question: "What is the main difference between gas generator and staged combustion?",
+          options: [
+            "Fuel type",
+            "Gas generator dumps turbine exhaust; staged combustion sends it to main chamber",
+            "Thrust level",
+            "Cost"
+          ],
+          correctAnswer: 1,
+          explanation: "Gas generator burns ~3% propellant to drive turbine, then dumps exhaust overboard (wasted). Staged combustion sends ALL propellant through main chamber - nothing wasted! This gives 99% vs 96% efficiency."
+        },
+        {
+          id: "q17-2",
+          question: "Why is full-flow staged combustion so difficult?",
+          options: [
+            "Requires exotic fuel",
+            "Needs two separate pre-burners and complex synchronization",
+            "Too expensive",
+            "Not enough thrust"
+          ],
+          correctAnswer: 1,
+          explanation: "FFSC requires TWO pre-burners (fuel-rich and oxidizer-rich), dual turbopump systems, and precise synchronization. This is incredibly complex! Only Raptor has achieved operational FFSC (2019)."
+        },
+        {
+          id: "q17-3",
+          question: "What is the efficiency advantage of staged combustion over gas generator?",
+          options: [
+            "1-2% better",
+            "3-4% better (99% vs 96%)",
+            "10% better",
+            "No difference"
+          ],
+          correctAnswer: 1,
+          explanation: "Staged combustion achieves 98-99% efficiency vs 95-97% for gas generator. This 3-4% improvement reduces fuel needs significantly but adds major complexity!"
+        },
+        {
+          id: "q17-4",
+          question: "Why is Raptor the first operational full-flow staged combustion engine?",
+          options: [
+            "SpaceX invented it",
+            "Modern materials, manufacturing (3D printing), and computational design made it achievable",
+            "It's cheaper",
+            "Better fuel"
+          ],
+          correctAnswer: 1,
+          explanation: "FFSC was conceived in the 1960s but too difficult. Raptor succeeded due to: modern materials, 3D printing, computational fluid dynamics, rapid iteration, and vertical integration. Technology finally caught up to the concept!"
+        },
+        {
+          id: "q17-5",
+          question: "When would you choose gas generator over staged combustion?",
+          options: [
+            "Never - staged combustion is always better",
+            "When simplicity, cost, and reliability are more important than maximum efficiency",
+            "For upper stages only",
+            "For small engines only"
+          ],
+          correctAnswer: 1,
+          explanation: "Gas generator is simpler, cheaper, more reliable, and easier to develop. For missions where 3% efficiency loss is acceptable (like Falcon 9), it's the better choice! Not everything needs maximum performance."
+        }
+      ]
+    }
   },
 
   {
