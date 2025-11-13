@@ -43,7 +43,99 @@ export const unit3AdvancedLessons = [
       { term: "Synodic Period", definition: "Time between favorable planetary alignments" },
       { term: "Gravity Assist", definition: "Using planet's gravity to change spacecraft velocity" },
       { term: "Porkchop Plot", definition: "Graph showing delta-v vs launch/arrival dates" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "22-1",
+        problem: "Calculate the synodic period for Earth-Mars missions. Earth year = 365 days, Mars year = 687 days.",
+        solution: "T_syn = 1 / |1/T_E - 1/T_M| = 1 / |1/365 - 1/687|\nT_syn = 1 / |0.00274 - 0.00146| = 1 / 0.00128 = 780 days = 26 months\nMars launch windows occur every 26 months!",
+        hint: "Use synodic period formula: T_syn = 1 / |1/T_1 - 1/T_2|"
+      },
+      {
+        id: "22-2",
+        problem: "ISS has two daily launch windows from Cape Canaveral. If the first window is at 3:00 PM, when is the second?",
+        solution: "ISS orbital period: 92.9 minutes\nEarth rotation: 360° in 24 hours = 15°/hour\nISS orbital plane shift: 22.5° per orbit\nSecond window: 12 hours later = 3:00 AM next day\nLaunch site passes through orbital plane twice per day, 12 hours apart.",
+        hint: "Orbital plane passes over launch site twice per day"
+      },
+      {
+        id: "22-3",
+        problem: "Calculate maximum Δv gain from a Jupiter gravity assist. Jupiter orbital velocity = 13,000 m/s.",
+        solution: "Δv_max = 2 × v_planet = 2 × 13,000 = 26,000 m/s\nHuge boost! This is why Voyager, Cassini, and New Horizons used Jupiter assists.\nWithout this, outer solar system missions would be impossible with chemical rockets.",
+        hint: "Maximum Δv from gravity assist = 2 × planet's orbital velocity"
+      },
+      {
+        id: "22-4",
+        problem: "Why did Voyager 2 take 12 years to reach Neptune when New Horizons reached Pluto in 9.5 years?",
+        solution: "Voyager 2 (1977-1989):\n- Grand Tour: Jupiter → Saturn → Uranus → Neptune\n- Multiple gravity assists\n- Slower but visited 4 planets\n- Final velocity: 17 km/s\n\nNew Horizons (2006-2015):\n- Direct to Pluto\n- Single Jupiter assist\n- Fastest launch: 16.26 km/s\n- Optimized trajectory\n\nTrade-off: Voyager saw more planets but took longer!",
+        hint: "Compare mission profiles: multiple assists vs direct trajectory"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q22-1",
+          question: "What is a launch window?",
+          options: [
+            "A window on the rocket",
+            "Time period when launch can occur to reach target orbit",
+            "Weather conditions",
+            "Launch pad opening"
+          ],
+          correctAnswer: 1,
+          explanation: "Launch window is the time period when orbital mechanics allow a launch to reach the target orbit. For ISS, windows are instantaneous (5-10 minutes) and occur twice daily!"
+        },
+        {
+          id: "q22-2",
+          question: "How often do Mars launch windows occur?",
+          options: [
+            "Every month",
+            "Every 26 months (synodic period)",
+            "Every year",
+            "Every 5 years"
+          ],
+          correctAnswer: 1,
+          explanation: "Earth-Mars synodic period is 780 days = 26 months. This is how long it takes for Earth and Mars to return to favorable alignment for a Hohmann transfer. Miss it and wait 2+ years!"
+        },
+        {
+          id: "q22-3",
+          question: "What is a gravity assist?",
+          options: [
+            "Using rockets to assist gravity",
+            "Using planet's gravity to change spacecraft velocity without propellant",
+            "Artificial gravity",
+            "Gravity measurement"
+          ],
+          correctAnswer: 1,
+          explanation: "Gravity assist uses a planet's motion to change spacecraft velocity. The spacecraft gains energy from the planet's orbital motion. Voyager 2 used 4 gravity assists to reach Neptune!"
+        },
+        {
+          id: "q22-4",
+          question: "Why are ISS launch windows instantaneous?",
+          options: [
+            "Safety regulations",
+            "Must launch exactly when orbital plane passes over launch site",
+            "Weather",
+            "Fuel limitations"
+          ],
+          correctAnswer: 1,
+          explanation: "ISS orbital plane is fixed in space. Launch site must align with this plane for direct ascent. This alignment lasts only 5-10 minutes, creating an instantaneous window. Miss it and wait ~12 hours!"
+        },
+        {
+          id: "q22-5",
+          question: "What is the maximum Δv gain from a gravity assist?",
+          options: [
+            "Unlimited",
+            "2 × planet's orbital velocity",
+            "Equal to planet's velocity",
+            "10 km/s maximum"
+          ],
+          correctAnswer: 1,
+          explanation: "Maximum Δv = 2 × v_planet. For Jupiter (v=13 km/s), max gain is 26 km/s! This is why Jupiter assists are so valuable for outer solar system missions."
+        }
+      ]
+    }
   },
 
   {
@@ -88,7 +180,99 @@ export const unit3AdvancedLessons = [
       { term: "Plasma Sheath", definition: "Ionized gas around vehicle that blocks radio communication" },
       { term: "Ballistic Entry", definition: "Reentry with no lift; pure drag deceleration" },
       { term: "Cross-range", definition: "Lateral distance vehicle can maneuver during entry" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "23-1",
+        problem: "Calculate kinetic energy per kg for LEO reentry at 7,800 m/s.",
+        solution: "KE = ½mv² per unit mass = ½v²\nKE = ½ × (7,800)² = ½ × 60,840,000 = 30,420,000 J/kg = 30.4 MJ/kg\nThis enormous energy must be dissipated as heat during reentry!",
+        hint: "Use KE = ½v² for energy per unit mass"
+      },
+      {
+        id: "23-2",
+        problem: "Apollo entry corridor was ±2° around -6.5° optimal. If they entered at -9°, what would happen?",
+        solution: "-9° is 2.5° too steep (outside corridor)\nConsequences:\n- Excessive heating (heat flux increases rapidly)\n- High g-forces (>10g, dangerous)\n- Risk of burnup\n- Possible structural failure\nApollo guidance had to be incredibly precise - missing by 40 km at 120 km altitude meant death!",
+        hint: "Too steep = excessive heating and g-forces"
+      },
+      {
+        id: "23-3",
+        problem: "Why does communication blackout occur during reentry? How long does it last?",
+        solution: "Plasma sheath forms around vehicle:\n- Hot gases ionize (become plasma)\n- Plasma blocks radio waves\n- Occurs at 60-90 km altitude\n- Duration: 4-7 minutes\n- No communication possible\n\nApollo blackout: 4 minutes (90 km to 40 km)\nMission control had to wait anxiously!",
+        hint: "Ionized gas (plasma) blocks radio waves"
+      },
+      {
+        id: "23-4",
+        problem: "Compare ballistic vs lifting entry for crew safety. Which is better?",
+        solution: "Ballistic (Soyuz):\n- G-forces: 8-12g (very high!)\n- Simple, reliable\n- No guidance needed\n- Small landing area\n\nLifting (Shuttle, Dragon 2):\n- G-forces: 4-6g (tolerable)\n- Requires guidance\n- More complex\n- Large landing area\n\nFor crew: Lifting entry is better (lower g-forces)\nFor simplicity: Ballistic is better (more reliable)\nModern spacecraft use lifting entry for crew comfort.",
+        hint: "Compare g-forces and complexity"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q23-1",
+          question: "What is the entry corridor for safe reentry?",
+          options: [
+            "Any angle works",
+            "Narrow range: -5° to -7° with ±2° tolerance",
+            "Must be vertical",
+            "Must be horizontal"
+          ],
+          correctAnswer: 1,
+          explanation: "Entry corridor is very narrow: -5° to -7° optimal with only ±2° tolerance. Too steep = burnup, too shallow = skip off atmosphere. Apollo's corridor was only 40 km wide at 120 km altitude!"
+        },
+        {
+          id: "q23-2",
+          question: "Where does peak heating occur during reentry?",
+          options: [
+            "At entry interface (120 km)",
+            "At 60-70 km altitude with 1-10 MW/m² heat flux",
+            "At ground level",
+            "In space"
+          ],
+          correctAnswer: 1,
+          explanation: "Peak heating occurs at 60-70 km altitude where atmospheric density and velocity combine for maximum heat flux (1-10 MW/m²). Temperature reaches 1,500-3,000 K!"
+        },
+        {
+          id: "q23-3",
+          question: "What causes communication blackout during reentry?",
+          options: [
+            "Equipment failure",
+            "Plasma sheath (ionized gas) blocks radio waves",
+            "Too far from ground",
+            "Pilot turns off radio"
+          ],
+          correctAnswer: 1,
+          explanation: "Hot gases around the vehicle ionize, forming a plasma sheath that blocks radio waves. Lasts 4-7 minutes (90 km to 40 km altitude). Mission control can't communicate during this time!"
+        },
+        {
+          id: "q23-4",
+          question: "What is ablative thermal protection?",
+          options: [
+            "Reflects heat away",
+            "Material burns away, carrying heat with it (single use)",
+            "Metal heat sink",
+            "Active cooling"
+          ],
+          correctAnswer: 1,
+          explanation: "Ablative TPS (like PICA-X on Dragon) burns away during reentry, carrying heat with it. Very effective but single-use. Apollo and Dragon use ablative shields."
+        },
+        {
+          id: "q23-5",
+          question: "Why do modern spacecraft prefer lifting entry over ballistic?",
+          options: [
+            "Cheaper",
+            "Lower g-forces (4-6g vs 8-12g) and better landing accuracy",
+            "Faster",
+            "Simpler"
+          ],
+          correctAnswer: 1,
+          explanation: "Lifting entry generates lift during descent, creating a shallower trajectory with lower g-forces (4-6g vs 8-12g ballistic). Also allows cross-range maneuvering for landing site selection. Better for crew comfort!"
+        }
+      ]
+    }
   }
 ];
 
