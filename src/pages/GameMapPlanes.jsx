@@ -6,12 +6,13 @@ export default function GameMapPlanes() {
   const navigate = useNavigate();
   const [completedLevels] = useState([0]);
 
-  // Generate all 83 lessons (10 units with varying lesson counts)
+  // Generate all 89 lessons (11 units with varying lesson counts)
   const generateLevels = () => {
     const levels = [];
     let levelId = 0;
 
     const units = [
+      { name: 'Foundations: Math & Physics Bridge', emoji: '🎓', lessons: 6, level: 'Beginner', color: 'from-cyan-400 to-blue-500' },
       { name: 'Introduction to Flight', emoji: '✈️', lessons: 7, level: 'Beginner', color: 'from-green-400 to-emerald-500' },
       { name: 'Aerodynamics Basics', emoji: '💨', lessons: 8, level: 'Beginner', color: 'from-blue-400 to-cyan-500' },
       { name: 'Aircraft Structures', emoji: '🏗️', lessons: 7, level: 'Intermediate', color: 'from-purple-400 to-pink-500' },
@@ -53,7 +54,7 @@ export default function GameMapPlanes() {
 
   // Organize lessons by units (varying lesson counts)
   const units = [];
-  const lessonCounts = [7, 8, 7, 8, 8, 8, 8, 8, 6, 7]; // Lessons per unit
+  const lessonCounts = [6, 7, 8, 7, 8, 8, 8, 8, 8, 6, 7]; // Lessons per unit
   let currentIndex = 0;
   
   lessonCounts.forEach((count, i) => {
@@ -98,7 +99,7 @@ export default function GameMapPlanes() {
               <Plane className="w-8 h-8 text-cyan-300" />
               <div>
                 <h1 className="text-xl font-bold">Aircraft Journey</h1>
-                <p className="text-sm text-blue-200">83 Lessons • Follow the path</p>
+                <p className="text-sm text-blue-200">89 Lessons • Follow the path</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -118,12 +119,12 @@ export default function GameMapPlanes() {
             const row = unit.isReversed ? [...unit.lessons].reverse() : unit.lessons;
             
             // Show level header at start of each difficulty level
-            const showLevelHeader = unitIndex === 0 || unitIndex === 2 || unitIndex === 5 || unitIndex === 8;
+            const showLevelHeader = unitIndex === 0 || unitIndex === 3 || unitIndex === 6 || unitIndex === 9;
             const levelInfo = {
               0: { name: 'BEGINNER', subtitle: 'Flight basics, lift, forces', color: 'from-green-500 to-emerald-600', icon: '🟢' },
-              2: { name: 'INTERMEDIATE', subtitle: 'Aerodynamics, structures, propulsion', color: 'from-yellow-500 to-orange-600', icon: '🟡' },
-              5: { name: 'ADVANCED', subtitle: 'Avionics, systems, design simulation', color: 'from-blue-500 to-cyan-600', icon: '🔵' },
-              8: { name: 'MASTER', subtitle: 'Supersonic flight, innovation', color: 'from-red-500 to-pink-600', icon: '🔴' }
+              3: { name: 'INTERMEDIATE', subtitle: 'Aerodynamics, structures, propulsion', color: 'from-yellow-500 to-orange-600', icon: '🟡' },
+              6: { name: 'ADVANCED', subtitle: 'Avionics, systems, design simulation', color: 'from-blue-500 to-cyan-600', icon: '🔵' },
+              9: { name: 'MASTER', subtitle: 'Supersonic flight, innovation', color: 'from-red-500 to-pink-600', icon: '🔴' }
             };
             
             return (

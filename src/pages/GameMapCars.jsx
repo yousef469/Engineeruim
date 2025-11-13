@@ -6,14 +6,15 @@ export default function GameMapCars() {
   const navigate = useNavigate();
   const [completedLevels, setCompletedLevels] = useState([0]);
 
-  // Generate all 80 lessons (10 units)
+  // Generate all 86 lessons (11 units)
   const generateLevels = () => {
     const levels = [];
     let levelId = 0;
 
-    // BEGINNER - 2 units, 15 lessons total
+    // BEGINNER - 3 units, 21 lessons total
     const beginnerUnits = [
-      { name: 'Introduction to Automotive Engineering', emoji: '🎓', lessons: 7, quizzesPerLesson: 1 },
+      { name: 'Foundations: Math & Physics Bridge', emoji: '🎓', lessons: 6, quizzesPerLesson: 1 },
+      { name: 'Introduction to Automotive Engineering', emoji: '🚗', lessons: 7, quizzesPerLesson: 1 },
       { name: 'Physics & Math Fundamentals', emoji: '⚛️', lessons: 8, quizzesPerLesson: 1 }
     ];
 
@@ -110,9 +111,9 @@ export default function GameMapCars() {
     }
   };
 
-  // Organize lessons by units - 80 lessons total across 10 units
+  // Organize lessons by units - 86 lessons total across 11 units
   const units = [];
-  const lessonCounts = [7, 8, 8, 8, 8, 9, 9, 9, 7, 7]; // Lessons per unit
+  const lessonCounts = [6, 7, 8, 8, 8, 8, 9, 9, 9, 7, 7]; // Lessons per unit
   let currentIndex = 0;
 
   lessonCounts.forEach((count, i) => {
@@ -158,7 +159,7 @@ export default function GameMapCars() {
               <Car className="w-8 h-8 text-orange-400" />
               <div>
                 <h1 className="text-xl font-bold">Automotive Journey</h1>
-                <p className="text-sm text-orange-200">80 Lessons • Drive through the curriculum</p>
+                <p className="text-sm text-orange-200">86 Lessons • Drive through the curriculum</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -178,12 +179,12 @@ export default function GameMapCars() {
             const row = unit.isReversed ? [...unit.lessons].reverse() : unit.lessons;
 
             // Show level header at start of each difficulty level
-            const showLevelHeader = unitIndex === 0 || unitIndex === 2 || unitIndex === 5 || unitIndex === 8;
+            const showLevelHeader = unitIndex === 0 || unitIndex === 3 || unitIndex === 6 || unitIndex === 9;
             const levelInfo = {
               0: { name: 'BEGINNER', subtitle: 'How cars move, mechanical basics', color: 'from-green-500 to-emerald-600', icon: '🟢' },
-              2: { name: 'INTERMEDIATE', subtitle: 'Dynamics, materials, and electronics', color: 'from-yellow-500 to-orange-600', icon: '🟡' },
-              5: { name: 'ADVANCED', subtitle: 'Energy systems, automation, design', color: 'from-blue-500 to-cyan-600', icon: '🔵' },
-              8: { name: 'MASTER', subtitle: 'Maintenance, innovation, sustainability', color: 'from-red-500 to-pink-600', icon: '🔴' }
+              3: { name: 'INTERMEDIATE', subtitle: 'Dynamics, materials, and electronics', color: 'from-yellow-500 to-orange-600', icon: '🟡' },
+              6: { name: 'ADVANCED', subtitle: 'Energy systems, automation, design', color: 'from-blue-500 to-cyan-600', icon: '🔵' },
+              9: { name: 'MASTER', subtitle: 'Maintenance, innovation, sustainability', color: 'from-red-500 to-pink-600', icon: '🔴' }
             };
 
             return (

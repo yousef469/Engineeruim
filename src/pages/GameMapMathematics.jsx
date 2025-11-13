@@ -6,7 +6,7 @@ export default function GameMapMathematics() {
   const navigate = useNavigate();
   const [completedLevels] = useState([0]);
 
-  // Generate all 27 lessons across 5 units
+  // Generate all 37 lessons across 7 units
   const generateLevels = () => {
     const levels = [];
     let levelId = 1; // Start from 1 instead of 0
@@ -78,6 +78,32 @@ export default function GameMapMathematics() {
           'Vector Math in Physical Systems'
         ],
         level: 'Intermediate'
+      },
+      { 
+        name: 'Advanced Calculus', 
+        emoji: '🔴', 
+        color: 'from-red-400 to-rose-500', 
+        lessons: [
+          'Partial Derivatives',
+          'Multiple Integrals',
+          'Chain Rule & Implicit Differentiation',
+          'Optimization with Constraints',
+          'Taylor Series & Approximations'
+        ],
+        level: 'Advanced'
+      },
+      { 
+        name: 'Differential Equations', 
+        emoji: '⚫', 
+        color: 'from-gray-400 to-slate-500', 
+        lessons: [
+          'Introduction & First Order',
+          'Second Order DEs',
+          'Damping & Resonance',
+          'Laplace Transforms',
+          'Numerical Methods'
+        ],
+        level: 'Advanced'
       }
     ];
 
@@ -112,7 +138,7 @@ export default function GameMapMathematics() {
 
   // Organize lessons by units
   const units = [];
-  const lessonCounts = [6, 6, 5, 4, 6]; // Lessons per unit (removed physics unit)
+  const lessonCounts = [6, 6, 5, 4, 6, 5, 5]; // Lessons per unit: 6+6+5+4+6+5+5 = 37 total
   let currentIndex = 0;
   
   lessonCounts.forEach((count, i) => {

@@ -6,12 +6,13 @@ export default function GameMapRockets() {
   const navigate = useNavigate();
   const [completedLevels, setCompletedLevels] = useState([0]);
 
-  // Generate all 74 lessons (10 units with varying lesson counts)
+  // Generate all 80 lessons (11 units with varying lesson counts)
   const generateLevels = () => {
     const levels = [];
     let levelId = 0;
 
     const units = [
+      { name: 'Foundations: Math & Physics Bridge', emoji: '🎓', color: 'from-cyan-400 to-blue-500', lessons: 6, level: 'Beginner' },
       { name: 'Introduction to Rockets', emoji: '🚀', color: 'from-blue-400 to-cyan-500', lessons: 6, level: 'Beginner' },
       { name: 'Rocket Physics & Forces', emoji: '🔥', color: 'from-orange-400 to-red-500', lessons: 8, level: 'Beginner' },
       { name: 'Rocket Propulsion Systems', emoji: '⚙️', color: 'from-green-400 to-emerald-500', lessons: 10, level: 'Intermediate' },
@@ -53,7 +54,7 @@ export default function GameMapRockets() {
 
   // Organize lessons by units (varying lesson counts)
   const units = [];
-  const lessonCounts = [6, 8, 10, 6, 8, 10, 8, 6, 6, 6]; // Lessons per unit
+  const lessonCounts = [6, 6, 8, 10, 6, 8, 10, 8, 6, 6, 6]; // Lessons per unit
   let currentIndex = 0;
   
   lessonCounts.forEach((count, i) => {
@@ -99,7 +100,7 @@ export default function GameMapRockets() {
               <Rocket className="w-8 h-8 text-cyan-400" />
               <div>
                 <h1 className="text-xl font-bold">Rocket Engineering Journey</h1>
-                <p className="text-sm text-cyan-200">74 Lessons • Launch into space exploration</p>
+                <p className="text-sm text-cyan-200">80 Lessons • Launch into space exploration</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -119,12 +120,12 @@ export default function GameMapRockets() {
             const row = unit.isReversed ? [...unit.lessons].reverse() : unit.lessons;
             
             // Determine if we should show a level header
-            const showLevelHeader = unitIndex === 0 || unitIndex === 2 || unitIndex === 5 || unitIndex === 8;
+            const showLevelHeader = unitIndex === 0 || unitIndex === 3 || unitIndex === 6 || unitIndex === 9;
             const levelInfo = {
               0: { name: 'BEGINNER', subtitle: 'Build foundation — how it works', color: 'from-green-500 to-emerald-600', icon: '🟢' },
-              2: { name: 'INTERMEDIATE', subtitle: 'Learn systems and physics', color: 'from-yellow-500 to-orange-600', icon: '🟡' },
-              5: { name: 'ADVANCED', subtitle: 'Design, simulate, analyze', color: 'from-blue-500 to-cyan-600', icon: '🔵' },
-              8: { name: 'MASTER', subtitle: 'Innovate and optimize', color: 'from-red-500 to-pink-600', icon: '🔴' }
+              3: { name: 'INTERMEDIATE', subtitle: 'Learn systems and physics', color: 'from-yellow-500 to-orange-600', icon: '🟡' },
+              6: { name: 'ADVANCED', subtitle: 'Design, simulate, analyze', color: 'from-blue-500 to-cyan-600', icon: '🔵' },
+              9: { name: 'MASTER', subtitle: 'Innovate and optimize', color: 'from-red-500 to-pink-600', icon: '🔴' }
             };
             
             return (
