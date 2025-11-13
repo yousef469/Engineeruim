@@ -28,15 +28,15 @@ export default function GameMapPhysics() {
         level: 'Beginner'
       },
       { 
-        name: 'Work & Energy', 
+        name: 'Work, Energy & Power', 
         emoji: '⚡', 
         color: 'from-yellow-400 to-orange-500', 
         lessons: [
-          'Work & Energy',
-          'Kinetic & Potential Energy',
-          'Power',
+          'What is Energy?',
+          'Work & Power',
           'Conservation of Energy',
-          'Efficiency'
+          'Efficiency',
+          'Power Systems'
         ],
         level: 'Beginner'
       },

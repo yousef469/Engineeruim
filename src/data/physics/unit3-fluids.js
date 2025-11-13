@@ -40,78 +40,49 @@ export const unit3Lessons = {
       }
     ],
     content: {
-      introduction: 'Pressure is a fundamental concept in fluid mechanics, representing force distributed over area. Understanding pressure is essential for designing everything from tires to aircraft.',
-      fundamentals: [
-        'Pressure is force per unit area (P = F/A)',
-        'Pressure acts equally in all directions in a fluid',
-        'Pressure increases with depth in a fluid',
-        'Pressure can be measured relative to atmosphere (gauge) or absolute'
-      ],
-      details: {
-        pressureBasics: {
-          definition: '$P = \\frac{F}{A}$ where F is force and A is area',
-          units: {
-            SI: 'Pascal (Pa) = N/m²',
-            common: ['psi (pounds per square inch)', 'bar (100,000 Pa)', 'atm (101,325 Pa)'],
-            conversion: '1 atm = 14.7 psi = 1.013 bar'
-          }
-        },
-        fluidPressure: {
-          hydrostaticEquation: '$P = P_0 + \\rho gh$',
-          components: [
-            'P₀ is surface pressure (usually atmospheric)',
-            'ρ is fluid density',
-            'g is gravitational acceleration',
-            'h is depth below surface'
-          ]
-        },
-        pascalsPrinciple: {
-          statement: 'Pressure change applied to enclosed fluid is transmitted undiminished',
-          equation: '$\\frac{F_1}{A_1} = \\frac{F_2}{A_2}$',
-          applications: ['Hydraulic lifts', 'Brake systems', 'Industrial presses']
-        }
-      },
-      examples: [
+      intro: 'Pressure is a fundamental concept in fluid mechanics, representing force distributed over area. Understanding pressure is essential for designing everything from tires to aircraft.',
+      concepts: [
         {
-          title: 'Deep Sea Pressure',
-          depth: '4000m',
-          calculation: '$P = 101325 + (1025)(9.8)(4000)$',
-          result: '40.2 MPa (396 atm)',
-          impact: 'Requires special submarine hull design'
+          title: '📐 1. Pressure Basics',
+          explanation: 'PRESSURE is force per unit area: P = F/A. Measured in Pascals (Pa = N/m²). Common units: psi (pounds per square inch), bar (100,000 Pa), atm (101,325 Pa). Conversion: 1 atm = 14.7 psi = 1.013 bar. Pressure acts equally in all directions in a fluid.',
+          example: 'Car tire at 35 psi: Pressure = 35 × 6895 = 241,325 Pa. This means every square meter of tire surface experiences 241,325 N of force! That\'s why tires can support heavy vehicles.'
         },
         {
-          title: 'Aircraft Cabin',
-          cruising: '35,000 ft (10.7 km)',
-          outsidePressure: '26.4 kPa',
-          cabinPressure: '75.2 kPa (8,000 ft equivalent)',
-          systemDesign: 'Pressurization maintains safe, comfortable environment'
+          title: '🌊 2. Hydrostatic Pressure',
+          explanation: 'Pressure increases with depth in a fluid: P = P₀ + ρgh where P₀ is surface pressure (usually atmospheric), ρ is fluid density, g is gravitational acceleration, and h is depth. Deeper = more pressure!',
+          example: 'Deep sea at 4000m: P = 101,325 + (1025)(9.8)(4000) = 40.2 MPa (396 atm)! Submarine hulls must withstand this enormous pressure. At surface: 1 atm. At 4000m: 396× more pressure!'
+        },
+        {
+          title: '⚙️ 3. Pascal\'s Principle',
+          explanation: 'Pressure change applied to enclosed fluid is transmitted undiminished throughout the fluid. This enables hydraulic systems: F₁/A₁ = F₂/A₂. Small force on small area = large force on large area!',
+          example: 'Hydraulic lift: Small piston (5cm) with 196 N force creates same pressure as large piston (50cm) lifting 2000 kg! Pressure = 196/0.00196 = 100,000 Pa. Large piston: F = 100,000 × 0.196 = 19,600 N (2000 kg)!'
         }
       ],
       realWorld: [
         {
-          application: 'Vehicle Tires',
-          pressure: {
-            car: '32-35 psi (220-241 kPa)',
-            truck: '45-80 psi (310-552 kPa)',
-            aircraft: '200+ psi (1.4+ MPa)'
-          },
-          factors: ['Load weight', 'Surface contact', 'Heat generation'],
-          optimization: 'Balance grip, wear, efficiency'
+          icon: '🚗',
+          title: 'Vehicle Tires',
+          description: 'Car tires: 32-35 psi (220-241 kPa). Truck tires: 45-80 psi (310-552 kPa). Aircraft tires: 200+ psi (1.4+ MPa). Pressure affects grip, wear, and efficiency. Engineers balance these factors for optimal performance.'
         },
         {
-          application: 'Hydraulic Systems',
-          pressures: 'Up to 5000 psi (34.5 MPa)',
-          advantages: ['High force multiplication', 'Smooth operation', 'Built-in overload protection'],
-          examples: ['Aircraft controls', 'Construction equipment', 'Manufacturing presses']
+          icon: '✈️',
+          title: 'Aircraft Cabin Pressurization',
+          description: 'At 35,000 ft (10.7 km), outside pressure is only 26.4 kPa. Cabin pressurized to 75.2 kPa (8,000 ft equivalent) for passenger comfort. Pressurization systems maintain safe, comfortable environment despite low outside pressure.'
         },
         {
-          application: 'Gas Storage',
-          types: {
-            CNG: '3000-3600 psi (20.7-24.8 MPa)',
-            propane: '200 psi (1.4 MPa)',
-            medical: 'O₂ at 2200 psi (15.2 MPa)'
-          },
-          design: 'Safety factors, material strength, temperature effects'
+          icon: '🏗️',
+          title: 'Hydraulic Systems',
+          description: 'Hydraulic systems use Pascal\'s principle for force multiplication. Pressures up to 5000 psi (34.5 MPa) enable: Aircraft controls, construction equipment, manufacturing presses. High force multiplication with smooth operation and built-in overload protection.'
+        },
+        {
+          icon: '⛽',
+          title: 'Gas Storage',
+          description: 'CNG: 3000-3600 psi (20.7-24.8 MPa). Propane: 200 psi (1.4 MPa). Medical O₂: 2200 psi (15.2 MPa). Storage pressure depends on safety factors, material strength, and temperature effects. Engineers design for maximum safety.'
+        },
+        {
+          icon: '🌊',
+          title: 'Deep Sea Applications',
+          description: 'Submarines at 4000m depth experience 40.2 MPa (396 atm) pressure. Hull design must withstand this enormous force. Deep-sea equipment uses special materials and designs to handle extreme pressure conditions.'
         }
       ]
     }
@@ -157,88 +128,49 @@ export const unit3Lessons = {
       }
     ],
     content: {
-      introduction: 'Buoyancy is the upward force exerted by fluids on immersed objects. This fundamental principle explains why ships float, submarines dive, and hot air balloons rise.',
-      fundamentals: [
-        'Buoyant force equals weight of displaced fluid',
-        'Objects float when their density is less than fluid density',
-        'Metacentric height determines floating stability',
-        'Temperature affects fluid density and buoyancy'
-      ],
-      details: {
-        archimedesPrinciple: {
-          statement: 'An object immersed in a fluid experiences an upward force equal to the weight of fluid displaced',
-          equation: '$F_b = \\rho_{fluid}gV_{displaced}$',
-          implications: [
-            'Larger volume = greater buoyant force',
-            'Denser fluid = greater buoyant force',
-            'Shape affects displaced volume'
-          ]
-        },
-        density: {
-          definition: '$\\rho = \\frac{m}{V}$ (mass per unit volume)',
-          typicalValues: {
-            water: '1000 kg/m³',
-            seawater: '1025 kg/m³',
-            air: '1.225 kg/m³ (sea level)',
-            mercury: '13600 kg/m³'
-          },
-          temperature: 'Most materials expand and become less dense when heated'
-        },
-        floatingConditions: {
-          stable: '$\\rho_{object} < \\rho_{fluid}$ (floats)',
-          neutral: '$\\rho_{object} = \\rho_{fluid}$ (suspends)',
-          unstable: '$\\rho_{object} > \\rho_{fluid}$ (sinks)',
-          partialSubmersion: '$\\frac{V_{submerged}}{V_{total}} = \\frac{\\rho_{object}}{\\rho_{fluid}}$'
-        }
-      },
-      examples: [
+      intro: 'Buoyancy is the upward force exerted by fluids on immersed objects. This fundamental principle explains why ships float, submarines dive, and hot air balloons rise. Understanding buoyancy and density is crucial for designing floating structures and fluid systems.',
+      concepts: [
         {
-          title: 'Ship Design',
-          principles: [
-            'Hull shape maximizes displaced volume',
-            'Ballast provides stability',
-            'Metacentric height determines roll stability'
-          ],
-          calculations: 'Steel hull (ρ = 7800 kg/m³) with 95% air space has effective density of 390 kg/m³'
+          title: '⬆️ 1. Archimedes\' Principle',
+          explanation: 'An object immersed in a fluid experiences an upward force equal to the weight of fluid displaced: F_b = ρ_fluid × g × V_displaced. Larger volume = greater buoyant force. Denser fluid = greater buoyant force. Shape affects displaced volume.',
+          example: 'A 5000 kg boat floats in seawater (ρ = 1025 kg/m³). Buoyant force = weight, so mg = ρgV. Volume submerged = 5000/1025 = 4.88 m³. The boat displaces 4.88 m³ of water to float!'
         },
         {
-          title: 'Submarine Operation',
-          systems: [
-            'Main ballast tanks for surfacing/diving',
-            'Trim tanks for horizontal stability',
-            'Variable ballast for fine control'
-          ],
-          physics: 'Changes in salinity and temperature affect buoyancy'
+          title: '⚖️ 2. Density & Floating',
+          explanation: 'DENSITY = mass per unit volume: ρ = m/V. Objects float when ρ_object < ρ_fluid. Objects sink when ρ_object > ρ_fluid. Partial submersion: V_submerged/V_total = ρ_object/ρ_fluid. Typical densities: Water = 1000 kg/m³, Seawater = 1025 kg/m³, Air = 1.225 kg/m³, Mercury = 13,600 kg/m³.',
+          example: 'Steel ball (ρ = 7800 kg/m³) in mercury (ρ = 13,600 kg/m³): 7800 < 13,600, so steel FLOATS in mercury! It sinks 57% (7800/13,600). Ship hull: Steel (7800) with 95% air space has effective density of 390 kg/m³ - floats in water!'
+        },
+        {
+          title: '🌡️ 3. Temperature Effects',
+          explanation: 'Most materials expand and become less dense when heated. Hot air balloons: Heating reduces air density by ~30%, creating lift. F_lift = (ρ_cold - ρ_hot) × g × V. Adjust temperature to change altitude. Temperature affects all fluid densities!',
+          example: 'Hot air balloon: 2000 m³ of air at 50°C vs 20°C outside. ρ_hot = 1.2(293/323) = 1.09 kg/m³. Lift force = (1.2 - 1.09)(9.8)(2000) = 2,156 N. This lifts the balloon and payload!'
         }
       ],
       realWorld: [
         {
-          application: 'Hot Air Balloons',
-          physics: {
-            heating: 'Reduces air density by ~30%',
-            lift: '$F_{lift} = (\\rho_{cold} - \\rho_{hot})gV$',
-            control: 'Adjust temperature to change altitude'
-          },
-          design: ['Envelope volume', 'Maximum temperature', 'Payload capacity']
+          icon: '🚢',
+          title: 'Ship Design',
+          description: 'Hull shape maximizes displaced volume for buoyancy. Ballast provides stability. Metacentric height determines roll stability. Steel hull (ρ = 7800 kg/m³) with 95% air space has effective density of 390 kg/m³ - floats easily in water!'
         },
         {
-          application: 'Density Separation',
-          process: 'Materials of different densities naturally separate',
-          uses: [
-            'Ore processing',
-            'Recycling plastics',
-            'Oil/water separation'
-          ],
-          efficiency: 'Can separate materials differing by 0.1 g/cm³'
+          icon: '🌊',
+          title: 'Submarine Operation',
+          description: 'Main ballast tanks for surfacing/diving. Trim tanks for horizontal stability. Variable ballast for fine control. Changes in salinity and temperature affect buoyancy - submarines must compensate constantly!'
         },
         {
-          application: 'Fuel Systems',
-          considerations: {
-            aircraft: 'Jet-A1 density varies with temperature',
-            rockets: 'LH2 density = 71 kg/m³, LOX = 1141 kg/m³',
-            ships: 'Bunker fuel ≈ 950 kg/m³'
-          },
-          impact: 'Affects tank design, fuel gauging, and range calculations'
+          icon: '🎈',
+          title: 'Hot Air Balloons',
+          description: 'Heating reduces air density by ~30%, creating lift force. Lift = (ρ_cold - ρ_hot) × g × V. Adjust temperature to change altitude. Design considerations: Envelope volume, maximum temperature, payload capacity.'
+        },
+        {
+          icon: '⚗️',
+          title: 'Density Separation',
+          description: 'Materials of different densities naturally separate in fluids. Used for: Ore processing, recycling plastics, oil/water separation. Can separate materials differing by 0.1 g/cm³. Essential industrial process!'
+        },
+        {
+          icon: '⛽',
+          title: 'Fuel Systems',
+          description: 'Aircraft: Jet-A1 density varies with temperature. Rockets: LH2 density = 71 kg/m³, LOX = 1141 kg/m³. Ships: Bunker fuel ≈ 950 kg/m³. Density affects tank design, fuel gauging, and range calculations.'
         }
       ]
     }
@@ -284,98 +216,49 @@ export const unit3Lessons = {
       }
     ],
     content: {
-      introduction: 'Bernoulli\'s principle relates fluid pressure, velocity, and height, forming the foundation for understanding lift, fluid flow, and many engineering applications.',
-      fundamentals: [
-        'Faster-moving fluid has lower pressure',
-        'Total energy (pressure + kinetic + potential) remains constant',
-        'Flow rate remains constant in a continuous flow',
-        'Pressure differences create forces on surfaces'
-      ],
-      details: {
-        bernoulliEquation: {
-          basic: '$P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{constant}$',
-          terms: [
-            'P: pressure energy',
-            '½ρv²: kinetic energy',
-            'ρgh: potential energy'
-          ],
-          assumptions: [
-            'Steady flow',
-            'Incompressible fluid',
-            'No viscous effects',
-            'Flow along streamline'
-          ]
-        },
-        continuityEquation: {
-          formula: '$A_1v_1 = A_2v_2$',
-          implications: [
-            'Narrower pipe = faster flow',
-            'Conservation of mass',
-            'Velocity inversely proportional to area'
-          ]
-        },
-        liftGeneration: {
-          mechanism: {
-            airfoil: 'Curved upper surface creates faster flow',
-            pressure: 'Lower pressure above wing',
-            force: '$F_L = \\frac{1}{2}\\rho v^2C_LA$'
-          },
-          factors: [
-            'Angle of attack',
-            'Wing shape',
-            'Air density',
-            'Velocity squared dependency'
-          ]
-        }
-      },
-      examples: [
+      intro: 'Bernoulli\'s principle relates fluid pressure, velocity, and height, forming the foundation for understanding lift, fluid flow, and many engineering applications. Faster-moving fluid has lower pressure - this creates lift on wings and enables many fluid systems.',
+      concepts: [
         {
-          title: 'Aircraft Wing',
-          analysis: {
-            velocity: 'v_top ≈ 1.2v_bottom',
-            pressureDiff: 'ΔP ≈ 2000 Pa at cruise',
-            lift: '10⁵ N for typical airliner'
-          },
-          optimization: [
-            'Winglets reduce tip vortices',
-            'Flaps increase lift at low speeds',
-            'Supercritical airfoils reduce drag'
-          ]
+          title: '🌊 1. Bernoulli\'s Equation',
+          explanation: 'Total energy remains constant: P + ½ρv² + ρgh = constant. P = pressure energy, ½ρv² = kinetic energy, ρgh = potential energy. Assumptions: Steady flow, incompressible fluid, no viscous effects, flow along streamline. Faster flow = lower pressure!',
+          example: 'Water exits tank 5m deep through hole: Using Bernoulli, ½v² + gh = constant. At surface v ≈ 0, at exit h = 0. So ½v² = gh, giving v = √(2gh) = √(2×9.8×5) = 9.9 m/s exit velocity!'
         },
         {
-          title: 'Venturi Meter',
-          operation: 'Measures flow rate using pressure difference',
-          equation: '$v_2 = v_1\\sqrt{\\frac{2(P_1-P_2)}{\\rho(1-\\beta^4)}}$',
-          applications: ['Flow measurement', 'Carburetors', 'Spray systems']
+          title: '📏 2. Continuity Equation',
+          explanation: 'Flow rate remains constant: A₁v₁ = A₂v₂ (conservation of mass). Narrower pipe = faster flow. Velocity inversely proportional to area. If area halves, velocity doubles!',
+          example: 'Pipe narrows from 10cm to 5cm diameter. Initial velocity = 2 m/s. Using A₁v₁ = A₂v₂: π(0.05)²(2) = π(0.025)²v₂. v₂ = 2(0.05/0.025)² = 8 m/s - four times faster in narrow section!'
+        },
+        {
+          title: '✈️ 3. Lift Generation',
+          explanation: 'Curved upper surface creates faster flow above wing. Lower pressure above wing creates lift. Lift force: F_L = ½ρv²C_LA. Factors: Angle of attack, wing shape, air density, velocity squared dependency.',
+          example: 'Aircraft wing: v_top ≈ 1.2v_bottom. Pressure difference ΔP ≈ 2000 Pa at cruise. For 2 m² wing area: Lift = 2000 × 2 = 4000 N. Typical airliner: 10⁵ N lift force!'
         }
       ],
       realWorld: [
         {
-          application: 'Race Car Aerodynamics',
-          features: {
-            underbody: 'Shaped to accelerate airflow',
-            diffuser: 'Controlled expansion reduces pressure',
-            result: 'Downforce increases with speed squared'
-          },
-          performance: 'Up to 3G downforce at racing speeds'
+          icon: '🏎️',
+          title: 'Race Car Aerodynamics',
+          description: 'Underbody shaped to accelerate airflow. Diffuser provides controlled expansion reducing pressure. Downforce increases with speed squared. Up to 3G downforce at racing speeds - keeps car glued to track!'
         },
         {
-          application: 'Wind Turbines',
-          principles: {
-            blade: 'Airfoil generates lift force',
-            rotation: 'Lift converted to torque',
-            efficiency: 'Betz limit = 59.3% maximum'
-          },
-          design: 'Variable pitch optimizes for wind speed'
+          icon: '🌬️',
+          title: 'Wind Turbines',
+          description: 'Blade airfoil generates lift force. Lift converted to torque for power generation. Betz limit = 59.3% maximum efficiency. Variable pitch optimizes for wind speed. Modern turbines achieve 40-50% efficiency.'
         },
         {
-          application: 'HVAC Systems',
-          components: {
-            ducts: 'Sized for efficient flow',
-            diffusers: 'Control air distribution',
-            filters: 'Account for pressure drop'
-          },
-          optimization: 'Balance flow rate vs energy cost'
+          icon: '🏠',
+          title: 'HVAC Systems',
+          description: 'Ducts sized for efficient flow. Diffusers control air distribution. Filters account for pressure drop. Engineers balance flow rate vs energy cost. Proper design reduces energy consumption significantly.'
+        },
+        {
+          icon: '✈️',
+          title: 'Aircraft Wings',
+          description: 'Winglets reduce tip vortices. Flaps increase lift at low speeds. Supercritical airfoils reduce drag. Modern wings optimized for efficiency: v_top ≈ 1.2v_bottom creates pressure difference for lift.'
+        },
+        {
+          icon: '🔧',
+          title: 'Venturi Meters',
+          description: 'Measures flow rate using pressure difference. Used in: Flow measurement, carburetors, spray systems. Principle: v₂ = v₁√[2(P₁-P₂)/(ρ(1-β⁴))]. Essential for fluid system monitoring.'
         }
       ]
     }
@@ -421,102 +304,49 @@ export const unit3Lessons = {
       }
     ],
     content: {
-      introduction: 'Fluid resistance encompasses drag and viscosity effects that oppose motion through fluids. Understanding these forces is crucial for efficient vehicle and system design.',
-      fundamentals: [
-        'Drag force increases with velocity squared',
-        'Viscosity creates internal friction in fluids',
-        'Reynolds number determines flow regime',
-        'Shape optimization reduces drag'
-      ],
-      details: {
-        dragForce: {
-          equation: '$F_D = \\frac{1}{2}\\rho v^2C_dA$',
-          components: {
-            formDrag: 'Due to pressure difference',
-            skinDrag: 'Due to viscous friction',
-            inducedDrag: 'From lift generation'
-          },
-          dragCoefficients: {
-            sphere: 'Cd ≈ 0.47',
-            car: 'Cd = 0.25-0.35',
-            airfoil: 'Cd = 0.04-0.08',
-            cube: 'Cd ≈ 1.05'
-          }
-        },
-        viscosity: {
-          definition: 'Fluid resistance to shear deformation',
-          equation: '$\\tau = \\mu\\frac{dv}{dy}$',
-          types: {
-            dynamic: 'μ (Pa·s)',
-            kinematic: 'ν = μ/ρ (m²/s)'
-          },
-          values: {
-            water: 'μ = 0.001 Pa·s',
-            air: 'μ = 1.8×10⁻⁵ Pa·s',
-            oil: 'μ = 0.03-0.1 Pa·s'
-          }
-        },
-        reynoldsNumber: {
-          equation: '$Re = \\frac{\\rho vL}{\\mu}$',
-          regimes: {
-            laminar: 'Re < 2300',
-            transition: '2300 < Re < 4000',
-            turbulent: 'Re > 4000'
-          },
-          importance: 'Determines flow behavior and drag characteristics'
-        }
-      },
-      examples: [
+      intro: 'Fluid resistance encompasses drag and viscosity effects that oppose motion through fluids. Understanding these forces is crucial for efficient vehicle and system design. Drag increases with velocity squared - small speed increases create large drag forces!',
+      concepts: [
         {
-          title: 'Vehicle Aerodynamics',
-          analysis: {
-            power: '$P_{drag} = \\frac{1}{2}\\rho v^3C_dA$',
-            speed: 'Drag ∝ v²',
-            optimization: 'Minimize CdA product'
-          },
-          savings: '10% drag reduction = 3% fuel savings'
+          title: '💨 1. Drag Force',
+          explanation: 'Drag force: F_D = ½ρv²C_dA. Components: Form drag (pressure difference), skin drag (viscous friction), induced drag (from lift). Drag coefficients: Sphere ≈ 0.47, Car = 0.25-0.35, Airfoil = 0.04-0.08, Cube ≈ 1.05. Power lost: P = ½ρv³C_dA.',
+          example: 'Car (Cd = 0.3, A = 2.2 m²) at 100 km/h (27.8 m/s): F_D = ½(1.225)(27.8)²(0.3)(2.2) = 276.8 N. Power = 276.8 × 27.8 = 7.7 kW lost to drag! At 120 km/h: 13.3 kW - drag increases dramatically!'
         },
         {
-          title: 'Pipeline Flow',
-          considerations: {
-            pressure: 'Loss increases with velocity squared',
-            reynolds: 'Determines friction factor',
-            roughness: 'Affects boundary layer'
-          },
-          optimization: 'Balance flow rate vs pumping power'
+          title: '🌊 2. Viscosity',
+          explanation: 'Viscosity = fluid resistance to shear deformation. τ = μ(dv/dy). Dynamic viscosity μ (Pa·s): Water = 0.001, Air = 1.8×10⁻⁵, Oil = 0.03-0.1. Kinematic viscosity ν = μ/ρ (m²/s). Creates internal friction in fluids.',
+          example: 'Water flowing in pipe: μ = 0.001 Pa·s. Velocity gradient creates shear stress. Higher viscosity = more resistance to flow. Oil (μ = 0.05) flows much slower than water under same pressure!'
+        },
+        {
+          title: '📊 3. Reynolds Number',
+          explanation: 'Reynolds number: Re = ρvL/μ. Determines flow regime: Laminar (Re < 2300), Transition (2300-4000), Turbulent (Re > 4000). Determines flow behavior and drag characteristics. Higher Re = more turbulent, more drag.',
+          example: 'Water (μ = 0.001, ρ = 1000) at 2 m/s in 5cm pipe: Re = (1000)(2)(0.05)/0.001 = 100,000 - turbulent flow! Turbulent flow has higher drag but better mixing. Engineers design for appropriate Re range.'
         }
       ],
       realWorld: [
         {
-          application: 'Aircraft Design',
-          features: {
-            winglets: 'Reduce induced drag 4-8%',
-            surface: 'Smooth finish reduces skin friction',
-            shape: 'Area ruling reduces wave drag'
-          },
-          impact: {
-            fuel: '1% drag reduction = 0.2% fuel saving',
-            range: 'Improved range or payload capacity',
-            cost: 'Significant operating cost reduction'
-          }
+          icon: '✈️',
+          title: 'Aircraft Design',
+          description: 'Winglets reduce induced drag 4-8%. Smooth finish reduces skin friction. Area ruling reduces wave drag. 1% drag reduction = 0.2% fuel saving. Significant operating cost reduction from small improvements!'
         },
         {
-          application: 'Sports Engineering',
-          examples: {
-            golf: 'Ball dimples reduce drag by 50%',
-            cycling: 'Aerodynamic frames and positions',
-            swimming: 'Specialized suits reduce drag'
-          },
-          significance: 'Small changes have major performance impact'
+          icon: '🏎️',
+          title: 'Vehicle Aerodynamics',
+          description: '10% drag reduction = 3% fuel savings. Power lost: P = ½ρv³C_dA. Minimize CdA product. Modern cars: Cd = 0.25-0.30. Electric vehicles optimize for range - every bit of drag reduction matters!'
         },
         {
-          application: 'Wind Turbines',
-          considerations: {
-            blade: 'Airfoil optimization for lift/drag',
-            wake: 'Turbine spacing for wake recovery',
-            control: 'Pitch adjustment for wind conditions'
-          },
-          efficiency: 'Drag reduction increases power output'
+          icon: '⚽',
+          title: 'Sports Engineering',
+          description: 'Golf ball dimples reduce drag by 50%! Cycling: Aerodynamic frames and positions. Swimming: Specialized suits reduce drag. Small changes have major performance impact - engineers optimize everything!'
+        },
+        {
+          icon: '🌬️',
+          title: 'Wind Turbines',
+          description: 'Blade airfoil optimization for lift/drag ratio. Turbine spacing for wake recovery. Pitch adjustment for wind conditions. Drag reduction increases power output. Modern turbines achieve 40-50% efficiency.'
+        },
+        {
+          icon: '🔧',
+          title: 'Pipeline Flow',
+          description: 'Pressure loss increases with velocity squared. Reynolds number determines friction factor. Surface roughness affects boundary layer. Engineers balance flow rate vs pumping power. Optimal design saves energy!'
         }
       ]
     }
@@ -562,110 +392,49 @@ export const unit3Lessons = {
       }
     ],
     content: {
-      introduction: 'Compressible flow occurs when fluid velocity approaches the speed of sound, causing significant density changes. This regime is crucial for aerospace and propulsion engineering.',
-      fundamentals: [
-        'Mach number determines flow regime',
-        'Shock waves form at supersonic speeds',
-        'Nozzle geometry controls flow acceleration',
-        'Pressure, temperature, and density coupled'
-      ],
-      details: {
-        machNumber: {
-          definition: '$M = \\frac{v}{c}$ where $c = \\sqrt{\\gamma RT}$',
-          regimes: {
-            subsonic: 'M < 0.8',
-            transonic: '0.8 < M < 1.2',
-            supersonic: '1.2 < M < 5',
-            hypersonic: 'M > 5'
-          },
-          effects: [
-            'Density changes significant above M = 0.3',
-            'Shock waves form above M = 1',
-            'Heat effects dominant in hypersonic'
-          ]
-        },
-        shockWaves: {
-          normal: {
-            properties: [
-              'Pressure jumps suddenly',
-              'Temperature increases',
-              'Velocity decreases',
-              'Entropy increases'
-            ],
-            equations: '$\\frac{P_2}{P_1} = 1 + \\frac{2\\gamma}{\\gamma+1}(M_1^2-1)$'
-          },
-          oblique: {
-            angle: '$\\sin\\beta = \\frac{1}{M}$ (minimum angle)',
-            applications: 'Aircraft wings, intake design'
-          }
-        },
-        nozzleFlow: {
-          convergingDiverging: {
-            throat: 'M = 1 (choked flow)',
-            expansion: 'Supersonic in diverging section',
-            ratio: '$\\frac{A_e}{A_t}$ determines exit Mach'
-          },
-          performance: {
-            thrust: '$F = \\dot{m}v_e + (P_e-P_a)A_e$',
-            efficiency: 'Maximum at design pressure ratio'
-          }
-        }
-      },
-      examples: [
+      intro: 'Compressible flow occurs when fluid velocity approaches the speed of sound, causing significant density changes. This regime is crucial for aerospace and propulsion engineering. Mach number determines flow behavior - above M = 1, shock waves form!',
+      concepts: [
         {
-          title: 'Rocket Nozzle',
-          design: {
-            throat: 'Minimum area (choked)',
-            expansion: 'Optimized for altitude',
-            ratio: 'Typically 15:1 to 150:1'
-          },
-          performance: 'Mach 3-4 exit velocity typical'
+          title: '🚀 1. Mach Number',
+          explanation: 'Mach number: M = v/c where c = √(γRT) is speed of sound. Regimes: Subsonic (M < 0.8), Transonic (0.8-1.2), Supersonic (1.2-5), Hypersonic (M > 5). Density changes significant above M = 0.3. Shock waves form above M = 1. Heat effects dominant in hypersonic.',
+          example: 'Aircraft at 250 m/s at 10km altitude (c = 300 m/s): M = 250/300 = 0.833 (high subsonic). At M = 1.5: Supersonic! At M = 3.2: Hypersonic (SR-71 Blackbird). Each regime has different physics!'
         },
         {
-          title: 'Supersonic Inlet',
-          features: {
-            compression: 'Multiple shock waves',
-            variable: 'Adjusts for flight speed',
-            bypass: 'Manages excess air'
-          },
-          efficiency: 'Critical for engine performance'
+          title: '💥 2. Shock Waves',
+          explanation: 'Shock waves form at supersonic speeds. Normal shock: Pressure jumps suddenly, temperature increases, velocity decreases, entropy increases. P₂/P₁ = 1 + [2γ/(γ+1)](M₁²-1). Oblique shock: sin(β) = 1/M (minimum angle). Used in aircraft wings and intake design.',
+          example: 'Normal shock at M = 1.5 (γ = 1.4): P₂/P₁ = 1 + [2(1.4)/(2.4)](1.5²-1) = 2.46. Pressure doubles! Temperature also increases. Stagnation pressure recovery = 93%. Significant energy loss!'
+        },
+        {
+          title: '🔧 3. Nozzle Flow',
+          explanation: 'Converging-diverging nozzle: Throat at M = 1 (choked flow). Supersonic expansion in diverging section. Area ratio A_e/A_t determines exit Mach. Thrust: F = ṁv_e + (P_e-P_a)A_e. Maximum efficiency at design pressure ratio.',
+          example: 'Rocket nozzle: Throat area 0.01 m², exit area for M = 2.5. Using area ratio equation: A_e/A_t = 2.637, so A_e = 0.02637 m². Exit velocity: Mach 2.5 = 2.5 × 300 = 750 m/s! Typical rocket: Mach 3-4 exit velocity.'
         }
       ],
       realWorld: [
         {
-          application: 'Supersonic Aircraft',
-          features: {
-            inlets: 'Variable geometry',
-            nozzles: 'Adjustable area ratio',
-            control: 'Mach and altitude compensation'
-          },
-          examples: {
-            'F-22': 'M = 2.25 supercruise',
-            'Concorde': 'M = 2.04 cruise',
-            'SR-71': 'M = 3.2+ capability'
-          }
+          icon: '✈️',
+          title: 'Supersonic Aircraft',
+          description: 'F-22: M = 2.25 supercruise. Concorde: M = 2.04 cruise. SR-71: M = 3.2+ capability. Variable geometry inlets. Adjustable area ratio nozzles. Mach and altitude compensation. Critical for high-speed flight!'
         },
         {
-          application: 'Space Launch',
-          considerations: {
-            nozzle: 'Altitude compensation',
-            heating: 'Thermal protection',
-            efficiency: 'Specific impulse optimization'
-          },
-          challenges: [
-            'Material temperature limits',
-            'Flow separation',
-            'Variable back pressure'
-          ]
+          icon: '🚀',
+          title: 'Space Launch',
+          description: 'Nozzle optimized for altitude compensation. Thermal protection for extreme heating. Specific impulse optimization. Challenges: Material temperature limits, flow separation, variable back pressure. Rocket nozzles: 15:1 to 150:1 area ratios!'
         },
         {
-          application: 'Gas Turbines',
-          components: {
-            compressor: 'Transonic blade tips',
-            combustor: 'High-speed mixing',
-            turbine: 'Shock interaction'
-          },
-          design: 'Balance efficiency and stability'
+          icon: '⚙️',
+          title: 'Gas Turbines',
+          description: 'Compressor: Transonic blade tips. Combustor: High-speed mixing. Turbine: Shock interaction. Engineers balance efficiency and stability. Modern jet engines operate in transonic regime for optimal performance.'
+        },
+        {
+          icon: '🔬',
+          title: 'Supersonic Inlets',
+          description: 'Multiple shock waves for compression. Variable geometry adjusts for flight speed. Bypass manages excess air. Critical for engine performance. Modern fighters use sophisticated inlet designs for high-speed flight.'
+        },
+        {
+          icon: '🌡️',
+          title: 'Hypersonic Flight',
+          description: 'M > 5: Extreme heating dominates. Thermal protection essential. Material limits critical. Re-entry vehicles: M = 20-30! Heat shields protect from extreme temperatures. Future of high-speed travel!'
         }
       ]
     }
