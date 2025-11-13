@@ -44,7 +44,99 @@ export const unit3Lessons = [
       { term: "Apoapsis", definition: "Farthest point in orbit from central body" },
       { term: "Inclination (i)", definition: "Tilt of orbital plane relative to equator" },
       { term: "Geostationary Orbit (GEO)", definition: "Orbit at 35,786 km with 24-hour period; appears stationary" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "20-1",
+        problem: "Calculate orbital period for a satellite at 800 km altitude. (Earth radius = 6,371 km, μ = 3.986×10¹⁴ m³/s²)",
+        solution: "a = 6,371 + 800 = 7,171 km = 7.171×10⁶ m\nT = 2π√(a³/μ) = 2π√((7.171×10⁶)³/(3.986×10¹⁴))\nT = 2π√(3.682×10²⁰/3.986×10¹⁴) = 2π√(9.237×10⁵)\nT = 2π × 961 = 6,037 seconds = 100.6 minutes",
+        hint: "Use Kepler's Third Law: T = 2π√(a³/μ)"
+      },
+      {
+        id: "20-2",
+        problem: "Calculate escape velocity from Earth's surface and compare to LEO orbital velocity.",
+        solution: "r = 6,371 km = 6.371×10⁶ m\nv_circular = √(μ/r) = √(3.986×10¹⁴/6.371×10⁶) = 7,910 m/s\nv_escape = √(2μ/r) = √2 × v_circular = 1.414 × 7,910 = 11,186 m/s\nEscape velocity is 41.4% higher than orbital velocity!",
+        hint: "v_escape = √2 × v_circular"
+      },
+      {
+        id: "20-3",
+        problem: "A satellite in highly elliptical orbit has periapsis at 400 km and apoapsis at 40,000 km. Calculate velocities at both points.",
+        solution: "r_p = 6,771 km, r_a = 46,371 km\na = (r_p + r_a)/2 = 26,571 km\ne = (r_a - r_p)/(r_a + r_p) = 0.745\nv_p = √(μ(1+e)/(a(1-e))) = √(3.986×10¹⁴ × 1.745/(26.571×10⁶ × 0.255)) = 9,850 m/s\nv_a = √(μ(1-e)/(a(1+e))) = √(3.986×10¹⁴ × 0.255/(26.571×10⁶ × 1.745)) = 1,440 m/s\nFast at periapsis, slow at apoapsis!",
+        hint: "Use vis-viva equation at each point"
+      },
+      {
+        id: "20-4",
+        problem: "Why does ISS need periodic reboosts? Calculate altitude loss per month if drag causes 2 km/month decay.",
+        solution: "Atmospheric drag below 600 km removes energy from orbit.\nISS at 400 km experiences significant drag.\nAltitude decay: ~2 km/month without reboost\nOver 6 months: 12 km loss\nEventually would reenter if not reboosted!\nSolution: Progress, Dragon, or Cygnus perform reboosts every few months.",
+        hint: "Drag removes orbital energy, lowering altitude over time"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q20-1",
+          question: "What does Kepler's Third Law state?",
+          options: [
+            "All orbits are ellipses",
+            "Orbital period squared is proportional to semi-major axis cubed (T² ∝ a³)",
+            "Equal areas in equal times",
+            "Velocity is constant"
+          ],
+          correctAnswer: 1,
+          explanation: "Kepler's Third Law: T² = (4π²/μ)·a³. This means farther orbits take longer to complete. ISS at 400 km: 92 minutes. GEO at 35,786 km: 24 hours!"
+        },
+        {
+          id: "q20-2",
+          question: "What is the relationship between escape velocity and circular orbital velocity?",
+          options: [
+            "v_escape = v_circular",
+            "v_escape = √2 × v_circular ≈ 1.414 × v_circular",
+            "v_escape = 2 × v_circular",
+            "No relationship"
+          ],
+          correctAnswer: 1,
+          explanation: "v_escape = √(2μ/r) and v_circular = √(μ/r), so v_escape = √2 × v_circular. At any altitude, escape velocity is 41.4% higher than orbital velocity!"
+        },
+        {
+          id: "q20-3",
+          question: "Why do satellites move faster at periapsis than apoapsis?",
+          options: [
+            "Engines fire",
+            "Conservation of angular momentum: closer = faster, farther = slower",
+            "Gravity is stronger",
+            "Random variation"
+          ],
+          correctAnswer: 1,
+          explanation: "Angular momentum L = m·v·r is conserved. At periapsis (small r), velocity must be high. At apoapsis (large r), velocity must be low. This is Kepler's Second Law!"
+        },
+        {
+          id: "q20-4",
+          question: "What is a geostationary orbit?",
+          options: [
+            "Any orbit around Earth",
+            "Orbit at 35,786 km altitude with 24-hour period; appears stationary from ground",
+            "Low Earth orbit",
+            "Polar orbit"
+          ],
+          correctAnswer: 1,
+          explanation: "GEO satellites orbit at exactly 35,786 km altitude with 24-hour period, matching Earth's rotation. They appear stationary from ground - perfect for communications and weather satellites!"
+        },
+        {
+          id: "q20-5",
+          question: "Why does ISS need periodic reboosts?",
+          options: [
+            "To go faster",
+            "Atmospheric drag removes energy, lowering altitude (~2 km/month)",
+            "To change inclination",
+            "For fun"
+          ],
+          correctAnswer: 1,
+          explanation: "Below 600 km, atmospheric drag is significant. It removes orbital energy, causing altitude to decay. ISS loses ~2 km/month and needs periodic reboosts from Progress, Dragon, or Cygnus to maintain altitude!"
+        }
+      ]
+    }
   },
 
   {
@@ -89,7 +181,99 @@ export const unit3Lessons = [
       { term: "Phasing", definition: "Adjusting orbital period to catch up with or wait for target" },
       { term: "Rendezvous", definition: "Bringing two spacecraft together in orbit" },
       { term: "GTO", definition: "Geostationary Transfer Orbit; ellipse from LEO to GEO altitude" }
-    ]
+    ],
+    
+    practiceProblems: [
+      {
+        id: "21-1",
+        problem: "Calculate Δv for Hohmann transfer from LEO (r₁=6,571 km) to GEO (r₂=42,164 km). μ=3.986×10⁵ km³/s²",
+        solution: "v₁ = √(μ/r₁) = √(3.986×10⁵/6,571) = 7.784 km/s\nv₂ = √(μ/r₂) = √(3.986×10⁵/42,164) = 3.075 km/s\na_t = (r₁+r₂)/2 = 24,368 km\nv_p = √(μ×2r₂/(r₁+r₂)/r₁) = 10.249 km/s\nv_a = √(μ×2r₁/(r₁+r₂)/r₂) = 1.597 km/s\nΔv₁ = 10.249 - 7.784 = 2.465 km/s\nΔv₂ = 3.075 - 1.597 = 1.478 km/s\nTotal: 3.943 km/s",
+        hint: "Calculate velocities at LEO and GEO, then transfer orbit velocities"
+      },
+      {
+        id: "21-2",
+        problem: "Calculate Δv for 10° plane change in LEO (v=7,700 m/s).",
+        solution: "Δv = 2v×sin(Δi/2) = 2×7,700×sin(5°) = 2×7,700×0.0872 = 1,343 m/s\nHuge cost for small change! This is why launch site latitude matters.",
+        hint: "Use Δv = 2v×sin(Δi/2)"
+      },
+      {
+        id: "21-3",
+        problem: "Why is Kourou (5.2°N) better than Cape Canaveral (28.5°N) for GEO launches?",
+        solution: "GEO requires 0° inclination (equatorial).\nFrom Kourou: Plane change = 5.2° → Δv ≈ 400 m/s\nFrom Cape: Plane change = 28.5° → Δv ≈ 1,800 m/s\nKourou saves 1,400 m/s! This is huge - equivalent to 30% more payload.",
+        hint: "Calculate plane change cost from each latitude"
+      },
+      {
+        id: "21-4",
+        problem: "Dragon is 90° behind ISS in same orbit. How long to catch up if Dragon lowers to 350 km (period 91.5 min) while ISS is at 400 km (period 92.9 min)?",
+        solution: "Catch-up rate: 92.9 - 91.5 = 1.4 minutes per orbit\n90° = 23 minutes of orbital arc\nOrbits needed: 23/1.4 = 16.4 orbits\nTime: 16.4 × 91.5 = 1,501 minutes = 25 hours\nThen raise orbit to match ISS!",
+        hint: "Calculate how much Dragon gains per orbit, then divide target by gain"
+      }
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q21-1",
+          question: "What is a Hohmann transfer?",
+          options: [
+            "Direct flight between orbits",
+            "Most efficient two-impulse transfer between coplanar circular orbits",
+            "Plane change maneuver",
+            "Emergency abort"
+          ],
+          correctAnswer: 1,
+          explanation: "Hohmann transfer uses two burns: one to enter transfer ellipse, one to circularize at target orbit. It's the most fuel-efficient path between circular orbits!"
+        },
+        {
+          id: "q21-2",
+          question: "Why are plane changes so expensive?",
+          options: [
+            "They require special fuel",
+            "Must change velocity vector direction; Δv = 2v×sin(Δi/2) grows quickly",
+            "They take too long",
+            "Regulations"
+          ],
+          correctAnswer: 1,
+          explanation: "Plane changes require changing the velocity vector direction. Even small inclination changes need large Δv. 10° in LEO costs 1,343 m/s - more than going from LEO to Moon!"
+        },
+        {
+          id: "q21-3",
+          question: "When is the best time to perform a plane change?",
+          options: [
+            "At periapsis",
+            "At apoapsis (where velocity is lowest)",
+            "Anytime",
+            "At equator"
+          ],
+          correctAnswer: 1,
+          explanation: "Perform plane changes at apoapsis where velocity is lowest. Since Δv = 2v×sin(Δi/2), lower v means lower Δv cost. Can save 10-20% fuel!"
+        },
+        {
+          id: "q21-4",
+          question: "What is phasing in orbital rendezvous?",
+          options: [
+            "Docking procedure",
+            "Adjusting orbital period to catch up with or wait for target",
+            "Plane change",
+            "Attitude control"
+          ],
+          correctAnswer: 1,
+          explanation: "Phasing adjusts timing to meet the target. Lower your orbit to go faster and catch up, or raise it to slow down and let target catch you. Takes multiple orbits!"
+        },
+        {
+          id: "q21-5",
+          question: "How long does a Hohmann transfer from LEO to GEO take?",
+          options: [
+            "1 hour",
+            "5.28 hours (half the transfer orbit period)",
+            "24 hours",
+            "1 week"
+          ],
+          correctAnswer: 1,
+          explanation: "Transfer time = half the period of transfer ellipse = π√(a_t³/μ) ≈ 5.28 hours. This is why GEO satellites take about 5-6 hours to reach final orbit after launch!"
+        }
+      ]
+    }
   }
 ];
 
