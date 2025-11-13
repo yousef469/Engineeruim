@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { InlineMath, BlockMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 import { unit1Lessons } from '../data/physics/unit1-mechanics';
 import { unit2Lessons } from '../data/physics/unit2-energy';
 import { unit3Lessons } from '../data/physics/unit3-fluids';
@@ -155,7 +157,9 @@ export default function PhysicsLessonPage() {
                         <div className="space-y-3">
                             {lesson.keyEquations.map((eq, i) => (
                                 <div key={i} className="p-3 bg-slate-900/40 border border-slate-700 rounded">
-                                    <div className="font-mono text-sm text-yellow-200">{eq.eq}</div>
+                                    <div className="text-yellow-200">
+                                        <BlockMath>{eq.eq}</BlockMath>
+                                    </div>
                                     {eq.meaning && <div className="text-sm text-gray-300 mt-1">{eq.meaning}</div>}
                                 </div>
                             ))}
