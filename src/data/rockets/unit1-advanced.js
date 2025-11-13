@@ -122,13 +122,13 @@ export const unit1AdvancedLessons = [
     id: 11,
     title: "Rocket Engine Types & Selection",
     unit: "Rocket Fundamentals",
-    duration: "30 min",
-    introduction: "Rocket engines come in many types, each optimized for different missions. Understanding the trade-offs between solid, liquid, and hybrid engines is essential for rocket design.",
+    duration: "40 min",
+    introduction: "🔥 Rocket engines come in many flavors - solid, liquid, hybrid, electric! Each type has unique trade-offs. Solid rockets are simple but can't throttle. Liquid engines offer high performance but are complex. Understanding these trade-offs is essential for mission design. Let's explore what makes each engine type special!",
     
     sections: [
       {
-        title: "Solid Rocket Motors",
-        content: "Basic Principle:\n• Fuel and oxidizer pre-mixed\n• Burns from inside out\n• Simple, reliable design\n\nPerformance:\n• I_sp: 250-280 s\n• Density: 1,700-1,800 kg/m³\n• Chamber pressure: 5-10 MPa\n\nAdvantages:\n✓ Simplicity (no pumps, valves)\n✓ Reliability (few failure modes)\n✓ Long storage life\n✓ High thrust density\n✓ Low cost\n\nDisadvantages:\n✗ Cannot throttle\n✗ Cannot restart\n✗ Lower I_sp than liquid\n✗ Safety concerns\n\nExamples:\n• Space Shuttle SRB: 12,500 kN thrust, 269 s I_sp\n• Ariane 5 Booster: 7,080 kN thrust, 275 s I_sp"
+        title: "🔥 Solid Rocket Motors - Simple Power",
+        content: "**Basic Principle:**\n• Fuel and oxidizer pre-mixed into solid grain\n• Burns from inside out (like a candle)\n• Once lit, burns until fuel exhausted\n• No moving parts!\n\n**Performance:**\n• Isp: 250-280 s (moderate)\n• Density: 1,700-1,800 kg/m³ (very high!)\n• Chamber pressure: 5-10 MPa\n• Thrust: Can be MASSIVE\n\n**Advantages:**\n✓ Extreme simplicity (no pumps, valves, plumbing)\n✓ Very reliable (few failure modes)\n✓ Long storage life (years)\n✓ High thrust density (compact)\n✓ Low cost per kg of thrust\n✓ Instant full thrust\n\n**Disadvantages:**\n✗ Cannot throttle (all or nothing)\n✗ Cannot restart once ignited\n✗ Lower Isp than liquid engines\n✗ Safety concerns (explosive if damaged)\n✗ Difficult to test (destructive)\n\n**Real Examples:**\n\n**Space Shuttle SRB:**\n• Thrust: 12,500 kN each (2 boosters)\n• Isp: 269 s\n• Burn time: 124 seconds\n• Propellant: 500,000 kg each\n• Provided 83% of liftoff thrust!\n• Recovered and reused up to 20 times\n\n**Ariane 5 Booster:**\n• Thrust: 7,080 kN each\n• Isp: 275 s\n• Burn time: 140 seconds\n• Largest solid motors in Europe\n\n**Why Use Solid Rockets?**\n• Boosters for heavy lift (Shuttle, Ariane, Atlas V)\n• Military missiles (instant readiness)\n• Upper stages (simple, reliable)\n• Kick motors (satellite orbit raising)"
       },
       {
         title: "Liquid Rocket Engines",
