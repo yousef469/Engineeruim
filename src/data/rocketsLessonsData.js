@@ -7,27 +7,8 @@ import { rocketUnit2Complete } from './rockets/unit2-complete.js';
 import { rocketUnit3Complete } from './rockets/unit3-complete.js';
 import { rocketUnit4Complete } from './rockets/unit4-complete.js';
 import { rocketUnit5Complete } from './rockets/unit5-complete.js';
-import { generateAllRocketLessons } from './generateRocketLessons.js';
-
-// Get generated lessons for Units 6-10 (placeholder for future expansion)
-const generatedLessons = generateAllRocketLessons();
-
-// Helper function to get unit name
-function getUnitName(lessonId) {
-  if (lessonId < 6) return 'Foundations: Math & Physics Bridge';
-  if (lessonId < 12) return 'Rocket Fundamentals';
-  if (lessonId < 20) return 'Rocket Propulsion Physics';
-  if (lessonId < 24) return 'Orbital Mechanics';
-  if (lessonId < 26) return 'Rocket Structures & Materials';
-  if (lessonId < 28) return 'Guidance, Navigation & Control';
-  
-  const units = [
-    'Advanced Propulsion',
-    'Mission Design & Operations',
-    'Advanced Rocketry & Innovation'
-  ];
-  return units[Math.floor((lessonId - 28) / 8)];
-}
+// Note: Only MIT-quality lessons included (Units 0-5)
+// Total: 28 comprehensive rocket engineering lessons
 
 // Create lessons object
 export const rocketsLessons = {};
@@ -89,7 +70,6 @@ rocketUnit5Complete.forEach(lesson => {
   };
 });
 
-// Note: Generated lessons (28+) removed - only MIT-quality content included
-// Total: 28 comprehensive rocket engineering lessons (Units 0-5)
+
 
 export default rocketsLessons;

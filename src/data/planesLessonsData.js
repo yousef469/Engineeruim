@@ -3,28 +3,8 @@
 
 import { unit0Foundations } from './planes/unit0-foundations.js';
 import { allPlanesLessons } from './planes/units-complete.js';
-import { generateAllAerospaceLessons } from './generateAerospaceLessons.js';
-
-// Get generated lessons for Units 6-10 (placeholder for future expansion)
-const generatedLessons = generateAllAerospaceLessons();
-
-// Helper function to get unit name
-function getUnitName(lessonId) {
-  if (lessonId < 6) return 'Foundations: Math & Physics Bridge';
-  if (lessonId < 12) return 'Flight Fundamentals';
-  if (lessonId < 14) return 'Aerodynamics';
-  if (lessonId < 16) return 'Aircraft Structures';
-  if (lessonId < 18) return 'Aircraft Propulsion';
-  if (lessonId < 20) return 'Flight Operations';
-  
-  const units = [
-    'Advanced Aerodynamics',
-    'Advanced Structures',
-    'Avionics & Systems',
-    'Future of Aviation'
-  ];
-  return units[Math.floor((lessonId - 20) / 10)];
-}
+// Note: Only MIT-quality lessons included (Units 0-5)
+// Total: 20 comprehensive aircraft engineering lessons
 
 // Create lessons object
 export const planesLessons = {};
@@ -50,7 +30,6 @@ allPlanesLessons.forEach(lesson => {
   };
 });
 
-// Note: Generated lessons (20+) removed - only MIT-quality content included
-// Total: 20 comprehensive aircraft engineering lessons (Units 0-5)
+
 
 export default planesLessons;
