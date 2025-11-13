@@ -5,7 +5,7 @@ export const unit0Foundations = {
     id: '0.1',
     title: 'Foundations: The Rocket Equation',
     subtitle: 'Deriving Tsiolkovsky\'s Equation',
-    description: 'Master THE fundamental equation of rocketry - momentum conservation leads to exponential relationships',
+    description: '🚀 The Rocket Equation is THE most important formula in spaceflight! Discovered by Tsiolkovsky in 1903, this elegant equation reveals why rockets need 95% fuel, why staging is essential, and why getting to orbit is so hard. Master this and you understand the fundamental challenge of space travel!',
     coreIdea: 'Δv = v_e × ln(m₀/m_f) - mass ratio determines everything in spaceflight',
     learningObjectives: ['Derive rocket equation', 'Calculate delta-v', 'Understand staging', 'Apply to real rockets', 'Optimize mass ratios'],
     keyEquations: [
@@ -23,7 +23,7 @@ export const unit0Foundations = {
     id: '0.2',
     title: 'Foundations: Orbital Mechanics Math',
     subtitle: 'Kepler\'s Laws and Transfer Orbits',
-    description: 'Master orbital velocity, Hohmann transfers, and interplanetary trajectories',
+    description: '🪐 Orbital mechanics is cosmic billiards with math! Every orbit follows precise mathematical laws discovered by Kepler 400 years ago. Understanding these equations lets you calculate orbital periods, plan transfers, and navigate the solar system. This is the mathematics that powers every space mission!',
     coreIdea: 'Orbits follow v=√(GM/r) - simple physics enables complex space missions',
     learningObjectives: ['Apply Kepler\'s laws', 'Use vis-viva equation', 'Calculate transfers', 'Plan trajectories', 'Optimize missions'],
     keyEquations: [
@@ -41,7 +41,7 @@ export const unit0Foundations = {
     id: '0.3',
     title: 'Foundations: Thrust & Gravity Losses',
     subtitle: 'F=ma with Changing Mass',
-    description: 'Master acceleration with changing mass, TWR requirements, and gravity losses',
+    description: '⚡ Rockets get faster as they burn fuel - but gravity fights back! Understanding thrust-to-weight ratio (TWR) reveals why Saturn V needed 7.6 million pounds of thrust to lift 6.5 million pounds. Every second fighting gravity wastes precious delta-v. This is the mathematics of acceleration!',
     coreIdea: 'Acceleration increases as mass decreases - but gravity steals delta-v',
     learningObjectives: ['Calculate acceleration', 'Understand TWR', 'Calculate losses', 'Optimize thrust', 'Design trajectories'],
     keyEquations: [
@@ -59,7 +59,7 @@ export const unit0Foundations = {
     id: '0.4',
     title: 'Foundations: Nozzle Math & Thermodynamics',
     subtitle: 'From Combustion to Thrust',
-    description: 'Master Isp, exhaust velocity, nozzle expansion, and engine efficiency',
+    description: '🌪️ Nozzles are where thermodynamics becomes thrust! Hot gases at 3,600K expand through the nozzle, converting thermal energy to kinetic energy. Understanding Isp (specific impulse) reveals why hydrogen engines are efficient but need huge tanks. This is the mathematics of rocket performance!',
     coreIdea: 'Nozzles convert thermal energy to kinetic - expansion ratio determines performance',
     learningObjectives: ['Understand Isp', 'Calculate thrust', 'Optimize nozzles', 'Apply thermodynamics', 'Design engines'],
     keyEquations: [
@@ -77,7 +77,7 @@ export const unit0Foundations = {
     id: '0.5',
     title: 'Foundations: Trajectory Optimization',
     subtitle: 'Gravity Turn and Launch Windows',
-    description: 'Master optimal ascent profiles, launch timing, and trajectory planning',
+    description: '🎯 The gravity turn is rocket science elegance! Instead of fighting gravity, rockets follow a natural curved path that minimizes losses. Understanding launch windows reveals why Mars missions launch every 26 months and why Cape Canaveral is perfect for ISS launches. This is the mathematics of optimal trajectories!',
     coreIdea: 'Gravity turn follows natural path - minimizes losses by following prograde',
     learningObjectives: ['Understand gravity turn', 'Calculate launch windows', 'Optimize trajectories', 'Plan missions', 'Minimize losses'],
     keyEquations: [
@@ -95,7 +95,7 @@ export const unit0Foundations = {
     id: '0.6',
     title: 'Foundations: Structural Loads & Mass Budgets',
     subtitle: 'Engineering the Structure',
-    description: 'Master structural analysis, load calculations, and mass optimization',
+    description: '🏗️ Every kilogram of structure is one less kilogram of payload! Rockets experience 5g acceleration and must survive extreme loads while being as light as possible. Understanding structural mass fraction reveals why modern rockets are engineering marvels - 95% fuel, 5% everything else. This is the mathematics of optimization!',
     coreIdea: 'Every kg of structure is one less kg of payload - optimization is critical',
     learningObjectives: ['Calculate loads', 'Optimize mass fraction', 'Design structures', 'Calculate payload', 'Apply safety factors'],
     keyEquations: [
