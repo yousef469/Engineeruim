@@ -9,6 +9,7 @@ export default function GameMapPhysics() {
   const generateLevels = () => {
     const levels = [];
     let levelId = 1;
+    let sequentialLessonNumber = 1; // Global counter for sequential numbering 1-33
 
     const units = [
       { 
@@ -100,7 +101,7 @@ export default function GameMapPhysics() {
           id: levelId++,
           type: 'lesson',
           unit: unit.name,
-          lesson: `Lesson ${i + 1}`,
+          lesson: `Lesson ${sequentialLessonNumber++}`, // Use sequential number 1-33
           lessonName: lessonName,
           emoji: unit.emoji,
           color: unit.color,
