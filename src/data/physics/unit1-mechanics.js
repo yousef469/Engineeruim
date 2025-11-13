@@ -1,7 +1,7 @@
 export const unit1Lessons = {
   1: {
     id: 1,
-    title: 'Understanding Motion',
+    title: 'Mechanics & Motion: Understanding Motion',
     subtitle: 'The Foundation of All Movement in Engineering',
     description: 'Master the core concepts of motion: position, displacement, speed, velocity, and reference frames',
     coreIdea: 'Motion is change in position over time, relative to a reference frame',
@@ -12,8 +12,8 @@ export const unit1Lessons = {
       'Use basic kinematics equations to solve simple problems (v = Δx/Δt, a = Δv/Δt)'
     ],
     keyEquations: [
-      { eq: 'v = Δx / Δt', meaning: 'Average velocity = change in position over time' },
-      { eq: 'a = Δv / Δt', meaning: 'Acceleration = change in velocity over time' }
+      { eq: 'v = \\frac{\\Delta x}{\\Delta t}', meaning: 'Average velocity = change in position over time' },
+      { eq: 'a = \\frac{\\Delta v}{\\Delta t}', meaning: 'Acceleration = change in velocity over time' }
     ],
     practiceProblems: [
       {
@@ -261,11 +261,44 @@ export const unit1Lessons = {
   },
   2: {
     id: 2,
-    title: 'Newton\'s Laws of Motion',
+    title: 'Mechanics & Motion: Newton\'s Laws of Motion',
     subtitle: 'Forces and Inertia - How Motion Starts and Changes',
     description: 'Master the three fundamental laws that govern all motion in the universe',
     coreIdea: 'Forces cause acceleration. Objects resist changes in motion (inertia)',
     engineeringExample: 'Rocket propulsion, car crashes, aircraft control',
+    keyEquations: [
+      { eq: 'F = ma', meaning: 'Force equals mass times acceleration (Newton\'s Second Law)' },
+      { eq: 'F_{net} = \\sum F_i', meaning: 'Net force is the vector sum of all forces' },
+      { eq: 'W = mg', meaning: 'Weight is mass times gravitational acceleration' },
+      { eq: 'F_{12} = -F_{21}', meaning: 'Action-reaction forces are equal and opposite (Newton\'s Third Law)' }
+    ],
+    learningObjectives: [
+      'Explain Newton\'s Three Laws of Motion and how they govern all motion',
+      'Apply F = ma to solve force and acceleration problems',
+      'Calculate net force by vector addition of all forces',
+      'Understand action-reaction pairs and their role in propulsion',
+      'Analyze real-world applications in rockets, cars, and aircraft'
+    ],
+    practiceProblems: [
+      {
+        id: '2a',
+        prompt: 'A 1500 kg car accelerates from 0 to 60 km/h in 8 seconds. Calculate the net force acting on the car.',
+        solution: 'First convert units: 60 km/h = 16.67 m/s\nAcceleration = Δv/Δt = 16.67/8 = 2.08 m/s²\nF = ma = 1500 × 2.08 = 3,120 N',
+        hints: ['Convert km/h to m/s', 'Find acceleration first', 'Then use F = ma']
+      },
+      {
+        id: '2b',
+        prompt: 'A rocket engine produces 15,000 N of thrust. If the rocket has a mass of 1000 kg, what is its initial acceleration? (Ignore gravity for now)',
+        solution: 'Using F = ma:\na = F/m = 15,000/1000 = 15 m/s²\nThe rocket accelerates at 15 m/s²',
+        hints: ['Rearrange F = ma to solve for a', 'Keep units consistent']
+      },
+      {
+        id: '2c',
+        prompt: 'A 75 kg skydiver reaches terminal velocity. What is the upward force of air resistance at this point?',
+        solution: 'At terminal velocity, forces balance:\nF_up = F_down\nAir resistance = Weight\nF = mg = 75 × 9.8 = 735 N',
+        hints: ['At terminal velocity, net force = 0', 'Only forces are weight and air resistance']
+      }
+    ],
     content: {
       intro: '🎯 Newton\'s Three Laws are the foundation of ALL engineering mechanics. They explain why rockets fly, why seatbelts save lives, and how every machine works. These laws answer the fundamental question: What CAUSES motion to change? The answer: FORCES! Understanding forces and inertia is essential for designing anything that moves.',
       concepts: [
@@ -456,11 +489,44 @@ export const unit1Lessons = {
   },
   3: {
     id: 3,
-    title: 'Forces & Free-Body Diagrams',
+    title: 'Mechanics & Motion: Forces & Free-Body Diagrams',
     subtitle: 'How to Break Down Forces Visually',
     description: 'Master the art of analyzing forces using free-body diagrams',
     coreIdea: 'Visualize all forces to solve motion problems',
     engineeringExample: 'Aircraft analysis, bridge design, rocket launch',
+    learningObjectives: [
+      'Create accurate free-body diagrams for any object',
+      'Identify and represent all forces acting on an object',
+      'Break down forces into components using trigonometry',
+      'Apply force equations to solve equilibrium problems',
+      'Analyze real engineering systems using FBDs'
+    ],
+    keyEquations: [
+      { eq: '\\sum F_x = 0, \\sum F_y = 0', meaning: 'Conditions for equilibrium in 2D' },
+      { eq: 'F_x = F\\cos\\theta, F_y = F\\sin\\theta', meaning: 'Force components in x and y directions' },
+      { eq: 'N = mg\\cos\\theta', meaning: 'Normal force on an inclined plane' },
+      { eq: 'F_{net} = \\sqrt{(\\sum F_x)^2 + (\\sum F_y)^2}', meaning: 'Net force magnitude from components' }
+    ],
+    practiceProblems: [
+      {
+        id: '3a',
+        prompt: 'A 50 kg crate rests on a 30° incline. Calculate (a) the normal force and (b) the component of weight down the slope.',
+        solution: 'Weight = mg = 50 × 9.8 = 490 N\n(a) N = mg cos(30°) = 490 × 0.866 = 424.3 N\n(b) W_parallel = mg sin(30°) = 490 × 0.5 = 245 N',
+        hints: ['Break weight into parallel and perpendicular components', 'N balances perpendicular component']
+      },
+      {
+        id: '3b',
+        prompt: 'Two ropes pull a ring at angles of 45° and -30° to horizontal. If tension T₁ = 100 N and T₂ = 150 N, find the net force.',
+        solution: 'F_x = 100 cos(45°) + 150 cos(-30°) = 70.7 + 129.9 = 200.6 N\nF_y = 100 sin(45°) + 150 sin(-30°) = 70.7 - 75 = -4.3 N\nF_net = √(200.6² + (-4.3)²) = 200.7 N',
+        hints: ['Find x and y components for each force', 'Add components separately', 'Use Pythagorean theorem']
+      },
+      {
+        id: '3c',
+        prompt: 'A traffic light (mass 40 kg) hangs from two cables at 60° angles. Find the tension in each cable.',
+        solution: 'Weight = 40 × 9.8 = 392 N\nBy symmetry, both tensions equal\nT cos(60°) = 0 (x-forces balance)\nT sin(60°) + T sin(60°) = 392 N (y-forces)\n2T(0.866) = 392\nT = 226.4 N in each cable',
+        hints: ['Draw FBD first', 'Use symmetry', 'Only vertical forces support weight']
+      }
+    ],
     content: {
       intro: '📐 Free-Body Diagrams (FBDs) are THE most important tool in engineering mechanics. They let you visualize ALL forces acting on an object, making complex problems simple. Every engineer uses FBDs daily!',
       concepts: [
@@ -604,11 +670,44 @@ export const unit1Lessons = {
   },
   4: {
     id: 4,
-    title: 'Friction, Normal Force & Tension',
+    title: 'Mechanics & Motion: Friction, Normal Force & Tension',
     subtitle: 'Everyday Forces in Machines',
     description: 'Master the three most common forces in engineering systems',
     coreIdea: 'Contact forces that make machines work',
     engineeringExample: 'Brakes, pulleys, elevators, tire grip',
+    learningObjectives: [
+      'Analyze friction forces in static and kinetic cases',
+      'Calculate normal forces on flat and inclined surfaces',
+      'Solve problems involving tension in ropes and cables',
+      'Apply these forces to real engineering systems',
+      'Design systems that use friction, normal force, and tension effectively'
+    ],
+    keyEquations: [
+      { eq: 'f_s \\leq \\mu_s N', meaning: 'Maximum static friction force' },
+      { eq: 'f_k = \\mu_k N', meaning: 'Kinetic friction force' },
+      { eq: 'N = mg\\cos\\theta', meaning: 'Normal force on incline' },
+      { eq: 'T = m(g + a)', meaning: 'Tension in elevator cable during upward acceleration' }
+    ],
+    practiceProblems: [
+      {
+        id: '4a',
+        prompt: 'A 200 kg crate rests on the ground (μₛ = 0.6). What horizontal force is needed to start it moving?',
+        solution: 'Normal force = Weight = 200 × 9.8 = 1960 N\nMax static friction = μₛN = 0.6 × 1960 = 1176 N\nNeed to exceed 1176 N to start motion',
+        hints: ['Find normal force first', 'Use maximum static friction', 'Must overcome max friction']
+      },
+      {
+        id: '4b',
+        prompt: 'An elevator (mass 800 kg) accelerates upward at 2 m/s². Calculate the tension in the cable.',
+        solution: 'Using T = m(g + a):\nT = 800(9.8 + 2)\nT = 800 × 11.8 = 9440 N\nCompare to weight: mg = 7840 N (more tension due to acceleration!)',
+        hints: ['Use T = m(g + a)', 'Weight alone isn\'t enough', 'Acceleration increases tension']
+      },
+      {
+        id: '4c',
+        prompt: 'A car (1200 kg) drives up a 15° hill. Calculate the normal force from the road.',
+        solution: 'N = mg cos(θ)\nN = 1200 × 9.8 × cos(15°)\nN = 11,760 × 0.966\nN = 11,360 N\nLess than weight (11,760 N) due to incline!',
+        hints: ['Use N = mg cos(θ)', 'Weight is mg', 'Normal force < weight on incline']
+      }
+    ],
     content: {
       intro: '🔧 Friction, Normal Force, and Tension are the workhorses of engineering! These contact forces appear in EVERY machine - from car brakes to elevator cables to robot joints. Understanding these forces is essential for designing anything that moves or supports loads.',
       concepts: [
@@ -768,11 +867,44 @@ export const unit1Lessons = {
   },
   5: {
     id: 5,
-    title: 'Circular Motion',
+    title: 'Mechanics & Motion: Circular Motion',
     subtitle: 'Turning Cars, Orbiting Satellites',
     description: 'Master the physics of objects moving in circles',
     coreIdea: 'Centripetal force keeps objects moving in circles',
     engineeringExample: 'Car turns, satellite orbits, centrifuges',
+    learningObjectives: [
+      'Calculate centripetal acceleration and force',
+      'Analyze circular motion in cars, planes, and satellites',
+      'Understand how banking helps in turns',
+      'Apply orbital motion equations to satellites',
+      'Design systems with rotational components'
+    ],
+    keyEquations: [
+      { eq: 'a_c = \\frac{v^2}{r}', meaning: 'Centripetal acceleration' },
+      { eq: 'F_c = \\frac{mv^2}{r}', meaning: 'Centripetal force' },
+      { eq: 'v = \\sqrt{\\frac{GM}{r}}', meaning: 'Orbital velocity' },
+      { eq: '\\tan\\theta = \\frac{v^2}{rg}', meaning: 'Optimal banking angle' }
+    ],
+    practiceProblems: [
+      {
+        id: '5a',
+        prompt: 'A car takes a 100m radius turn at 72 km/h. Calculate the centripetal acceleration.',
+        solution: 'First convert 72 km/h to m/s:\nv = 72 × (1000/3600) = 20 m/s\na_c = v²/r = 20²/100 = 4 m/s²\nThis is about 0.4g!',
+        hints: ['Convert speed to m/s', 'Use a_c = v²/r', 'Compare to g = 9.8 m/s²']
+      },
+      {
+        id: '5b',
+        prompt: 'A satellite orbits Earth at 400 km altitude. Calculate its orbital velocity. (R_Earth = 6370 km, G = 6.67×10⁻¹¹, M_Earth = 5.97×10²⁴ kg)',
+        solution: 'r = 6.77×10⁶ m (Earth radius + altitude)\nv = √(GM/r)\nv = √[(6.67×10⁻¹¹)(5.97×10²⁴)/(6.77×10⁶)]\nv = 7670 m/s ≈ 7.67 km/s',
+        hints: ['Use v = √(GM/r)', 'Remember r from center of Earth', 'Keep units consistent']
+      },
+      {
+        id: '5c',
+        prompt: 'What banking angle is needed for a car to take a 200m radius turn at 90 km/h without relying on friction?',
+        solution: 'Convert 90 km/h to 25 m/s\ntan(θ) = v²/rg\ntan(θ) = 25²/(200 × 9.8)\ntan(θ) = 0.319\nθ = 17.7 degrees',
+        hints: ['Convert speed to m/s', 'Use optimal banking formula', 'Don\'t forget g = 9.8 m/s²']
+      }
+    ],
     content: {
       intro: '🔄 Circular motion is EVERYWHERE in engineering - from car turns to satellite orbits to spinning turbines. The key insight: Objects moving in circles are ALWAYS accelerating (direction changing), so they NEED a net force toward the center. This is centripetal force!',
       concepts: [
@@ -932,11 +1064,44 @@ export const unit1Lessons = {
   },
   6: {
     id: 6,
-    title: 'Momentum & Collisions',
+    title: 'Mechanics & Motion: Momentum & Collisions',
     subtitle: 'Conservation of Momentum and Impulse',
     description: 'Master momentum conservation in crashes, explosions, and rocket staging',
     coreIdea: 'Momentum is always conserved in collisions',
     engineeringExample: 'Car crashes, rocket staging, billiards',
+    learningObjectives: [
+      'Calculate momentum for moving objects',
+      'Apply conservation of momentum in collisions',
+      'Analyze elastic and inelastic collisions',
+      'Understand impulse and its role in safety',
+      'Design systems using momentum principles'
+    ],
+    keyEquations: [
+      { eq: 'p = mv', meaning: 'Linear momentum' },
+      { eq: 'p_{1i} + p_{2i} = p_{1f} + p_{2f}', meaning: 'Conservation of momentum' },
+      { eq: 'J = F\\Delta t = \\Delta p', meaning: 'Impulse equals change in momentum' },
+      { eq: 'KE_i = KE_f', meaning: 'Energy conservation in elastic collisions' }
+    ],
+    practiceProblems: [
+      {
+        id: '6a',
+        prompt: 'A 1000 kg car moving at 20 m/s collides with a stationary 500 kg car. If they stick together, find their final velocity.',
+        solution: 'Use momentum conservation:\n(1000)(20) + (500)(0) = (1500)(v)\n20,000 = 1500v\nv = 13.33 m/s\nInelastic collision - they move together',
+        hints: ['Initial momentum = final momentum', 'Perfectly inelastic = stick together', 'Combined mass = sum of masses']
+      },
+      {
+        id: '6b',
+        prompt: 'A 0.1 kg bullet is fired at 800 m/s. What average force acts on the bullet in the 0.001s it takes to leave the barrel?',
+        solution: 'Use J = FΔt = Δp\nΔp = mv - 0 = (0.1)(800) = 80 kg⋅m/s\nF = Δp/Δt = 80/0.001 = 80,000 N\nHuge force over tiny time!',
+        hints: ['Use impulse equation', 'Change in momentum = final - initial', 'Force = change in momentum / time']
+      },
+      {
+        id: '6c',
+        prompt: 'A 10,000 kg rocket ejects 100 kg of fuel at 3000 m/s relative to itself. What is the rocket\'s velocity change?',
+        solution: 'By momentum conservation:\n0 = mᵣvᵣ + mfvf\n0 = (10000)Δv + (100)(-3000)\nΔv = (100)(3000)/10000 = 30 m/s\nRocket speeds up!',
+        hints: ['Total initial momentum = 0', 'Fuel goes backward relative to rocket', 'Rocket gains forward momentum']
+      }
+    ],
     content: {
       intro: '💥 Momentum is "mass in motion" - and it\'s ALWAYS conserved! This principle is crucial for crash safety, rocket design, and understanding collisions. When objects collide, total momentum before = total momentum after. This lets engineers predict crash outcomes and design safer vehicles.',
       concepts: [
@@ -1096,11 +1261,44 @@ export const unit1Lessons = {
   },
   7: {
     id: 7,
-    title: 'Gravity & Weight',
+    title: 'Mechanics & Motion: Gravity & Weight',
     subtitle: 'Weight vs Mass and Gravitational Fields',
     description: 'Understand gravity, weight, and how mass differs from weight',
     coreIdea: 'Weight is the force of gravity on mass',
     engineeringExample: 'Satellite orbits, structural loads, planetary missions',
+    learningObjectives: [
+      'Differentiate between mass and weight',
+      'Calculate gravitational force between objects',
+      'Understand variation of g with altitude',
+      'Apply orbital mechanics equations',
+      'Analyze apparent weight in accelerating systems'
+    ],
+    keyEquations: [
+      { eq: 'W = mg', meaning: 'Weight is mass times gravitational field strength' },
+      { eq: 'F_g = G\\frac{m_1m_2}{r^2}', meaning: 'Universal gravitation' },
+      { eq: 'g = \\frac{GM}{r^2}', meaning: 'Gravitational field strength' },
+      { eq: 'N = m(g \\pm a)', meaning: 'Apparent weight in elevator' }
+    ],
+    practiceProblems: [
+      {
+        id: '7a',
+        prompt: 'An astronaut (mass 80 kg) travels to Mars (g = 3.7 m/s²). Calculate their weight on Mars.',
+        solution: 'Using W = mg:\nW = 80 × 3.7 = 296 N\nCompare to Earth: W = 80 × 9.8 = 784 N\n2.65 times lighter on Mars!',
+        hints: ['Use W = mg', 'Different g on Mars', 'Compare with Earth weight']
+      },
+      {
+        id: '7b',
+        prompt: 'Calculate gravitational field strength (g) at 2 Earth radii from Earth\'s center. (G = 6.67×10⁻¹¹, M_Earth = 5.97×10²⁴ kg, R_Earth = 6.37×10⁶ m)',
+        solution: 'g = GM/r²\nr = 2R_Earth = 12.74×10⁶ m\ng = (6.67×10⁻¹¹)(5.97×10²⁴)/(12.74×10⁶)²\ng = 2.45 m/s²\n1/4 of surface value!',
+        hints: ['Use g = GM/r²', 'r measured from center', 'Compare to g = 9.8 m/s²']
+      },
+      {
+        id: '7c',
+        prompt: 'A 60 kg person in an elevator accelerating up at 3 m/s². What is their apparent weight (normal force)?',
+        solution: 'N = m(g + a)\nN = 60(9.8 + 3)\nN = 60 × 12.8 = 768 N\nCompare to actual weight: 588 N\nFeels 180 N heavier!',
+        hints: ['Use N = m(g + a)', 'Add acceleration to g', 'Compare to normal weight']
+      }
+    ],
     content: {
       intro: '🌍 Gravity is the force that holds the universe together! It keeps us on Earth, Moon orbiting Earth, Earth orbiting Sun. Understanding gravity is essential for aerospace engineering, structural design, and space missions. Key insight: Weight and mass are NOT the same!',
       concepts: [
@@ -1260,11 +1458,44 @@ export const unit1Lessons = {
   },
   8: {
     id: 8,
-    title: 'Projectile Motion',
+    title: 'Mechanics & Motion: Projectile Motion',
     subtitle: 'How Thrown and Fired Objects Move',
     description: 'Master 2D motion of projectiles - from rockets to drones to cars on hills',
     coreIdea: 'Horizontal and vertical motions are independent',
     engineeringExample: 'Rocket trajectories, drone flight, artillery, sports',
+    learningObjectives: [
+      'Analyze horizontal and vertical motion independently',
+      'Calculate projectile trajectories',
+      'Determine range, height, and time of flight',
+      'Understand effects of launch angle',
+      'Apply projectile motion to real systems'
+    ],
+    keyEquations: [
+      { eq: 'x = v_0\\cos\\theta\\,t', meaning: 'Horizontal position' },
+      { eq: 'y = v_0\\sin\\theta\\,t - \\frac{1}{2}gt^2', meaning: 'Vertical position' },
+      { eq: 'R = \\frac{v_0^2\\sin(2\\theta)}{g}', meaning: 'Range on flat ground' },
+      { eq: 'h_{max} = \\frac{v_0^2\\sin^2\\theta}{2g}', meaning: 'Maximum height' }
+    ],
+    practiceProblems: [
+      {
+        id: '8a',
+        prompt: 'A ball is thrown at 20 m/s at 45°. Calculate (a) max height and (b) total range.',
+        solution: 'h_max = v₀²sin²θ/(2g)\nh_max = (20)²sin²(45°)/(2×9.8) = 10.2 m\n\nR = v₀²sin(2θ)/g\nR = (20)²sin(90°)/9.8 = 40.8 m',
+        hints: ['Use h_max formula for height', '45° gives sin(2θ) = 1', 'Maximum range at 45°']
+      },
+      {
+        id: '8b',
+        prompt: 'A drone drops a package from 100m height at 30 m/s horizontal velocity. How far forward does it travel?',
+        solution: 'Time to fall: 100 = ½(9.8)t²\nt = √(200/9.8) = 4.52s\nHorizontal distance: x = vt\nx = 30 × 4.52 = 135.6 m',
+        hints: ['Find time using y equation', 'Horizontal motion at constant v', 'x = vt for horizontal']
+      },
+      {
+        id: '8c',
+        prompt: 'A ski jumper leaves a 30° ramp at 25 m/s. Calculate time to land on 40° downslope.',
+        solution: 'Complex! Use parametric equations:\nx = v₀cos(30°)t\ny = v₀sin(30°)t - 4.9t²\nSlope: y = x tan(40°)\nSolve: t ≈ 4.0s',
+        hints: ['Use x and y equations', 'Slope gives relationship', 'Need quadratic solution']
+      }
+    ],
     content: {
       intro: '🎯 Projectile motion combines everything we\'ve learned! Objects thrown, fired, or launched follow parabolic paths. Key insight: Horizontal and vertical motions are INDEPENDENT - analyze separately, then combine. This applies to rockets, drones, balls, bullets, and even cars jumping hills!',
       concepts: [

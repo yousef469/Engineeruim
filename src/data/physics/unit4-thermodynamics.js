@@ -1,7 +1,7 @@
 export const unit4Lessons = {
-  16: {
-    id: 16,
-    title: 'Temperature & Heat',
+  19: {
+    id: 19,
+    title: 'Thermodynamics: Temperature & Heat',
     subtitle: 'Energy Transfer',
     description: 'Understand the difference between temperature and heat energy',
     coreIdea: 'Energy transfer',
@@ -142,9 +142,9 @@ export const unit4Lessons = {
       ]
     }
   },
-  17: {
-    id: 17,
-    title: 'Heat Transfer Types',
+  20: {
+    id: 20,
+    title: 'Thermodynamics: Heat Transfer Types',
     subtitle: 'Conduction, Convection, Radiation',
     description: 'Learn the three ways heat moves from hot to cold',
     coreIdea: 'Conduction, convection, radiation',
@@ -289,9 +289,9 @@ export const unit4Lessons = {
       ]
     }
   },
-  18: {
-    id: 18,
-    title: 'Laws of Thermodynamics',
+  21: {
+    id: 21,
+    title: 'Thermodynamics: Laws of Thermodynamics',
     subtitle: 'Energy Balance',
     description: 'Master the fundamental laws governing all energy systems',
     coreIdea: 'Energy balance',
@@ -477,9 +477,9 @@ export const unit4Lessons = {
       ]
     }
   },
-  19: {
-    id: 19,
-    title: 'Internal Combustion',
+  22: {
+    id: 22,
+    title: 'Thermodynamics: Internal Combustion',
     subtitle: 'How Engines Work',
     description: 'Understand how burning fuel creates mechanical power',
     coreIdea: 'Fuel burning = force',
@@ -555,9 +555,9 @@ export const unit4Lessons = {
       ]
     }
   },
-  20: {
-    id: 20,
-    title: 'Efficiency Limits',
+  23: {
+    id: 23,
+    title: 'Thermodynamics: Efficiency Limits',
     subtitle: 'Carnot Cycle',
     description: 'Learn the theoretical maximum efficiency of heat engines',
     coreIdea: 'Carnot cycle',

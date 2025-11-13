@@ -1,7 +1,7 @@
 export const unit6Lessons = {
-  26: {
-    id: 26,
-    title: 'What Are Materials?',
+  29: {
+    id: 29,
+    title: 'Materials & Structures: What Are Materials?',
     subtitle: 'Metals, Ceramics, Composites',
     description: 'Learn about the main classes of engineering materials',
     coreIdea: 'Metals, ceramics, polymers, composites',
@@ -68,9 +68,9 @@ export const unit6Lessons = {
       ]
     }
   },
-  27: {
-    id: 27,
-    title: 'Stress & Strain',
+  30: {
+    id: 30,
+    title: 'Materials & Structures: Stress & Strain',
     subtitle: 'Force vs Deformation',
     description: 'Understand how materials respond to applied forces',
     coreIdea: 'Force vs deformation',
@@ -113,9 +113,9 @@ export const unit6Lessons = {
       ]
     }
   },
-  28: {
-    id: 28,
-    title: 'Elastic & Plastic Deformation',
+  31: {
+    id: 31,
+    title: 'Materials & Structures: Elastic & Plastic Deformation',
     subtitle: 'Reversible vs Permanent',
     description: 'Learn the difference between temporary and permanent deformation',
     coreIdea: 'Reversible vs permanent',
@@ -158,9 +158,9 @@ export const unit6Lessons = {
       ]
     }
   },
-  29: {
-    id: 29,
-    title: 'Failure & Fatigue',
+  32: {
+    id: 32,
+    title: 'Materials & Structures: Failure & Fatigue',
     subtitle: 'How Things Break',
     description: 'Understand failure modes and how repeated stress causes fatigue',
     coreIdea: 'How things break',
@@ -203,9 +203,9 @@ export const unit6Lessons = {
       ]
     }
   },
-  30: {
-    id: 30,
-    title: 'Material Selection',
+  33: {
+    id: 33,
+    title: 'Materials & Structures: Material Selection',
     subtitle: 'Weight, Strength, Cost',
     description: 'Learn how engineers choose the right material for each application',
     coreIdea: 'Choose for weight, strength, cost',
