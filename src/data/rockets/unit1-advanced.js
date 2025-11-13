@@ -4,34 +4,41 @@
 export const unit1AdvancedLessons = [
   {
     id: 8,
-    title: "Specific Impulse & Engine Efficiency",
+    title: "Specific Impulse: The Efficiency Metric",
     unit: "Rocket Fundamentals",
-    duration: "25 min",
-    introduction: "Specific Impulse (I_sp) is the most important metric for comparing rocket engine performance. It measures how efficiently an engine converts propellant mass into thrust.",
+    duration: "40 min",
+    introduction: "🎯 Specific Impulse (Isp) is like 'miles per gallon' for rockets! It measures how efficiently an engine uses propellant. Higher Isp = better efficiency = less fuel needed. Chemical rockets: 300-450s. Ion engines: 3,000+ seconds. This 10× difference revolutionizes deep space missions!",
     
     sections: [
       {
-        title: "Definition & Physical Meaning",
-        content: "Specific Impulse: I_sp = T/(ṁ × g₀)\n\nAlternative: I_sp = v_e/g₀\n\nPhysical Interpretation:\n• Time: How many seconds one kg of propellant can produce 1 kg of thrust\n• Efficiency: Higher I_sp = more efficient engine\n• Fuel economy: Like miles per gallon for rockets\n\nExample Values:\n• Cold gas thruster: 50-70 s\n• Solid rocket: 250-280 s\n• RP-1/LOX (Sea Level): 300-310 s\n• RP-1/LOX (Vacuum): 340-360 s\n• LH₂/LOX (Vacuum): 430-465 s\n• Ion thruster: 3,000-10,000 s\n\nKey Insight: A 10% increase in I_sp can reduce fuel mass by 20-30% for the same mission!"
+        title: "🧠 What is Specific Impulse?",
+        content: "**Definition:** Specific Impulse (Isp) is the thrust produced per unit weight of propellant consumed per second.\n\n**Units:** Seconds (yes, really!)\n\n**Formula:** Isp = v_e / g₀\n\nWhere:\n• v_e = exhaust velocity (m/s)\n• g₀ = 9.81 m/s² (standard gravity)\n\n**Alternative Formula:** Isp = T / (ṁ × g₀)\n\nWhere:\n• T = thrust (N)\n• ṁ = mass flow rate (kg/s)\n\n**Physical Meaning:**\nIsp tells you: 'For how many seconds can this engine produce thrust equal to the weight of propellant it consumes?'\n\n**Example:**\nIsp = 300 seconds means:\n• 1 kg of propellant produces 9.81 N of thrust for 300 seconds\n• OR produces 2,943 N for 1 second\n• Total impulse = 2,943 N·s per kg\n\n**Why Seconds?**\nHistorical convention from early rocketry. Makes comparison easy:\n• Higher number = better efficiency\n• Independent of units (metric/imperial)\n• Easy to remember typical values\n\n**Typical Values:**\n• Cold gas thrusters: 50-70 s\n• Solid rockets: 250-280 s\n• Kerosene/LOX (sea level): 300-310 s\n• Kerosene/LOX (vacuum): 340-360 s\n• Hydrogen/LOX (vacuum): 430-465 s\n• Ion engines: 3,000-10,000 s\n• Nuclear thermal: 800-1,000 s\n\n**Example: Merlin 1D Specific Impulse**\n\n**Given:**\n• Exhaust velocity: v_e = 3,050 m/s (sea level)\n• Standard gravity: g₀ = 9.81 m/s²\n\n**Calculate Isp:**\nIsp = v_e / g₀ = 3,050 / 9.81 = 311 seconds\n\n**In vacuum:**\n• v_e = 3,310 m/s\n• Isp = 3,310 / 9.81 = 337 seconds\n\n**Interpretation:**\n• 1 kg of propellant produces thrust for 311 seconds\n• Total impulse = 311 × 9.81 = 3,050 N·s per kg\n• Vacuum Isp is 8% higher (better expansion)\n\n**Why Isp Matters:**\nA 10% increase in Isp can reduce fuel mass by 20-30% for the same mission!\n\n**Example:**\nMission requiring 6,000 m/s delta-v with 1,000 kg payload:\n\n**Engine A: Isp = 300s (v_e = 2,943 m/s)**\nR = e^(6,000/2,943) = 8.17\nm₀ = 1,000 × 8.17 = 8,170 kg\nFuel = 7,170 kg\n\n**Engine B: Isp = 330s (v_e = 3,237 m/s)**\nR = e^(6,000/3,237) = 6.05\nm₀ = 1,000 × 6.05 = 6,050 kg\nFuel = 5,050 kg\n\n**Result:** 10% Isp increase → 30% less fuel!"
       },
       {
-        title: "Propellant Comparison",
-        content: "Why Hydrogen is Superior:\n\nLH₂/LOX combustion:\n• Products: H₂O (M = 18 g/mol)\n• Temperature: ~3,600 K\n• Result: I_sp = 450 s\n\nRP-1/LOX combustion:\n• Products: CO₂, H₂O mix (M = 22-28 g/mol)\n• Temperature: ~3,600 K\n• Result: I_sp = 310 s\n\nHydrogen gives 45% higher I_sp!\n\nBut LH₂ has disadvantages:\n• Very low density (needs huge tanks)\n• Cryogenic (-253°C)\n• Boil-off issues\n• Complex handling\n\nExample: Same Δv = 6,000 m/s\n\nRP-1/LOX (v_e = 3,000 m/s):\n• R = e^(6,000/3,000) = 7.39\n• Fuel: 63,900 kg\n\nLH₂/LOX (v_e = 4,400 m/s):\n• R = e^(6,000/4,400) = 3.86\n• Fuel: 28,600 kg\n\nLH₂ needs 55% less propellant mass!\nBut: LH₂ volume is 4× larger than RP-1"
+        title: "🔬 Propellant Comparison & Trade-offs",
+        content: "Different propellants offer different Isp values. Let's compare!\n\n**Why Hydrogen is Superior:**\n\n**LH₂/LOX combustion:**\n• Products: H₂O (molecular weight = 18 g/mol)\n• Combustion temperature: ~3,600 K\n• Exhaust velocity: 4,400 m/s\n• Result: Isp = 450 s (vacuum)\n\n**RP-1/LOX combustion:**\n• Products: CO₂, H₂O mix (M = 22-28 g/mol)\n• Combustion temperature: ~3,600 K\n• Exhaust velocity: 3,000 m/s\n• Result: Isp = 310 s (sea level)\n\n**Hydrogen gives 45% higher Isp!**\n\n**Why?**\nLighter molecules (H₂O vs CO₂) accelerate faster at same temperature.\nv_e ∝ √(T/M)\n\n**But LH₂ has disadvantages:**\n• Very low density (71 kg/m³ vs 810 kg/m³ for RP-1)\n• Needs tanks 11× larger by volume!\n• Cryogenic (-253°C) - complex handling\n• Boil-off issues (loses ~1% per day)\n• Expensive infrastructure\n\n**Example: Same Δv = 6,000 m/s, 10,000 kg payload**\n\n**RP-1/LOX (v_e = 3,000 m/s):**\n• R = e^(6,000/3,000) = 7.39\n• m₀ = 10,000 × 7.39 = 73,900 kg\n• Fuel mass: 63,900 kg\n• Fuel volume: ~79 m³\n\n**LH₂/LOX (v_e = 4,400 m/s):**\n• R = e^(6,000/4,400) = 3.86\n• m₀ = 10,000 × 3.86 = 38,600 kg\n• Fuel mass: 28,600 kg\n• Fuel volume: ~403 m³\n\n**Analysis:**\n• LH₂ needs 55% less propellant mass!\n• But LH₂ volume is 5× larger\n• Larger tanks = more structure mass\n• Trade-off depends on mission\n\n**Methane: The Compromise**\n\n**CH₄/LOX (Raptor engine):**\n• Isp: 370 s (vacuum)\n• Density: 423 kg/m³ (6× better than LH₂)\n• Temperature: -162°C (easier than LH₂)\n• Can be produced on Mars!\n\n**Why SpaceX chose methane:**\n• Good Isp (between RP-1 and LH₂)\n• Reasonable density\n• Cleaner burning (less coking)\n• Mars ISRU potential\n• Reusability friendly\n\n**Engine Comparison Table:**\n\n**Merlin 1D (RP-1/LOX):**\n• Isp: 311s (SL), 337s (Vac)\n• Thrust: 845 kN (SL)\n• Pros: Dense fuel, simple, proven\n• Cons: Lower Isp, coking issues\n\n**RS-25 (LH₂/LOX):**\n• Isp: 366s (SL), 452s (Vac)\n• Thrust: 1,860 kN (SL)\n• Pros: Highest chemical Isp\n• Cons: Huge tanks, complex, expensive\n\n**Raptor (CH₄/LOX):**\n• Isp: 330s (SL), 370s (Vac)\n• Thrust: 2,300 kN (SL)\n• Pros: Good balance, Mars ISRU\n• Cons: Full-flow staged combustion complexity\n\n**Ion Engine (Xenon):**\n• Isp: 3,000-10,000 s\n• Thrust: 0.09 N (tiny!)\n• Pros: Incredibly efficient\n• Cons: Very low thrust, needs power\n• Use: Deep space missions only"
+      },
+      {
+        title: "🚀 Real-World Applications",
+        content: "How Isp affects real missions:\n\n**Application 1: First Stage vs Upper Stage**\n\n**First Stage (Falcon 9):**\n• Uses RP-1/LOX (Isp = 311s)\n• Why? Dense fuel = smaller tanks = less drag\n• Thrust more important than efficiency\n• Operates in atmosphere\n\n**Second Stage (Falcon 9):**\n• Uses RP-1/LOX (Isp = 348s vacuum)\n• Same fuel but optimized nozzle\n• Efficiency matters more in vacuum\n• No drag, so Isp is critical\n\n**Application 2: Deep Space Missions**\n\n**Dawn Spacecraft (Asteroid Belt):**\n• Ion engines: Isp = 3,100 s\n• Total Δv: 11,000 m/s!\n• Propellant: Only 425 kg xenon\n• Mission: 7 years, visited Vesta and Ceres\n\n**With chemical propulsion:**\n• Would need Isp = 300s\n• R = e^(11,000/2,943) = 42.5\n• For 1,000 kg spacecraft: 42,500 kg total\n• Impossible!\n\n**Ion engines make deep space possible!**\n\n**Application 3: Satellite Station-Keeping**\n\n**Geostationary Satellite:**\n• Needs ~50 m/s per year\n• 15-year mission: 750 m/s total\n\n**Hydrazine (Isp = 230s, v_e = 2,255 m/s):**\nR = e^(750/2,255) = 1.40\nFor 1,000 kg satellite: 400 kg fuel (40%!)\n\n**Ion Engine (Isp = 3,000s, v_e = 29,430 m/s):**\nR = e^(750/29,430) = 1.026\nFor 1,000 kg satellite: 26 kg fuel (2.6%)\n\n**15× less fuel with ion engines!**\nThis is why modern satellites use electric propulsion.\n\n**Application 4: Mars Mission Trade-off**\n\n**Mission: LEO to Mars surface and back**\nTotal Δv: ~15,000 m/s\n\n**Option A: All Chemical (Isp = 380s)**\nR = e^(15,000/3,728) = 56.8\nFor 10-ton payload: 568 tons at start!\nRequires multiple launches and assembly\n\n**Option B: Nuclear Thermal (Isp = 900s)**\nR = e^(15,000/8,829) = 5.66\nFor 10-ton payload: 56.6 tons at start\nSingle launch possible!\n\n**This is why NASA studied nuclear propulsion for Mars.**"
       }
     ],
     
     keyTakeaways: [
-      "Specific Impulse (I_sp) measures engine efficiency: I_sp = v_e / g₀",
-      "Higher I_sp dramatically reduces fuel requirements",
-      "LH₂/LOX has best chemical I_sp (450s) but requires huge tanks",
-      "CH₄/LOX offers good compromise: 370s I_sp with better density",
-      "Electric propulsion achieves 3,000-10,000s I_sp but very low thrust"
+      "Specific Impulse: Isp = v_e/g₀ - THE efficiency metric for rocket engines",
+      "Higher Isp dramatically reduces fuel requirements (10% Isp → 30% less fuel)",
+      "LH₂/LOX: Best chemical Isp (450s) but huge tanks and complexity",
+      "CH₄/LOX: Good compromise (370s) with better density and Mars potential",
+      "Ion engines: 3,000-10,000s Isp enables deep space missions impossible with chemical",
+      "First stages prioritize thrust; upper stages prioritize Isp"
     ],
     
     vocabulary: [
-      { term: "Specific Impulse (I_sp)", definition: "Thrust per unit weight flow rate; efficiency metric measured in seconds" },
-      { term: "Expansion Ratio (ε)", definition: "Ratio of nozzle exit area to throat area" },
-      { term: "Cryogenic Propellant", definition: "Fuel or oxidizer stored at very low temperature" }
+      { term: "Specific Impulse (Isp)", definition: "Efficiency metric; thrust per unit weight flow rate; measured in seconds" },
+      { term: "Exhaust Velocity (v_e)", definition: "Speed of exhaust gases; v_e = Isp × g₀" },
+      { term: "Cryogenic Propellant", definition: "Fuel/oxidizer stored below -150°C (LH₂, LOX, LCH₄)" },
+      { term: "Expansion Ratio (ε)", definition: "Nozzle exit area / throat area; affects vacuum performance" },
+      { term: "ISRU", definition: "In-Situ Resource Utilization; making propellant on other planets" }
     ]
   },
 
