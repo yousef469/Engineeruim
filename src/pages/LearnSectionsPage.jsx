@@ -111,9 +111,9 @@ export default function LearnSectionsPage() {
                 <h2 className="text-3xl font-bold mb-8 text-center">Engineering Journeys</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {[
-                        { title: 'Rockets', icon: '🚀', color: 'from-orange-500 to-red-600', path: '/games/rockets', description: '80 lessons on rocket engineering' },
-                        { title: 'Planes', icon: '✈️', color: 'from-blue-500 to-indigo-600', path: '/games/planes', description: '89 lessons on aircraft design' },
-                        { title: 'Cars', icon: '🚗', color: 'from-purple-500 to-pink-600', path: '/games/cars', description: '86 lessons on automotive engineering' },
+                        { title: 'Rockets', icon: '🚀', color: 'from-orange-500 to-red-600', path: '/games/map/rockets', description: '27 lessons on rocket engineering' },
+                        { title: 'Planes', icon: '✈️', color: 'from-blue-500 to-indigo-600', path: '/games/map/planes', description: '20 lessons on aircraft design' },
+                        { title: 'Cars', icon: '🚗', color: 'from-purple-500 to-pink-600', path: '/games/map/cars', description: '11 lessons on automotive engineering' },
                         { title: 'Electronics', icon: '⚡', color: 'from-teal-500 to-cyan-600', path: '/learn/electronics', description: 'Circuit design & embedded systems' }
                     ].map((item) => (
                         <button
