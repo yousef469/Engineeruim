@@ -1,11 +1,11 @@
 // Complete Rocket Engineering Curriculum
-// Now with MIT-quality content for Unit 0 and Unit 1
+// Now with real college-level content for Unit 0 and Unit 1
 
 import { unit0Lessons } from './rockets/unit0-foundations.js';
 import { rocketUnit1Complete } from './rockets/unit1-complete.js';
 import { generateAllRocketLessons } from './generateRocketLessons.js';
 
-// Get generated lessons for Units 2-10 (will be replaced with real content later)
+// Get generated lessons for Units 2-10 (temporary until we replace them)
 const generatedLessons = generateAllRocketLessons();
 
 // Helper function to get unit name
@@ -49,6 +49,7 @@ rocketUnit1Complete.forEach(lesson => {
 });
 
 // Add remaining generated lessons (Units 2-10) - Lessons 12+
+// These will be replaced with real content later
 Object.keys(generatedLessons).forEach(key => {
   const lessonId = parseInt(key);
   if (lessonId >= 12) {
