@@ -30,9 +30,12 @@ function getUnitName(lessonId) {
 export const planesLessons = {};
 
 // Add Unit 0 (Foundations) - Lessons 0-5
-Object.values(unit0Foundations).forEach(lesson => {
-  planesLessons[lesson.id] = {
+// Convert string IDs (0.1, 0.2) to numeric IDs (0, 1, 2, 3, 4, 5)
+const unit0Array = Object.values(unit0Foundations);
+unit0Array.forEach((lesson, index) => {
+  planesLessons[index] = {
     ...lesson,
+    id: index,  // Use numeric ID instead of string
     level: 'Beginner',
     quiz: { questions: [] }
   };
@@ -47,25 +50,7 @@ allPlanesLessons.forEach(lesson => {
   };
 });
 
-// Add remaining generated lessons (Units 6-10) - Lessons 20+
-Object.keys(generatedLessons).forEach(key => {
-  const lessonId = parseInt(key);
-  if (lessonId >= 20) {
-    const lesson = generatedLessons[key];
-    planesLessons[lessonId] = {
-      ...lesson,
-      id: lessonId,
-      level: 'Master',
-      unit: getUnitName(lessonId),
-      content: {
-        introduction: lesson.introduction,
-        sections: lesson.sections,
-        keyTakeaways: lesson.keyTakeaways,
-        vocabulary: lesson.vocabulary
-      },
-      quiz: { questions: [] }
-    };
-  }
-});
+// Note: Generated lessons (20+) removed - only MIT-quality content included
+// Total: 20 comprehensive aircraft engineering lessons (Units 0-5)
 
 export default planesLessons;

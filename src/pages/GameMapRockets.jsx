@@ -6,23 +6,18 @@ export default function GameMapRockets() {
   const navigate = useNavigate();
   const [completedLevels, setCompletedLevels] = useState([0]);
 
-  // Generate all 80 lessons (11 units with varying lesson counts)
+  // Generate all 28 MIT-quality lessons (6 units: 0-5)
   const generateLevels = () => {
     const levels = [];
     let levelId = 0;
 
     const units = [
       { name: 'Foundations: Math & Physics Bridge', emoji: '🎓', color: 'from-cyan-400 to-blue-500', lessons: 6, level: 'Beginner' },
-      { name: 'Introduction to Rockets', emoji: '🚀', color: 'from-blue-400 to-cyan-500', lessons: 6, level: 'Beginner' },
-      { name: 'Rocket Physics & Forces', emoji: '🔥', color: 'from-orange-400 to-red-500', lessons: 8, level: 'Beginner' },
-      { name: 'Rocket Propulsion Systems', emoji: '⚙️', color: 'from-green-400 to-emerald-500', lessons: 10, level: 'Intermediate' },
-      { name: 'Rocket Structures & Materials', emoji: '🧱', color: 'from-yellow-400 to-amber-500', lessons: 6, level: 'Intermediate' },
-      { name: 'Guidance, Navigation & Control', emoji: '🧭', color: 'from-indigo-400 to-purple-500', lessons: 8, level: 'Intermediate' },
-      { name: 'Orbital Mechanics', emoji: '🌌', color: 'from-violet-400 to-purple-500', lessons: 10, level: 'Advanced' },
-      { name: 'Rocket Design & Simulation', emoji: '🧮', color: 'from-pink-400 to-rose-500', lessons: 8, level: 'Advanced' },
-      { name: 'Avionics & Communication', emoji: '🛰️', color: 'from-sky-400 to-blue-500', lessons: 6, level: 'Advanced' },
-      { name: 'Mission Design & Operations', emoji: '🌕', color: 'from-teal-400 to-cyan-500', lessons: 6, level: 'Master' },
-      { name: 'Advanced Rocketry & Innovation', emoji: '🚀', color: 'from-purple-400 to-pink-500', lessons: 6, level: 'Master' }
+      { name: 'Rocket Fundamentals', emoji: '🚀', color: 'from-blue-400 to-cyan-500', lessons: 6, level: 'Beginner' },
+      { name: 'Rocket Propulsion Physics', emoji: '🔥', color: 'from-orange-400 to-red-500', lessons: 8, level: 'Intermediate' },
+      { name: 'Orbital Mechanics', emoji: '🌌', color: 'from-violet-400 to-purple-500', lessons: 4, level: 'Intermediate' },
+      { name: 'Rocket Structures & Materials', emoji: '🧱', color: 'from-yellow-400 to-amber-500', lessons: 2, level: 'Advanced' },
+      { name: 'Guidance, Navigation & Control', emoji: '🧭', color: 'from-indigo-400 to-purple-500', lessons: 2, level: 'Advanced' }
     ];
 
     units.forEach((unit) => {
@@ -52,9 +47,9 @@ export default function GameMapRockets() {
     }
   };
 
-  // Organize lessons by units (varying lesson counts)
+  // Organize lessons by units (MIT-quality content only)
   const units = [];
-  const lessonCounts = [6, 6, 8, 10, 6, 8, 10, 8, 6, 6, 6]; // Lessons per unit
+  const lessonCounts = [6, 6, 8, 4, 2, 2]; // Lessons per unit (Total: 28)
   let currentIndex = 0;
   
   lessonCounts.forEach((count, i) => {
@@ -100,7 +95,7 @@ export default function GameMapRockets() {
               <Rocket className="w-8 h-8 text-cyan-400" />
               <div>
                 <h1 className="text-xl font-bold">Rocket Engineering Journey</h1>
-                <p className="text-sm text-cyan-200">80 Lessons • Launch into space exploration</p>
+                <p className="text-sm text-cyan-200">28 Lessons • Launch into space exploration</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
