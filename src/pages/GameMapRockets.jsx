@@ -202,7 +202,7 @@ export default function GameMapRockets() {
                           </div>
                           {rocketsLessons[level.id] && (
                             <div className={`text-xs mt-2 ${unlocked ? 'text-white/70' : 'text-gray-500'}`}>
-                              {rocketsLessons[level.id].title}
+                              {rocketsLessons[level.id].description || rocketsLessons[level.id].title}
                             </div>
                           )}
                         </div>

@@ -198,7 +198,7 @@ export default function GameMapPlanes() {
                           <div className="text-sm font-semibold">{level.lesson}</div>
                           {planesLessons[level.id] && (
                             <div className={`text-xs mt-2 ${unlocked ? 'text-white/70' : 'text-gray-500'}`}>
-                              {planesLessons[level.id].title}
+                              {planesLessons[level.id].description || planesLessons[level.id].title}
                             </div>
                           )}
                         </div>

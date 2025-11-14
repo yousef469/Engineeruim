@@ -207,7 +207,7 @@ export default function GameMapCars() {
                           </div>
                           {carsLessons[level.id] && (
                             <div className={`text-xs mt-2 ${unlocked ? 'text-white/70' : 'text-gray-500'}`}>
-                              {carsLessons[level.id].title}
+                              {carsLessons[level.id].description || carsLessons[level.id].title}
                             </div>
                           )}
                           {level.quizzesAfter > 0 && (

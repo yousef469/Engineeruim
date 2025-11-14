@@ -205,7 +205,7 @@ export default function GameMapElectronics() {
                           </div>
                           {electronicsLessons[level.id] && (
                             <div className={`text-xs mt-2 ${unlocked ? 'text-white/70' : 'text-gray-500'}`}>
-                              {electronicsLessons[level.id].title}
+                              {electronicsLessons[level.id].description || electronicsLessons[level.id].title}
                             </div>
                           )}
                         </div>
