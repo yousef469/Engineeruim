@@ -34,12 +34,20 @@ Complete MIT-quality engineering curriculum with interactive lessons and quizzes
 - **Quizzes**: 20/20 complete (80 questions)
 - **Status**: 100% ready ✅
 
+### ⚡ Electronics & Robotics (20 lessons) ✅
+- **Unit 0**: Foundations (6 lessons) - AC circuits, filters, transistors, digital logic, microcontrollers, signal processing
+- **Unit 1**: Power Electronics & Motors (4 lessons) - DC-DC converters, motor control, MOSFETs, BMS
+- **Unit 2**: Embedded Systems & Control (5 lessons) - Microcontrollers, RTOS, PID, sensors, wireless
+- **Unit 3**: Robotics & Automation (5 lessons) - Kinematics, computer vision, SLAM, ML, autonomous systems
+- **Quizzes**: 20/20 complete (80 questions)
+- **Status**: 100% ready ✅
+
 ## Summary
 
-- **Total Lessons**: 68 (28 rockets + 20 aircraft + 20 cars)
-- **Lessons with Quizzes**: 68/68 (100%) ✅
-- **Total Quiz Questions**: 272 (112 rockets + 80 aircraft + 80 cars)
-- **Ready for Students**: Rockets ✅, Aircraft ✅, Cars ✅
+- **Total Lessons**: 88 (28 rockets + 20 aircraft + 20 cars + 20 electronics)
+- **Lessons with Quizzes**: 88/88 (100%) ✅
+- **Total Quiz Questions**: 352 (112 rockets + 80 aircraft + 80 cars + 80 electronics)
+- **Ready for Students**: Rockets ✅, Aircraft ✅, Cars ✅, Electronics ✅
 
 ## Next Steps
 
