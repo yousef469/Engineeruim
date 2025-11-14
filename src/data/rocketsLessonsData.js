@@ -6,6 +6,7 @@ import { unit1Lessons } from './rockets/unit1-fundamentals.js';
 import { unit1AdvancedLessons } from './rockets/unit1-advanced.js';
 import { unit2EnhancedLessons } from './rockets/unit2-enhanced.js';
 import { unit2Lessons17to19 } from './rockets/unit2-lessons-17-19.js';
+import { unit2Lessons18to19Enhanced } from './rockets/unit2-lessons-18-19-enhanced.js';
 import { unit2AdvancedLessons } from './rockets/unit2-advanced.js';
 import { unit3Enhanced20to21 } from './rockets/unit3-enhanced-20-21.js';
 import { unit3Lessons } from './rockets/unit3-orbital-mechanics.js';
@@ -18,7 +19,7 @@ const rocketUnit1Complete = [...unit1Lessons, ...unit1AdvancedLessons];
 const rocketUnit2Complete = [
   unit2EnhancedLessons[0],          // Lesson 16 (enhanced)
   unit2Lessons17to19[0],            // Lesson 17 (enhanced)
-  ...unit2AdvancedLessons.slice(2)  // Lessons 18-19 (existing)
+  ...unit2Lessons18to19Enhanced     // Lessons 18-19 (enhanced)
 ];
 const rocketUnit3Complete = [
   unit3Enhanced20to21[0],           // Lesson 20 (enhanced)
