@@ -44,7 +44,60 @@ export const planesUnit1Lessons = [
       { term: "Induced Drag", definition: "Drag created as byproduct of lift generation" },
       { term: "Aspect Ratio (AR)", definition: "Wingspan squared divided by wing area; b²/S" },
       { term: "L/D Ratio", definition: "Lift-to-drag ratio; measure of aerodynamic efficiency" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q6-1",
+          question: "For level flight, what must be true about the four forces?",
+          options: [
+            "Lift > Weight and Thrust > Drag",
+            "Lift = Weight and Thrust = Drag",
+            "All four forces must be equal",
+            "Lift and Thrust must equal Weight and Drag combined"
+          ],
+          correctAnswer: 1,
+          explanation: "In level flight at constant speed, the forces are balanced: Lift equals Weight (vertical equilibrium) and Thrust equals Drag (horizontal equilibrium)."
+        },
+        {
+          id: "q6-2",
+          question: "The lift equation is L = ½ρv²SC_L. If you double the airspeed, what happens to lift?",
+          options: [
+            "Doubles (2×)",
+            "Triples (3×)",
+            "Quadruples (4×)",
+            "Increases by √2"
+          ],
+          correctAnswer: 2,
+          explanation: "Lift is proportional to velocity squared (v²). If you double velocity, lift increases by 2² = 4 times. This is why aircraft can fly slower with flaps (higher C_L)."
+        },
+        {
+          id: "q6-3",
+          question: "What is the L/D ratio and why is it important?",
+          options: [
+            "Lift divided by Drag; measures aerodynamic efficiency",
+            "Length divided by Diameter; measures aircraft size",
+            "Load divided by Distance; measures payload capacity",
+            "Lift divided by Density; measures altitude performance"
+          ],
+          correctAnswer: 0,
+          explanation: "L/D ratio (Lift-to-Drag) measures aerodynamic efficiency. Higher L/D means less drag for the same lift, resulting in better fuel efficiency and longer range. Airliners achieve L/D of 15-20."
+        },
+        {
+          id: "q6-4",
+          question: "A Boeing 737 has L/D = 17 and is at 10 km altitude. If engines fail, how far can it glide?",
+          options: [
+            "10 km",
+            "17 km",
+            "170 km",
+            "1,700 km"
+          ],
+          correctAnswer: 2,
+          explanation: "Glide distance = altitude × L/D = 10 km × 17 = 170 km. The L/D ratio directly determines glide ratio. This is why pilots practice engine-out procedures!"
+        }
+      ]
+    }
   },
 
   {
@@ -89,7 +142,60 @@ export const planesUnit1Lessons = [
       { term: "Flaps", definition: "Hinged surfaces that increase camber and lift" },
       { term: "Wing Loading", definition: "Weight divided by wing area; W/S in N/m²" },
       { term: "Aspect Ratio", definition: "Wingspan squared divided by area; affects efficiency" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q7-1",
+          question: "What does NACA 2412 airfoil designation mean?",
+          options: [
+            "2% camber at 4% chord, 12% thick",
+            "2% camber at 40% chord, 12% thick",
+            "24% camber, 12% thick",
+            "2.4 m chord, 12 cm thick"
+          ],
+          correctAnswer: 1,
+          explanation: "NACA 4-digit system: First digit = max camber (2%), second digit = position of max camber (40% chord), last two digits = thickness (12%). This standardized system helps engineers select airfoils."
+        },
+        {
+          id: "q7-2",
+          question: "Stall occurs when angle of attack exceeds ~15-20°. What happens?",
+          options: [
+            "Lift increases dramatically",
+            "Flow separates, lift drops suddenly, drag increases",
+            "Aircraft automatically recovers",
+            "Only drag increases, lift stays constant"
+          ],
+          correctAnswer: 1,
+          explanation: "At stall angle, airflow separates from the wing surface. This causes sudden loss of lift and dramatic increase in drag. Recovery requires reducing angle of attack (pushing stick forward)."
+        },
+        {
+          id: "q7-3",
+          question: "A Cessna 172 weighs 10,000 N with wing area 16.2 m² and C_Lmax = 1.8. What's the stall speed?",
+          options: [
+            "24.7 m/s (89 km/h)",
+            "35.2 m/s (127 km/h)",
+            "50.0 m/s (180 km/h)",
+            "70.5 m/s (254 km/h)"
+          ],
+          correctAnswer: 0,
+          explanation: "V_stall = √(2W/(ρSC_Lmax)) = √(2×10,000/(1.225×16.2×1.8)) = 24.7 m/s. This is why small aircraft can fly slowly - low wing loading and high C_Lmax."
+        },
+        {
+          id: "q7-4",
+          question: "Why do airliners have high wing loading (W/S = 6,000-7,000 N/m²) compared to gliders (300-500 N/m²)?",
+          options: [
+            "Airliners need to fly fast and efficiently at high altitude",
+            "Airliners are poorly designed",
+            "Gliders need to carry more weight",
+            "Wing loading doesn't affect performance"
+          ],
+          correctAnswer: 0,
+          explanation: "High wing loading allows higher cruise speeds and better high-altitude performance, but increases stall speed. Gliders use low wing loading for slow flight and good climb performance. It's a design trade-off."
+        }
+      ]
+    }
   }
 ];
 
