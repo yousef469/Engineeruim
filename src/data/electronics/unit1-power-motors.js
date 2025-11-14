@@ -375,11 +375,7 @@ Use 2W resistor with heatsink`
         { id: "q7-4", question: "Dead time prevents:", options: ["Motor overheating", "Shoot-through current", "Back EMF", "Torque ripple"], correctAnswer: 1, explanation: "Dead time prevents shoot-through (both MOSFETs ON = short circuit)!" }
       ]
     }
-  }
-];
-
-// Lessons 8-9 will be added in next part due to file size
-export default electronicsUnit1PowerMotors;
+  },
 
   {
     id: 8,

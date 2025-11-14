@@ -461,11 +461,7 @@ v = √(152² + 61²) = 164 cm/s = 1.64 m/s`
         { id: "q16-4", question: "Thresholding creates:", options: ["Grayscale image", "Binary image (black/white)", "Color image", "Blurred image"], correctAnswer: 1, explanation: "Thresholding converts to binary: pixel > threshold → 255 (white), else 0 (black)!" }
       ]
     }
-  }
-];
-
-// Lessons 17-19 will continue...
-export default electronicsUnit3RoboticsAutomation;
+  },
 
   {
     id: 17,
