@@ -1,11 +1,10 @@
-import mixpanel from 'mixpanel-browser';
+// Mixpanel disabled - was causing crashes
+// All functions are no-ops until re-enabled
+const MIXPANEL_ENABLED = false;
 
-// Mixpanel is initialized in main.jsx
-const MIXPANEL_TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN;
-
-// Helper to safely call mixpanel methods
+// Helper to safely call mixpanel methods (currently disabled)
 const safeMixpanel = (fn) => {
-  if (!MIXPANEL_TOKEN) return;
+  if (!MIXPANEL_ENABLED) return;
   try {
     fn();
   } catch (error) {

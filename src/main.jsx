@@ -11,25 +11,8 @@ import App from './App.jsx'
 const LazyTawkToChat = React.lazy(() => import('./components/TawkToChat'))
 import './index.css'
 import './i18n/config'
-import mixpanel from 'mixpanel-browser'
 
-// Mixpanel disabled temporarily due to initialization errors
-// TODO: Re-enable after fixing storage issues
-// const MIXPANEL_TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN;
-// function initMixpanel() {
-//   try {
-//     if (MIXPANEL_TOKEN && MIXPANEL_TOKEN !== 'YOUR_MIXPANEL_TOKEN_HERE') {
-//       mixpanel.init(MIXPANEL_TOKEN, {
-//         debug: false,
-//         track_pageview: false,
-//         persistence: 'localStorage',
-//         ignore_dnt: true,
-//       });
-//     }
-//   } catch (error) {
-//     console.warn('Mixpanel error:', error.message);
-//   }
-// }
+// Analytics disabled - was causing crashes
 console.log('ℹ️ Analytics disabled (optional feature)');
 
 // Deferred mount for TawkToChat
