@@ -3,6 +3,7 @@
 
 import { unit0Foundations } from './planes/unit0-foundations.js';
 import { allPlanesLessons } from './planes/units-complete.js';
+import { allPlanesQuizzes } from './planes/all-quizzes.js';
 // Note: Only MIT-quality lessons included (Units 0-5)
 // Total: 20 comprehensive aircraft engineering lessons
 
@@ -43,7 +44,7 @@ unit0Array.forEach((lesson, index) => {
       keyTakeaways: lesson.learningObjectives,
       vocabulary: []
     },
-    quiz: { questions: [] }
+    quiz: allPlanesQuizzes[index] || { questions: [] }
   };
 });
 
@@ -85,7 +86,7 @@ allPlanesLessons.forEach((lesson, index) => {
       keyTakeaways: lesson.keyTakeaways,
       vocabulary: lesson.vocabulary
     },
-    quiz: { questions: [] }
+    quiz: lesson.quiz || allPlanesQuizzes[lesson.id] || { questions: [] }
   };
 });
 
