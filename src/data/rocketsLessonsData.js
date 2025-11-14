@@ -47,7 +47,7 @@ rocketUnit0Complete.forEach((lesson, index) => {
       keyTakeaways: lesson.keyTakeaways,
       vocabulary: lesson.vocabulary
     },
-    quiz: { questions: [] }
+    quiz: lesson.quiz || { questions: [] }
   };
 });
 
@@ -65,7 +65,7 @@ rocketUnit1Complete.forEach((lesson, index) => {
       keyTakeaways: lesson.keyTakeaways,
       vocabulary: lesson.vocabulary
     },
-    quiz: { questions: [] }
+    quiz: lesson.quiz || { questions: [] }
   };
 });
 
@@ -83,7 +83,7 @@ rocketUnit2Complete.forEach((lesson, index) => {
       keyTakeaways: lesson.keyTakeaways,
       vocabulary: lesson.vocabulary
     },
-    quiz: { questions: [] }
+    quiz: lesson.quiz || { questions: [] }
   };
 });
 
@@ -101,7 +101,7 @@ rocketUnit3Complete.forEach((lesson, index) => {
       keyTakeaways: lesson.keyTakeaways,
       vocabulary: lesson.vocabulary
     },
-    quiz: { questions: [] }
+    quiz: lesson.quiz || { questions: [] }
   };
 });
 
@@ -119,7 +119,7 @@ rocketUnit4Complete.forEach((lesson, index) => {
       keyTakeaways: lesson.keyTakeaways,
       vocabulary: lesson.vocabulary
     },
-    quiz: { questions: [] }
+    quiz: lesson.quiz || { questions: [] }
   };
 });
 
@@ -137,7 +137,7 @@ rocketUnit5Complete.forEach((lesson, index) => {
       keyTakeaways: lesson.keyTakeaways,
       vocabulary: lesson.vocabulary
     },
-    quiz: { questions: [] }
+    quiz: lesson.quiz || { questions: [] }
   };
 });
 
