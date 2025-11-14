@@ -83,7 +83,7 @@ mitQualityLessons.forEach((lesson, index) => {
         keyTakeaways: lesson.keyTakeaways,
         vocabulary: lesson.vocabulary
       },
-      quiz: { questions: [] }
+      quiz: lesson.quiz || { questions: [] }  // Preserve quiz data from lesson
     };
   }
 });

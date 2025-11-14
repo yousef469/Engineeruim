@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock, Brain, XCircle } from 'lucide-react';
 import carsLessons from '../data/carsLessonsData';
 import { useProgress } from '../contexts/ProgressContext';
 
@@ -9,6 +9,11 @@ export default function CarLessonPage() {
   const navigate = useNavigate();
   const [currentSection, setCurrentSection] = useState(0);
   const [lessonCompleted, setLessonCompleted] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [quizScore, setQuizScore] = useState(0);
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
   
   const lesson = carsLessons[parseInt(lessonId)];
   const { completeLesson } = useProgress();
@@ -31,14 +36,22 @@ export default function CarLessonPage() {
 
   const totalSections = lesson.content.sections.length;
   const isLastSection = currentSection === totalSections - 1;
+  const hasQuiz = lesson.quiz && lesson.quiz.questions && lesson.quiz.questions.length > 0;
 
   const handleNext = async () => {
-    if (isLastSection) {
+    if (isLastSection && !showQuiz && hasQuiz) {
+      // Show quiz after last section
+      setShowQuiz(true);
+    } else if (showQuiz && currentQuestion < lesson.quiz.questions.length - 1) {
+      // Move to next quiz question
+      setCurrentQuestion(currentQuestion + 1);
+      setSelectedAnswer(null);
+    } else if (showQuiz && currentQuestion === lesson.quiz.questions.length - 1) {
+      // Quiz complete, finish lesson
       if (!lessonCompleted) {
-        await completeLesson(parseInt(lessonId), 3, 0);
+        await completeLesson(parseInt(lessonId), 3, quizScore);
         setLessonCompleted(true);
       }
-      // For now, go back to map (quiz system can be added later)
       navigate('/games/map/cars');
     } else {
       setCurrentSection(currentSection + 1);
@@ -46,9 +59,27 @@ export default function CarLessonPage() {
   };
 
   const handlePrevious = () => {
-    if (currentSection > 0) {
+    if (showQuiz && currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+      setSelectedAnswer(null);
+    } else if (showQuiz && currentQuestion === 0) {
+      setShowQuiz(false);
+      setCurrentQuestion(0);
+      setSelectedAnswer(null);
+    } else if (currentSection > 0) {
       setCurrentSection(currentSection - 1);
     }
+  };
+
+  const handleAnswerSelect = (answerIndex) => {
+    if (answeredQuestions.includes(currentQuestion)) return; // Already answered
+    
+    setSelectedAnswer(answerIndex);
+    const question = lesson.quiz.questions[currentQuestion];
+    if (answerIndex === question.correctAnswer) {
+      setQuizScore(quizScore + 1);
+    }
+    setAnsweredQuestions([...answeredQuestions, currentQuestion]);
   };
 
   const currentContent = lesson.content.sections[currentSection];
@@ -162,11 +193,79 @@ export default function CarLessonPage() {
           </div>
         )}
 
+        {/* Quiz Section */}
+        {showQuiz && hasQuiz && (
+          <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-purple-400/30">
+            <div className="flex items-center gap-3 mb-6">
+              <Brain className="w-8 h-8 text-purple-300" />
+              <div>
+                <h3 className="font-bold text-2xl">Quiz Time!</h3>
+                <p className="text-white/70">Question {currentQuestion + 1} of {lesson.quiz.questions.length}</p>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <p className="text-xl mb-6">{lesson.quiz.questions[currentQuestion].question}</p>
+              
+              <div className="space-y-3">
+                {lesson.quiz.questions[currentQuestion].options.map((option, index) => {
+                  const isSelected = selectedAnswer === index;
+                  const isCorrect = index === lesson.quiz.questions[currentQuestion].correctAnswer;
+                  const showResult = answeredQuestions.includes(currentQuestion);
+                  
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => handleAnswerSelect(index)}
+                      disabled={showResult}
+                      className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
+                        showResult
+                          ? isCorrect
+                            ? 'bg-green-500/20 border-green-400 text-white'
+                            : isSelected
+                            ? 'bg-red-500/20 border-red-400 text-white'
+                            : 'bg-white/5 border-white/20 text-white/60'
+                          : isSelected
+                          ? 'bg-orange-500/20 border-orange-400 text-white'
+                          : 'bg-white/10 border-white/20 hover:bg-white/20 text-white'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="font-bold">{String.fromCharCode(65 + index)}.</span>
+                        <span>{option}</span>
+                        {showResult && isCorrect && <CheckCircle className="w-5 h-5 text-green-400 ml-auto" />}
+                        {showResult && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-red-400 ml-auto" />}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {answeredQuestions.includes(currentQuestion) && (
+              <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                <p className="text-sm text-white/90">
+                  <span className="font-bold">Explanation:</span> {lesson.quiz.questions[currentQuestion].explanation}
+                </p>
+              </div>
+            )}
+
+            <div className="mt-6 text-center">
+              <p className="text-white/70">
+                Score: {quizScore} / {answeredQuestions.length}
+                {answeredQuestions.length === lesson.quiz.questions.length && 
+                  ` (${Math.round((quizScore / lesson.quiz.questions.length) * 100)}%)`
+                }
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Navigation Buttons */}
         <div className="flex items-center justify-between gap-4">
           <button
             onClick={handlePrevious}
-            disabled={currentSection === 0}
+            disabled={currentSection === 0 && !showQuiz}
             className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -175,9 +274,18 @@ export default function CarLessonPage() {
 
           <button
             onClick={handleNext}
-            className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 rounded-lg font-semibold transition-all shadow-lg"
+            disabled={showQuiz && !answeredQuestions.includes(currentQuestion)}
+            className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-lg"
           >
-            {isLastSection ? 'Complete Lesson' : 'Next'}
+            {showQuiz && currentQuestion === lesson.quiz.questions.length - 1 
+              ? 'Complete Lesson' 
+              : showQuiz 
+              ? 'Next Question'
+              : isLastSection && hasQuiz
+              ? 'Start Quiz'
+              : isLastSection
+              ? 'Complete Lesson'
+              : 'Next'}
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
