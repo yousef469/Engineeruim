@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock, Brain, XCircle } from 'lucide-react';
 import planesLessons from '../data/planesLessonsData';
 import { useProgress } from '../contexts/ProgressContext';
 
@@ -9,6 +9,11 @@ export default function PlaneLessonPage() {
   const navigate = useNavigate();
   const [currentSection, setCurrentSection] = useState(0);
   const [lessonCompleted, setLessonCompleted] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [quizScore, setQuizScore] = useState(0);
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
   
   const lesson = planesLessons[parseInt(lessonId)];
   const { completeLesson } = useProgress();
@@ -31,25 +36,50 @@ export default function PlaneLessonPage() {
 
   const totalSections = lesson.content.sections.length;
   const isLastSection = currentSection === totalSections - 1;
+  const hasQuiz = lesson.quiz && lesson.quiz.questions && lesson.quiz.questions.length > 0;
 
   const handleNext = async () => {
-    if (isLastSection) {
-      // Record lesson completion before going to quiz
+    if (isLastSection && !showQuiz && hasQuiz) {
+      // Show quiz after last section
+      setShowQuiz(true);
+    } else if (showQuiz && currentQuestion < lesson.quiz.questions.length - 1) {
+      // Move to next quiz question
+      setCurrentQuestion(currentQuestion + 1);
+      setSelectedAnswer(null);
+    } else if (showQuiz && currentQuestion === lesson.quiz.questions.length - 1) {
+      // Quiz complete, finish lesson
       if (!lessonCompleted) {
-        await completeLesson(parseInt(lessonId), 3, 0); // 3 stars, 0 time for now
+        await completeLesson(parseInt(lessonId), 3, quizScore);
         setLessonCompleted(true);
       }
-      // Go to quiz
-      navigate(`/games/play/planes/quiz/${lessonId}`);
+      navigate('/games/map/planes');
     } else {
       setCurrentSection(currentSection + 1);
     }
   };
 
   const handlePrevious = () => {
-    if (currentSection > 0) {
+    if (showQuiz && currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+      setSelectedAnswer(null);
+    } else if (showQuiz && currentQuestion === 0) {
+      setShowQuiz(false);
+      setCurrentQuestion(0);
+      setSelectedAnswer(null);
+    } else if (currentSection > 0) {
       setCurrentSection(currentSection - 1);
     }
+  };
+
+  const handleAnswerSelect = (answerIndex) => {
+    if (answeredQuestions.includes(currentQuestion)) return; // Already answered
+    
+    setSelectedAnswer(answerIndex);
+    const question = lesson.quiz.questions[currentQuestion];
+    if (answerIndex === question.correctAnswer) {
+      setQuizScore(quizScore + 1);
+    }
+    setAnsweredQuestions([...answeredQuestions, currentQuestion]);
   };
 
   const currentContent = lesson.content.sections[currentSection];
@@ -149,7 +179,7 @@ export default function PlaneLessonPage() {
         )}
 
         {/* Vocabulary (only on last section) */}
-        {isLastSection && lesson.content.vocabulary.length > 0 && (
+        {isLastSection && !showQuiz && lesson.content.vocabulary.length > 0 && (
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/20">
             <h3 className="font-bold text-xl mb-4">Vocabulary</h3>
             <div className="grid gap-4">
@@ -163,11 +193,85 @@ export default function PlaneLessonPage() {
           </div>
         )}
 
+        {/* Quiz Section */}
+        {showQuiz && hasQuiz && (
+          <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-purple-400/30">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <Brain className="w-8 h-8 text-purple-300" />
+                <div>
+                  <h3 className="font-bold text-2xl">Knowledge Check</h3>
+                  <p className="text-white/60 text-sm">Test your understanding</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-sm text-white/60">Question {currentQuestion + 1} of {lesson.quiz.questions.length}</div>
+                <div className="text-lg font-bold text-purple-300">Score: {quizScore}/{lesson.quiz.questions.length}</div>
+              </div>
+            </div>
+
+            {(() => {
+              const question = lesson.quiz.questions[currentQuestion];
+              const isAnswered = answeredQuestions.includes(currentQuestion);
+              
+              return (
+                <div>
+                  <h4 className="text-xl font-semibold mb-6">{question.question}</h4>
+                  <div className="space-y-3 mb-6">
+                    {question.options.map((option, idx) => {
+                      const isSelected = selectedAnswer === idx;
+                      const isCorrect = idx === question.correctAnswer;
+                      const showCorrect = isAnswered && isCorrect;
+                      const showWrong = isAnswered && isSelected && !isCorrect;
+
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => handleAnswerSelect(idx)}
+                          disabled={isAnswered}
+                          className={`w-full p-4 rounded-xl border-2 text-left transition-all ${
+                            showCorrect
+                              ? 'border-green-400 bg-green-500/20'
+                              : showWrong
+                              ? 'border-red-400 bg-red-500/20'
+                              : isSelected
+                              ? 'border-purple-400 bg-purple-500/20'
+                              : 'border-white/20 bg-white/5 hover:border-white/40 hover:bg-white/10'
+                          } ${isAnswered ? 'cursor-default' : 'cursor-pointer'}`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                              showCorrect ? 'border-green-400 bg-green-400' : 
+                              showWrong ? 'border-red-400 bg-red-400' : 
+                              'border-white/40'
+                            }`}>
+                              {showCorrect && <CheckCircle className="w-4 h-4 text-white" />}
+                              {showWrong && <XCircle className="w-4 h-4 text-white" />}
+                            </div>
+                            <span className="flex-1">{option}</span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {isAnswered && question.explanation && (
+                    <div className="bg-white/10 rounded-xl p-4 border border-white/20">
+                      <div className="font-semibold text-cyan-300 mb-2">Explanation:</div>
+                      <p className="text-white/90">{question.explanation}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+          </div>
+        )}
+
         {/* Navigation Buttons */}
         <div className="flex items-center justify-between gap-4">
           <button
             onClick={handlePrevious}
-            disabled={currentSection === 0}
+            disabled={currentSection === 0 && !showQuiz}
             className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -176,9 +280,13 @@ export default function PlaneLessonPage() {
 
           <button
             onClick={handleNext}
-            className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-lg font-semibold transition-all shadow-lg"
+            disabled={showQuiz && !answeredQuestions.includes(currentQuestion)}
+            className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-semibold transition-all shadow-lg"
           >
-            {isLastSection ? 'Take Quiz' : 'Next'}
+            {showQuiz && currentQuestion === lesson.quiz.questions.length - 1 ? 'Complete Lesson' : 
+             showQuiz ? 'Next Question' :
+             isLastSection && hasQuiz ? 'Start Quiz' : 
+             isLastSection ? 'Complete Lesson' : 'Next'}
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
