@@ -1,31 +1,28 @@
 // Complete Automotive Curriculum - All Units Combined
-// MIT-Quality Lessons matching Rocket curriculum
+// 20 MIT-Quality Lessons
 
 import { unit0Foundations } from './unit0-foundations.js';
-import { carsUnit1Lessons } from './unit1-vehicle-dynamics.js';
-import { carsUnit1AdvancedLessons } from './unit1-advanced.js';
-import { carsUnit2Complete } from './unit2-complete.js';
-import { carsUnit3Complete } from './unit3-complete.js';
+import { carsUnit1Complete } from './unit1-complete.js';
+import { carsUnit2Powertrain } from './unit2-powertrain.js';
+import { carsUnit3SystemsDesign } from './unit3-systems-design.js';
 
 // Convert unit0Foundations object to array
 const unit0Array = Object.values(unit0Foundations);
 
-// Combine all units
+// Combine all units - Total 20 lessons
 export const allAutomotiveLessons = [
-  ...unit0Array,              // Lessons 0.1-0.6 (6 lessons)
-  ...carsUnit1Lessons,        // Lesson 6 (1 lesson)
-  ...carsUnit1AdvancedLessons,// Lesson 7 (1 lesson)
-  ...carsUnit2Complete,       // Lessons 10-11 (2 lessons)
-  ...carsUnit3Complete        // Lesson 12+ (1+ lessons)
+  ...unit0Array,              // Lessons 0-5: Foundations (6 lessons)
+  ...carsUnit1Complete,       // Lessons 6-9: Vehicle Dynamics (4 lessons)
+  ...carsUnit2Powertrain,     // Lessons 10-14: Powertrain (5 lessons)
+  ...carsUnit3SystemsDesign   // Lessons 15-19: Systems & Design (5 lessons)
 ];
 
 // Export individual units for flexibility
 export {
   unit0Foundations,
-  carsUnit1Lessons,
-  carsUnit1AdvancedLessons,
-  carsUnit2Complete,
-  carsUnit3Complete
+  carsUnit1Complete,
+  carsUnit2Powertrain,
+  carsUnit3SystemsDesign
 };
 
 export default allAutomotiveLessons;
