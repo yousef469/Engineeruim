@@ -493,8 +493,802 @@ Worst-case response:
         { id: "q11-4", question: "vTaskDelayUntil vs vTaskDelay:", options: ["Same thing", "DelayUntil has absolute timing, no drift", "Delay is faster", "DelayUntil uses less memory"], correctAnswer: 1, explanation: "vTaskDelayUntil maintains absolute timing for periodic tasks, preventing drift!" }
       ]
     }
+  },
+
+  {
+    id: 12,
+    title: "PID Control Implementation",
+    unit: "Embedded Systems & Control",
+    duration: "30 min",
+    introduction: "PID control is the workhorse of industrial control systems. Understanding proportional, integral, and derivative terms enables precise control of motors, temperature, and other processes.",
+    
+    sections: [
+      {
+        title: "PID Fundamentals",
+        content: `**Control Equation:**
+
+u(t) = K_p × e(t) + K_i × ∫e(t)dt + K_d × de(t)/dt
+
+Where:
+• u(t) = control output
+• e(t) = error (setpoint - measurement)
+• K_p = proportional gain
+• K_i = integral gain
+• K_d = derivative gain
+
+**Discrete Implementation:**
+
+For microcontroller (sampled at T_s):
+
+u[n] = K_p × e[n] + K_i × Σe[n] × T_s + K_d × (e[n] - e[n-1]) / T_s
+
+**Example: Temperature Control**
+
+Target: 50°C
+Current: 45°C
+Error: e = 50 - 45 = 5°C
+
+Gains:
+• K_p = 2.0
+• K_i = 0.1
+• K_d = 0.5
+• T_s = 0.1s (100ms)
+
+First iteration (n=0):
+• e[0] = 5°C
+• Σe = 5°C
+• Δe = 5°C (no previous)
+
+u[0] = 2.0×5 + 0.1×5×0.1 + 0.5×5/0.1
+u[0] = 10 + 0.05 + 25 = 35.05
+
+Output: 35% heater power
+
+**P Term (Proportional):**
+• Responds to current error
+• Fast response
+• Steady-state error
+• u_p = K_p × e
+
+**I Term (Integral):**
+• Eliminates steady-state error
+• Accumulates past errors
+• Can cause overshoot
+• u_i = K_i × Σe × T_s
+
+**D Term (Derivative):**
+• Predicts future error
+• Dampens oscillations
+• Sensitive to noise
+• u_d = K_d × Δe / T_s`
+      },
+      {
+        title: "Tuning Methods",
+        content: `**Ziegler-Nichols Method:**
+
+Step 1: Set K_i = 0, K_d = 0
+Step 2: Increase K_p until oscillation
+Step 3: Note K_u (ultimate gain) and T_u (period)
+
+Calculate:
+• K_p = 0.6 × K_u
+• K_i = 1.2 × K_u / T_u
+• K_d = 0.075 × K_u × T_u
+
+**Example:**
+• K_u = 10 (oscillates)
+• T_u = 2 seconds
+
+Tuned gains:
+• K_p = 0.6 × 10 = 6.0
+• K_i = 1.2 × 10 / 2 = 6.0
+• K_d = 0.075 × 10 × 2 = 1.5
+
+**Manual Tuning:**
+
+1. Start with K_p only:
+   • Increase until fast response
+   • Accept some overshoot
+
+2. Add K_i:
+   • Eliminate steady-state error
+   • Reduce if too much overshoot
+
+3. Add K_d:
+   • Reduce overshoot
+   • Dampen oscillations
+
+**Anti-Windup:**
+
+Problem: Integral term accumulates when saturated
+
+Solution: Clamp integral
+\`\`\`c
+integral += error * dt;
+
+// Clamp integral
+if (integral > integral_max) integral = integral_max;
+if (integral < integral_min) integral = integral_min;
+
+// Or reset when saturated
+if (output > output_max || output < output_min) {
+    integral = 0;
+}
+\`\`\`
+
+**Derivative Filtering:**
+
+Problem: Derivative amplifies noise
+
+Solution: Low-pass filter
+\`\`\`c
+// Simple exponential filter
+derivative_filtered = alpha * derivative + (1-alpha) * derivative_prev;
+// alpha = 0.1 to 0.3 typical
+\`\`\``
+      },
+      {
+        title: "Implementation Example",
+        content: `**C Code Implementation:**
+
+\`\`\`c
+typedef struct {
+    float Kp, Ki, Kd;
+    float integral;
+    float prev_error;
+    float output_min, output_max;
+    float integral_min, integral_max;
+} PID_Controller;
+
+float PID_Update(PID_Controller *pid, float setpoint, 
+                 float measurement, float dt) {
+    // Calculate error
+    float error = setpoint - measurement;
+    
+    // Proportional term
+    float P = pid->Kp * error;
+    
+    // Integral term with anti-windup
+    pid->integral += error * dt;
+    if (pid->integral > pid->integral_max) 
+        pid->integral = pid->integral_max;
+    if (pid->integral < pid->integral_min) 
+        pid->integral = pid->integral_min;
+    float I = pid->Ki * pid->integral;
+    
+    // Derivative term
+    float derivative = (error - pid->prev_error) / dt;
+    float D = pid->Kd * derivative;
+    
+    // Calculate output
+    float output = P + I + D;
+    
+    // Clamp output
+    if (output > pid->output_max) output = pid->output_max;
+    if (output < pid->output_min) output = pid->output_min;
+    
+    // Save for next iteration
+    pid->prev_error = error;
+    
+    return output;
+}
+\`\`\`
+
+**Usage Example:**
+
+\`\`\`c
+// Initialize PID
+PID_Controller motor_pid = {
+    .Kp = 2.0,
+    .Ki = 0.5,
+    .Kd = 0.1,
+    .integral = 0,
+    .prev_error = 0,
+    .output_min = 0,
+    .output_max = 100,
+    .integral_min = -50,
+    .integral_max = 50
+};
+
+// Control loop (10ms period)
+void Control_Loop(void) {
+    float setpoint = 1000.0;  // RPM
+    float measurement = Read_Encoder_RPM();
+    float dt = 0.01;  // 10ms
+    
+    float pwm = PID_Update(&motor_pid, setpoint, 
+                           measurement, dt);
+    
+    Set_Motor_PWM(pwm);
+}
+\`\`\`
+
+**Performance Metrics:**
+
+Rise time: Time to reach 90% of setpoint
+Overshoot: Peak above setpoint (%)
+Settling time: Time to stay within ±2%
+Steady-state error: Final error
+
+Good tuning:
+• Rise time: <1 second
+• Overshoot: <10%
+• Settling time: <3 seconds
+• SS error: <1%`
+      }
+    ],
+    
+    keyTakeaways: [
+      "PID: u = K_p×e + K_i×∫e + K_d×de/dt",
+      "P term: fast response but steady-state error",
+      "I term: eliminates SS error but can overshoot",
+      "D term: dampens oscillations but amplifies noise",
+      "Anti-windup prevents integral accumulation when saturated",
+      "Ziegler-Nichols: K_p=0.6K_u, K_i=1.2K_u/T_u, K_d=0.075K_u×T_u"
+    ],
+    
+    vocabulary: [
+      { term: "PID", definition: "Proportional-Integral-Derivative controller" },
+      { term: "Steady-State Error", definition: "Final error after system settles" },
+      { term: "Anti-Windup", definition: "Prevents integral term accumulation when output saturated" },
+      { term: "Overshoot", definition: "Amount output exceeds setpoint; expressed as %" },
+      { term: "Ziegler-Nichols", definition: "PID tuning method based on ultimate gain and period" }
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q12-1", question: "P term responds to:", options: ["Past errors", "Current error", "Future error", "Rate of change"], correctAnswer: 1, explanation: "Proportional term responds to current error: u_p = K_p × e!" },
+        { id: "q12-2", question: "I term eliminates:", options: ["Overshoot", "Oscillations", "Steady-state error", "Noise"], correctAnswer: 2, explanation: "Integral term accumulates error over time, eliminating steady-state error!" },
+        { id: "q12-3", question: "D term helps with:", options: ["Steady-state error", "Dampening oscillations", "Faster response", "Lower power"], correctAnswer: 1, explanation: "Derivative term predicts future error, dampening oscillations!" },
+        { id: "q12-4", question: "Anti-windup prevents:", options: ["Oscillations", "Integral accumulation when saturated", "Derivative noise", "Proportional error"], correctAnswer: 1, explanation: "Anti-windup clamps integral term to prevent accumulation when output is saturated!" }
+      ]
+    }
+  },
+
+  {
+    id: 13,
+    title: "Sensor Interfacing (I2C, SPI, UART)",
+    unit: "Embedded Systems & Control",
+    duration: "30 min",
+    introduction: "Communication protocols connect microcontrollers to sensors and peripherals. Understanding I2C, SPI, and UART enables integration of diverse components.",
+    
+    sections: [
+      {
+        title: "I2C (Inter-Integrated Circuit)",
+        content: `**Protocol Basics:**
+
+Two wires:
+• SDA: Serial Data
+• SCL: Serial Clock
+• Both need pull-up resistors (4.7kΩ typical)
+
+Multi-master, multi-slave:
+• 7-bit addressing: 128 devices
+• 10-bit addressing: 1024 devices
+
+Speed modes:
+• Standard: 100 kbit/s
+• Fast: 400 kbit/s
+• Fast Plus: 1 Mbit/s
+• High Speed: 3.4 Mbit/s
+
+**Transaction Format:**
+
+1. START condition (SDA falls while SCL high)
+2. Address byte (7 bits + R/W bit)
+3. ACK from slave
+4. Data bytes
+5. ACK after each byte
+6. STOP condition (SDA rises while SCL high)
+
+**Example: Read Temperature from LM75**
+
+Address: 0x48 (7-bit)
+Register: 0x00 (temperature)
+
+Write sequence:
+• START
+• 0x48 << 1 | 0 (write)
+• ACK
+• 0x00 (register address)
+• ACK
+• STOP
+
+Read sequence:
+• START
+• 0x48 << 1 | 1 (read)
+• ACK
+• Read MSB
+• ACK
+• Read LSB
+• NACK
+• STOP
+
+Temperature calculation:
+Temp = (MSB << 8 | LSB) / 256.0
+
+**Pull-up Resistor Calculation:**
+
+R_pullup = (V_DD - V_OL) / I_OL
+
+For 3.3V, 3mA sink:
+R = (3.3 - 0.4) / 0.003 = 967Ω
+
+Use 1kΩ (faster) or 4.7kΩ (standard)
+
+**Bus Capacitance:**
+
+Max capacitance:
+• Standard: 400pF
+• Fast: 400pF
+• Fast Plus: 550pF
+
+Each device adds ~10pF
+Long traces add ~1pF/cm`
+      },
+      {
+        title: "SPI (Serial Peripheral Interface)",
+        content: `**Protocol Basics:**
+
+Four wires:
+• MOSI: Master Out Slave In
+• MISO: Master In Slave Out
+• SCK: Serial Clock
+• CS/SS: Chip Select (one per slave)
+
+Full-duplex:
+• Simultaneous transmit and receive
+• Much faster than I2C
+
+Speed:
+• Typical: 1-10 MHz
+• Can reach 50+ MHz
+
+**Clock Polarity and Phase:**
+
+CPOL (polarity):
+• 0: Clock idle low
+• 1: Clock idle high
+
+CPHA (phase):
+• 0: Sample on first edge
+• 1: Sample on second edge
+
+Four modes:
+• Mode 0: CPOL=0, CPHA=0
+• Mode 1: CPOL=0, CPHA=1
+• Mode 2: CPOL=1, CPHA=0
+• Mode 3: CPOL=1, CPHA=1
+
+**Example: Read from MPU6050 (IMU)**
+
+Register: 0x3B (ACCEL_XOUT_H)
+Mode: 0 or 3 (check datasheet)
+
+Transaction:
+1. CS low
+2. Send 0x3B | 0x80 (read bit)
+3. Send dummy byte, receive ACCEL_X_H
+4. Send dummy byte, receive ACCEL_X_L
+5. Repeat for Y and Z
+6. CS high
+
+Acceleration:
+Accel_X = (H << 8 | L) / 16384.0  // ±2g range
+
+**Multi-Slave Configuration:**
+
+Separate CS for each slave:
+• CS1 → Sensor 1
+• CS2 → Sensor 2
+• CS3 → Sensor 3
+
+Shared MOSI, MISO, SCK
+
+**Timing Calculations:**
+
+Bit time:
+t_bit = 1 / f_SCK
+
+For 1 MHz SPI:
+t_bit = 1μs
+
+16-bit transfer:
+t_transfer = 16 × 1μs = 16μs
+
+Plus CS setup/hold: ~20μs total`
+      },
+      {
+        title: "UART (Universal Asynchronous Receiver-Transmitter)",
+        content: `**Protocol Basics:**
+
+Two wires:
+• TX: Transmit
+• RX: Receive
+• Cross-connected (TX→RX, RX→TX)
+
+Asynchronous:
+• No clock signal
+• Both sides must agree on baud rate
+
+Frame format:
+• Start bit (0)
+• Data bits (5-9, typically 8)
+• Optional parity bit
+• Stop bits (1, 1.5, or 2)
+
+**Common Baud Rates:**
+
+• 9600 bps (slow, reliable)
+• 115200 bps (common)
+• 921600 bps (fast)
+• 1 Mbps (very fast)
+
+**Timing:**
+
+Bit time:
+t_bit = 1 / baud_rate
+
+For 115200 baud:
+t_bit = 1/115200 = 8.68μs
+
+10-bit frame (8N1):
+t_frame = 10 × 8.68μs = 86.8μs
+
+**Example: Send "Hello"**
+
+Configuration: 115200 baud, 8N1
+
+Each character:
+• Start bit: 0
+• 8 data bits (LSB first)
+• Stop bit: 1
+
+'H' = 0x48 = 0b01001000
+Frame: 0 00010010 1 (LSB first)
+
+Time for "Hello" (5 chars):
+t = 5 × 86.8μs = 434μs
+
+**Baud Rate Error:**
+
+Actual vs desired:
+Error = |Actual - Desired| / Desired × 100%
+
+Example: 16MHz clock, 115200 target
+Divisor = 16M / (16 × 115200) = 8.68
+Use 9: Actual = 16M / (16 × 9) = 111111 baud
+Error = |111111 - 115200| / 115200 = 3.5%
+
+Acceptable if <5%
+
+**Flow Control:**
+
+Hardware (RTS/CTS):
+• RTS: Request To Send
+• CTS: Clear To Send
+• Prevents buffer overflow
+
+Software (XON/XOFF):
+• XON: 0x11 (resume)
+• XOFF: 0x13 (pause)
+• Less reliable
+
+**DMA with UART:**
+
+Efficient for large transfers:
+\`\`\`c
+// Configure DMA for UART TX
+DMA_Config(
+    DMA_UART_TX,
+    buffer,
+    length,
+    DMA_PRIORITY_HIGH
+);
+
+// Start transfer
+DMA_Start(DMA_UART_TX);
+
+// CPU free for other tasks
+// Interrupt when complete
+\`\`\``
+      }
+    ],
+    
+    keyTakeaways: [
+      "I2C: 2 wires (SDA, SCL), multi-master, 7-bit addressing, 100-400 kbit/s typical",
+      "SPI: 4 wires (MOSI, MISO, SCK, CS), full-duplex, 1-50 MHz, faster than I2C",
+      "UART: 2 wires (TX, RX), asynchronous, common baud rates: 9600, 115200",
+      "I2C needs pull-up resistors (4.7kΩ typical)",
+      "SPI has 4 modes based on CPOL and CPHA",
+      "UART baud rate error should be <5%"
+    ],
+    
+    vocabulary: [
+      { term: "I2C", definition: "Inter-Integrated Circuit; 2-wire serial protocol with addressing" },
+      { term: "SPI", definition: "Serial Peripheral Interface; 4-wire full-duplex protocol" },
+      { term: "UART", definition: "Universal Asynchronous Receiver-Transmitter; 2-wire async protocol" },
+      { term: "Baud Rate", definition: "Symbols per second; for UART, typically bits per second" },
+      { term: "Pull-up Resistor", definition: "Resistor to V_DD; needed for I2C open-drain outputs" }
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q13-1", question: "I2C uses how many wires?", options: ["2 (SDA, SCL)", "3 (MOSI, MISO, SCK)", "4 (MOSI, MISO, SCK, CS)", "1 (TX/RX)"], correctAnswer: 0, explanation: "I2C uses 2 wires: SDA (data) and SCL (clock), plus pull-up resistors!" },
+        { id: "q13-2", question: "SPI advantage over I2C:", options: ["Fewer wires", "Multi-master", "Much faster (full-duplex)", "Lower power"], correctAnswer: 2, explanation: "SPI is full-duplex and much faster (1-50MHz vs 100-400kHz for I2C)!" },
+        { id: "q13-3", question: "UART at 115200 baud, bit time:", options: ["4.34μs", "8.68μs", "17.36μs", "34.72μs"], correctAnswer: 1, explanation: "t_bit = 1/115200 = 8.68μs per bit!" },
+        { id: "q13-4", question: "I2C pull-up resistor typical value:", options: ["100Ω", "1kΩ", "4.7kΩ", "100kΩ"], correctAnswer: 2, explanation: "I2C typically uses 4.7kΩ pull-ups (1kΩ for faster speeds)!" }
+      ]
+    }
+  },
+
+  {
+    id: 14,
+    title: "Wireless Communication (WiFi, Bluetooth, LoRa)",
+    unit: "Embedded Systems & Control",
+    duration: "30 min",
+    introduction: "Wireless connectivity enables IoT and remote control. Understanding WiFi, Bluetooth, and LoRa helps choose the right technology for each application.",
+    
+    sections: [
+      {
+        title: "WiFi (802.11)",
+        content: `**Standards:**
+
+802.11b/g/n (2.4 GHz):
+• Range: 50-100m indoors
+• Speed: 11-600 Mbps
+• Crowded band (interference)
+
+802.11ac (5 GHz):
+• Range: 30-50m indoors
+• Speed: 433-6933 Mbps
+• Less interference
+
+**Power Consumption:**
+
+Active (transmitting):
+• 170-300mA at 3.3V
+• 0.5-1W power
+
+Sleep modes:
+• Light sleep: 15-20mA
+• Deep sleep: 10-20μA
+• Modem sleep: 15mA
+
+**Example: ESP32**
+
+Specifications:
+• WiFi 802.11 b/g/n
+• Bluetooth 4.2 / BLE
+• Dual-core 240 MHz
+• 520 KB SRAM
+
+Power modes:
+• Active: 160-260mA
+• Modem sleep: 20-68mA
+• Light sleep: 0.8mA
+• Deep sleep: 10μA
+
+**Battery Life Calculation:**
+
+Application: Send data every 10 minutes
+• Active (1s): 200mA
+• Deep sleep (599s): 0.01mA
+
+Average current:
+I_avg = (200×1 + 0.01×599) / 600
+I_avg = (200 + 6) / 600 = 0.34mA
+
+Battery: 2000mAh
+Life = 2000 / 0.34 = 5882 hours = 245 days!
+
+**TCP/IP Stack:**
+
+Layers:
+• Application: HTTP, MQTT
+• Transport: TCP, UDP
+• Network: IP
+• Link: WiFi
+
+Example: MQTT publish
+\`\`\`c
+// Connect to WiFi
+WiFi.begin(ssid, password);
+
+// Connect to MQTT broker
+client.connect("mqtt.server.com", 1883);
+
+// Publish data
+client.publish("sensor/temp", "23.5");
+\`\`\``
+      },
+      {
+        title: "Bluetooth & BLE",
+        content: `**Bluetooth Classic:**
+
+Specifications:
+• Range: 10-100m
+• Speed: 1-3 Mbps
+• Power: 30-100mA active
+
+Use cases:
+• Audio streaming
+• File transfer
+• Serial replacement (SPP)
+
+**Bluetooth Low Energy (BLE):**
+
+Specifications:
+• Range: 10-50m
+• Speed: 125-2000 kbps
+• Power: 10-15mA active, <1μA sleep
+
+Advantages:
+• 10-100× lower power
+• Fast connection (<6ms)
+• Coin cell battery for years
+
+**BLE Architecture:**
+
+GATT (Generic Attribute Profile):
+• Services: Groups of characteristics
+• Characteristics: Data values
+• Descriptors: Metadata
+
+Example: Heart Rate Service
+• Service UUID: 0x180D
+• Characteristic: Heart Rate Measurement
+• Value: uint8 (beats per minute)
+
+**Example: BLE Temperature Sensor**
+
+\`\`\`c
+// Define service and characteristic
+BLEService tempService("181A");  // Environmental Sensing
+BLEFloatCharacteristic tempChar("2A6E", BLERead | BLENotify);
+
+// Setup
+tempService.addCharacteristic(tempChar);
+BLE.addService(tempService);
+BLE.advertise();
+
+// Update value
+float temperature = readSensor();
+tempChar.writeValue(temperature);
+\`\`\`
+
+**Power Optimization:**
+
+Connection interval:
+• Short (7.5ms): Low latency, high power
+• Long (4s): High latency, low power
+
+Advertising interval:
+• Fast (20ms): Quick discovery, high power
+• Slow (1s): Slow discovery, low power
+
+**Range Calculation:**
+
+Free space path loss:
+FSPL = 20×log₁₀(d) + 20×log₁₀(f) + 32.45
+
+For 2.4 GHz at 10m:
+FSPL = 20×log₁₀(10) + 20×log₁₀(2400) + 32.45
+FSPL = 20 + 67.6 + 32.45 = 120 dB
+
+Link budget:
+TX power: +4 dBm
+RX sensitivity: -90 dBm
+Margin: 4 - (-90) - 120 = -26 dB
+
+Need antenna gain or higher TX power!`
+      },
+      {
+        title: "LoRa & LoRaWAN",
+        content: `**LoRa (Long Range):**
+
+Specifications:
+• Range: 2-15 km (urban/rural)
+• Speed: 0.3-50 kbps
+• Power: 100-150mA TX, <1μA sleep
+• Frequency: 433/868/915 MHz (regional)
+
+**Spreading Factor (SF):**
+
+SF7 to SF12:
+• SF7: Fast (5.5 kbps), short range
+• SF12: Slow (0.3 kbps), long range
+
+Time on air:
+ToA = 2^SF / BW
+
+For SF12, BW=125kHz:
+ToA = 2^12 / 125000 = 32.8ms per symbol
+
+**Example: Send 20 bytes**
+
+Configuration:
+• SF = 10
+• BW = 125 kHz
+• CR = 4/5 (coding rate)
+
+Time on air:
+ToA ≈ 370ms
+
+Power consumption:
+E = 120mA × 370ms × 3.3V = 146 mJ
+
+**LoRaWAN Protocol:**
+
+Classes:
+• Class A: Lowest power, RX after TX only
+• Class B: Scheduled RX windows
+• Class C: Continuous RX, highest power
+
+Network architecture:
+• End devices → Gateways → Network server → Application
+
+**Duty Cycle Limits:**
+
+EU 868 MHz: 1% duty cycle
+• 36 seconds per hour maximum
+• 3600s × 0.01 = 36s
+
+If ToA = 370ms:
+Max messages = 36s / 0.37s = 97 per hour
+
+**Battery Life:**
+
+Application: Send every 10 minutes
+• TX (370ms): 120mA
+• Sleep (599.63s): 0.001mA
+
+Average:
+I_avg = (120×0.37 + 0.001×599.63) / 600
+I_avg = (44.4 + 0.6) / 600 = 0.075mA
+
+Battery: 2000mAh
+Life = 2000 / 0.075 = 26,667 hours = 3 years!
+
+**Range Calculation:**
+
+Link budget:
+• TX power: +14 dBm
+• TX antenna: +2 dBi
+• RX antenna: +2 dBi
+• RX sensitivity: -137 dBm (SF12)
+
+Budget = 14 + 2 + 2 - (-137) = 155 dB
+
+Path loss at 868 MHz:
+FSPL = 155 dB allows ~15 km range!`
+      }
+    ],
+    
+    keyTakeaways: [
+      "WiFi: High speed (11-600 Mbps), short range (50-100m), high power (200mA)",
+      "BLE: Low power (<1μA sleep), medium speed (125-2000 kbps), 10-50m range",
+      "LoRa: Very long range (2-15 km), low speed (0.3-50 kbps), low power",
+      "BLE uses GATT: Services contain Characteristics with data values",
+      "LoRa spreading factor: SF7 (fast, short) to SF12 (slow, long)",
+      "Duty cycle limits: EU 868MHz has 1% limit (36s per hour)"
+    ],
+    
+    vocabulary: [
+      { term: "BLE", definition: "Bluetooth Low Energy; 10-100× lower power than classic Bluetooth" },
+      { term: "GATT", definition: "Generic Attribute Profile; BLE data structure" },
+      { term: "LoRa", definition: "Long Range; low-power wide-area network technology" },
+      { term: "Spreading Factor", definition: "LoRa parameter; SF7-SF12, higher = longer range but slower" },
+      { term: "Duty Cycle", definition: "Percentage of time transmitting; limited by regulations" }
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q14-1", question: "WiFi typical active power:", options: ["1-5mA", "10-20mA", "50-100mA", "200-300mA"], correctAnswer: 3, explanation: "WiFi active power: 200-300mA. Much higher than BLE or LoRa!" },
+        { id: "q14-2", question: "BLE advantage over Bluetooth Classic:", options: ["Higher speed", "10-100× lower power", "Longer range", "Better audio"], correctAnswer: 1, explanation: "BLE uses 10-100× less power than classic Bluetooth, enabling coin cell operation!" },
+        { id: "q14-3", question: "LoRa typical range:", options: ["10-50m", "100-500m", "2-15 km", "50-100 km"], correctAnswer: 2, explanation: "LoRa range: 2-15 km depending on environment and spreading factor!" },
+        { id: "q14-4", question: "LoRa SF12 vs SF7:", options: ["SF12 faster", "SF12 longer range but slower", "SF12 lower power", "No difference"], correctAnswer: 1, explanation: "Higher spreading factor = longer range but slower speed. SF12 slowest but longest range!" }
+      ]
+    }
   }
 ];
-
-// Lessons 12-14 will continue...
-export default electronicsUnit2EmbeddedControl;

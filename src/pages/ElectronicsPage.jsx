@@ -23,18 +23,68 @@ export default function ElectronicsPage() {
                     </div>
                 </div>
 
-                <div className="bg-gray-800 rounded-xl p-8 border border-gray-700">
-                    <h2 className="text-2xl font-bold mb-4">Coming Soon!</h2>
-                    <p className="text-gray-300 mb-4">
-                        We're building electronics lessons covering:
+                <div className="bg-gradient-to-br from-purple-900/50 to-pink-900/50 rounded-xl p-8 border border-purple-500/30">
+                    <h2 className="text-3xl font-bold mb-4">20 MIT-Quality Lessons Available!</h2>
+                    <p className="text-gray-300 mb-6">
+                        Complete electronics and robotics engineering curriculum covering:
                     </p>
-                    <ul className="space-y-2 text-gray-300">
-                        <li>• Basic Circuits (resistors, capacitors, inductors)</li>
-                        <li>• Digital Electronics (logic gates, flip-flops)</li>
-                        <li>• Microcontrollers (Arduino, ESP32, Raspberry Pi)</li>
-                        <li>• Sensors & Actuators</li>
-                        <li>• PCB Design & Embedded Systems</li>
-                    </ul>
+                    
+                    <div className="grid md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h3 className="text-xl font-bold text-purple-300 mb-3">🎓 Foundations (6 lessons)</h3>
+                            <ul className="space-y-2 text-gray-300 text-sm">
+                                <li>• AC Circuits & Complex Numbers</li>
+                                <li>• Filter Design & Frequency Response</li>
+                                <li>• Transistor Circuits & Amplifiers</li>
+                                <li>• Digital Logic & Timing</li>
+                                <li>• Microcontroller Math</li>
+                                <li>• Signal Processing Basics</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 className="text-xl font-bold text-yellow-300 mb-3">⚡ Power Electronics (4 lessons)</h3>
+                            <ul className="space-y-2 text-gray-300 text-sm">
+                                <li>• DC-DC Converters & Switching</li>
+                                <li>• Motor Control & PWM</li>
+                                <li>• Power MOSFETs & Gate Drivers</li>
+                                <li>• Battery Management Systems</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 className="text-xl font-bold text-blue-300 mb-3">🤖 Embedded Systems (5 lessons)</h3>
+                            <ul className="space-y-2 text-gray-300 text-sm">
+                                <li>• Microcontroller Architecture</li>
+                                <li>• Real-Time Operating Systems</li>
+                                <li>• PID Control Implementation</li>
+                                <li>• Sensor Interfacing (I2C, SPI, UART)</li>
+                                <li>• Wireless (WiFi, BLE, LoRa)</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 className="text-xl font-bold text-pink-300 mb-3">🦾 Robotics (5 lessons)</h3>
+                            <ul className="space-y-2 text-gray-300 text-sm">
+                                <li>• Robot Kinematics & Motion</li>
+                                <li>• Computer Vision & Image Processing</li>
+                                <li>• SLAM & Navigation</li>
+                                <li>• Machine Learning for Robotics</li>
+                                <li>• Autonomous Systems Integration</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button
+                        onClick={() => navigate('/games/map/electronics')}
+                        className="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl"
+                    >
+                        Start Learning Electronics & Robotics →
+                    </button>
+                    
+                    <div className="mt-6 text-center text-sm text-gray-400">
+                        20 lessons • 80 quiz questions • MIT-quality content
+                    </div>
                 </div>
             </div>
         </div>
