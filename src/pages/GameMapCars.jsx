@@ -6,94 +6,28 @@ export default function GameMapCars() {
   const navigate = useNavigate();
   const [completedLevels, setCompletedLevels] = useState([0]);
 
-  // Generate all 86 lessons (11 units)
+  // Generate 20 MIT-quality lessons (matching aircraft curriculum)
   const generateLevels = () => {
     const levels = [];
     let levelId = 0;
 
-    // BEGINNER - 3 units, 21 lessons total
-    const beginnerUnits = [
-      { name: 'Foundations: Math & Physics Bridge', emoji: '🎓', lessons: 6, quizzesPerLesson: 1 },
-      { name: 'Introduction to Automotive Engineering', emoji: '🚗', lessons: 7, quizzesPerLesson: 1 },
-      { name: 'Physics & Math Fundamentals', emoji: '⚛️', lessons: 8, quizzesPerLesson: 1 }
+    const units = [
+      { name: 'Foundations: Math & Physics Bridge', emoji: '🎓', lessons: 6, level: 'Beginner', color: 'from-green-400 to-emerald-500' },
+      { name: 'Vehicle Dynamics', emoji: '🚗', lessons: 4, level: 'Beginner', color: 'from-blue-400 to-cyan-500' },
+      { name: 'Powertrain Systems', emoji: '⚙️', lessons: 5, level: 'Intermediate', color: 'from-orange-400 to-red-500' },
+      { name: 'Systems & Design', emoji: '🔧', lessons: 5, level: 'Advanced', color: 'from-purple-400 to-pink-500' }
     ];
 
-    beginnerUnits.forEach((unit) => {
+    units.forEach((unit) => {
       for (let i = 0; i < unit.lessons; i++) {
         levels.push({
           id: levelId++,
           type: 'lesson',
-          level: 'Beginner',
+          level: unit.level,
           unit: unit.name,
           lesson: `Lesson ${i + 1}`,
           emoji: unit.emoji,
-          color: 'from-green-400 to-emerald-500',
-          quizzesAfter: unit.quizzesPerLesson
-        });
-      }
-    });
-
-    // INTERMEDIATE - 3 units, 24 lessons total
-    const intermediateUnits = [
-      { name: 'Mechanics & Materials', emoji: '⚙️', lessons: 8, quizzesPerLesson: 2 },
-      { name: 'Thermodynamics & Fluids', emoji: '🔥', lessons: 8, quizzesPerLesson: 2 },
-      { name: 'Electrical Systems & CAD', emoji: '🔌', lessons: 8, quizzesPerLesson: 2 }
-    ];
-
-    intermediateUnits.forEach((unit) => {
-      for (let i = 0; i < unit.lessons; i++) {
-        levels.push({
-          id: levelId++,
-          type: 'lesson',
-          level: 'Intermediate',
-          unit: unit.name,
-          lesson: `Lesson ${i + 1}`,
-          emoji: unit.emoji,
-          color: 'from-blue-400 to-cyan-500',
-          quizzesAfter: unit.quizzesPerLesson
-        });
-      }
-    });
-
-    // ADVANCED - 3 units, 27 lessons total
-    const advancedUnits = [
-      { name: 'Vehicle Dynamics & Powertrain', emoji: '🏁', lessons: 9, quizzesPerLesson: 2 },
-      { name: 'Structures & Thermal Systems', emoji: '🏗️', lessons: 9, quizzesPerLesson: 2 },
-      { name: 'Control Systems & Manufacturing', emoji: '🎮', lessons: 9, quizzesPerLesson: 2 }
-    ];
-
-    advancedUnits.forEach((unit) => {
-      for (let i = 0; i < unit.lessons; i++) {
-        levels.push({
-          id: levelId++,
-          type: 'lesson',
-          level: 'Advanced',
-          unit: unit.name,
-          lesson: `Lesson ${i + 1}`,
-          emoji: unit.emoji,
-          color: 'from-purple-400 to-pink-500',
-          quizzesAfter: unit.quizzesPerLesson
-        });
-      }
-    });
-
-    // MASTER - 2 units, 14 lessons total
-    const masterUnits = [
-      { name: 'Electric & Autonomous Vehicles', emoji: '⚡', lessons: 7, quizzesPerLesson: 3 },
-      { name: 'Innovation & Future Tech', emoji: '🚀', lessons: 7, quizzesPerLesson: 3 }
-    ];
-
-    masterUnits.forEach((unit) => {
-      for (let i = 0; i < unit.lessons; i++) {
-        levels.push({
-          id: levelId++,
-          type: 'lesson',
-          level: 'Master',
-          unit: unit.name,
-          lesson: `Lesson ${i + 1}`,
-          emoji: unit.emoji,
-          color: 'from-yellow-400 to-amber-500',
-          quizzesAfter: unit.quizzesPerLesson
+          color: unit.color
         });
       }
     });
@@ -111,9 +45,9 @@ export default function GameMapCars() {
     }
   };
 
-  // Organize lessons by units - 86 lessons total across 11 units
+  // Organize lessons by units - 20 MIT-quality lessons across 4 units
   const units = [];
-  const lessonCounts = [6, 7, 8, 8, 8, 8, 9, 9, 9, 7, 7]; // Lessons per unit
+  const lessonCounts = [6, 4, 5, 5]; // Lessons per unit (Total: 20)
   let currentIndex = 0;
 
   lessonCounts.forEach((count, i) => {
@@ -158,8 +92,8 @@ export default function GameMapCars() {
               </button>
               <Car className="w-8 h-8 text-orange-400" />
               <div>
-                <h1 className="text-xl font-bold">Automotive Journey</h1>
-                <p className="text-sm text-orange-200">86 Lessons • Drive through the curriculum</p>
+                <h1 className="text-xl font-bold">Automotive Engineering Journey</h1>
+                <p className="text-sm text-orange-200">20 Lessons • Master vehicle engineering</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
