@@ -380,3 +380,439 @@ Use 2W resistor with heatsink`
 
 // Lessons 8-9 will be added in next part due to file size
 export default electronicsUnit1PowerMotors;
+
+  {
+    id: 8,
+    title: "Power MOSFETs & Gate Drivers",
+    unit: "Power Electronics & Motors",
+    duration: "25 min",
+    introduction: "Power MOSFETs are the workhorses of modern power electronics. Understanding gate drive requirements and switching characteristics is critical for efficient designs.",
+    
+    sections: [
+      {
+        title: "MOSFET Characteristics",
+        content: `**Key Parameters:**
+
+**1. R_DS(on) - On-Resistance:**
+• Resistance when fully ON
+• Causes conduction losses
+• Lower is better
+• Typical: 1-100mΩ
+
+Conduction loss:
+P_cond = I²_RMS × R_DS(on)
+
+Example: 10A, 10mΩ MOSFET
+P_cond = 10² × 0.01 = 1W
+
+**2. V_GS(th) - Threshold Voltage:**
+• Gate voltage to start turning ON
+• Typical: 2-4V
+• Drive with 10-15V for full ON
+
+**3. Q_g - Gate Charge:**
+• Charge needed to turn ON
+• Determines switching speed
+• Typical: 10-200nC
+
+Gate current:
+I_gate = Q_g × f_sw
+
+Example: Q_g=50nC, f=100kHz
+I_gate = 50nC × 100kHz = 5mA
+
+**4. C_iss, C_oss - Capacitances:**
+• Input capacitance (gate-source)
+• Output capacitance (drain-source)
+• Affect switching speed
+
+**Switching Times:**
+
+Turn-on time:
+t_on = t_d(on) + t_r
+
+Turn-off time:
+t_off = t_d(off) + t_f
+
+Typical: 10-100ns each`
+      },
+      {
+        title: "Gate Driver Design",
+        content: `**Gate Driver Requirements:**
+
+**1. Voltage Level:**
+• Logic level: 5V gate drive
+• Standard: 10-15V gate drive
+• Higher voltage = faster switching
+
+**2. Current Capability:**
+
+Peak gate current:
+I_gate(peak) = V_drive / R_gate
+
+For fast switching (10ns):
+R_gate = 10Ω
+I_gate = 12V / 10Ω = 1.2A
+
+Gate driver must supply >1.5A peak
+
+**3. High-Side Drive:**
+
+Bootstrap circuit:
+• Capacitor charges when low-side ON
+• Provides floating supply for high-side
+• C_boot typically 1-10μF
+
+Bootstrap diode:
+• Fast recovery (<50ns)
+• V_R > V_supply
+• Example: UF4007 (1000V, 1A)
+
+**Example: IR2110 Gate Driver**
+
+Specifications:
+• V_CC: 10-20V
+• I_out: 2A peak
+• Propagation delay: 120ns
+• Dead time: programmable
+
+Application:
+• Half-bridge or full-bridge
+• Bootstrap high-side drive
+• Logic-level input (3.3V/5V compatible)
+
+**Layout Considerations:**
+
+1. Keep gate traces short (<2cm)
+2. Place gate resistor close to MOSFET
+3. Use ground plane
+4. Separate power and signal grounds
+5. Add ferrite bead on V_CC if needed`
+      },
+      {
+        title: "Switching Losses & Efficiency",
+        content: `**Switching Loss Calculation:**
+
+Energy per switch:
+E_sw = ½ × V_DS × I_D × (t_r + t_f)
+
+Power loss:
+P_sw = E_sw × f_sw
+
+**Example: 100kHz Switching**
+
+Given:
+• V_DS = 48V
+• I_D = 10A
+• t_r = 20ns, t_f = 30ns
+• f_sw = 100kHz
+
+E_sw = ½ × 48 × 10 × (20+30)×10⁻⁹
+E_sw = 12 μJ
+
+P_sw = 12μJ × 100kHz = 1.2W
+
+**Total Losses:**
+
+Conduction: P_cond = 1.0W
+Switching: P_sw = 1.2W
+Gate drive: P_gate = 0.1W
+Total: P_loss = 2.3W
+
+**Efficiency:**
+
+P_out = 48V × 10A = 480W
+P_in = 480W + 2.3W = 482.3W
+η = 480/482.3 = 99.5%
+
+Excellent efficiency!
+
+**Thermal Design:**
+
+Junction temperature:
+T_j = T_a + P_loss × θ_JA
+
+With heatsink (θ_JA = 20°C/W):
+T_j = 25°C + 2.3W × 20 = 71°C
+
+Safe operation (T_j(max) = 150°C)
+
+**Paralleling MOSFETs:**
+
+For higher current:
+• Use same part number
+• Match R_DS(on) within 10%
+• Share gate resistors
+• Equal trace lengths
+
+Two MOSFETs in parallel:
+• Current: 2× (20A total)
+• R_DS(on): ½ (5mΩ effective)
+• P_cond: ½ per device`
+      }
+    ],
+    
+    keyTakeaways: [
+      "R_DS(on) determines conduction losses: P = I²×R_DS(on)",
+      "Gate charge Q_g determines switching speed and gate current",
+      "Gate driver must supply 1-2A peak current for fast switching",
+      "Bootstrap circuit provides floating supply for high-side drive",
+      "Switching losses: P_sw = ½×V×I×(t_r+t_f)×f_sw",
+      "Keep gate traces short (<2cm) and use proper layout"
+    ],
+    
+    vocabulary: [
+      { term: "R_DS(on)", definition: "MOSFET on-resistance; causes conduction losses" },
+      { term: "Gate Charge (Q_g)", definition: "Charge needed to turn MOSFET ON; determines speed" },
+      { term: "Bootstrap Circuit", definition: "Capacitor-based floating supply for high-side gate drive" },
+      { term: "Dead Time", definition: "Delay between turning off one MOSFET and turning on another" },
+      { term: "Switching Loss", definition: "Power lost during MOSFET transitions; P = E_sw × f_sw" }
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q8-1", question: "Conduction loss formula:", options: ["P = V × I", "P = I² × R_DS(on)", "P = V² / R", "P = I × R_DS(on)"], correctAnswer: 1, explanation: "Conduction loss P = I²_RMS × R_DS(on). Lower R_DS(on) = lower losses!" },
+        { id: "q8-2", question: "MOSFET with Q_g=60nC at 50kHz needs gate current:", options: ["1.5mA", "3mA", "6mA", "12mA"], correctAnswer: 1, explanation: "I_gate = Q_g × f = 60nC × 50kHz = 3mA average!" },
+        { id: "q8-3", question: "Bootstrap circuit provides:", options: ["Gate current", "Floating supply for high-side drive", "Dead time", "Overcurrent protection"], correctAnswer: 1, explanation: "Bootstrap capacitor provides floating supply for high-side MOSFET gate drive!" },
+        { id: "q8-4", question: "To reduce switching losses:", options: ["Increase R_DS(on)", "Decrease switching frequency", "Increase gate voltage", "Use larger MOSFETs"], correctAnswer: 1, explanation: "P_sw ∝ f_sw. Lower frequency = lower switching losses (but larger components)!" }
+      ]
+    }
+  },
+
+  {
+    id: 9,
+    title: "Battery Management Systems",
+    unit: "Power Electronics & Motors",
+    duration: "30 min",
+    introduction: "Battery Management Systems (BMS) ensure safe and efficient operation of battery packs. Understanding cell balancing, protection, and state estimation is critical for modern applications.",
+    
+    sections: [
+      {
+        title: "Battery Fundamentals",
+        content: `**Lithium-Ion Cell Characteristics:**
+
+**Voltage Ranges:**
+• Nominal: 3.7V
+• Fully charged: 4.2V
+• Discharged: 3.0V
+• Cutoff: 2.5V (protection)
+
+**Capacity:**
+
+Energy:
+E = V × Ah
+
+Example: 3.7V, 3000mAh cell
+E = 3.7V × 3Ah = 11.1 Wh
+
+**C-Rate:**
+
+Discharge rate relative to capacity:
+• 1C = discharge in 1 hour
+• 2C = discharge in 0.5 hours
+• 0.5C = discharge in 2 hours
+
+Current:
+I = C-rate × Capacity
+
+For 3Ah cell at 2C:
+I = 2 × 3A = 6A
+
+**Series Configuration:**
+
+Voltage adds:
+V_pack = n × V_cell
+
+4S pack (4 series):
+V_pack = 4 × 3.7V = 14.8V nominal
+V_max = 4 × 4.2V = 16.8V
+V_min = 4 × 3.0V = 12.0V
+
+**Parallel Configuration:**
+
+Capacity adds:
+Ah_pack = n × Ah_cell
+
+3P pack (3 parallel):
+Capacity = 3 × 3Ah = 9Ah
+
+**Series-Parallel (4S3P):**
+• Voltage: 4 × 3.7V = 14.8V
+• Capacity: 3 × 3Ah = 9Ah
+• Energy: 14.8V × 9Ah = 133 Wh
+• 12 cells total`
+      },
+      {
+        title: "Cell Balancing",
+        content: `**Why Balance?**
+
+Cells in series have slight differences:
+• Manufacturing tolerances
+• Temperature variations
+• Aging differences
+
+Imbalance causes:
+• Reduced capacity (limited by weakest cell)
+• Overcharge/overdischarge risk
+• Shortened pack life
+
+**Passive Balancing:**
+
+Dissipative method:
+• Resistor across each cell
+• Bleeds excess charge as heat
+• Simple and cheap
+
+Balance current:
+I_bal = (V_cell - V_target) / R_bal
+
+Example: 100Ω balancing resistor
+• V_cell = 4.15V
+• V_target = 4.10V
+• I_bal = 0.05V / 100Ω = 0.5mA
+
+Power dissipated:
+P = I² × R = (0.5mA)² × 100Ω = 0.025mW
+
+Small power, slow balancing
+
+**Active Balancing:**
+
+Energy transfer method:
+• Moves charge between cells
+• More efficient (no heat)
+• More complex and expensive
+
+Methods:
+• Capacitor shuttling
+• Inductor-based
+• Transformer-based
+
+Balance current: 100mA - 1A
+Much faster than passive!
+
+**Balance Threshold:**
+
+Typical: 10-50mV difference
+• Start balancing if ΔV > 20mV
+• Stop when ΔV < 10mV
+
+**Example: 4S Pack Balancing**
+
+Cell voltages:
+• Cell 1: 4.18V
+• Cell 2: 4.15V
+• Cell 3: 4.20V (highest)
+• Cell 4: 4.16V
+
+Balance Cell 3 down to 4.18V:
+ΔV = 0.02V
+Time = ΔV × C / I_bal
+Time = 0.02V × 3Ah / 0.5mA = 120 hours!
+
+Passive balancing is slow!`
+      },
+      {
+        title: "State Estimation & Protection",
+        content: `**State of Charge (SOC):**
+
+Methods:
+1. **Voltage-based:**
+• Simple but inaccurate
+• Voltage varies with load
+• Good for rough estimate
+
+2. **Coulomb counting:**
+• Integrate current over time
+• SOC = SOC₀ + ∫(I dt) / Capacity
+• Accurate but needs calibration
+
+3. **Kalman filter:**
+• Combines voltage and current
+• Most accurate
+• Complex algorithm
+
+**Example: Coulomb Counting**
+
+Initial: SOC = 80%, Capacity = 3Ah
+Discharge at 1A for 30 minutes:
+
+Charge removed:
+Q = I × t = 1A × 0.5h = 0.5Ah
+
+New SOC:
+SOC = 80% - (0.5Ah / 3Ah) × 100%
+SOC = 80% - 16.7% = 63.3%
+
+**State of Health (SOH):**
+
+Capacity fade over time:
+SOH = (Current capacity / Original capacity) × 100%
+
+After 500 cycles:
+• Original: 3.0Ah
+• Current: 2.7Ah
+• SOH = (2.7 / 3.0) × 100% = 90%
+
+**Protection Features:**
+
+1. **Overvoltage (OV):**
+• Threshold: 4.25V per cell
+• Action: Disconnect charger
+
+2. **Undervoltage (UV):**
+• Threshold: 2.8V per cell
+• Action: Disconnect load
+
+3. **Overcurrent (OC):**
+• Charge: 1C typical
+• Discharge: 2-3C typical
+• Action: Disconnect immediately
+
+4. **Overtemperature (OT):**
+• Threshold: 60°C
+• Action: Reduce current or disconnect
+
+5. **Short Circuit:**
+• Detection: <1μs
+• Action: Disconnect via MOSFET
+
+**BMS IC Example: BQ76940 (TI)**
+
+Features:
+• 9-15 cells (3S to 5S)
+• Cell voltage measurement: ±10mV
+• Current sensing: ±50mV shunt
+• I²C communication
+• Integrated protection
+• Passive balancing: 50mA`
+      }
+    ],
+    
+    keyTakeaways: [
+      "Li-ion cells: 3.0-4.2V range, 3.7V nominal",
+      "Series adds voltage, parallel adds capacity",
+      "Cell balancing prevents overcharge/overdischarge of individual cells",
+      "Passive balancing: simple but slow; Active balancing: fast but complex",
+      "SOC estimation: coulomb counting most practical",
+      "BMS protects against OV, UV, OC, OT, and short circuit"
+    ],
+    
+    vocabulary: [
+      { term: "C-Rate", definition: "Discharge rate relative to capacity; 1C = full discharge in 1 hour" },
+      { term: "Cell Balancing", definition: "Equalizing charge across series cells; passive or active" },
+      { term: "SOC", definition: "State of Charge; percentage of remaining capacity" },
+      { term: "SOH", definition: "State of Health; capacity fade over lifetime" },
+      { term: "BMS", definition: "Battery Management System; monitors and protects battery pack" }
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q9-1", question: "4S Li-ion pack nominal voltage:", options: ["3.7V", "7.4V", "14.8V", "16.8V"], correctAnswer: 2, explanation: "4S = 4 series cells. V = 4 × 3.7V = 14.8V nominal!" },
+        { id: "q9-2", question: "3Ah battery at 2C discharges at:", options: ["1.5A", "3A", "6A", "9A"], correctAnswer: 2, explanation: "I = C-rate × Capacity = 2C × 3Ah = 6A!" },
+        { id: "q9-3", question: "Passive balancing uses:", options: ["Capacitors to transfer charge", "Resistors to dissipate excess charge", "Inductors to move energy", "Transformers to balance"], correctAnswer: 1, explanation: "Passive balancing uses resistors to bleed excess charge as heat. Simple but slow!" },
+        { id: "q9-4", question: "Li-ion cell fully charged voltage:", options: ["3.0V", "3.7V", "4.2V", "5.0V"], correctAnswer: 2, explanation: "Li-ion fully charged: 4.2V. Nominal: 3.7V. Discharged: 3.0V!" }
+      ]
+    }
+  }
+];
