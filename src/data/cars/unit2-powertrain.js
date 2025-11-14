@@ -176,7 +176,16 @@ Cools compressed air:
       { term: "Turbocharger", definition: "Exhaust-driven compressor that increases air density" },
       { term: "Specific Output", definition: "Power per liter of displacement; kW/L" },
       { term: "Thermal Efficiency", definition: "Ratio of work output to heat input" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q10-1", question: "Otto cycle efficiency formula:", options: ["η = 1 - r", "η = 1 - (1/r^(γ-1))", "η = r/(r+1)", "η = 1/r"], correctAnswer: 1, explanation: "Otto efficiency η = 1 - (1/r^(γ-1)). Higher compression ratio = higher efficiency!" },
+        { id: "q10-2", question: "Four-stroke cycle order:", options: ["Intake, Power, Compression, Exhaust", "Intake, Compression, Power, Exhaust", "Compression, Intake, Power, Exhaust", "Power, Exhaust, Intake, Compression"], correctAnswer: 1, explanation: "Four strokes: Intake (air-fuel in), Compression, Power (combustion), Exhaust!" },
+        { id: "q10-3", question: "Turbocharging increases power by:", options: ["10-20%", "30-50%", "70-100%", "200%+"], correctAnswer: 1, explanation: "Turbo typically adds 30-50% power by compressing intake air. More air = more fuel = more power!" },
+        { id: "q10-4", question: "Real engine efficiency vs ideal:", options: ["Real = ideal", "Real 25-35% vs ideal 60%", "Real 50% vs ideal 70%", "Real 80% vs ideal 90%"], correctAnswer: 1, explanation: "Real engines: 25-35% efficient. Ideal Otto cycle: 60%. Losses from friction, heat transfer!" }
+      ]
+    }
   },
 
   {
@@ -363,7 +372,16 @@ But usually shift at redline for max acceleration!`
       { term: "DCT", definition: "Dual-Clutch Transmission; two clutches for fast shifts" },
       { term: "Overdrive", definition: "Gear ratio < 1:1; reduces RPM at highway speeds" },
       { term: "Torque Converter", definition: "Fluid coupling in automatic transmissions" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q11-1", question: "Gear ratio formula:", options: ["GR = N_out/N_in", "GR = N_in/N_out = T_out/T_in", "GR = T_in/T_out", "GR = N × T"], correctAnswer: 1, explanation: "Gear ratio GR = N_in/N_out = T_out/T_in. Trades speed for torque!" },
+        { id: "q11-2", question: "DCT advantage:", options: ["Cheaper than manual", "Fast shifts (0.1-0.2s), no power interruption", "More gears", "Better fuel economy"], correctAnswer: 1, explanation: "Dual-clutch pre-selects next gear. Shifts in 0.1-0.2s with no power interruption!" },
+        { id: "q11-3", question: "Overdrive gear means:", options: ["Gear ratio > 1:1", "Gear ratio < 1:1; reduces RPM at highway speeds", "Maximum power gear", "First gear"], correctAnswer: 1, explanation: "Overdrive (ratio < 1:1) reduces engine RPM at highway speeds for better fuel economy!" },
+        { id: "q11-4", question: "Top speed limited by:", options: ["Transmission", "Power and drag: v_max = ∛(2P/(ρC_D A))", "Tire rating", "Engine redline"], correctAnswer: 1, explanation: "Top speed when power = drag power. v_max = ∛(2P/(ρC_D A))!" }
+      ]
+    }
   },
 
   {
@@ -559,7 +577,16 @@ EVs are 2.5-3× more efficient!`
       { term: "BMS", definition: "Battery Management System; monitors and protects battery" },
       { term: "SOC", definition: "State of Charge; battery charge level as percentage" },
       { term: "Regenerative Braking", definition: "Motor acts as generator to recover energy during braking" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q12-1", question: "Electric motor efficiency:", options: ["70-80%", "85-90%", "95-97%", "99%+"], correctAnswer: 2, explanation: "Electric motors: 95-97% efficient. ICE engines: only 25-35%!" },
+        { id: "q12-2", question: "Battery energy formula:", options: ["E = V × A", "E = V × Ah", "E = I × R", "E = P/t"], correctAnswer: 1, explanation: "Battery energy E = Voltage × Amp-hours. Tesla Model 3: 350V × 230Ah = 80.5 kWh!" },
+        { id: "q12-3", question: "EV instant torque because:", options: ["More power", "T = k_t × I, independent of RPM", "Batteries", "No transmission"], correctAnswer: 1, explanation: "Electric motor torque T = k_t × I is independent of RPM. Full torque from 0 RPM!" },
+        { id: "q12-4", question: "EV overall efficiency:", options: ["40-50%", "60-70%", "80-85%", "95%+"], correctAnswer: 2, explanation: "EV wall-to-wheels: 80-85%. ICE: only 22-33%. EVs are 2.5-3× more efficient!" }
+      ]
+    }
   },
 
   {
@@ -758,7 +785,16 @@ Payback period: 3-4 years typically`
       { term: "Power-Split", definition: "Planetary gearset allows flexible power routing" },
       { term: "Regenerative Braking", definition: "Motor acts as generator during braking" },
       { term: "Optimal Operating Line", definition: "Most efficient operating points for ICE" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q13-1", question: "Series hybrid means:", options: ["ICE and motor both drive wheels", "ICE → Generator → Battery → Motor → Wheels", "ICE only, motor assists", "Motor only"], correctAnswer: 1, explanation: "Series hybrid: ICE only generates electricity. Motor drives wheels. ICE runs at optimal RPM!" },
+        { id: "q13-2", question: "Toyota Prius uses:", options: ["Series hybrid", "Parallel hybrid", "Series-parallel (power-split)", "Pure electric"], correctAnswer: 2, explanation: "Prius uses power-split with planetary gearset. Best of both worlds!" },
+        { id: "q13-3", question: "Regenerative braking recovers:", options: ["100% energy", "60-70% of braking energy", "20-30% energy", "No energy"], correctAnswer: 1, explanation: "Regen braking recovers 60-70% of braking energy. Extends range and reduces brake wear!" },
+        { id: "q13-4", question: "Hybrid fuel economy improvement:", options: ["5-10%", "15-25%", "30-40%", "60-80%"], correctAnswer: 2, explanation: "Hybrids achieve 30-40% better fuel economy than conventional vehicles!" }
+      ]
+    }
   },
 
   {
@@ -964,7 +1000,16 @@ Aggressive driver: 10.0 L/100km
       { term: "Drivetrain Efficiency", definition: "Ratio of wheel power to engine power; typically 85-95%" },
       { term: "Eco-Driving", definition: "Driving techniques to minimize fuel consumption" },
       { term: "Specific Fuel Consumption", definition: "Fuel used per unit power per unit time; g/kWh" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q14-1", question: "Drag power formula:", options: ["P = F × v", "P = ½ρv³C_D A", "P = ½ρv²C_D A", "P = C_D × v"], correctAnswer: 1, explanation: "Drag power P = ½ρv³C_D A. The v³ term means power increases dramatically with speed!" },
+        { id: "q14-2", question: "Weight reduction: 100 kg saves:", options: ["1-2% fuel", "3-5% fuel", "10-15% fuel", "20-30% fuel"], correctAnswer: 1, explanation: "Every 100 kg reduction saves 3-5% fuel. Weight affects acceleration, braking, and rolling resistance!" },
+        { id: "q14-3", question: "Optimal highway speed for efficiency:", options: ["60 km/h", "80-90 km/h", "120 km/h", "150 km/h"], correctAnswer: 1, explanation: "80-90 km/h is most efficient. At 120 km/h, fuel consumption is 70% higher!" },
+        { id: "q14-4", question: "Eco-driving can save:", options: ["5-10% fuel", "20-30% fuel", "40-50% fuel", "60-70% fuel"], correctAnswer: 1, explanation: "Eco-driving techniques (smooth acceleration, anticipate traffic, optimal speed) save 20-30% fuel!" }
+      ]
+    }
   }
 ];
 

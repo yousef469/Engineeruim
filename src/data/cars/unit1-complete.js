@@ -163,7 +163,16 @@ This is why:
       { term: "Weight Transfer", definition: "Load shift during acceleration or braking" },
       { term: "Rolling Resistance", definition: "Force from tire deformation; C_rr typically 0.010-0.015" },
       { term: "Drag Coefficient (C_D)", definition: "Dimensionless aerodynamic drag measure" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q6-1", question: "Aerodynamic drag formula:", options: ["F = ½ρv²C_D A", "F = C_D × v", "F = ρ × A", "F = mv²"], correctAnswer: 0, explanation: "Drag F = ½ρv²C_D A. The v² term means doubling speed = 4× the drag!" },
+        { id: "q6-2", question: "Maximum traction limited by:", options: ["Engine power", "F_max = μN (tire-road friction)", "Vehicle weight only", "Transmission"], correctAnswer: 1, explanation: "Maximum traction F_max = μN. This is why AWD helps - uses all four tires!" },
+        { id: "q6-3", question: "Weight transfer during acceleration:", options: ["Engine in rear", "ΔW = (a/g) × (h/L) × W", "Tires compress", "Suspension extends"], correctAnswer: 1, explanation: "Weight transfer ΔW = (a/g) × (h/L) × W. Higher CG and shorter wheelbase = more transfer!" },
+        { id: "q6-4", question: "Why front brakes larger?", options: ["Front wheels bigger", "Weight transfers forward; front provides 70% braking", "Easier access", "Rear backup only"], correctAnswer: 1, explanation: "Weight transfers forward during braking. Front 70%, rear 30% to prevent rear lockup!" }
+      ]
+    }
   },
 
   {
@@ -312,7 +321,16 @@ Benefits:
       { term: "Wheel Slip", definition: "Difference between tire speed and vehicle speed; 5-10% optimal" },
       { term: "Traction-Limited", definition: "Acceleration limited by tire grip, not engine power" },
       { term: "Power-Limited", definition: "Acceleration limited by engine power, not tire grip" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q7-1", question: "Maximum acceleration formula:", options: ["a_max = P/m", "a_max = μg", "a_max = F/m", "a_max = v/t"], correctAnswer: 1, explanation: "Traction-limited acceleration a_max = μg. On dry road (μ=0.9), that's 8.8 m/s²!" },
+        { id: "q7-2", question: "Why is AWD faster 0-60?", options: ["More power", "Uses all four tires for traction; 67% better than RWD", "Lighter weight", "Better aerodynamics"], correctAnswer: 1, explanation: "AWD uses all four tires. RWD only uses rear (50-60% weight). AWD is 67% better!" },
+        { id: "q7-3", question: "Launch control does:", options: ["Increases power", "Optimizes RPM and wheel slip for consistent launches", "Reduces weight", "Improves aerodynamics"], correctAnswer: 1, explanation: "Launch control manages RPM, clutch, and wheel slip (5-10% optimal) for maximum acceleration!" },
+        { id: "q7-4", question: "0-60 time simplified:", options: ["t = v/a", "t = 26.8/a (for 0-60 mph)", "t = v²/a", "t = a/v"], correctAnswer: 1, explanation: "0-60 mph = 0-26.8 m/s. Time t = 26.8/a. If a=5.4 m/s², t=5.0 seconds!" }
+      ]
+    }
   },
 
   {
@@ -481,7 +499,16 @@ Result: Neutral handling balance`
       { term: "Understeer", definition: "Front tires lose grip first; turn less than steering input" },
       { term: "Oversteer", definition: "Rear tires lose grip first; turn more than steering input" },
       { term: "Anti-Roll Bar", definition: "Connects left/right suspension to reduce body roll" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q8-1", question: "Centripetal force for turning:", options: ["F = mv", "F = mv²/R", "F = mR/v", "F = v²/R"], correctAnswer: 1, explanation: "Centripetal force F = mv²/R. Provided by tire lateral force F_y = μN!" },
+        { id: "q8-2", question: "Maximum cornering speed:", options: ["v = μgR", "v = √(μgR)", "v = μg/R", "v = R/μg"], correctAnswer: 1, explanation: "Maximum speed v_max = √(μgR). Higher μ or larger R allows faster cornering!" },
+        { id: "q8-3", question: "Understeer means:", options: ["Rear slides first", "Front slides first; turn less than steering input", "Perfect balance", "Too much power"], correctAnswer: 1, explanation: "Understeer: front tires lose grip first. Safe and predictable. Most road cars!" },
+        { id: "q8-4", question: "Negative camber benefits:", options: ["Looks cool", "Better cornering grip; more even tire wear in corners", "Reduces weight", "Improves straight-line speed"], correctAnswer: 1, explanation: "Negative camber (top tilts in) improves cornering grip and compensates for body roll!" }
+      ]
+    }
   },
 
   {
@@ -658,7 +685,16 @@ With ABS:
       { term: "Brake Distribution", definition: "Split of braking force between front and rear" },
       { term: "Stopping Distance", definition: "Total distance including reaction time" },
       { term: "Brake Assist", definition: "System that applies maximum pressure in emergencies" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q9-1", question: "Braking distance formula:", options: ["s = v/a", "s = v²/(2a)", "s = 2v/a", "s = v²/a"], correctAnswer: 1, explanation: "Braking distance s = v²/(2a). From 30 m/s with a=8 m/s²: s = 56 m!" },
+        { id: "q9-2", question: "ABS prevents:", options: ["Brake fade", "Wheel lockup; maintains steering control", "Brake overheating", "Tire wear"], correctAnswer: 1, explanation: "ABS prevents wheel lockup by pulsing brakes 10-15 Hz. Maintains steering control!" },
+        { id: "q9-3", question: "Wet roads increase braking distance by:", options: ["10-20%", "30-40%", "60%+", "100%+"], correctAnswer: 2, explanation: "Wet roads (μ=0.5-0.7 vs dry 0.8-1.0) increase braking distance by 60%+!" },
+        { id: "q9-4", question: "Brake force multiplication:", options: ["Hydraulic pressure constant throughout", "Small master cylinder, large caliper = force multiplication", "Electric assist", "Vacuum boost"], correctAnswer: 1, explanation: "Pascal's principle: P=F/A. Small master cylinder, large caliper multiplies force 8-10×!" }
+      ]
+    }
   }
 ];
 

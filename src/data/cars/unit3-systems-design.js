@@ -206,7 +206,16 @@ Efficient packaging due to:
       { term: "Center of Gravity", definition: "Point where weight is balanced; affects handling" },
       { term: "SSF", definition: "Static Stability Factor; measures rollover resistance" },
       { term: "H-Point", definition: "Hip point; reference for seating position" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q15-1", question: "Unibody vs body-on-frame:", options: ["Unibody heavier", "Unibody 15-20% lighter, better handling", "Same weight", "Body-on-frame lighter"], correctAnswer: 1, explanation: "Unibody is 15-20% lighter and has better handling. Body-on-frame is stronger for towing!" },
+        { id: "q15-2", question: "Static Stability Factor formula:", options: ["SSF = CG Height / Track", "SSF = Track / (2 × CG Height)", "SSF = Track × CG Height", "SSF = 2 × Track / CG"], correctAnswer: 1, explanation: "SSF = Track/(2×CG Height). SSF > 1.2 is safe. Lower CG = higher SSF = less rollover risk!" },
+        { id: "q15-3", question: "Ideal weight distribution:", options: ["70/30 front/rear", "60/40 front/rear", "50/50 front/rear", "40/60 front/rear"], correctAnswer: 2, explanation: "50/50 weight distribution is ideal for best handling and balanced braking!" },
+        { id: "q15-4", question: "EV packaging advantage:", options: ["Heavier", "Flat floor, no transmission tunnel, frunk", "Smaller interior", "Less cargo space"], correctAnswer: 1, explanation: "EVs have flat floor, no transmission tunnel, and front trunk (frunk) for efficient packaging!" }
+      ]
+    }
   },
 
   {
@@ -453,7 +462,16 @@ Too little: excessive pitch`
       { term: "Camber", definition: "Wheel tilt from vertical; negative = top tilts in" },
       { term: "Damping Ratio", definition: "ζ = c/c_c; ratio of actual to critical damping" },
       { term: "Roll Center", definition: "Point about which vehicle body rolls in corners" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q16-1", question: "Double wishbone vs MacPherson:", options: ["MacPherson better geometry", "Double wishbone better geometry, more expensive", "Same performance", "MacPherson more expensive"], correctAnswer: 1, explanation: "Double wishbone has better geometry control but is more expensive. MacPherson is simpler and cheaper!" },
+        { id: "q16-2", question: "Natural frequency formula:", options: ["f_n = k/m", "f_n = (1/2π)√(k/m)", "f_n = √(k/m)", "f_n = 2π√(k/m)"], correctAnswer: 1, explanation: "Natural frequency f_n = (1/2π)√(k/m). Sport cars: 1.3-1.5 Hz, comfort: 1.0-1.2 Hz!" },
+        { id: "q16-3", question: "Negative camber improves:", options: ["Straight-line speed", "Cornering grip; compensates for body roll", "Fuel economy", "Ride comfort"], correctAnswer: 1, explanation: "Negative camber (top tilts in) improves cornering grip and compensates for body roll!" },
+        { id: "q16-4", question: "Rebound damping vs compression:", options: ["Same", "Rebound 2-3× compression to prevent bouncing", "Compression 2-3× rebound", "Rebound 10× compression"], correctAnswer: 1, explanation: "Rebound damping is typically 2-3× compression to prevent bouncing after bumps!" }
+      ]
+    }
   },
 
   {
@@ -671,7 +689,16 @@ Driver barely notices!`
       { term: "ESC", definition: "Electronic Stability Control; prevents skidding" },
       { term: "AEB", definition: "Automatic Emergency Braking; prevents/mitigates crashes" },
       { term: "Pretensioner", definition: "Device that tightens seatbelt in crash" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q17-1", question: "Crumple zones purpose:", options: ["Make car lighter", "Absorb crash energy by controlled deformation", "Improve aerodynamics", "Reduce cost"], correctAnswer: 1, explanation: "Crumple zones absorb crash energy through controlled deformation, reducing peak force on occupants!" },
+        { id: "q17-2", question: "ESC reduces fatal crashes by:", options: ["10-20%", "30-40%", "50%", "70-80%"], correctAnswer: 2, explanation: "ESC reduces fatal single-vehicle crashes by 50%! It prevents skidding by applying individual brakes!" },
+        { id: "q17-3", question: "Airbag deployment time:", options: ["5-10 ms", "20-30 ms", "50-100 ms", "200-300 ms"], correctAnswer: 1, explanation: "Airbags deploy in 20-30 ms! Crash sensors detect impact, pretensioners fire, then airbags deploy!" },
+        { id: "q17-4", question: "AEB reduces rear-end crashes by:", options: ["10-20%", "30-40%", "50%", "70-80%"], correctAnswer: 2, explanation: "Automatic Emergency Braking reduces rear-end crashes by 50% and injuries by 56%!" }
+      ]
+    }
   },
 
   {
@@ -902,7 +929,16 @@ Limitations:
       { term: "Sensor Fusion", definition: "Combining multiple sensors for better accuracy" },
       { term: "ADAS", definition: "Advanced Driver Assistance Systems; Level 1-2 automation" },
       { term: "Lidar", definition: "Light Detection and Ranging; laser-based distance measurement" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q18-1", question: "Modern car has how many ECUs?", options: ["5-10", "20-30", "50-100", "200-300"], correctAnswer: 2, explanation: "Modern cars have 50-100 ECUs! They control engine, transmission, brakes, airbags, infotainment, etc!" },
+        { id: "q18-2", question: "CAN bus advantage:", options: ["Increases power", "Reduces wiring by 50+ kg, enables complex features", "Improves fuel economy", "Reduces cost"], correctAnswer: 1, explanation: "CAN bus connects all ECUs, reducing wiring by 50+ kg and enabling complex features!" },
+        { id: "q18-3", question: "Level 2 automation means:", options: ["No automation", "ACC + lane keeping; driver must monitor", "Full self-driving", "Highway only"], correctAnswer: 1, explanation: "Level 2: ACC + lane keeping. Driver must monitor and be ready to take over!" },
+        { id: "q18-4", question: "Sensor fusion combines:", options: ["Only cameras", "Radar, camera, lidar for redundancy and accuracy", "Only radar", "Only lidar"], correctAnswer: 1, explanation: "Sensor fusion combines radar (distance), camera (classification), lidar (3D map) for redundancy!" }
+      ]
+    }
   },
 
   {
@@ -1122,7 +1158,16 @@ Impact:
       { term: "TOPS", definition: "Trillion Operations Per Second; measure of computing power" },
       { term: "Embodied Carbon", definition: "CO2 emissions from manufacturing and materials" },
       { term: "Circular Economy", definition: "System designed for reuse and recycling" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        { id: "q19-1", question: "EV market share projection 2030:", options: ["10-20%", "25-35%", "40-50%", "70-80%"], correctAnswer: 2, explanation: "EV market share: 18% (2023) → 40-50% (2030 projection)!" },
+        { id: "q19-2", question: "Battery cost projection 2030:", options: ["$200-250/kWh", "$150-180/kWh", "$100-130/kWh", "$50-70/kWh"], correctAnswer: 3, explanation: "Battery costs: $100-130/kWh (2024) → $50-70/kWh (2030). Price parity with ICE!" },
+        { id: "q19-3", question: "Solid-state battery energy density:", options: ["200-250 Wh/kg", "300-350 Wh/kg", "400-450 Wh/kg", "500+ Wh/kg"], correctAnswer: 3, explanation: "Solid-state batteries: 500+ Wh/kg vs current 250-300 Wh/kg. Safer and faster charging!" },
+        { id: "q19-4", question: "Carbon fiber cost projection:", options: ["$50-100/kg", "$30-50/kg", "$15-30/kg", "$5-10/kg with mass production"], correctAnswer: 3, explanation: "Carbon fiber: $15-30/kg (current) → $5-10/kg (mass production). 50% lighter than steel!" }
+      ]
+    }
   }
 ];
 
