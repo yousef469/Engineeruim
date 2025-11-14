@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Rocket, Star, Lock, CheckCircle, Sparkles } from 'lucide-react';
+import rocketsLessons from '../data/rocketsLessonsData.js';
 
 export default function GameMapRockets() {
   const navigate = useNavigate();
@@ -195,10 +196,15 @@ export default function GameMapRockets() {
                           </div>
                         </button>
 
-                        <div className="mt-3 text-center">
+                        <div className="mt-3 text-center max-w-[150px]">
                           <div className={`font-bold text-sm ${unlocked ? 'text-white' : 'text-gray-500'}`}>
                             {level.lesson}
                           </div>
+                          {rocketsLessons[level.id] && (
+                            <div className={`text-xs mt-2 ${unlocked ? 'text-white/70' : 'text-gray-500'}`}>
+                              {rocketsLessons[level.id].title}
+                            </div>
+                          )}
                         </div>
                       </div>
                     );

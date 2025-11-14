@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Plane, Star, Cloud } from 'lucide-react';
+import planesLessons from '../data/planesLessonsData.js';
 
 export default function GameMapPlanes() {
   const navigate = useNavigate();
@@ -193,8 +194,13 @@ export default function GameMapPlanes() {
                         </button>
 
                         {/* Lesson Info */}
-                        <div className="mt-3 text-center">
+                        <div className="mt-3 text-center max-w-[150px]">
                           <div className="text-sm font-semibold">{level.lesson}</div>
+                          {planesLessons[level.id] && (
+                            <div className={`text-xs mt-2 ${unlocked ? 'text-white/70' : 'text-gray-500'}`}>
+                              {planesLessons[level.id].title}
+                            </div>
+                          )}
                         </div>
                       </div>
                     );

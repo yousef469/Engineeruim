@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Zap, Star, Lock, CheckCircle, Cpu } from 'lucide-react';
+import electronicsLessons from '../data/electronicsLessonsData.js';
 
 export default function GameMapElectronics() {
   const navigate = useNavigate();
@@ -195,13 +196,18 @@ export default function GameMapElectronics() {
                           </div>
                         </button>
 
-                        <div className="mt-3 text-center">
+                        <div className="mt-3 text-center max-w-[150px]">
                           <div className={`text-xs font-semibold mb-1 ${unlocked ? 'text-white' : 'text-gray-400'}`}>
                             {level.level}
                           </div>
                           <div className={`font-bold text-sm ${unlocked ? 'text-white' : 'text-gray-500'}`}>
                             {level.lesson}
                           </div>
+                          {electronicsLessons[level.id] && (
+                            <div className={`text-xs mt-2 ${unlocked ? 'text-white/70' : 'text-gray-500'}`}>
+                              {electronicsLessons[level.id].title}
+                            </div>
+                          )}
                         </div>
                       </div>
                     );

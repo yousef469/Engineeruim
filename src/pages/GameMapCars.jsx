@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Car, Star, Lock, CheckCircle, Building2 } from 'lucide-react';
+import carsLessons from '../data/carsLessonsData.js';
 
 export default function GameMapCars() {
   const navigate = useNavigate();
@@ -197,13 +198,18 @@ export default function GameMapCars() {
                           </div>
                         </button>
 
-                        <div className="mt-3 text-center">
+                        <div className="mt-3 text-center max-w-[150px]">
                           <div className={`text-xs font-semibold mb-1 ${unlocked ? 'text-white' : 'text-gray-400'}`}>
                             {level.level}
                           </div>
                           <div className={`font-bold text-sm ${unlocked ? 'text-white' : 'text-gray-500'}`}>
                             {level.lesson}
                           </div>
+                          {carsLessons[level.id] && (
+                            <div className={`text-xs mt-2 ${unlocked ? 'text-white/70' : 'text-gray-500'}`}>
+                              {carsLessons[level.id].title}
+                            </div>
+                          )}
                           {level.quizzesAfter > 0 && (
                             <div className="text-xs text-orange-300 mt-1">
                               +{level.quizzesAfter} {level.quizzesAfter === 1 ? 'quiz' : 'quizzes'}
