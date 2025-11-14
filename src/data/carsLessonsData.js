@@ -69,7 +69,7 @@ mitQualityLessons.forEach((lesson, index) => {
         keyTakeaways: lesson.learningObjectives || [],
         vocabulary: []
       },
-      quiz: { questions: [] }
+      quiz: lesson.quiz || { questions: [] }  // Preserve quiz data from lesson
     };
   } else {
     // Handle regular lessons (Units 1+)
