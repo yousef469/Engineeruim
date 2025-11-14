@@ -26,23 +26,24 @@ Complete MIT-quality engineering curriculum with interactive lessons and quizzes
 - **Quizzes**: 20/20 complete (80 questions)
 - **Status**: 100% ready ✅
 
-## In Progress 🚧
-
-### 🚗 Cars (20 lessons)
-- **Content**: 20 lessons with MIT-quality content
-- **Quizzes**: 0/20 (need to add)
-- **Status**: Content ready, quizzes needed
+### 🚗 Automotive (20 lessons) ✅
+- **Unit 0**: Foundations (6 lessons) - Vehicle dynamics, powertrain, suspension
+- **Unit 1**: Vehicle Dynamics (4 lessons) - Forces, acceleration, cornering, braking
+- **Unit 2**: Powertrain (5 lessons) - ICE, transmissions, EVs, hybrids, efficiency
+- **Unit 3**: Systems & Design (5 lessons) - Architecture, suspension, safety, electronics, future
+- **Quizzes**: 20/20 complete (80 questions)
+- **Status**: 100% ready ✅
 
 ## Summary
 
 - **Total Lessons**: 68 (28 rockets + 20 aircraft + 20 cars)
-- **Lessons with Quizzes**: 48/68 (71%)
-- **Total Quiz Questions**: 192 (112 rockets + 80 aircraft)
-- **Ready for Students**: Rockets ✅, Aircraft ✅, Cars (partial)
+- **Lessons with Quizzes**: 68/68 (100%) ✅
+- **Total Quiz Questions**: 272 (112 rockets + 80 aircraft + 80 cars)
+- **Ready for Students**: Rockets ✅, Aircraft ✅, Cars ✅
 
 ## Next Steps
 
-1. Add quizzes to cars curriculum (80 questions needed)
+1. ✅ All curricula complete with quizzes
 2. Test all lesson pages work correctly
 3. Verify quiz display in UI
 
