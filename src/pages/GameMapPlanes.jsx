@@ -6,23 +6,18 @@ export default function GameMapPlanes() {
   const navigate = useNavigate();
   const [completedLevels] = useState([0]);
 
-  // Generate all 89 lessons (11 units with varying lesson counts)
+  // Generate all 20 MIT-quality lessons (6 units)
   const generateLevels = () => {
     const levels = [];
     let levelId = 0;
 
     const units = [
       { name: 'Foundations: Math & Physics Bridge', emoji: '🎓', lessons: 6, level: 'Beginner', color: 'from-cyan-400 to-blue-500' },
-      { name: 'Introduction to Flight', emoji: '✈️', lessons: 7, level: 'Beginner', color: 'from-green-400 to-emerald-500' },
-      { name: 'Aerodynamics Basics', emoji: '💨', lessons: 8, level: 'Beginner', color: 'from-blue-400 to-cyan-500' },
-      { name: 'Aircraft Structures', emoji: '🏗️', lessons: 7, level: 'Intermediate', color: 'from-purple-400 to-pink-500' },
-      { name: 'Propulsion Systems', emoji: '🚀', lessons: 8, level: 'Intermediate', color: 'from-orange-400 to-red-500' },
-      { name: 'Flight Mechanics', emoji: '🛫', lessons: 8, level: 'Intermediate', color: 'from-yellow-400 to-amber-500' },
-      { name: 'Avionics & Flight Control Systems', emoji: '📡', lessons: 8, level: 'Advanced', color: 'from-indigo-400 to-purple-500' },
-      { name: 'Aircraft Design & Simulation', emoji: '🎨', lessons: 8, level: 'Advanced', color: 'from-pink-400 to-rose-500' },
-      { name: 'Flight Operations & Systems', emoji: '⚙️', lessons: 8, level: 'Advanced', color: 'from-teal-400 to-cyan-500' },
-      { name: 'Aerodynamics of High-Speed Flight', emoji: '⚡', lessons: 6, level: 'Master', color: 'from-sky-400 to-blue-500' },
-      { name: 'Future of Aerospace', emoji: '🌟', lessons: 7, level: 'Master', color: 'from-violet-400 to-purple-500' }
+      { name: 'Flight Fundamentals', emoji: '✈️', lessons: 6, level: 'Beginner', color: 'from-green-400 to-emerald-500' },
+      { name: 'Aerodynamics', emoji: '🌪️', lessons: 2, level: 'Intermediate', color: 'from-blue-400 to-cyan-500' },
+      { name: 'Structures & Materials', emoji: '🏗️', lessons: 2, level: 'Intermediate', color: 'from-purple-400 to-pink-500' },
+      { name: 'Propulsion Systems', emoji: '🔧', lessons: 2, level: 'Advanced', color: 'from-orange-400 to-red-500' },
+      { name: 'Flight Operations', emoji: '🛫', lessons: 2, level: 'Advanced', color: 'from-yellow-400 to-amber-500' }
     ];
 
     units.forEach((unit) => {
@@ -52,9 +47,9 @@ export default function GameMapPlanes() {
     }
   };
 
-  // Organize lessons by units (varying lesson counts)
+  // Organize lessons by units (MIT-quality content only)
   const units = [];
-  const lessonCounts = [6, 7, 8, 7, 8, 8, 8, 8, 8, 6, 7]; // Lessons per unit
+  const lessonCounts = [6, 6, 2, 2, 2, 2]; // Lessons per unit (Total: 20)
   let currentIndex = 0;
   
   lessonCounts.forEach((count, i) => {
@@ -98,8 +93,8 @@ export default function GameMapPlanes() {
               </button>
               <Plane className="w-8 h-8 text-cyan-300" />
               <div>
-                <h1 className="text-xl font-bold">Aircraft Journey</h1>
-                <p className="text-sm text-blue-200">89 Lessons • Follow the path</p>
+                <h1 className="text-xl font-bold">Aircraft Engineering Journey</h1>
+                <p className="text-sm text-blue-200">20 Lessons • Master flight engineering</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
