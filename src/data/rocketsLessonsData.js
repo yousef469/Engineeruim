@@ -4,6 +4,7 @@
 import { rocketUnit0Complete } from './rockets/unit0-complete.js';
 import { unit1Lessons } from './rockets/unit1-fundamentals.js';
 import { unit1AdvancedLessons } from './rockets/unit1-advanced.js';
+import { unit2Lessons12to15 } from './rockets/unit2-lessons-12-15.js';
 import { unit2EnhancedLessons } from './rockets/unit2-enhanced.js';
 import { unit2Lessons17to19 } from './rockets/unit2-lessons-17-19.js';
 import { unit2Lessons18to19Enhanced } from './rockets/unit2-lessons-18-19-enhanced.js';
@@ -17,6 +18,7 @@ import { unit5Lessons } from './rockets/unit5-gnc.js';
 // Combine enhanced and existing lessons
 const rocketUnit1Complete = [...unit1Lessons, ...unit1AdvancedLessons];
 const rocketUnit2Complete = [
+  ...unit2Lessons12to15,            // Lessons 12-15 (basic propulsion)
   unit2EnhancedLessons[0],          // Lesson 16 (enhanced)
   unit2Lessons17to19[0],            // Lesson 17 (enhanced)
   ...unit2Lessons18to19Enhanced     // Lessons 18-19 (enhanced)
