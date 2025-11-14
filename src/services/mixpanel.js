@@ -3,25 +3,36 @@ import mixpanel from 'mixpanel-browser';
 // Mixpanel is initialized in main.jsx
 const MIXPANEL_TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN;
 
+// Helper to safely call mixpanel methods
+const safeMixpanel = (fn) => {
+  if (!MIXPANEL_TOKEN) return;
+  try {
+    fn();
+  } catch (error) {
+    console.warn('Mixpanel error (non-critical):', error.message);
+  }
+};
+
 // ============================================
 // USER IDENTIFICATION
 // ============================================
 
 export const identifyUser = (userId, userProperties = {}) => {
-  if (!MIXPANEL_TOKEN) return;
-  
-  mixpanel.identify(userId);
-  mixpanel.people.set({
-    $email: userProperties.email,
-    $name: userProperties.name,
-    $created: userProperties.createdAt || new Date().toISOString(),
-    ...userProperties,
+  safeMixpanel(() => {
+    mixpanel.identify(userId);
+    mixpanel.people.set({
+      $email: userProperties.email,
+      $name: userProperties.name,
+      $created: userProperties.createdAt || new Date().toISOString(),
+      ...userProperties,
+    });
   });
 };
 
 export const resetUser = () => {
-  if (!MIXPANEL_TOKEN) return;
-  mixpanel.reset();
+  safeMixpanel(() => {
+    mixpanel.reset();
+  });
 };
 
 // ============================================

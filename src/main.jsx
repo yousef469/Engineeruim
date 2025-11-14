@@ -13,26 +13,24 @@ import './index.css'
 import './i18n/config'
 import mixpanel from 'mixpanel-browser'
 
-// Initialize Mixpanel (deferred to avoid blocking initial load)
-const MIXPANEL_TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN;
-function initMixpanel() {
-  if (MIXPANEL_TOKEN && MIXPANEL_TOKEN !== 'YOUR_MIXPANEL_TOKEN_HERE') {
-    mixpanel.init(MIXPANEL_TOKEN, {
-      debug: import.meta.env.DEV,
-      track_pageview: true,
-      persistence: 'localStorage',
-      ignore_dnt: false,
-    });
-    console.log('✅ Mixpanel initialized successfully');
-  } else {
-    console.warn('⚠️ Mixpanel token not configured. Add VITE_MIXPANEL_TOKEN to your .env file.');
-  }
-}
-
-if (typeof window !== 'undefined') {
-  const schedule = window.requestIdleCallback || ((fn) => setTimeout(fn, 1500));
-  schedule(initMixpanel);
-}
+// Mixpanel disabled temporarily due to initialization errors
+// TODO: Re-enable after fixing storage issues
+// const MIXPANEL_TOKEN = import.meta.env.VITE_MIXPANEL_TOKEN;
+// function initMixpanel() {
+//   try {
+//     if (MIXPANEL_TOKEN && MIXPANEL_TOKEN !== 'YOUR_MIXPANEL_TOKEN_HERE') {
+//       mixpanel.init(MIXPANEL_TOKEN, {
+//         debug: false,
+//         track_pageview: false,
+//         persistence: 'localStorage',
+//         ignore_dnt: true,
+//       });
+//     }
+//   } catch (error) {
+//     console.warn('Mixpanel error:', error.message);
+//   }
+// }
+console.log('ℹ️ Analytics disabled (optional feature)');
 
 // Deferred mount for TawkToChat
 function DeferredTawk() {
