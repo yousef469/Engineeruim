@@ -20,6 +20,9 @@ unit0Array.forEach((lesson, index) => {
     unit: 'Foundations: Math & Physics Bridge',
     duration: lesson.metadata?.estTime || '30 min',
     level: 'Beginner',
+    emoji: '🎓',
+    unitNumber: 0,
+    lessonNumber: index + 1,
     introduction: lesson.description,
     content: {
       introduction: lesson.description,
@@ -45,10 +48,37 @@ unit0Array.forEach((lesson, index) => {
 });
 
 // Add Units 1-5 (MIT-quality content) - Lessons 6-19
-allPlanesLessons.forEach(lesson => {
+allPlanesLessons.forEach((lesson, index) => {
+  // Determine unit number based on lesson ID
+  let unitNumber, lessonNumber, emoji;
+  if (lesson.id < 12) {
+    unitNumber = 1;
+    lessonNumber = lesson.id - 5;
+    emoji = '✈️';
+  } else if (lesson.id < 14) {
+    unitNumber = 2;
+    lessonNumber = lesson.id - 11;
+    emoji = '🌪️';
+  } else if (lesson.id < 16) {
+    unitNumber = 3;
+    lessonNumber = lesson.id - 13;
+    emoji = '🏗️';
+  } else if (lesson.id < 18) {
+    unitNumber = 4;
+    lessonNumber = lesson.id - 15;
+    emoji = '🔧';
+  } else {
+    unitNumber = 5;
+    lessonNumber = lesson.id - 17;
+    emoji = '🛫';
+  }
+  
   planesLessons[lesson.id] = {
     ...lesson,
+    emoji,
     level: lesson.id < 12 ? 'Beginner' : lesson.id < 16 ? 'Intermediate' : 'Advanced',
+    unitNumber,
+    lessonNumber,
     content: {
       introduction: lesson.introduction,
       sections: lesson.sections,
