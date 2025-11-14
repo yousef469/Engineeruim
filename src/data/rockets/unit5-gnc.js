@@ -43,7 +43,60 @@ export const unit5Lessons = [
       { term: "ECI", definition: "Earth-Centered Inertial frame; fixed relative to stars" },
       { term: "Euler Angles", definition: "Roll, pitch, yaw; describe 3D orientation" },
       { term: "Sensor Fusion", definition: "Combining multiple sensors for better accuracy" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q26-1",
+          question: "Why do IMUs need GPS correction despite being very accurate?",
+          options: [
+            "IMUs can't measure velocity",
+            "IMU errors grow quadratically over time due to integration; GPS provides absolute position",
+            "IMUs don't work above 10 km altitude",
+            "IMUs are too heavy to use alone"
+          ],
+          correctAnswer: 1,
+          explanation: "IMUs integrate acceleration to get velocity and position. Small accelerometer biases (10⁻⁶ g) accumulate quadratically, causing 50 m/s error after 1000 seconds. GPS provides absolute position to correct this drift."
+        },
+        {
+          id: "q26-2",
+          question: "What is the purpose of a Kalman filter in rocket navigation?",
+          options: [
+            "To amplify GPS signals",
+            "To optimally fuse high-rate IMU data with accurate GPS data",
+            "To filter out engine vibrations",
+            "To convert between coordinate systems"
+          ],
+          correctAnswer: 1,
+          explanation: "Kalman filters optimally combine IMU (high update rate but drifts) with GPS (low rate but accurate). The result is better than either sensor alone: 1-5 m position accuracy with high update rates."
+        },
+        {
+          id: "q26-3",
+          question: "Why does Falcon 9 use triple redundancy (3 IMUs, 3 flight computers)?",
+          options: [
+            "To increase accuracy by averaging",
+            "To detect and isolate failures through voting logic",
+            "To reduce power consumption",
+            "To meet NASA requirements only"
+          ],
+          correctAnswer: 1,
+          explanation: "Triple redundancy enables fault detection through voting. If one sensor fails (e.g., IMU reads 62.5° while others read 58°), the system detects the fault and uses the majority vote. Can lose one system and continue safely."
+        },
+        {
+          id: "q26-4",
+          question: "Navigation accuracy for ISS docking (±10 m, ±0.01 m/s) is much tighter than LEO insertion (±10 km, ±10 m/s). Why?",
+          options: [
+            "ISS is smaller so requires more precision",
+            "Docking requires precise alignment to avoid collision; orbital insertion has larger margins",
+            "GPS is more accurate near ISS",
+            "ISS moves faster than orbital velocity"
+          ],
+          correctAnswer: 1,
+          explanation: "Docking requires extreme precision to align ports and avoid collision at close range. Orbital insertion has larger margins - being off by 10 km can be corrected with small burns. Different mission phases have vastly different accuracy requirements."
+        }
+      ]
+    }
   },
 
   {
@@ -87,7 +140,60 @@ export const unit5Lessons = [
       { term: "Center of Pressure", definition: "Point where aerodynamic forces act" },
       { term: "Stability Margin", definition: "Distance between center of pressure and center of mass" },
       { term: "Fault Detection", definition: "Identifying system failures through redundancy and checks" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q27-1",
+          question: "In a PID controller, what does each term do? P = Proportional, I = Integral, D = Derivative",
+          options: [
+            "P responds to current error, I eliminates steady-state error, D dampens oscillations",
+            "P measures position, I measures velocity, D measures acceleration",
+            "P controls pitch, I controls yaw, D controls roll",
+            "P is for ascent, I is for orbit, D is for descent"
+          ],
+          correctAnswer: 0,
+          explanation: "P term responds proportionally to current error (fast but leaves steady-state error). I term accumulates past errors to eliminate steady-state error. D term predicts future error based on rate of change, dampening oscillations."
+        },
+        {
+          id: "q27-2",
+          question: "What is a 'gravity turn' and why is it used during rocket ascent?",
+          options: [
+            "A maneuver to avoid gravity",
+            "A natural trajectory that minimizes steering losses by letting gravity gradually turn the rocket horizontal",
+            "A emergency procedure if engines fail",
+            "A way to increase thrust efficiency"
+          ],
+          correctAnswer: 1,
+          explanation: "A gravity turn starts vertical, pitches over slightly, then lets gravity naturally turn the rocket toward horizontal. This minimizes steering losses (wasted thrust) compared to forcing the rocket to turn. Falcon 9 starts pitching at T+10s."
+        },
+        {
+          id: "q27-3",
+          question: "For rocket stability, where must the Center of Pressure (CP) be relative to Center of Mass (CM)?",
+          options: [
+            "CP must be ahead of (in front of) CM",
+            "CP must be behind (aft of) CM",
+            "CP and CM must be at the same location",
+            "Position doesn't matter"
+          ],
+          correctAnswer: 1,
+          explanation: "CP must be behind CM for stability. If the rocket tilts, aerodynamic forces at CP create a restoring moment around CM, pushing the rocket back to straight flight. If CP is ahead, forces amplify the tilt (unstable)."
+        },
+        {
+          id: "q27-4",
+          question: "What is a 'suicide burn' and why does Falcon 9 use it for landing?",
+          options: [
+            "A dangerous emergency procedure",
+            "Starting the landing burn at the last possible moment to reach zero velocity at ground; no hover capability",
+            "Burning all remaining fuel at once",
+            "A high-speed landing technique"
+          ],
+          correctAnswer: 1,
+          explanation: "A suicide burn starts at the last possible moment (h = v²/2a) to reach exactly zero velocity at ground. Falcon 9 can't hover (minimum thrust > weight when nearly empty), so it must time the burn perfectly. Saves fuel and enables landing."
+        }
+      ]
+    }
   }
 ];
 

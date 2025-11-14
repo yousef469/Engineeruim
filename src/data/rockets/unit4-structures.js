@@ -44,7 +44,60 @@ export const unit4Lessons = [
       { term: "Hoop Stress", definition: "Circumferential stress in pressure vessel" },
       { term: "Fatigue", definition: "Progressive damage from repeated loading cycles" },
       { term: "Structural Efficiency", definition: "Ratio of strength to density; higher is better" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q24-1",
+          question: "What is Max-Q and why is it critical for rocket structures?",
+          options: [
+            "Maximum thrust; causes highest acceleration loads",
+            "Maximum dynamic pressure; causes highest bending loads at 10-15 km altitude",
+            "Maximum velocity; causes highest drag forces",
+            "Maximum temperature; causes thermal stress"
+          ],
+          correctAnswer: 1,
+          explanation: "Max-Q is the point of maximum dynamic pressure (q = ½ρv²), occurring at 10-15 km altitude. This creates the highest aerodynamic bending loads on the rocket structure."
+        },
+        {
+          id: "q24-2",
+          question: "For a pressure vessel, hoop stress is σ_h = PR/t. If you double the tank radius while keeping pressure constant, what happens to required wall thickness?",
+          options: [
+            "Stays the same",
+            "Doubles (2× thicker)",
+            "Halves (0.5× thicker)",
+            "Quadruples (4× thicker)"
+          ],
+          correctAnswer: 1,
+          explanation: "From σ_h = PR/t, if we keep stress constant and double R, we must double t to maintain the same stress level. Wall thickness scales linearly with radius."
+        },
+        {
+          id: "q24-3",
+          question: "What is buckling and why is it critical for rocket tanks?",
+          options: [
+            "Gradual bending under load",
+            "Sudden collapse of thin-walled structure under compression",
+            "Cracking due to thermal stress",
+            "Vibration at resonant frequency"
+          ],
+          correctAnswer: 1,
+          explanation: "Buckling is sudden structural collapse of thin-walled cylinders under compression. Rocket tanks have thin walls (3-4 mm) and large diameters, making them susceptible to buckling before material yield."
+        },
+        {
+          id: "q24-4",
+          question: "Why must reusable rockets like Falcon 9 consider fatigue analysis?",
+          options: [
+            "Each flight cycle causes repeated loads that can lead to progressive damage",
+            "Reentry heating weakens the structure",
+            "Landing impacts cause immediate damage",
+            "Fuel residue corrodes the structure"
+          ],
+          correctAnswer: 0,
+          explanation: "Fatigue is progressive damage from repeated loading cycles. Each flight subjects the structure to loads, and after 10+ flights, fatigue cracks can develop. This requires careful analysis for reusability."
+        }
+      ]
+    }
   },
 
   {
@@ -84,7 +137,60 @@ export const unit4Lessons = [
       { term: "Anisotropic", definition: "Properties vary with direction (like carbon fiber)" },
       { term: "Thermal Conductivity", definition: "Ability to conduct heat; critical for cooling" },
       { term: "Cryogenic", definition: "Very low temperature; below -150°C" }
-    ]
+    ],
+    
+    quiz: {
+      questions: [
+        {
+          id: "q25-1",
+          question: "Why is Aluminum 2219 the standard choice for cryogenic rocket tanks?",
+          options: [
+            "It's the strongest material available",
+            "It's the lightest material available",
+            "Good strength-to-weight, weldable, cryogenic compatible, and cost-effective",
+            "It has the best high-temperature performance"
+          ],
+          correctAnswer: 2,
+          explanation: "Aluminum 2219 offers an excellent balance: good strength (350 MPa), lightweight (2,800 kg/m³), easy to weld, performs well at cryogenic temperatures, and is cost-effective. It's not the best in any single category but optimal overall."
+        },
+        {
+          id: "q25-2",
+          question: "Carbon fiber has 3× better specific strength than aluminum. Why isn't it used for all rocket structures?",
+          options: [
+            "It's too weak for rocket loads",
+            "Expensive, difficult to manufacture, cryogenic microcracking issues, hard to repair",
+            "It can't withstand launch vibrations",
+            "It's heavier than aluminum"
+          ],
+          correctAnswer: 1,
+          explanation: "While carbon fiber has excellent specific strength, it faces challenges: high cost ($100-500/kg vs $5-10/kg for aluminum), difficult manufacturing, cryogenic microcracking problems, and difficult repairs. These trade-offs limit its use."
+        },
+        {
+          id: "q25-3",
+          question: "Why does Starship use stainless steel instead of aluminum or carbon fiber?",
+          options: [
+            "Steel is lighter than other materials",
+            "Steel is cheaper and easier to manufacture",
+            "Steel performs well at both cryogenic (-253°C) and reentry (1,500°C) temperatures",
+            "Steel has better strength-to-weight ratio"
+          ],
+          correctAnswer: 2,
+          explanation: "Starship's counterintuitive choice: stainless steel excels at both cryogenic temperatures (fuel tanks) and extreme reentry temperatures (heat shield). While heavier, this dual capability plus low cost and easy welding makes it optimal for a fully reusable system."
+        },
+        {
+          id: "q25-4",
+          question: "Why are copper alloys (like NARloy-Z) essential for rocket engine combustion chambers?",
+          options: [
+            "Copper is the strongest material at high temperatures",
+            "Copper has the best thermal conductivity for regenerative cooling",
+            "Copper is the lightest high-temperature material",
+            "Copper is the cheapest option"
+          ],
+          correctAnswer: 1,
+          explanation: "Copper alloys have exceptional thermal conductivity (350 W/(m·K)), essential for regenerative cooling. The combustion chamber experiences extreme heat flux, and copper's ability to conduct heat away prevents melting. No viable alternative exists."
+        }
+      ]
+    }
   }
 ];
 
