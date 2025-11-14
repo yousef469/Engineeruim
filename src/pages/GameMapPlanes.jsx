@@ -48,7 +48,7 @@ export default function GameMapPlanes() {
 
   const handleLevelClick = (level) => {
     if (isLevelUnlocked(level.id)) {
-      navigate(`/planes/lesson/${level.id}`);
+      navigate(`/games/play/planes/lesson/${level.id}`);
     }
   };
 
