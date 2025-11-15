@@ -10,7 +10,9 @@ export default function MathematicsLessonPage() {
     const { lessonId } = useParams();
     const navigate = useNavigate();
     const { completeLesson, isLessonCompleted, isLessonUnlocked, userProfile } = useProgress();
-    const [lessonUnlocked, setLessonUnlocked] = useState(false);
+    
+    // Initialize as true for lesson 1, false for others
+    const [lessonUnlocked, setLessonUnlocked] = useState(parseInt(lessonId) === 1);
     const [showXPReward, setShowXPReward] = useState(false);
     const [xpEarned, setXPEarned] = useState(0);
 
