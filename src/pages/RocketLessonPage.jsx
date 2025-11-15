@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Rocket, CheckCircle, Brain } from 'lucide-react';
 import ThrustSliderDemo from '../components/lessons/ThrustSliderDemo';
@@ -8,18 +8,35 @@ import OrbitalDemo from '../components/lessons/OrbitalDemo';
 import CommunityQA from '../components/CommunityQA';
 import EnhancedLessonContent from '../components/EnhancedLessonContent';
 import { rocketLessons } from '../data/rocketLessonsData';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function RocketLessonPage() {
   const { lessonId } = useParams();
   const navigate = useNavigate();
+  const { completeLesson: saveProgress } = useProgress();
   const id = parseInt(lessonId);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [quizCompleted, setQuizCompleted] = useState(false);
 
   // Get lesson data from curriculum
   const lessonData = rocketLessons[id];
+  
+  // Save progress when quiz is completed
+  useEffect(() => {
+    if (quizCompleted && lessonData?.questions) {
+      const totalQuestions = lessonData.questions.length;
+      const percentage = (score / totalQuestions) * 100;
+      
+      saveProgress('rockets', id, {
+        score,
+        total: totalQuestions,
+        percentage
+      });
+    }
+  }, [quizCompleted, score, id, lessonData, saveProgress]);
 
   // Quiz Component
   const QuizSection = ({ questions }) => {
@@ -94,9 +111,18 @@ export default function RocketLessonPage() {
                 <div className="text-2xl font-bold mb-2">
                   Quiz Complete! Score: {score}/{questions.length}
                 </div>
-                <div className="text-gray-400">
+                <div className="text-gray-400 mb-4">
                   {score === questions.length ? '🎉 Perfect!' : score >= questions.length * 0.7 ? '👍 Good job!' : '💪 Keep learning!'}
                 </div>
+                <button
+                  onClick={() => {
+                    setQuizCompleted(true);
+                    setTimeout(() => navigate('/games/map/rockets'), 1000);
+                  }}
+                  className="px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg font-semibold transition-colors"
+                >
+                  Continue to Map →
+                </button>
               </div>
             ) : (
               <button
@@ -172,7 +198,8 @@ export default function RocketLessonPage() {
   };
 
   const completeLesson = () => {
-    // TODO: Save progress to Supabase
+    // Mark lesson as complete (even without quiz)
+    saveProgress('rockets', id);
     navigate('/games/map/rockets');
   };
 

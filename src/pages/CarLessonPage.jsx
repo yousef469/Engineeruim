@@ -50,7 +50,16 @@ export default function CarLessonPage() {
     } else if (showQuiz && currentQuestion === lesson.quiz.questions.length - 1) {
       // Quiz complete, finish lesson
       if (!lessonCompleted) {
-        await completeLesson(parseInt(lessonId), 3, quizScore);
+        const totalQuestions = lesson.quiz.questions.length;
+        const percentage = (quizScore / totalQuestions) * 100;
+        
+        // Save quiz score
+        completeLesson('cars', parseInt(lessonId), {
+          score: quizScore,
+          total: totalQuestions,
+          percentage
+        });
+        
         setLessonCompleted(true);
       }
       navigate('/games/map/cars');
