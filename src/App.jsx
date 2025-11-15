@@ -1133,6 +1133,7 @@ const CommunityPage = () => (
 );
 import ProtectedRoute from './components/ProtectedRoute';
 import FloatingAIHelper from './components/FloatingAIHelper';
+import ScrollToTop from './components/ScrollToTop';
 import { useState as useAppState } from 'react';
 
 export default function App() {
@@ -1143,6 +1144,7 @@ export default function App() {
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
       <FloatingAIHelper />
       <Router>
+        <ScrollToTop />
         <React.Suspense fallback={
           <div className="min-h-screen flex items-center justify-center bg-black text-white">
             <div className="flex items-center gap-3">
