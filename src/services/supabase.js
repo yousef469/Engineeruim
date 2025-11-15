@@ -209,31 +209,42 @@ export const addXP = async (userId, xpAmount, lessonId, subject) => {
 };
 
 export const getCompletedLessons = async (userId, subject) => {
-  const { data: profile } = await getUserProfile(userId);
-  
-  if (!profile) return { data: [], error: null };
-  
-  const completedLessons = profile.completed_lessons || [];
-  const subjectLessons = completedLessons
-    .filter(lesson => lesson.startsWith(`${subject}-`))
-    .map(lesson => parseInt(lesson.split('-')[1]));
-  
-  return { data: subjectLessons, error: null };
+  try {
+    const { data: profile } = await getUserProfile(userId);
+    
+    if (!profile) return { data: [], error: null };
+    
+    const completedLessons = profile.completed_lessons || [];
+    const subjectLessons = completedLessons
+      .filter(lesson => lesson.startsWith(`${subject}-`))
+      .map(lesson => parseInt(lesson.split('-')[1]));
+    
+    return { data: subjectLessons, error: null };
+  } catch (error) {
+    console.error('Error getting completed lessons:', error);
+    return { data: [], error };
+  }
 };
 
 export const isLessonUnlocked = async (userId, subject, lessonId) => {
-  const { data: completedLessons } = await getCompletedLessons(userId, subject);
-  
   // Convert to number to ensure proper comparison
   const lessonNum = parseInt(lessonId);
   
-  // First lesson is always unlocked
+  // First lesson is ALWAYS unlocked, no matter what
   if (lessonNum === 1) return { unlocked: true };
   
-  // Check if previous lesson is completed
-  const previousLessonCompleted = completedLessons.includes(lessonNum - 1);
-  
-  return { unlocked: previousLessonCompleted };
+  try {
+    const { data: completedLessons } = await getCompletedLessons(userId, subject);
+    
+    // Check if previous lesson is completed
+    const previousLessonCompleted = completedLessons && completedLessons.includes(lessonNum - 1);
+    
+    return { unlocked: previousLessonCompleted };
+  } catch (error) {
+    console.error('Error checking lesson unlock:', error);
+    // On error, only unlock lesson 1
+    return { unlocked: lessonNum === 1 };
+  }
 };
 
 // ============================================

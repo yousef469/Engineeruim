@@ -17,7 +17,13 @@ export default function MathematicsLessonPage() {
     // Check if lesson is unlocked
     useEffect(() => {
         const checkUnlocked = async () => {
-            const unlocked = await isLessonUnlocked('mathematics', parseInt(lessonId));
+            const lessonNum = parseInt(lessonId);
+            // Lesson 1 is always unlocked
+            if (lessonNum === 1) {
+                setLessonUnlocked(true);
+                return;
+            }
+            const unlocked = await isLessonUnlocked('mathematics', lessonNum);
             setLessonUnlocked(unlocked);
         };
         checkUnlocked();

@@ -284,18 +284,24 @@ export function ProgressProvider({ children }) {
     // Convert to number to ensure proper comparison
     const lessonNum = parseInt(lessonId);
     
-    // First lesson is always unlocked
+    // First lesson is ALWAYS unlocked, no matter what
     if (lessonNum === 1) return true;
     
-    // Check if user is logged in
-    if (user) {
-      const { unlocked } = await checkLessonUnlocked(user.id, subject, lessonNum);
-      return unlocked;
+    try {
+      // Check if user is logged in
+      if (user) {
+        const { unlocked } = await checkLessonUnlocked(user.id, subject, lessonNum);
+        return unlocked;
+      }
+      
+      // Fallback to localStorage check
+      const previousLessonKey = `${subject}-${lessonNum - 1}`;
+      return !!progress.completedLessons[previousLessonKey];
+    } catch (error) {
+      console.error('Error checking lesson unlock:', error);
+      // On error, only unlock lesson 1
+      return lessonNum === 1;
     }
-    
-    // Fallback to localStorage check
-    const previousLessonKey = `${subject}-${lessonNum - 1}`;
-    return !!progress.completedLessons[previousLessonKey];
   };
 
   const value = {
