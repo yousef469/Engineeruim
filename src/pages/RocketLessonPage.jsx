@@ -6,6 +6,7 @@ import DragVisualization from '../components/lessons/DragVisualization';
 import StabilityDemo from '../components/lessons/StabilityDemo';
 import OrbitalDemo from '../components/lessons/OrbitalDemo';
 import CommunityQA from '../components/CommunityQA';
+import EnhancedLessonContent from '../components/EnhancedLessonContent';
 import { rocketLessons } from '../data/rocketLessonsData';
 
 export default function RocketLessonPage() {
@@ -159,6 +160,7 @@ export default function RocketLessonPage() {
     content: (
       <div className="space-y-8">
         {interactiveDemos[id]}
+        <EnhancedLessonContent lessonId={id} subject="rockets" />
         <QuizSection questions={lessonData.questions} />
       </div>
     )

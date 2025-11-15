@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock, Brain, XCircle } from 'lucide-react';
 import electronicsLessons from '../data/electronicsLessonsData';
 import { useProgress } from '../contexts/ProgressContext';
+import EnhancedLessonContent from '../components/EnhancedLessonContent';
 
 export default function ElectronicsLessonPage() {
   const { lessonId } = useParams();
@@ -145,6 +146,9 @@ export default function ElectronicsLessonPage() {
             </div>
           </div>
         )}
+
+        {/* Enhanced Interactive Content */}
+        {!showQuiz && <EnhancedLessonContent lessonId={parseInt(lessonId)} subject="electronics" />}
 
         {/* Current Section Content */}
         {!showQuiz && (

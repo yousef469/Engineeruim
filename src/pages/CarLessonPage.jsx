@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock, Brain, XCircle } from 'lucide-react';
 import carsLessons from '../data/carsLessonsData';
 import { useProgress } from '../contexts/ProgressContext';
+import EnhancedLessonContent from '../components/EnhancedLessonContent';
 
 export default function CarLessonPage() {
   const { lessonId } = useParams();
@@ -145,6 +146,9 @@ export default function CarLessonPage() {
             </div>
           </div>
         )}
+
+        {/* Enhanced Interactive Content */}
+        <EnhancedLessonContent lessonId={parseInt(lessonId)} subject="cars" />
 
         {/* Current Section Content */}
         <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-white/20">
