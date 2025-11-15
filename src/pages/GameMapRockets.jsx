@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Rocket, Star, Lock, CheckCircle, Sparkles } from 'lucide-react';
 import rocketsLessons from '../data/rocketsLessonsData.js';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function GameMapRockets() {
   const navigate = useNavigate();
+  const { isLessonCompleted, getSubjectProgress } = useProgress();
   const [completedLevels, setCompletedLevels] = useState([0]);
 
   // Generate all 28 MIT-quality lessons (6 units: 0-5)
@@ -40,7 +42,10 @@ export default function GameMapRockets() {
 
   const levels = generateLevels();
   const isLevelUnlocked = (levelId) => true; // All lessons unlocked
-  const isLevelCompleted = (levelId) => false;
+  const isLevelCompleted = (levelId) => isLessonCompleted('rockets', levelId);
+  
+  // Get progress for display
+  const progress = getSubjectProgress('rockets', 28);
 
   const handleLevelClick = (level) => {
     if (isLevelUnlocked(level.id)) {
@@ -102,7 +107,10 @@ export default function GameMapRockets() {
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                 <Star className="w-5 h-5 text-yellow-300" />
-                <span className="text-lg font-bold">{completedLevels.length}/{levels.length}</span>
+                <span className="text-lg font-bold">{progress.completed}/{levels.length}</span>
+              </div>
+              <div className="text-sm text-cyan-200">
+                {progress.percentage.toFixed(0)}% Complete
               </div>
             </div>
           </div>

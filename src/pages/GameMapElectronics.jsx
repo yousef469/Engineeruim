@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Zap, Star, Lock, CheckCircle, Cpu } from 'lucide-react';
 import electronicsLessons from '../data/electronicsLessonsData.js';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function GameMapElectronics() {
   const navigate = useNavigate();
+  const { isLessonCompleted, getSubjectProgress } = useProgress();
   const [completedLevels, setCompletedLevels] = useState([0]);
 
   // Generate 20 MIT-quality lessons (matching aircraft and cars curriculum)
@@ -38,7 +40,10 @@ export default function GameMapElectronics() {
 
   const levels = generateLevels();
   const isLevelUnlocked = (levelId) => true; // All lessons unlocked
-  const isLevelCompleted = (levelId) => false;
+  const isLevelCompleted = (levelId) => isLessonCompleted('electronics', levelId);
+  
+  // Get progress for display
+  const progress = getSubjectProgress('electronics', 20);
 
   const handleLevelClick = (level) => {
     if (isLevelUnlocked(level.id)) {
@@ -99,7 +104,10 @@ export default function GameMapElectronics() {
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                 <Star className="w-5 h-5 text-yellow-300" />
-                <span className="text-lg font-bold">{completedLevels.length}/{levels.length}</span>
+                <span className="text-lg font-bold">{progress.completed}/{levels.length}</span>
+              </div>
+              <div className="text-sm text-purple-200">
+                {progress.percentage.toFixed(0)}% Complete
               </div>
             </div>
           </div>

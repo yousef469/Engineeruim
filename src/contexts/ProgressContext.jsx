@@ -1,6 +1,4 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { useAuth } from './AuthContext';
-import { supabase } from '../services/supabase';
 
 const ProgressContext = createContext();
 
@@ -12,401 +10,218 @@ export function useProgress() {
   return context;
 }
 
-// Rank thresholds
-const RANKS = [
-  { level: 1, name: 'Student', minXP: 0 },
-  { level: 2, name: 'Student', minXP: 100 },
-  { level: 3, name: 'Student', minXP: 200 },
-  { level: 4, name: 'Student', minXP: 300 },
-  { level: 5, name: 'Student', minXP: 400 },
-  { level: 6, name: 'Apprentice', minXP: 500 },
-  { level: 7, name: 'Apprentice', minXP: 600 },
-  { level: 8, name: 'Apprentice', minXP: 700 },
-  { level: 9, name: 'Apprentice', minXP: 800 },
-  { level: 10, name: 'Apprentice', minXP: 900 },
-  { level: 11, name: 'Engineer', minXP: 1000 },
-  { level: 12, name: 'Engineer', minXP: 1100 },
-  { level: 13, name: 'Engineer', minXP: 1200 },
-  { level: 14, name: 'Engineer', minXP: 1300 },
-  { level: 15, name: 'Engineer', minXP: 1400 },
-  { level: 16, name: 'Designer', minXP: 1500 },
-  { level: 17, name: 'Designer', minXP: 1600 },
-  { level: 18, name: 'Designer', minXP: 1700 },
-  { level: 19, name: 'Designer', minXP: 1800 },
-  { level: 20, name: 'Designer', minXP: 1900 },
-  { level: 21, name: 'Expert', minXP: 2000 },
-  { level: 22, name: 'Expert', minXP: 2100 },
-  { level: 23, name: 'Expert', minXP: 2200 },
-  { level: 24, name: 'Expert', minXP: 2300 },
-  { level: 25, name: 'Expert', minXP: 2400 },
-  { level: 26, name: 'Master', minXP: 2500 },
-  { level: 27, name: 'Master', minXP: 2600 },
-  { level: 28, name: 'Master', minXP: 2700 },
-  { level: 29, name: 'Master', minXP: 2800 },
-  { level: 30, name: 'Master', minXP: 2900 },
-  { level: 31, name: 'Legend', minXP: 3000 }
-];
-
-function calculateRank(xp) {
-  for (let i = RANKS.length - 1; i >= 0; i--) {
-    if (xp >= RANKS[i].minXP) {
-      return RANKS[i];
-    }
-  }
-  return RANKS[0];
-}
-
 export function ProgressProvider({ children }) {
-  const { user } = useAuth();
-  const [loading, setLoading] = useState(true);
-  
-  // XP and Ranking
-  const [totalXP, setTotalXP] = useState(0);
-  const [currentRank, setCurrentRank] = useState('Student');
-  const [rankLevel, setRankLevel] = useState(1);
-  
-  // Progress Stats
-  const [lessonsCompleted, setLessonsCompleted] = useState(0);
-  const [quizzesCompleted, setQuizzesCompleted] = useState(0);
-  const [perfectQuizzes, setPerfectQuizzes] = useState(0);
-  const [unitsCompleted, setUnitsCompleted] = useState(0);
-  const [levelsCompleted, setLevelsCompleted] = useState(0);
-  
-  // Streaks
-  const [currentStreak, setCurrentStreak] = useState(0);
-  const [longestStreak, setLongestStreak] = useState(0);
-  
-  // Badges
-  const [badges, setBadges] = useState([]);
-  
-  // Stats
-  const [totalTimeSpent, setTotalTimeSpent] = useState(0);
-  const [averageQuizScore, setAverageQuizScore] = useState(0);
-  const [totalStars, setTotalStars] = useState(0);
-  const [coins, setCoins] = useState(0);
+  const [progress, setProgress] = useState({
+    completedLessons: {},
+    quizScores: {},
+    lastAccessed: {},
+    totalTimeSpent: 0,
+    achievements: []
+  });
 
+  // Load progress from localStorage on mount
   useEffect(() => {
-    if (user) {
-      loadUserProgress();
-    } else {
-      setLoading(false);
-    }
-  }, [user]);
-
-  async function loadUserProgress() {
-    try {
-      setLoading(true);
-      
-      // Load XP data - silently fail if table doesn't exist
+    const savedProgress = localStorage.getItem('engineerium_progress');
+    if (savedProgress) {
       try {
-        const { data: xpData, error: xpError } = await supabase
-          .from('user_xp')
-          .select('*')
-          .eq('user_id', user.id)
-          .single();
+        setProgress(JSON.parse(savedProgress));
+      } catch (error) {
+        console.error('Error loading progress:', error);
+      }
+    }
+  }, []);
 
-        if (xpError && xpError.code !== 'PGRST116' && xpError.code !== '42P01') {
-          console.warn('XP table not ready:', xpError.message);
+  // Save progress to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('engineerium_progress', JSON.stringify(progress));
+  }, [progress]);
+
+  // Mark lesson as completed
+  const completeLesson = (subject, lessonId, quizScore = null) => {
+    setProgress(prev => {
+      const key = `${subject}-${lessonId}`;
+      const newProgress = {
+        ...prev,
+        completedLessons: {
+          ...prev.completedLessons,
+          [key]: {
+            completedAt: new Date().toISOString(),
+            subject,
+            lessonId
+          }
+        },
+        lastAccessed: {
+          ...prev.lastAccessed,
+          [subject]: lessonId
         }
+      };
 
-        if (xpData) {
-          setTotalXP(xpData.total_xp);
-          setCurrentRank(xpData.current_rank);
-          setRankLevel(xpData.rank_level);
-          setLessonsCompleted(xpData.lessons_completed);
-          setQuizzesCompleted(xpData.quizzes_completed);
-          setPerfectQuizzes(xpData.perfect_quizzes);
-          setUnitsCompleted(xpData.units_completed);
-          setLevelsCompleted(xpData.levels_completed);
+      // Add quiz score if provided
+      if (quizScore !== null) {
+        newProgress.quizScores = {
+          ...prev.quizScores,
+          [key]: quizScore
+        };
+      }
+
+      // Check for achievements
+      newProgress.achievements = checkAchievements(newProgress);
+
+      return newProgress;
+    });
+  };
+
+  // Save quiz score
+  const saveQuizScore = (subject, lessonId, score, totalQuestions) => {
+    setProgress(prev => ({
+      ...prev,
+      quizScores: {
+        ...prev.quizScores,
+        [`${subject}-${lessonId}`]: {
+          score,
+          totalQuestions,
+          percentage: (score / totalQuestions) * 100,
+          completedAt: new Date().toISOString()
         }
-      } catch (err) {
-        console.warn('Progress tables not set up yet - using defaults');
       }
+    }));
+  };
 
-      // Load streak data - silently fail if table doesn't exist
-      try {
-        const { data: streakData } = await supabase
-          .from('user_streaks')
-          .select('*')
-          .eq('user_id', user.id)
-          .single();
+  // Check if lesson is completed
+  const isLessonCompleted = (subject, lessonId) => {
+    return !!progress.completedLessons[`${subject}-${lessonId}`];
+  };
 
-        if (streakData) {
-          setCurrentStreak(streakData.current_streak);
-          setLongestStreak(streakData.longest_streak);
-        }
-      } catch (err) {
-        // Silently ignore - table doesn't exist yet
-      }
+  // Get quiz score for a lesson
+  const getQuizScore = (subject, lessonId) => {
+    return progress.quizScores[`${subject}-${lessonId}`] || null;
+  };
 
-      // Load badges - silently fail if table doesn't exist
-      try {
-        const { data: badgesData } = await supabase
-          .from('user_badges')
-          .select('*')
-          .eq('user_id', user.id);
-
-        if (badgesData) {
-          setBadges(badgesData);
-        }
-      } catch (err) {
-        // Silently ignore - table doesn't exist yet
-      }
-
-      // Load stats - silently fail if table doesn't exist
-      try {
-        const { data: statsData } = await supabase
-          .from('user_stats')
-          .select('*')
-          .eq('user_id', user.id)
-          .single();
-
-        if (statsData) {
-          setTotalTimeSpent(statsData.total_time_spent);
-          setAverageQuizScore(statsData.average_quiz_score);
-          setTotalStars(statsData.total_stars);
-          setCoins(statsData.coins);
-        }
-      } catch (err) {
-        // Silently ignore - table doesn't exist yet
-      }
-
-    } catch (error) {
-      console.warn('Progress system not fully set up - using defaults');
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function initializeProgress() {
-    try {
-      const { error } = await supabase
-        .from('user_xp')
-        .insert({
-          user_id: user.id,
-          total_xp: 0,
-          current_rank: 'Student',
-          rank_level: 1
-        });
-
-      if (error) throw error;
-    } catch (error) {
-      console.error('Error initializing progress:', error);
-    }
-  }
-
-  async function awardXP(amount, reason) {
-    try {
-      const newTotal = totalXP + amount;
-      const newRank = calculateRank(newTotal);
-
-      const { error } = await supabase
-        .from('user_xp')
-        .update({
-          total_xp: newTotal,
-          current_rank: newRank.name,
-          rank_level: newRank.level,
-          updated_at: new Date().toISOString()
-        })
-        .eq('user_id', user.id);
-
-      if (error) throw error;
-
-      setTotalXP(newTotal);
-      setCurrentRank(newRank.name);
-      setRankLevel(newRank.level);
-
-      return { newTotal, newRank };
-    } catch (error) {
-      console.error('Error awarding XP:', error);
-      return null;
-    }
-  }
-
-  async function completeLesson(lessonId, stars, timeSpent) {
-    try {
-      // Update progress
-      const { error: progressError } = await supabase
-        .from('user_progress')
-        .upsert({
-          user_id: user.id,
-          lesson_id: lessonId,
-          completed: true,
-          stars: stars,
-          time_spent: timeSpent,
-          completed_at: new Date().toISOString()
-        });
-
-      if (progressError) throw progressError;
-
-      // Update XP
-      const { error: xpError } = await supabase
-        .from('user_xp')
-        .update({
-          lessons_completed: lessonsCompleted + 1,
-          updated_at: new Date().toISOString()
-        })
-        .eq('user_id', user.id);
-
-      if (xpError) throw xpError;
-
-      setLessonsCompleted(lessonsCompleted + 1);
-
-      // Award XP
-      await awardXP(10, 'Lesson completed');
-
-      // Update streak
-      await updateStreak();
-
-    } catch (error) {
-      console.error('Error completing lesson:', error);
-    }
-  }
-
-  async function completeQuiz(lessonId, quizNumber, score, totalQuestions, timeSpent, answers) {
-    try {
-      const percentage = (score / totalQuestions) * 100;
-      const isPerfect = percentage === 100;
-
-      // Save quiz result
-      const { error: quizError } = await supabase
-        .from('quiz_results')
-        .insert({
-          user_id: user.id,
-          lesson_id: lessonId,
-          quiz_number: quizNumber,
-          score: score,
-          total_questions: totalQuestions,
-          percentage: percentage,
-          time_taken: timeSpent,
-          answers: answers
-        });
-
-      if (quizError) throw quizError;
-
-      // Update XP
-      const { error: xpError } = await supabase
-        .from('user_xp')
-        .update({
-          quizzes_completed: quizzesCompleted + 1,
-          perfect_quizzes: isPerfect ? perfectQuizzes + 1 : perfectQuizzes,
-          updated_at: new Date().toISOString()
-        })
-        .eq('user_id', user.id);
-
-      if (xpError) throw xpError;
-
-      setQuizzesCompleted(quizzesCompleted + 1);
-      if (isPerfect) setPerfectQuizzes(perfectQuizzes + 1);
-
-      // Award XP
-      const xpAmount = isPerfect ? 15 : 10;
-      await awardXP(xpAmount, isPerfect ? 'Perfect quiz!' : 'Quiz completed');
-
-      return { percentage, isPerfect };
-    } catch (error) {
-      console.error('Error completing quiz:', error);
-      return null;
-    }
-  }
-
-  async function updateStreak() {
-    try {
-      // Call Supabase function
-      const { error } = await supabase.rpc('update_streak', {
-        p_user_id: user.id
-      });
-
-      if (error) throw error;
-
-      // Reload streak data
-      const { data: streakData } = await supabase
-        .from('user_streaks')
-        .select('*')
-        .eq('user_id', user.id)
-        .single();
-
-      if (streakData) {
-        setCurrentStreak(streakData.current_streak);
-        setLongestStreak(streakData.longest_streak);
-      }
-    } catch (error) {
-      console.error('Error updating streak:', error);
-    }
-  }
-
-  async function awardBadge(badgeType, badgeName, badgeDescription) {
-    try {
-      const { error } = await supabase
-        .from('user_badges')
-        .insert({
-          user_id: user.id,
-          badge_type: badgeType,
-          badge_name: badgeName,
-          badge_description: badgeDescription
-        });
-
-      if (error && error.code !== '23505') throw error; // Ignore duplicate errors
-
-      // Reload badges
-      const { data: badgesData } = await supabase
-        .from('user_badges')
-        .select('*')
-        .eq('user_id', user.id);
-
-      if (badgesData) {
-        setBadges(badgesData);
-      }
-    } catch (error) {
-      console.error('Error awarding badge:', error);
-    }
-  }
-
-  function getNextRankProgress() {
-    const currentRankData = calculateRank(totalXP);
-    const nextRankIndex = RANKS.findIndex(r => r.level === currentRankData.level) + 1;
-    
-    if (nextRankIndex >= RANKS.length) {
-      return { current: totalXP, needed: totalXP, percentage: 100 };
-    }
-    
-    const nextRank = RANKS[nextRankIndex];
-    const xpInCurrentRank = totalXP - currentRankData.minXP;
-    const xpNeededForNext = nextRank.minXP - currentRankData.minXP;
-    const percentage = (xpInCurrentRank / xpNeededForNext) * 100;
-    
+  // Get progress for a subject
+  const getSubjectProgress = (subject, totalLessons) => {
+    const completed = Object.keys(progress.completedLessons).filter(
+      key => key.startsWith(`${subject}-`)
+    ).length;
     return {
-      current: xpInCurrentRank,
-      needed: xpNeededForNext,
-      percentage: Math.min(percentage, 100),
-      nextRank: nextRank
+      completed,
+      total: totalLessons,
+      percentage: totalLessons > 0 ? (completed / totalLessons) * 100 : 0
     };
-  }
+  };
+
+  // Get last accessed lesson for subject
+  const getLastLesson = (subject) => {
+    return progress.lastAccessed[subject] || 0;
+  };
+
+  // Reset progress (for testing or user request)
+  const resetProgress = () => {
+    if (window.confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+      setProgress({
+        completedLessons: {},
+        quizScores: {},
+        lastAccessed: {},
+        totalTimeSpent: 0,
+        achievements: []
+      });
+      localStorage.removeItem('engineerium_progress');
+    }
+  };
+
+  // Check for achievements
+  const checkAchievements = (currentProgress) => {
+    const achievements = [...(currentProgress.achievements || [])];
+    const completedCount = Object.keys(currentProgress.completedLessons).length;
+
+    // First lesson achievement
+    if (completedCount === 1 && !achievements.includes('first_lesson')) {
+      achievements.push('first_lesson');
+    }
+
+    // Complete 10 lessons
+    if (completedCount >= 10 && !achievements.includes('ten_lessons')) {
+      achievements.push('ten_lessons');
+    }
+
+    // Complete 25 lessons
+    if (completedCount >= 25 && !achievements.includes('quarter_century')) {
+      achievements.push('quarter_century');
+    }
+
+    // Complete 50 lessons
+    if (completedCount >= 50 && !achievements.includes('half_century')) {
+      achievements.push('half_century');
+    }
+
+    // Complete all rockets lessons (28)
+    const rocketLessons = Object.keys(currentProgress.completedLessons).filter(
+      key => key.startsWith('rockets-')
+    ).length;
+    if (rocketLessons >= 28 && !achievements.includes('rocket_master')) {
+      achievements.push('rocket_master');
+    }
+
+    // Complete all car lessons (20)
+    const carLessons = Object.keys(currentProgress.completedLessons).filter(
+      key => key.startsWith('cars-')
+    ).length;
+    if (carLessons >= 20 && !achievements.includes('car_master')) {
+      achievements.push('car_master');
+    }
+
+    // Complete all plane lessons (20)
+    const planeLessons = Object.keys(currentProgress.completedLessons).filter(
+      key => key.startsWith('planes-')
+    ).length;
+    if (planeLessons >= 20 && !achievements.includes('plane_master')) {
+      achievements.push('plane_master');
+    }
+
+    // Complete all electronics lessons (20)
+    const electronicsLessons = Object.keys(currentProgress.completedLessons).filter(
+      key => key.startsWith('electronics-')
+    ).length;
+    if (electronicsLessons >= 20 && !achievements.includes('electronics_master')) {
+      achievements.push('electronics_master');
+    }
+
+    // Perfect quiz scores
+    const perfectQuizzes = Object.values(currentProgress.quizScores).filter(
+      score => score.percentage === 100
+    ).length;
+    if (perfectQuizzes >= 10 && !achievements.includes('quiz_master')) {
+      achievements.push('quiz_master');
+    }
+
+    return achievements;
+  };
+
+  // Get achievement info
+  const getAchievementInfo = (achievementId) => {
+    const achievements = {
+      first_lesson: { title: '🎓 First Steps', description: 'Complete your first lesson' },
+      ten_lessons: { title: '🔟 Getting Started', description: 'Complete 10 lessons' },
+      quarter_century: { title: '🎯 Quarter Century', description: 'Complete 25 lessons' },
+      half_century: { title: '🏆 Half Century', description: 'Complete 50 lessons' },
+      rocket_master: { title: '🚀 Rocket Master', description: 'Complete all rocket lessons' },
+      car_master: { title: '🚗 Automotive Master', description: 'Complete all car lessons' },
+      plane_master: { title: '✈️ Aviation Master', description: 'Complete all plane lessons' },
+      electronics_master: { title: '⚡ Electronics Master', description: 'Complete all electronics lessons' },
+      quiz_master: { title: '🧠 Quiz Master', description: 'Get perfect scores on 10 quizzes' }
+    };
+    return achievements[achievementId] || { title: 'Achievement', description: '' };
+  };
 
   const value = {
-    loading,
-    totalXP,
-    currentRank,
-    rankLevel,
-    lessonsCompleted,
-    quizzesCompleted,
-    perfectQuizzes,
-    unitsCompleted,
-    levelsCompleted,
-    currentStreak,
-    longestStreak,
-    badges,
-    totalTimeSpent,
-    averageQuizScore,
-    totalStars,
-    coins,
-    awardXP,
+    progress,
     completeLesson,
-    completeQuiz,
-    updateStreak,
-    awardBadge,
-    getNextRankProgress,
-    loadUserProgress
+    saveQuizScore,
+    isLessonCompleted,
+    getQuizScore,
+    getSubjectProgress,
+    getLastLesson,
+    resetProgress,
+    getAchievementInfo
   };
 
   return (

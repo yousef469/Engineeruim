@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Car, Star, Lock, CheckCircle, Building2 } from 'lucide-react';
 import carsLessons from '../data/carsLessonsData.js';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function GameMapCars() {
   const navigate = useNavigate();
+  const { isLessonCompleted, getSubjectProgress } = useProgress();
   const [completedLevels, setCompletedLevels] = useState([0]);
 
   // Generate 20 MIT-quality lessons (matching aircraft curriculum)
@@ -38,7 +40,10 @@ export default function GameMapCars() {
 
   const levels = generateLevels();
   const isLevelUnlocked = (levelId) => true; // All lessons unlocked
-  const isLevelCompleted = (levelId) => false;
+  const isLevelCompleted = (levelId) => isLessonCompleted('cars', levelId);
+  
+  // Get progress for display
+  const progress = getSubjectProgress('cars', 20);
 
   const handleLevelClick = (level) => {
     if (isLevelUnlocked(level.id)) {
@@ -100,7 +105,10 @@ export default function GameMapCars() {
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                 <Star className="w-5 h-5 text-yellow-300" />
-                <span className="text-lg font-bold">{completedLevels.length}/{levels.length}</span>
+                <span className="text-lg font-bold">{progress.completed}/{levels.length}</span>
+              </div>
+              <div className="text-sm text-orange-200">
+                {progress.percentage.toFixed(0)}% Complete
               </div>
             </div>
           </div>

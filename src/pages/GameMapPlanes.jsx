@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Plane, Star, Cloud } from 'lucide-react';
 import planesLessons from '../data/planesLessonsData.js';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function GameMapPlanes() {
   const navigate = useNavigate();
+  const { isLessonCompleted, getSubjectProgress } = useProgress();
   const [completedLevels] = useState([0]);
 
   // Generate all 20 MIT-quality lessons (6 units)
@@ -40,7 +42,10 @@ export default function GameMapPlanes() {
 
   const levels = generateLevels();
   const isLevelUnlocked = () => true; // All lessons unlocked
-  const isLevelCompleted = () => false;
+  const isLevelCompleted = (levelId) => isLessonCompleted('planes', levelId);
+  
+  // Get progress for display
+  const progress = getSubjectProgress('planes', 20);
 
   const handleLevelClick = (level) => {
     if (isLevelUnlocked(level.id)) {
@@ -101,7 +106,10 @@ export default function GameMapPlanes() {
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                 <Star className="w-5 h-5 text-yellow-300" />
-                <span className="text-lg font-bold">{completedLevels.length}/{levels.length}</span>
+                <span className="text-lg font-bold">{progress.completed}/{levels.length}</span>
+              </div>
+              <div className="text-sm text-blue-200">
+                {progress.percentage.toFixed(0)}% Complete
               </div>
             </div>
           </div>
