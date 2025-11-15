@@ -23,6 +23,11 @@ export default function RocketLessonPage() {
   const [showResult, setShowResult] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
 
+  // Scroll to top when lesson changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [lessonId]);
+
   // Get lesson data from curriculum
   const lessonData = rocketLessons[id];
   

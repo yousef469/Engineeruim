@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock, Brain, XCircle } from 'lucide-react';
 import carsLessons from '../data/carsLessonsData';
@@ -17,6 +17,11 @@ export default function CarLessonPage() {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [quizScore, setQuizScore] = useState(0);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
+  
+  // Scroll to top when lesson changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [lessonId]);
   
   const lesson = carsLessons[parseInt(lessonId)];
   const { completeLesson } = useProgress();
