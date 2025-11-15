@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { useAuth } from './AuthContext';
+import { getUserProfile, addXP, getCompletedLessons, isLessonUnlocked as checkLessonUnlocked } from '../services/supabase';
 
 const ProgressContext = createContext();
 
@@ -11,6 +13,7 @@ export function useProgress() {
 }
 
 export function ProgressProvider({ children }) {
+  const { user } = useAuth();
   const [progress, setProgress] = useState({
     completedLessons: {},
     quizScores: {},
@@ -19,10 +22,17 @@ export function ProgressProvider({ children }) {
     achievements: []
   });
   
+  const [userProfile, setUserProfile] = useState({
+    total_xp: 0,
+    level: 1,
+    completed_lessons: []
+  });
+  
   const [newAchievement, setNewAchievement] = useState(null);
 
-  // Load progress from localStorage on mount
+  // Load progress from localStorage AND Supabase on mount
   useEffect(() => {
+    // Load from localStorage first (instant)
     const savedProgress = localStorage.getItem('engineerium_progress');
     if (savedProgress) {
       try {
@@ -31,17 +41,60 @@ export function ProgressProvider({ children }) {
         console.error('Error loading progress:', error);
       }
     }
-  }, []);
+
+    // Then load from Supabase if user is logged in
+    if (user) {
+      loadUserProfile();
+    }
+  }, [user]);
+
+  // Load user profile from Supabase
+  const loadUserProfile = async () => {
+    if (!user) return;
+    
+    const { data, error } = await getUserProfile(user.id);
+    if (data && !error) {
+      setUserProfile(data);
+    }
+  };
 
   // Save progress to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('engineerium_progress', JSON.stringify(progress));
   }, [progress]);
 
-  // Mark lesson as completed
-  const completeLesson = (subject, lessonId, quizScore = null) => {
+  // Mark lesson as completed with XP reward
+  const completeLesson = async (subject, lessonId, quizScore = null) => {
+    const key = `${subject}-${lessonId}`;
+    
+    // Calculate XP based on quiz score
+    let xpEarned = 100; // Base XP for completing lesson
+    if (quizScore !== null) {
+      const percentage = (quizScore.score / quizScore.totalQuestions) * 100;
+      if (percentage === 100) xpEarned += 50; // Bonus for perfect score
+      else if (percentage >= 80) xpEarned += 30; // Bonus for good score
+      else if (percentage >= 60) xpEarned += 10; // Small bonus
+    }
+    
+    // Update Supabase if user is logged in
+    if (user) {
+      const { data, leveledUp } = await addXP(user.id, xpEarned, lessonId, subject);
+      if (data) {
+        setUserProfile(data);
+        
+        // Show level up notification
+        if (leveledUp) {
+          setNewAchievement({
+            id: 'level_up',
+            title: `Level ${data.level} Reached!`,
+            description: `You've earned ${xpEarned} XP and leveled up!`,
+            icon: '⭐'
+          });
+        }
+      }
+    }
+    
     setProgress(prev => {
-      const key = `${subject}-${lessonId}`;
       const newProgress = {
         ...prev,
         completedLessons: {
@@ -49,7 +102,8 @@ export function ProgressProvider({ children }) {
           [key]: {
             completedAt: new Date().toISOString(),
             subject,
-            lessonId
+            lessonId,
+            xpEarned
           }
         },
         lastAccessed: {
@@ -74,12 +128,14 @@ export function ProgressProvider({ children }) {
       const newAchievements = newProgress.achievements.filter(
         a => !oldAchievements.includes(a)
       );
-      if (newAchievements.length > 0) {
+      if (newAchievements.length > 0 && !leveledUp) {
         setNewAchievement(getAchievementInfo(newAchievements[0]));
       }
 
       return newProgress;
     });
+    
+    return { xpEarned };
   };
 
   // Save quiz score
@@ -223,11 +279,29 @@ export function ProgressProvider({ children }) {
     return achievements[achievementId] || { title: 'Achievement', description: '' };
   };
 
+  // Check if lesson is unlocked (sequential progression)
+  const isLessonUnlocked = async (subject, lessonId) => {
+    // First lesson is always unlocked
+    if (lessonId === 1) return true;
+    
+    // Check if user is logged in
+    if (user) {
+      const { unlocked } = await checkLessonUnlocked(user.id, subject, lessonId);
+      return unlocked;
+    }
+    
+    // Fallback to localStorage check
+    const previousLessonKey = `${subject}-${lessonId - 1}`;
+    return !!progress.completedLessons[previousLessonKey];
+  };
+
   const value = {
     progress,
+    userProfile,
     completeLesson,
     saveQuizScore,
     isLessonCompleted,
+    isLessonUnlocked,
     getQuizScore,
     getSubjectProgress,
     getLastLesson,

@@ -149,6 +149,91 @@ export const updateProgress = async (userId, courseId, progressPercent) => {
 };
 
 // ============================================
+// USER XP & LEVEL SYSTEM
+// ============================================
+
+export const getUserProfile = async (userId) => {
+  const { data, error } = await supabase
+    .from('user_profiles')
+    .select('*')
+    .eq('user_id', userId)
+    .single();
+  
+  // If profile doesn't exist, create it
+  if (error && error.code === 'PGRST116') {
+    const { data: newProfile, error: createError } = await supabase
+      .from('user_profiles')
+      .insert([{
+        user_id: userId,
+        total_xp: 0,
+        level: 1,
+        completed_lessons: []
+      }])
+      .select()
+      .single();
+    return { data: newProfile, error: createError };
+  }
+  
+  return { data, error };
+};
+
+export const addXP = async (userId, xpAmount, lessonId, subject) => {
+  // Get current profile
+  const { data: profile } = await getUserProfile(userId);
+  
+  if (!profile) return { error: 'Profile not found' };
+  
+  const newXP = (profile.total_xp || 0) + xpAmount;
+  const newLevel = Math.floor(newXP / 1000) + 1; // Level up every 1000 XP
+  
+  // Add lesson to completed list if not already there
+  const completedLessons = profile.completed_lessons || [];
+  const lessonKey = `${subject}-${lessonId}`;
+  if (!completedLessons.includes(lessonKey)) {
+    completedLessons.push(lessonKey);
+  }
+  
+  const { data, error } = await supabase
+    .from('user_profiles')
+    .update({
+      total_xp: newXP,
+      level: newLevel,
+      completed_lessons: completedLessons,
+      updated_at: new Date().toISOString()
+    })
+    .eq('user_id', userId)
+    .select()
+    .single();
+  
+  return { data, error, leveledUp: newLevel > profile.level };
+};
+
+export const getCompletedLessons = async (userId, subject) => {
+  const { data: profile } = await getUserProfile(userId);
+  
+  if (!profile) return { data: [], error: null };
+  
+  const completedLessons = profile.completed_lessons || [];
+  const subjectLessons = completedLessons
+    .filter(lesson => lesson.startsWith(`${subject}-`))
+    .map(lesson => parseInt(lesson.split('-')[1]));
+  
+  return { data: subjectLessons, error: null };
+};
+
+export const isLessonUnlocked = async (userId, subject, lessonId) => {
+  const { data: completedLessons } = await getCompletedLessons(userId, subject);
+  
+  // First lesson is always unlocked
+  if (lessonId === 1) return { unlocked: true };
+  
+  // Check if previous lesson is completed
+  const previousLessonCompleted = completedLessons.includes(lessonId - 1);
+  
+  return { unlocked: previousLessonCompleted };
+};
+
+// ============================================
 // CHAT HISTORY
 // ============================================
 

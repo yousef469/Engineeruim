@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Star, Lock } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { unit1Lessons } from '../data/physics/unit1-mechanics';
@@ -9,6 +9,7 @@ import { unit3Lessons } from '../data/physics/unit3-fluids';
 import { unit4Lessons } from '../data/physics/unit4-thermodynamics';
 import { unit5Lessons } from '../data/physics/unit5-waves';
 import { unit6Lessons } from '../data/physics/unit6-materials';
+import { useProgress } from '../contexts/ProgressContext';
 
 const physicsLessons = {
     ...unit1Lessons,
@@ -22,6 +23,19 @@ const physicsLessons = {
 export default function PhysicsLessonPage() {
     const { lessonId } = useParams();
     const navigate = useNavigate();
+    const { completeLesson, isLessonCompleted, isLessonUnlocked, userProfile } = useProgress();
+    const [lessonUnlocked, setLessonUnlocked] = useState(false);
+    const [showXPReward, setShowXPReward] = useState(false);
+    const [xpEarned, setXPEarned] = useState(0);
+
+    // Check if lesson is unlocked
+    useEffect(() => {
+        const checkUnlocked = async () => {
+            const unlocked = await isLessonUnlocked('physics', parseInt(lessonId));
+            setLessonUnlocked(unlocked);
+        };
+        checkUnlocked();
+    }, [lessonId, isLessonUnlocked]);
 
     // Debug logs only in development
     if (import.meta.env.DEV) {
@@ -90,15 +104,63 @@ export default function PhysicsLessonPage() {
         );
     }
 
+    // Show locked lesson screen
+    if (!lessonUnlocked) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-blue-950 via-indigo-950 to-black text-white flex items-center justify-center">
+                <div className="text-center max-w-md">
+                    <Lock className="w-24 h-24 mx-auto mb-6 text-gray-500" />
+                    <h1 className="text-4xl font-bold mb-4">Lesson Locked</h1>
+                    <p className="text-xl text-gray-300 mb-6">
+                        Complete Lesson {parseInt(lessonId) - 1} to unlock this lesson
+                    </p>
+                    <button
+                        onClick={() => navigate('/learn/physics/engineering/map')}
+                        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-bold transition-colors"
+                    >
+                        Back to Physics Map
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    const handleCompleteLesson = async () => {
+        const result = await completeLesson('physics', parseInt(lessonId));
+        if (result) {
+            setXPEarned(result.xpEarned);
+            setShowXPReward(true);
+            setTimeout(() => setShowXPReward(false), 3000);
+        }
+    };
+
+    const completed = isLessonCompleted('physics', parseInt(lessonId));
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-950 via-indigo-950 to-black text-white">
-            {/* Debug banner only in development builds */}
-            {import.meta.env.DEV && (
-                <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-center py-6 font-bold text-3xl border-b-8 border-green-300 shadow-2xl">
-                    🔬 PHYSICS LESSON PAGE 🔬 - Lesson {lessonId}
-                    <div className="text-lg mt-2">Title: {lesson?.title || 'NOT FOUND'}</div>
+            {/* XP Reward Notification */}
+            {showXPReward && (
+                <div className="fixed top-20 right-8 z-50 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-4 rounded-lg shadow-2xl animate-bounce">
+                    <div className="flex items-center gap-3">
+                        <Star className="w-8 h-8" />
+                        <div>
+                            <div className="font-bold text-lg">+{xpEarned} XP</div>
+                            <div className="text-sm">Lesson Completed!</div>
+                        </div>
+                    </div>
                 </div>
             )}
+
+            {/* User XP Display */}
+            <div className="fixed top-4 right-4 z-40 bg-gray-900/90 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700">
+                <div className="flex items-center gap-2">
+                    <Star className="w-5 h-5 text-yellow-400" />
+                    <div>
+                        <div className="text-sm font-bold">{userProfile.total_xp} XP</div>
+                        <div className="text-xs text-gray-400">Level {userProfile.level}</div>
+                    </div>
+                </div>
+            </div>
 
             <div className="border-b border-blue-700 bg-blue-900/90 backdrop-blur-md sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-6 py-4">
@@ -116,11 +178,26 @@ export default function PhysicsLessonPage() {
                                     LESSON {lesson.id}
                                 </span>
                                 <span className="text-blue-300 text-sm">{lesson.coreIdea}</span>
+                                {completed && (
+                                    <span className="px-3 py-1 bg-green-500/20 border border-green-400 rounded-full text-sm font-bold flex items-center gap-1">
+                                        <CheckCircle className="w-4 h-4" />
+                                        Completed
+                                    </span>
+                                )}
                             </div>
                             <h1 className="text-3xl font-bold mb-1">{lesson.title}</h1>
                             <p className="text-blue-200">{lesson.subtitle}</p>
                         </div>
                         <div className="flex items-center gap-3">
+                            {!completed && (
+                                <button
+                                    onClick={handleCompleteLesson}
+                                    className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
+                                >
+                                    <Star className="w-5 h-5" />
+                                    Complete Lesson (+100 XP)
+                                </button>
+                            )}
                             <button
                                 onClick={() => navigate(`/learn/physics/engineering/quiz/${lessonId}`)}
                                 className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
