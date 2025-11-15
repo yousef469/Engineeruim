@@ -23,10 +23,20 @@ export default function RocketLessonPage() {
   const [showResult, setShowResult] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
 
-  // Scroll to top when lesson changes
+  // Scroll to top when lesson changes or component mounts
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // Also scroll on next tick to override browser scroll restoration
+    setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }), 0);
   }, [lessonId]);
+
+  // Scroll to top on mount to override browser scroll restoration
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual';
+    return () => {
+      window.history.scrollRestoration = 'auto';
+    };
+  }, []);
 
   // Get lesson data from curriculum
   const lessonData = rocketLessons[id];
