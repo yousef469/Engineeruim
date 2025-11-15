@@ -82,8 +82,8 @@ export default function MathematicsLessonPage() {
         );
     }
 
-    // Show locked lesson screen
-    if (!lessonUnlocked) {
+    // Show locked lesson screen (but NEVER for lesson 1)
+    if (!lessonUnlocked && parseInt(lessonId) !== 1) {
         return (
             <div className="min-h-screen bg-gradient-to-br from-green-950 via-emerald-950 to-black text-white flex items-center justify-center">
                 <div className="text-center max-w-md">
