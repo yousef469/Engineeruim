@@ -6,7 +6,8 @@ import { useProgress } from '../contexts/ProgressContext';
 export default function GameMapMathematics() {
   const navigate = useNavigate();
   const { isLessonCompleted, isLessonUnlocked } = useProgress();
-  const [lessonStates, setLessonStates] = useState({});
+  // Initialize with lesson 1 unlocked
+  const [lessonStates, setLessonStates] = useState({ 1: { completed: false, unlocked: true } });
 
   // Generate all 37 lessons across 7 units
   const generateLevels = () => {
@@ -136,7 +137,8 @@ export default function GameMapMathematics() {
       const states = {};
       for (const level of levels) {
         const completed = isLessonCompleted('mathematics', level.id);
-        const unlocked = await isLessonUnlocked('mathematics', level.id);
+        // Lesson 1 is ALWAYS unlocked
+        const unlocked = level.id === 1 ? true : await isLessonUnlocked('mathematics', level.id);
         states[level.id] = { completed, unlocked };
       }
       setLessonStates(states);

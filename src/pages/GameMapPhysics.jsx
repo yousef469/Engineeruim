@@ -6,7 +6,8 @@ import { useProgress } from '../contexts/ProgressContext';
 export default function GameMapPhysics() {
   const navigate = useNavigate();
   const { isLessonCompleted, isLessonUnlocked } = useProgress();
-  const [lessonStates, setLessonStates] = useState({});
+  // Initialize with lesson 1 unlocked
+  const [lessonStates, setLessonStates] = useState({ 1: { completed: false, unlocked: true } });
 
   const generateLevels = () => {
     const levels = [];
@@ -123,7 +124,8 @@ export default function GameMapPhysics() {
       const states = {};
       for (const level of levels) {
         const completed = isLessonCompleted('physics', level.id);
-        const unlocked = await isLessonUnlocked('physics', level.id);
+        // Lesson 1 is ALWAYS unlocked
+        const unlocked = level.id === 1 ? true : await isLessonUnlocked('physics', level.id);
         states[level.id] = { completed, unlocked };
       }
       setLessonStates(states);
