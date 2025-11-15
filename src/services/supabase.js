@@ -224,11 +224,14 @@ export const getCompletedLessons = async (userId, subject) => {
 export const isLessonUnlocked = async (userId, subject, lessonId) => {
   const { data: completedLessons } = await getCompletedLessons(userId, subject);
   
+  // Convert to number to ensure proper comparison
+  const lessonNum = parseInt(lessonId);
+  
   // First lesson is always unlocked
-  if (lessonId === 1) return { unlocked: true };
+  if (lessonNum === 1) return { unlocked: true };
   
   // Check if previous lesson is completed
-  const previousLessonCompleted = completedLessons.includes(lessonId - 1);
+  const previousLessonCompleted = completedLessons.includes(lessonNum - 1);
   
   return { unlocked: previousLessonCompleted };
 };

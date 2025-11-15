@@ -281,17 +281,20 @@ export function ProgressProvider({ children }) {
 
   // Check if lesson is unlocked (sequential progression)
   const isLessonUnlocked = async (subject, lessonId) => {
+    // Convert to number to ensure proper comparison
+    const lessonNum = parseInt(lessonId);
+    
     // First lesson is always unlocked
-    if (lessonId === 1) return true;
+    if (lessonNum === 1) return true;
     
     // Check if user is logged in
     if (user) {
-      const { unlocked } = await checkLessonUnlocked(user.id, subject, lessonId);
+      const { unlocked } = await checkLessonUnlocked(user.id, subject, lessonNum);
       return unlocked;
     }
     
     // Fallback to localStorage check
-    const previousLessonKey = `${subject}-${lessonId - 1}`;
+    const previousLessonKey = `${subject}-${lessonNum - 1}`;
     return !!progress.completedLessons[previousLessonKey];
   };
 
