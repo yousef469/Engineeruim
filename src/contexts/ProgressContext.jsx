@@ -18,6 +18,8 @@ export function ProgressProvider({ children }) {
     totalTimeSpent: 0,
     achievements: []
   });
+  
+  const [newAchievement, setNewAchievement] = useState(null);
 
   // Load progress from localStorage on mount
   useEffect(() => {
@@ -65,7 +67,16 @@ export function ProgressProvider({ children }) {
       }
 
       // Check for achievements
+      const oldAchievements = prev.achievements || [];
       newProgress.achievements = checkAchievements(newProgress);
+      
+      // Check if new achievement was unlocked
+      const newAchievements = newProgress.achievements.filter(
+        a => !oldAchievements.includes(a)
+      );
+      if (newAchievements.length > 0) {
+        setNewAchievement(getAchievementInfo(newAchievements[0]));
+      }
 
       return newProgress;
     });
@@ -221,7 +232,9 @@ export function ProgressProvider({ children }) {
     getSubjectProgress,
     getLastLesson,
     resetProgress,
-    getAchievementInfo
+    getAchievementInfo,
+    newAchievement,
+    clearNewAchievement: () => setNewAchievement(null)
   };
 
   return (

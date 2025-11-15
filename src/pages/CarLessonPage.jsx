@@ -4,6 +4,8 @@ import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock, Brain, XCircle } f
 import carsLessons from '../data/carsLessonsData';
 import { useProgress } from '../contexts/ProgressContext';
 import EnhancedLessonContent from '../components/EnhancedLessonContent';
+import LessonBreadcrumb from '../components/LessonBreadcrumb';
+import LessonNavigation from '../components/LessonNavigation';
 
 export default function CarLessonPage() {
   const { lessonId } = useParams();
@@ -118,6 +120,12 @@ export default function CarLessonPage() {
 
       {/* Lesson Content */}
       <div className="max-w-4xl mx-auto px-6 py-12">
+        <LessonBreadcrumb 
+          subject="cars" 
+          lessonId={lessonId} 
+          lessonTitle={lesson.title} 
+        />
+        
         {/* Lesson Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
@@ -275,7 +283,7 @@ export default function CarLessonPage() {
         )}
 
         {/* Navigation Buttons */}
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 mb-8">
           <button
             onClick={handlePrevious}
             disabled={currentSection === 0 && !showQuiz}
@@ -302,6 +310,13 @@ export default function CarLessonPage() {
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
+
+        {/* Enhanced Lesson Navigation */}
+        <LessonNavigation 
+          subject="cars" 
+          currentLessonId={lessonId} 
+          allLessons={carsLessons} 
+        />
       </div>
     </div>
   );

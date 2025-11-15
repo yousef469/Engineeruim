@@ -7,6 +7,8 @@ import StabilityDemo from '../components/lessons/StabilityDemo';
 import OrbitalDemo from '../components/lessons/OrbitalDemo';
 import CommunityQA from '../components/CommunityQA';
 import EnhancedLessonContent from '../components/EnhancedLessonContent';
+import LessonBreadcrumb from '../components/LessonBreadcrumb';
+import LessonNavigation from '../components/LessonNavigation';
 import { rocketLessons } from '../data/rocketLessonsData';
 import { useProgress } from '../contexts/ProgressContext';
 
@@ -235,6 +237,12 @@ export default function RocketLessonPage() {
 
       {/* Lesson Content */}
       <div className="max-w-6xl mx-auto px-4 py-8">
+        <LessonBreadcrumb 
+          subject="rockets" 
+          lessonId={id} 
+          lessonTitle={lesson.title} 
+        />
+        
         <div className="mb-8">
           <p className="text-lg text-gray-300">{lesson.description}</p>
         </div>
@@ -246,23 +254,12 @@ export default function RocketLessonPage() {
           <CommunityQA lessonId={id} />
         </div>
 
-        {/* Navigation */}
-        <div className="mt-8 flex justify-between items-center">
-          <button
-            onClick={() => id > 0 && navigate(`/lessons/rockets/${id - 1}`)}
-            disabled={id === 0}
-            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
-          >
-            ← Previous Lesson
-          </button>
-          <button
-            onClick={() => id < 24 && navigate(`/lessons/rockets/${id + 1}`)}
-            disabled={id === 24}
-            className="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 disabled:bg-gray-800 disabled:cursor-not-allowed rounded-lg font-semibold transition-colors"
-          >
-            Next Lesson →
-          </button>
-        </div>
+        {/* Enhanced Navigation */}
+        <LessonNavigation 
+          subject="rockets" 
+          currentLessonId={id} 
+          allLessons={rocketLessons} 
+        />
       </div>
     </div>
   );

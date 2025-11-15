@@ -3,18 +3,27 @@ import { useNavigate } from 'react-router-dom';
 import { Rocket, Plane, Car, Sparkles, ArrowLeftRight, Users as UsersIcon, Lock, LogIn, UserPlus, Globe, User, ChevronDown, Upload } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
+import { useProgress } from '../contexts/ProgressContext';
 import ModelComparison from '../components/ModelComparison';
 import LanguageSelector from '../components/LanguageSelector';
 import MixpanelTest from '../components/MixpanelTest';
 import SidebarMenu from '../components/SidebarMenu';
+import ContinueLearning from '../components/ContinueLearning';
+import SearchButton from '../components/SearchButton';
 
 const HomePageLoggedIn = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user, signOut, showLanguageSelector, setShowLanguageSelector } = useAuth();
+  const { progress, getSubjectProgress } = useProgress();
   const [showComparison, setShowComparison] = useState(false);
   const [showLangModal, setShowLangModal] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  
+  // Calculate overall progress
+  const totalLessons = 88;
+  const completedLessons = Object.keys(progress.completedLessons).length;
+  const overallProgress = (completedLessons / totalLessons) * 100;
 
   useEffect(() => {
     if (showLanguageSelector) {
@@ -45,6 +54,8 @@ const HomePageLoggedIn = () => {
             </div>
             
             <div className="flex items-center gap-3">
+              <SearchButton />
+              
               <button onClick={() => setShowLangModal(true)} className="flex items-center gap-2 px-4 py-2 bg-background-light hover:bg-background-light rounded-lg transition-colors text-sm font-medium">
                 <Globe className="w-4 h-4" />
                 <span className="hidden sm:inline">{t('nav.language')}</span>
@@ -120,6 +131,32 @@ const HomePageLoggedIn = () => {
           </span>
         </div>
       </div>
+
+      {/* Progress Overview - Only show if user has progress */}
+      {completedLessons > 0 && (
+        <div className="mb-12 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-4 mb-6">
+            <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-xl p-4 border border-purple-400/30">
+              <div className="text-3xl font-bold">{completedLessons}</div>
+              <div className="text-sm text-gray-400">Lessons Completed</div>
+            </div>
+            <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-xl p-4 border border-blue-400/30">
+              <div className="text-3xl font-bold">{overallProgress.toFixed(0)}%</div>
+              <div className="text-sm text-gray-400">Overall Progress</div>
+            </div>
+            <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm rounded-xl p-4 border border-green-400/30">
+              <div className="text-3xl font-bold">{Object.keys(progress.quizScores).length}</div>
+              <div className="text-sm text-gray-400">Quizzes Taken</div>
+            </div>
+            <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-sm rounded-xl p-4 border border-yellow-400/30">
+              <div className="text-3xl font-bold">{progress.achievements?.length || 0}</div>
+              <div className="text-sm text-gray-400">Achievements</div>
+            </div>
+          </div>
+          
+          <ContinueLearning />
+        </div>
+      )}
 
       {/* Main Sections Grid - 2 Primary Features */}
       <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-8">
