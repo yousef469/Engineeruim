@@ -188,24 +188,6 @@ export default function PhysicsLessonPage() {
                             <h1 className="text-3xl font-bold mb-1">{lesson.title}</h1>
                             <p className="text-blue-200">{lesson.subtitle}</p>
                         </div>
-                        <div className="flex items-center gap-3">
-                            {!completed && (
-                                <button
-                                    onClick={handleCompleteLesson}
-                                    className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
-                                >
-                                    <Star className="w-5 h-5" />
-                                    Complete Lesson (+100 XP)
-                                </button>
-                            )}
-                            <button
-                                onClick={() => navigate(`/learn/physics/engineering/quiz/${lessonId}`)}
-                                className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
-                            >
-                                <CheckCircle className="w-5 h-5" />
-                                Take Quiz
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -316,28 +298,69 @@ export default function PhysicsLessonPage() {
                     </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-2 border-green-400/30 rounded-2xl p-8">
-                    <div className="flex items-center gap-4 mb-4">
-                        <CheckCircle className="w-8 h-8 text-green-400" />
-                        <h2 className="text-2xl font-bold">Lesson Complete!</h2>
-                    </div>
-                    <p className="text-gray-200 mb-6">
-                        You've mastered the fundamentals of {lesson.title}. Ready for the next challenge?
-                    </p>
-                    <div className="flex gap-4">
-                        <button
-                            onClick={() => navigate(`/learn/physics/engineering/lesson/${parseInt(lessonId) + 1}`)}
-                            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-bold transition-colors"
-                        >
-                            Next Lesson →
-                        </button>
-                        <button
-                            onClick={() => navigate('/learn/physics/engineering/map')}
-                            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg font-bold transition-colors"
-                        >
-                            Back to Map
-                        </button>
-                    </div>
+                {/* Complete Lesson Section - At Bottom */}
+                <div className={`border-2 rounded-2xl p-8 ${
+                    completed 
+                        ? 'bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-green-400/30' 
+                        : 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-purple-400/30'
+                }`}>
+                    {completed ? (
+                        <>
+                            <div className="flex items-center gap-4 mb-4">
+                                <CheckCircle className="w-8 h-8 text-green-400" />
+                                <h2 className="text-2xl font-bold">Lesson Complete!</h2>
+                            </div>
+                            <p className="text-gray-200 mb-6">
+                                You've mastered the fundamentals of {lesson.title}. Ready for the next challenge?
+                            </p>
+                            <div className="flex gap-4">
+                                <button
+                                    onClick={() => navigate(`/learn/physics/engineering/quiz/${lessonId}`)}
+                                    className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
+                                >
+                                    <CheckCircle className="w-5 h-5" />
+                                    Take Quiz
+                                </button>
+                                <button
+                                    onClick={() => navigate(`/learn/physics/engineering/lesson/${parseInt(lessonId) + 1}`)}
+                                    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-bold transition-colors"
+                                >
+                                    Next Lesson →
+                                </button>
+                                <button
+                                    onClick={() => navigate('/learn/physics/engineering/map')}
+                                    className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg font-bold transition-colors"
+                                >
+                                    Back to Map
+                                </button>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="flex items-center gap-4 mb-4">
+                                <Star className="w-8 h-8 text-purple-400" />
+                                <h2 className="text-2xl font-bold">Ready to Complete?</h2>
+                            </div>
+                            <p className="text-gray-200 mb-6">
+                                You've reached the end of this lesson. Click below to mark it complete and earn XP!
+                            </p>
+                            <div className="flex gap-4">
+                                <button
+                                    onClick={handleCompleteLesson}
+                                    className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg font-bold text-lg flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg"
+                                >
+                                    <Star className="w-6 h-6" />
+                                    Complete Lesson & Earn 100 XP
+                                </button>
+                                <button
+                                    onClick={() => navigate('/learn/physics/engineering/map')}
+                                    className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg font-bold transition-colors"
+                                >
+                                    Back to Map
+                                </button>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

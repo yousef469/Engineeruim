@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Zap, Star, Lock, CheckCircle } from 'lucide-react';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function GameMapPhysics() {
   const navigate = useNavigate();
-  const [completedLevels] = useState([0]);
+  const { isLessonCompleted, isLessonUnlocked } = useProgress();
+  const [lessonStates, setLessonStates] = useState({});
 
   const generateLevels = () => {
     const levels = [];
@@ -114,11 +116,24 @@ export default function GameMapPhysics() {
   };
 
   const levels = generateLevels();
-  const isLevelUnlocked = () => true;
-  const isLevelCompleted = () => false;
+
+  // Load lesson states on mount
+  useEffect(() => {
+    const loadStates = async () => {
+      const states = {};
+      for (const level of levels) {
+        const completed = isLessonCompleted('physics', level.id);
+        const unlocked = await isLessonUnlocked('physics', level.id);
+        states[level.id] = { completed, unlocked };
+      }
+      setLessonStates(states);
+    };
+    loadStates();
+  }, [levels, isLessonCompleted, isLessonUnlocked]);
 
   const handleLevelClick = (level) => {
-    if (isLevelUnlocked(level.id)) {
+    const state = lessonStates[level.id];
+    if (state?.unlocked) {
       navigate(`/learn/physics/engineering/lesson/${level.id}`);
     }
   };
@@ -167,7 +182,9 @@ export default function GameMapPhysics() {
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                 <Star className="w-5 h-5 text-yellow-300" />
-                <span className="text-lg font-bold">{completedLevels.length}/{levels.length}</span>
+                <span className="text-lg font-bold">
+                  {Object.values(lessonStates).filter(s => s.completed).length}/{levels.length}
+                </span>
               </div>
             </div>
           </div>
@@ -208,8 +225,8 @@ export default function GameMapPhysics() {
 
                 <div className={`grid gap-6`} style={{ gridTemplateColumns: `repeat(${unit.lessons.length}, minmax(0, 1fr))` }}>
                   {row.map((level) => {
-                    const unlocked = isLevelUnlocked(level.id);
-                    const completed = isLevelCompleted(level.id);
+                    const state = lessonStates[level.id] || { completed: false, unlocked: false };
+                    const { completed, unlocked } = state;
                     const isCurrent = unlocked && !completed;
 
                     return (
@@ -228,7 +245,7 @@ export default function GameMapPhysics() {
                         <button
                           onClick={() => handleLevelClick(level)}
                           disabled={!unlocked}
-                          className="group relative"
+                          className={`group relative ${!unlocked ? 'cursor-not-allowed' : ''}`}
                         >
                           {isCurrent && (
                             <div className="absolute inset-0 bg-blue-400 rounded-full blur-xl opacity-50 animate-pulse" />
@@ -237,10 +254,10 @@ export default function GameMapPhysics() {
                           <div
                             className={`relative w-20 h-20 rounded-full border-4 flex items-center justify-center transition-all ${
                               completed
-                                ? 'bg-gradient-to-br from-blue-400 to-indigo-500 border-blue-300 shadow-lg shadow-blue-500/50'
+                                ? 'bg-gradient-to-br from-green-500 to-emerald-600 border-green-300 shadow-lg shadow-green-500/50'
                                 : unlocked
                                 ? `bg-gradient-to-br ${level.color} border-white shadow-lg shadow-blue-500/50 hover:scale-110`
-                                : 'bg-background-light border-primary/30'
+                                : 'bg-gradient-to-br from-gray-600 to-gray-700 border-gray-500 opacity-50'
                             }`}
                           >
                             {completed ? (
@@ -248,18 +265,23 @@ export default function GameMapPhysics() {
                             ) : unlocked ? (
                               <span className="text-3xl">{level.emoji}</span>
                             ) : (
-                              <Lock className="w-7 h-7 text-text-secondary" />
+                              <Lock className="w-7 h-7 text-gray-400" />
                             )}
                           </div>
                         </button>
 
                         <div className="mt-3 text-center max-w-[120px]">
-                          <div className={`font-bold text-sm mb-1 ${unlocked ? 'text-white' : 'text-text-muted'}`}>
+                          <div className={`font-bold text-sm mb-1 ${unlocked ? 'text-white' : 'text-gray-500'}`}>
                             {level.lesson}
                           </div>
                           <div className={`text-xs leading-tight ${unlocked ? 'text-blue-200' : 'text-gray-600'}`}>
                             {level.lessonName}
                           </div>
+                          {!unlocked && level.id > 1 && (
+                            <div className="text-xs text-gray-500 mt-1">
+                              Complete Lesson {level.id - 1}
+                            </div>
+                          )}
                         </div>
                       </div>
                     );

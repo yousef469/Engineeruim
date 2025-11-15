@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Star, Lock } from 'lucide-react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import mathematicsLessons from '../data/mathematicsLessonsData';
+import { useProgress } from '../contexts/ProgressContext';
 
 export default function MathematicsLessonPage() {
     const { lessonId } = useParams();
     const navigate = useNavigate();
+    const { completeLesson, isLessonCompleted, isLessonUnlocked, userProfile } = useProgress();
+    const [lessonUnlocked, setLessonUnlocked] = useState(false);
+    const [showXPReward, setShowXPReward] = useState(false);
+    const [xpEarned, setXPEarned] = useState(0);
+
+    // Check if lesson is unlocked
+    useEffect(() => {
+        const checkUnlocked = async () => {
+            const unlocked = await isLessonUnlocked('mathematics', parseInt(lessonId));
+            setLessonUnlocked(unlocked);
+        };
+        checkUnlocked();
+    }, [lessonId, isLessonUnlocked]);
 
     const lesson = mathematicsLessons[parseInt(lessonId)];
 
@@ -60,11 +74,67 @@ export default function MathematicsLessonPage() {
         );
     }
 
+    // Show locked lesson screen
+    if (!lessonUnlocked) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-green-950 via-emerald-950 to-black text-white flex items-center justify-center">
+                <div className="text-center max-w-md">
+                    <Lock className="w-24 h-24 mx-auto mb-6 text-gray-500" />
+                    <h1 className="text-4xl font-bold mb-4">Lesson Locked</h1>
+                    <p className="text-xl text-gray-300 mb-6">
+                        Complete Lesson {parseInt(lessonId) - 1} to unlock this lesson
+                    </p>
+                    <button
+                        onClick={() => navigate('/learn/mathematics/engineering/map')}
+                        className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold transition-colors"
+                    >
+                        Back to Mathematics Map
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    const handleCompleteLesson = async () => {
+        const result = await completeLesson('mathematics', parseInt(lessonId));
+        if (result) {
+            setXPEarned(result.xpEarned);
+            setShowXPReward(true);
+            setTimeout(() => setShowXPReward(false), 3000);
+        }
+    };
+
+    const completed = isLessonCompleted('mathematics', parseInt(lessonId));
+
     // Check if lesson uses new structure (physics-style) or old structure
     const hasNewStructure = lesson.content && lesson.content.intro && lesson.content.concepts;
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-950 via-emerald-950 to-black text-white">
+            {/* XP Reward Notification */}
+            {showXPReward && (
+                <div className="fixed top-20 right-8 z-50 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-4 rounded-lg shadow-2xl animate-bounce">
+                    <div className="flex items-center gap-3">
+                        <Star className="w-8 h-8" />
+                        <div>
+                            <div className="font-bold text-lg">+{xpEarned} XP</div>
+                            <div className="text-sm">Lesson Completed!</div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* User XP Display */}
+            <div className="fixed top-4 right-4 z-40 bg-gray-900/90 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700">
+                <div className="flex items-center gap-2">
+                    <Star className="w-5 h-5 text-yellow-400" />
+                    <div>
+                        <div className="text-sm font-bold">{userProfile.total_xp} XP</div>
+                        <div className="text-xs text-gray-400">Level {userProfile.level}</div>
+                    </div>
+                </div>
+            </div>
+
             <div className="border-b border-green-700 bg-green-900/90 backdrop-blur-md sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-6 py-4">
                     <button
@@ -81,18 +151,15 @@ export default function MathematicsLessonPage() {
                                     LESSON {lesson.id}
                                 </span>
                                 <span className="text-green-300 text-sm">{lesson.coreIdea}</span>
+                                {completed && (
+                                    <span className="px-3 py-1 bg-green-500/20 border border-green-400 rounded-full text-sm font-bold flex items-center gap-1">
+                                        <CheckCircle className="w-4 h-4" />
+                                        Completed
+                                    </span>
+                                )}
                             </div>
                             <h1 className="text-3xl font-bold mb-1">{lesson.title}</h1>
                             <p className="text-green-200">{lesson.subtitle}</p>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <button
-                                onClick={() => navigate(`/learn/mathematics/engineering/quiz/${lessonId}`)}
-                                className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
-                            >
-                                <CheckCircle className="w-5 h-5" />
-                                Take Quiz
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -211,28 +278,69 @@ export default function MathematicsLessonPage() {
                     </div>
                 )}
 
-                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-2 border-green-400/30 rounded-2xl p-8">
-                    <div className="flex items-center gap-4 mb-4">
-                        <CheckCircle className="w-8 h-8 text-green-400" />
-                        <h2 className="text-2xl font-bold">Lesson Complete!</h2>
-                    </div>
-                    <p className="text-gray-200 mb-6">
-                        You've mastered the fundamentals of {lesson.title}. Ready for the next challenge?
-                    </p>
-                    <div className="flex gap-4">
-                        <button
-                            onClick={() => navigate(`/learn/mathematics/engineering/lesson/${parseInt(lessonId) + 1}`)}
-                            className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold transition-colors"
-                        >
-                            Next Lesson →
-                        </button>
-                        <button
-                            onClick={() => navigate('/learn/mathematics/engineering/map')}
-                            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg font-bold transition-colors"
-                        >
-                            Back to Map
-                        </button>
-                    </div>
+                {/* Complete Lesson Section - At Bottom */}
+                <div className={`border-2 rounded-2xl p-8 ${
+                    completed 
+                        ? 'bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-green-400/30' 
+                        : 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-purple-400/30'
+                }`}>
+                    {completed ? (
+                        <>
+                            <div className="flex items-center gap-4 mb-4">
+                                <CheckCircle className="w-8 h-8 text-green-400" />
+                                <h2 className="text-2xl font-bold">Lesson Complete!</h2>
+                            </div>
+                            <p className="text-gray-200 mb-6">
+                                You've mastered the fundamentals of {lesson.title}. Ready for the next challenge?
+                            </p>
+                            <div className="flex gap-4">
+                                <button
+                                    onClick={() => navigate(`/learn/mathematics/engineering/quiz/${lessonId}`)}
+                                    className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold flex items-center gap-2 transition-colors"
+                                >
+                                    <CheckCircle className="w-5 h-5" />
+                                    Take Quiz
+                                </button>
+                                <button
+                                    onClick={() => navigate(`/learn/mathematics/engineering/lesson/${parseInt(lessonId) + 1}`)}
+                                    className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-bold transition-colors"
+                                >
+                                    Next Lesson →
+                                </button>
+                                <button
+                                    onClick={() => navigate('/learn/mathematics/engineering/map')}
+                                    className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg font-bold transition-colors"
+                                >
+                                    Back to Map
+                                </button>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="flex items-center gap-4 mb-4">
+                                <Star className="w-8 h-8 text-purple-400" />
+                                <h2 className="text-2xl font-bold">Ready to Complete?</h2>
+                            </div>
+                            <p className="text-gray-200 mb-6">
+                                You've reached the end of this lesson. Click below to mark it complete and earn XP!
+                            </p>
+                            <div className="flex gap-4">
+                                <button
+                                    onClick={handleCompleteLesson}
+                                    className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg font-bold text-lg flex items-center gap-3 transition-all transform hover:scale-105 shadow-lg"
+                                >
+                                    <Star className="w-6 h-6" />
+                                    Complete Lesson & Earn 100 XP
+                                </button>
+                                <button
+                                    onClick={() => navigate('/learn/mathematics/engineering/map')}
+                                    className="px-6 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg font-bold transition-colors"
+                                >
+                                    Back to Map
+                                </button>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
